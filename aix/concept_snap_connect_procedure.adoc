@@ -1,0 +1,34 @@
+---
+permalink: aix/concept_snap_connect_procedure.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, connect, procedure 
+summary: 'La procédure de connexion rapide est valide pour Data ONTAP 7.2 ou version ultérieure et explique les étapes de l"opération de connexion rapide.' 
+---
+= Procédure de connexion par enclenchement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La procédure de connexion rapide est valide pour Data ONTAP 7.2 ou version ultérieure et explique les étapes de l'opération de connexion rapide.
+
+La procédure suivante décrit la procédure de connexion par aimantation:
+
+.Étapes
+. SnapDrive pour UNIX obtient le nom des spécifications de fichier et le nom de l'instantané à partir de l'interface de ligne de commande Snap Connect. Il trouve ensuite le(s) volume(s) de système de stockage d'origine où résident les snapshots.
+. SnapDrive for UNIX choisit une méthode de clonage appropriée pour les entités du système de stockage en fonction des options de configuration de l'interface de ligne de commande.
++
+
+NOTE: Si l'option CLI est spécifiée, elle remplace toujours le `snapdrive.conf` option de fichier.
+
++
+.. Si `-clone lunclone` Elle est spécifiée dans l'interface de ligne de commande ou dans `san-clone-method=lunclone` dans le `snapdrive.conf` Fichier, alors SnapDrive pour UNIX crée un clone de LUN dans le même volume à partir du snapshot donné.
+.. Si `-clone unrestricted` Elle est spécifiée dans l'interface de ligne de commande ou dans `san-clone-method=unrestricted` dans le `snapdrive.conf` File, puis SnapDrive pour UNIX crée ou réutilise FlexClone à partir du Snapshot donné.
+.. Si `-clone optimal` Elle est spécifiée dans l'interface de ligne de commande ou dans `san-clone-method=optimal` dans le `snapdrive.conf` File (fichier), puis SnapDrive for UNIX choisit automatiquement entre FlexClone et le clone de LUN restreint, selon la configuration du système de stockage.
+
+
+
+
+
+NOTE: Par défaut, les clones créés par SnapDrive pour UNIX sont des clones de sauvegarde.

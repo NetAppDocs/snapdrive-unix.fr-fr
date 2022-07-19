@@ -1,0 +1,30 @@
+---
+permalink: solaris/concept_command_syntax_to_increase_the_sizeof_the_storage.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, syntax, increase, size, storage 
+summary: Pour augmenter la taille du stockage, vous devez connaître la syntaxe correcte à utiliser. 
+---
+= Syntaxe de commande pour augmenter la taille du stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour augmenter la taille du stockage, vous devez connaître la syntaxe correcte à utiliser.
+
+`snapdrive storage resize -dg _file_spec_ { -growby | -growto } size [-addlun [-igroup _ig_name_ [_ig_name ..._]]] [{ -reserve | - noreserve}]] [-fstype _type_] [-vmtype _type_]`
+
+[NOTE]
+====
+Vous ne pouvez pas utiliser `snapdrive storage resize` commande permettant de réduire la taille d'une entité. Cette commande permet d'augmenter la taille uniquement.
+
+Le `snapdrive storage resize` la commande ne prend pas en charge directement les volumes logiques ou les systèmes de fichiers. Par exemple, vous ne pouvez pas utiliser le `snapdrive storage resize` Commande pour redimensionner un système de fichiers sur une LUN.
+
+*Résultat* : cette commande augmente la taille de l'entité de stockage (volume logique ou groupe de disques) selon l'une des options suivantes :
+
+* Ajout d'octets au stockage (`-growby`).
+* Augmentation de la taille à la taille d'octet que vous spécifiez (`-growto`).
+
+
+====

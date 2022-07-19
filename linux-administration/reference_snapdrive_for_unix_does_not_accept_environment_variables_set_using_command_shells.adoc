@@ -1,0 +1,20 @@
+---
+permalink: linux-administration/reference_snapdrive_for_unix_does_not_accept_environment_variables_set_using_command_shells.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, commands, fail, shell, snapcreate 
+summary: 'Vous ne pouvez pas exécuter les commandes SnapDrive pour UNIX, car les variables d"environnement définies via un shell de commande ne sont pas acceptées dans SnapDrive pour UNIX et lorsque les paramètres $LD_LIBRARY_PATH et snapcreate-check-increpermanente-nfs sont désactivés.' 
+---
+= Les commandes SnapDrive pour UNIX échouent lorsque les variables d'environnement sont définies à l'aide d'un shell de commande
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous ne pouvez pas exécuter les commandes SnapDrive pour UNIX, car les variables d'environnement définies via un shell de commande ne sont pas acceptées dans SnapDrive pour UNIX, et quand `*$LD_LIBRARY_PATH*` et `*snapcreate-check-nonpersistent-nfs*` les paramètres sont désactivés.
+
+
+
+== Solution de contournement
+
+Utilisez un script wrapper pour le binaire SnapDrive pour UNIX et définissez les variables d'environnement comme visibles pour le binaire.

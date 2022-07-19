@@ -1,0 +1,27 @@
+---
+permalink: solaris/concept_considerations_for_supporting_vfiler_unit.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, vfiler, unit, support, issue 
+summary: 'SnapDrive for UNIX prend en charge les opérations SnapDrive au sein d"une unité vFiler créée sur un volume FlexVol. Toutefois, SnapDrive pour UNIX ne prend pas en charge les unités vFiler si vous utilisez Fibre Channel \(FC\).' 
+---
+= Problèmes de prise en charge d'unité vFiler
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive for UNIX prend en charge les opérations SnapDrive au sein d'une unité vFiler créée sur un volume FlexVol. Toutefois, SnapDrive pour UNIX ne prend pas en charge les unités vFiler si vous utilisez Fibre Channel (FC).
+
+Vous devez tenir compte de quelques considérations relatives à SnapDrive for UNIX qui prend en charge les unités vFiler :
+
+* Les opérations SnapDrive ne sont pas prises en charge sur une unité vFiler créée sur un qtree.
++
+Ces opérations sont autorisées si l'unité vFiler est propriétaire de l'intégralité du volume de stockage.
+
+* Lors de la configuration de SnapDrive pour prendre en charge les unités vFiler, assurez-vous que les chemins de gestion et de données ne sont pas configurés pour une interface sur vFiler0.
+
+
+*Informations connexes*
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1511536["Guide de gestion Data ONTAP 8.2 MultiStore pour 7-mode"]

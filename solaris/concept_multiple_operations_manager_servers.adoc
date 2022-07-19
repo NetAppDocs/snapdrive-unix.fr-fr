@@ -1,0 +1,34 @@
+---
+permalink: solaris/concept_multiple_operations_manager_servers.html 
+sidebar: sidebar 
+keywords: manager, console, server, operations,configuration 
+summary: 'SnapDrive pour UNIX prend en charge plusieurs serveurs console Operations Manager. Cette fonctionnalité est requise lorsqu"un groupe de systèmes de stockage est géré par plusieurs serveurs de console Operations Manager. SnapDrive for UNIX contacte les serveurs de console Operations Manager dans le même ordre que les serveurs de console Operations Manager sont configurés dans SnapDrive for UNIX. Vous pouvez exécuter la commande SnapDrive config list pour obtenir l"ordre de configuration.' 
+---
+= Plusieurs serveurs console Operations Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX prend en charge plusieurs serveurs console Operations Manager. Cette fonctionnalité est requise lorsqu'un groupe de systèmes de stockage est géré par plusieurs serveurs de console Operations Manager. SnapDrive for UNIX contacte les serveurs de console Operations Manager dans le même ordre que les serveurs de console Operations Manager sont configurés dans SnapDrive for UNIX. Vous pouvez exécuter le `snapdrive config list` pour obtenir l'ordre de configuration.
+
+L'exemple suivant montre les valeurs de sortie de plusieurs serveurs console Operations Manager :
+
+[listing]
+----
+# snapdrive config list
+username    appliance name     appliance type
+---------------------------------------------
+root        storage_array1     StorageSystem
+root        storage_array2     StorageSystem
+sd-admin    ops_mngr_server1   DFM
+sd-admin    ops_mngr_server2   DFM
+----
+Dans l'exemple précédent, Storage_array1 est géré par OPS_mngr_server1 et Storage_array2 est géré par OPS_mngr_server2. Dans cet exemple, SnapDrive pour UNIX contacte en premier lieu OPS_mngr_server1. Si OPS_mngr_server1 ne peut pas déterminer l'accès, SnapDrive pour UNIX contacte OPS_mngr_server2.
+
+SnapDrive pour UNIX ne contacte la deuxième console Operations Manager que dans les conditions suivantes :
+
+* Lorsque la première console Operations Manager ne parvient pas à déterminer l'accès. Ce cas de figure peut survenir, car la première console Operations Manager ne gère pas le système de stockage.
+* Lorsque la première console Operations Manager est inactive.
+

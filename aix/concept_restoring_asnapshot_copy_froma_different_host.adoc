@@ -1,0 +1,16 @@
+---
+permalink: aix/concept_restoring_asnapshot_copy_froma_different_host.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, snapshot, copy, different, host 
+summary: 'Utilisez la commande SnapDrive snap restore pour restaurer une copie Snapshot à partir d"un autre hôte.' 
+---
+= Restauration d'une copie Snapshot à partir d'un autre hôte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilisez le `snapdrive snap restore` Commande permettant de restaurer une copie Snapshot à partir d'un autre hôte.
+
+Généralement, vous pouvez restaurer une copie Snapshot à partir de l'hôte où vous avez pris la copie Snapshot. Il peut arriver que vous deviez restaurer une copie Snapshot en utilisant un hôte différent ou non d'origine. Pour restaurer une copie Snapshot à l'aide d'un hôte non originaire, utilisez la même option `snapdrive snap restore` commande que vous utiliseriez normalement. Si la copie Snapshot que vous restaurez contient des entités NFS, l'hôte non originaire doit avoir la permission d'accéder au répertoire NFS.

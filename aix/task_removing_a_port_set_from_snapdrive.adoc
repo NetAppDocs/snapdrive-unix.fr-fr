@@ -1,0 +1,33 @@
+---
+permalink: aix/task_removing_a_port_set_from_snapdrive.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, delete, remove, port, set, command 
+summary: 'Vous pouvez utiliser la commande de suppression de l"ensemble de ports SnapDrive pour supprimer un ensemble de ports configuré dans SnapDrive.' 
+---
+= Retrait d'un jeu de ports de SnapDrive
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `snapdrive portset delete` Commande permettant de supprimer un ensemble de ports configuré dans SnapDrive.
+
+.Étapes
+. Entrez la commande suivante sur le système hôte :
++
+`*snapdrive portset delete _filername [filername...]_*`
+
++
+`_filername_` Est le nom du Vserver sur lequel l'ensemble de ports est configuré.
+
++
+[listing]
+----
+snapdrive portset delete vs91
+Deleted portset configuration for appliance: vs91
+----
++
+L'ensemble de ports configuré pour SnapDrive a été supprimé avec succès.
+
+

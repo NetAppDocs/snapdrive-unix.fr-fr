@@ -1,0 +1,24 @@
+---
+permalink: aix/concept_when_to_use_the_snapdrive_configuration_wizard.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, configuration, wizard 
+summary: 'Utilisez l"assistant de configuration SnapDrive pour mettre à jour les variables de configuration dans l"assistant. Vous pouvez exécuter l"assistant de configuration à tout moment pour modifier vos modifications de configuration en SnapDrive.' 
+---
+= Assistant de configuration SnapDrive
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilisez l'assistant de configuration SnapDrive pour mettre à jour les variables de configuration dans l'assistant. Vous pouvez exécuter l'assistant de configuration à tout moment pour modifier vos modifications de configuration en SnapDrive.
+
+Vous pouvez exécuter l'assistant de configuration à partir de `/opt/NetApp/snapdrive/setup/config_wizard`.
+
+Entrez `exit` pour fermer l'assistant de configuration, sans enregistrer les modifications.
+
+Vous pouvez également modifier la valeur des variables de configuration directement dans `snapdrive.conf` fichier.
+
+*Informations connexes*
+
+xref:reference_stack_requirements.adoc[De la pile]

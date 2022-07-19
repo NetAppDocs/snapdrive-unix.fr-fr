@@ -1,0 +1,14 @@
+---
+permalink: solaris/concept_standard_exit_status_values.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, standard, exit, status, value 
+summary: 'Les ID de messages d"erreur dans SnapDrive pour UNIX sont associés à des valeurs d"état de sortie. Vous pouvez utiliser la valeur d"état de sortie pour déterminer le succès ou l"échec d"une commande SnapDrive pour UNIX.' 
+---
+= Valeurs d'état de sortie standard
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les ID de messages d'erreur dans SnapDrive pour UNIX sont associés à des valeurs d'état de sortie. Vous pouvez utiliser la valeur d'état de sortie pour déterminer le succès ou l'échec d'une commande SnapDrive pour UNIX.

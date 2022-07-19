@@ -1,0 +1,38 @@
+---
+permalink: linux-administration/task_configuring_a_new_storage_system_name_to_a_host_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, name, host, configuring, configure 
+summary: 'Vous devez configurer le nouveau nom de système de stockage dans le système hôte pour exécuter les opérations SnapDrive à l"aide du nouveau système de stockage.' 
+---
+= Configuration du nouveau nom de système de stockage dans un système hôte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez configurer le nouveau nom de système de stockage dans le système hôte pour exécuter les opérations SnapDrive à l'aide du nouveau système de stockage.
+
+* Le nom doit être enregistré auprès d'un serveur DNS (Domain Name System) sur votre réseau ou dans `/etc/hosts` fichier.
+* L'ancien nom de système de stockage doit être supprimé du système hôte à l'aide du `snapdrive config delete` commande.
+
+
+.Étapes
+. Saisissez la commande suivante :
++
+`*snapdrive config set _username storage_system_name_*`
+
++
+Les scripts de post SnapManager pour Oracle peuvent ne pas établir de relation SnapMirror et SnapVault si vous n'entrez pas le nom réel du système de stockage. Par exemple, si le nom réel du système de stockage est « hostname-3 » et que vous entrez le nom d'alliance « hostname-3-mgmt », la relation SnapMirror and SnapVault risque de ne pas être établie.
+
++
+[listing]
+----
+snapdrive config set jsmith roaster
+Password for jsmith:
+Retype password:
+----
++
+Le nouveau système de stockage est prêt à exécuter les opérations SnapDrive dans le système hôte.
+
+

@@ -1,0 +1,16 @@
+---
+permalink: linux-installation-7mode/task_verifying_the_snapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, verify, copy 
+summary: Vous pouvez vérifier votre copie Snapshot en restaurant les données. 
+---
+= Vérification de la copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier votre copie Snapshot en restaurant les données.
+
+Pour plus d'informations, voir https://library.netapp.com/ecm/ecm_download_file/ECMLP2849340["Guide d'administration de SnapDrive 5.3.2 pour UNIX pour Linux"].

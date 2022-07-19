@@ -1,0 +1,117 @@
+---
+permalink: linux-administration/task_setting_up_multipathing.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, multipathing, configure 
+summary: 'Vous pouvez configurer plusieurs chemins réseau entre l"hôte et le système de stockage en configurant des chemins d"accès multiples. SnapDrive pour UNIX prend en charge l"utilisation d"alias dans les environnements multipathing. Vous devez vous assurer que le nom d"alias correct pour les périphériques mapper est configuré dans le fichier /etc/multipath.conf.' 
+---
+= Configuration des chemins d'accès multiples
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer plusieurs chemins réseau entre l'hôte et le système de stockage en configurant des chemins d'accès multiples. SnapDrive pour UNIX prend en charge l'utilisation d'alias dans les environnements multipathing. Vous devez vous assurer que le nom d'alias correct pour les périphériques de mappage est configuré dans le `/etc/multipath.conf` fichier.
+
+.Étapes
+. Après le redémarrage de l'hôte, le démon multichemin doit être exécuté comme indiqué dans l'exemple suivant :
++
+[listing]
+----
+root@lnx197-123 ~]# ps -ef | grep multipathd
+root      5713     1  0 22:44 ?        00:00:00 /sbin/multipathd
+root      5739  1783  0 22:44 pts/1    00:00:00 grep multipathd
+----
++
+Si le démon multipath n'est pas en cours d'exécution, assurez-vous de redémarrer le démon après le redémarrage. Vous pouvez démarrer le démon multivoie en exécutant la commande suivante :
+
++
+[listing]
+----
+[root@lnx197-123 ~]# chkconfig --level 345 multipathd on
+----
++
+
+NOTE: Le tableau suivant répertorie certaines opérations de SnapDrive qui prennent en charge l'utilisation d'un nom d'alias dans un environnement multivoie.
+
++
+|===
+| Fonctionnement | Prise en charge des noms d'alias | Type de périphérique 
+
+
+ a| 
+Snap Create and Restore (SFSR et VBSR) depuis le système primaire sur l'hôte principal
+ a| 
+Oui.
+ a| 
+Appareils avec aliased
+
+
+
+ a| 
+Clonage depuis un stockage primaire ou secondaire
+ a| 
+Oui.
+ a| 
+Dispositifs sans aliased
+
+
+
+ a| 
+Restaurez vers un autre système
+ a| 
+Oui.
+ a| 
+Dispositifs sans aliased
+
+
+
+ a| 
+Restauration à partir du stockage secondaire
+ a| 
+Oui.
+ a| 
+Dispositifs sans aliased
+
+|===
++
+** Il n'est pas nécessaire de définir de valeurs dans le `/etc/multipath.conf` Fichier si vous utilisez Red Hat Enterprise Linux (RHEL) 6.4 ou version ultérieure ou Oracle Linux 6.4 ou version ultérieure.
++
+Cependant, vous devez toujours maintenir un mannequin `/etc/multipath.conf` fichier, qui peut être vide ou contenant les informations de la liste noire et les noms d'alias, si nécessaire.
+
+** Vous n'avez pas besoin de conserver un `/etc/multipath.conf` Fichier si vous utilisez SUSE Linux Enterprise Server (SLES) 11 SP3 ou version ultérieure.
++
+Cependant, vous pouvez avoir un `/etc/multipath.conf` fichier contenant les informations de la liste noire et les noms d'alias, si nécessaire.
+
+
+
+. Remplacez la chaîne `HITACHI_HUS103073FL3800_V3WTL7XA` avec la sortie de la commande `scsi_id -gus /block/<LD>`, où `LD` est le nom du périphérique de bloc local.
++
+
+NOTE: Pour certains périphériques de bloc locaux, le `scsi_id` il est possible que la commande ne renvoie aucune chaîne. Dans ce cas, le bloc local doit être répertorié en noir à l'aide de la directive devnode.
+
+. Augmentez le nombre de descripteurs de fichier qu'un processus peut ouvrir dans l'hôte en ajoutant les lignes suivantes dans la `/etc/security/limits.conf` fichier :
++
+[listing]
+----
+soft nofile 4096
+       hard nofile 4096
+----
+. Assurez-vous que le pilote Linux SG est toujours chargé après le redémarrage du système en entrant la commande suivante :
++
+[listing]
+----
+echo "modprobe sg" >> /etc/rc.local
+----
+. Redémarrez l'hôte pour vous assurer que les paramètres sont actifs.
++
+
+NOTE: Le lvm2-2.02.17-7.27.8 et le `_filter_` le paramètre doit être affecté comme = `["r|/dev/.\*/by-path/.*|"`, `"r|/dev/.\*/by-id/.*|"`, `"r|/dev/cciss/.\*|", "a/.*/"]` dans le `lvm.conf` Fichier dans SLES10 SP2.
+
+
+
+*Informations connexes*
+
+http://mysupport.netapp.com["Support NetApp"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2547936["Guide d'installation de Linux Unified Host Utilities 7.1"]

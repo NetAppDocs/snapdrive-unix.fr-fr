@@ -1,0 +1,38 @@
+---
+permalink: solaris/concept_guidelines_for_thestorage_createoperation.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, create 
+summary: 'Vous devez suivre certaines instructions lorsque vous utilisez la commande SnapDrive Storage create pour l"opération Storage create.' 
+---
+= Instructions pour l'opération de création de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez suivre certaines instructions lorsque vous utilisez la commande SnapDrive Storage create pour la `storage create` fonctionnement.
+
+* Si vous répertoriez des LUN de différents volumes de système de stockage avec le `-lun` vous ne pouvez pas inclure le `-dg`, `-hostvol`, ou `-fs` à l'invite de commande.
+* Le `-nolvm` Option crée un système de fichiers directement sur une LUN sans activer le LVM de l'hôte.
++
+Vous ne pouvez pas spécifier de volumes hôtes ou de groupes de disques lorsque vous utilisez cette option.
+
+* Vous ne pouvez pas utiliser SnapDrive pour les commandes de provisionnement de stockage UNIX pour les fichiers NFS ou les arborescences de répertoires.
+* Si vous utilisez le `snapdrive storage create` Commande pour créer un système de fichiers directement sur une LUN, vous ne pouvez pas spécifier plusieurs LUN.
++
+SnapDrive pour UNIX crée toujours une LUN lorsque vous utilisez cette forme de la commande.
+
+* Certains systèmes d'exploitation ont des limites sur le nombre de LUN que vous pouvez créer.
++
+Si votre hôte exécute l'un de ces systèmes d'exploitation, vous pouvez exécuter le `snapdrive config check luns` commande.
+
+* Si les piles UFS et Veritas sont installées, vous devez utiliser la valeur `ufs` avec le `-fstype` Option permettant de créer un système de fichiers UFS directement sur une LUN.
+* La création d'un système de fichiers sur une LUN brute avec chemins d'accès multiples DMP est prise en charge.
+
+
+*Informations connexes*
+
+xref:concept_snapdrive_create_comand_fails_while_discovering_mapped_devices.adoc[La commande de création du stockage SnapDrive pour UNIX échoue lors de la détection de certains périphériques mappés]
+
+xref:concept_configuration_options_and_their_default_values.adoc[Les options de configuration et leurs valeurs par défaut]

@@ -1,0 +1,20 @@
+---
+permalink: linux-administration/concept_crash_consistent_snapshot_copies.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, copy, snapshot, crash, consistent 
+summary: 'Il peut être nécessaire de créer des copies Snapshot cohérentes après panne de votre système de fichiers ou de vos groupes de disques. SnapDrive pour UNIX crée des copies Snapshot qui contiennent l"image de tous les volumes du système de stockage spécifiés dans l"entité.' 
+---
+= Copies Snapshot cohérentes après panne
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il peut être nécessaire de créer des copies Snapshot cohérentes après panne de votre système de fichiers ou de vos groupes de disques. SnapDrive pour UNIX crée des copies Snapshot qui contiennent l'image de tous les volumes du système de stockage spécifiés dans l'entité.
+
+Lorsque vous créez une copie Snapshot d'une entité de stockage, par exemple un système de fichiers ou un groupe de disques, SnapDrive for UNIX crée une copie Snapshot qui contient l'image de tous les volumes du système de stockage qui composent l'entité que vous avez spécifiée à l'aide d'un `file_spec` argument. Le `file_spec` L'argument spécifie l'entité de stockage, telle que le système de fichiers, la LUN ou l'arborescence de répertoires NFS utilisée par SnapDrive pour UNIX pour créer la copie Snapshot.
+
+SnapDrive pour UNIX crée des composants de stockage cohérents qui composent l'entité que vous avez demandée dans la copie Snapshot. Les LUN ou les répertoires utilisés en dehors de ceux spécifiés par le `snapdrive snap create` commande `file_spec` L'argument peut ne pas comporter d'images cohérentes dans la copie Snapshot. SnapDrive pour UNIX vous permet de restaurer uniquement les entités spécifiées par le système `file_spec` Argument cohérent dans la copie Snapshot.
+
+Les copies Snapshot des entités contenues dans un volume de stockage unique sont toujours cohérentes avec les défaillances. SnapDrive pour UNIX prend des mesures spéciales pour s'assurer que les copies Snapshot s'étendent sur plusieurs systèmes de stockage ou volumes du système de stockage. La méthode utilisée par SnapDrive pour UNIX pour assurer la cohérence des pannes dépend de la version de Data ONTAP utilisée sur l'emplacement des entités de stockage de votre copie Snapshot.

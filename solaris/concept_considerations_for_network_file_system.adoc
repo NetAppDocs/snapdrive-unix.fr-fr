@@ -1,0 +1,30 @@
+---
+permalink: solaris/concept_considerations_for_network_file_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, nfs, configuration, guidelines 
+summary: 'Avant d"installer SnapDrive pour UNIX, vous devez tenir compte de l"emplacement d"exécution du service Network File System \(NFS\) et de l"emplacement d"exportation des répertoires du système de stockage. Vous devez vérifier les autorisations client NFS et les autorisations de lecture/écriture de l"interface.' 
+---
+= Instructions relatives aux configurations NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant d'installer SnapDrive pour UNIX, vous devez tenir compte de l'emplacement d'exécution du service NFS et de l'emplacement d'exportation des répertoires du système de stockage. Vous devez vérifier les autorisations client NFS et les autorisations de lecture/écriture de l'interface.
+
+Lorsque vous utilisez SnapDrive pour UNIX pour restaurer ou vous connecter à des répertoires montés sur NFS, vous devez vous assurer que les répertoires du système de stockage sont correctement exportés vers l'hôte. Si votre hôte possède plusieurs interfaces IP qui peuvent accéder au système de stockage, vous devez vous assurer que le répertoire est correctement exporté vers chacune d'entre elles.
+
+SnapDrive for UNIX émet des avertissements à moins que toutes ces interfaces ne disposent d'autorisations de lecture/écriture ou, dans le cas de `snapdrive snap connect` avec le `-readonly` ou au moins une autorisation en lecture seule. Le `snapdrive snap restore` et `snapdrive snap connect` les commandes échouent si aucune de ces interfaces n'est autorisée à accéder au répertoire.
+
+Lorsque vous exécutez SFSR (Single File SnapRestore) en tant qu'utilisateur racine, vous devez vous assurer que les répertoires du système de stockage sont exportés avec des autorisations de lecture/écriture sur l'hôte et que les règles d'exportation suivantes doivent être définies :
+
+* `rw=<hostname>, root=<hostname>` Data ONTAP 7-mode
+* `rwrule = sys, rorule=sys, superuser= sys` Dans clustered Data ONTAP
+
+
+*Informations connexes*
+
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.cdot-famg-nfs/home.html["Référence ONTAP 9 NFS"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1401220["Guide de gestion des protocoles et des accès aux fichiers Data ONTAP 8.2 pour 7-mode"]

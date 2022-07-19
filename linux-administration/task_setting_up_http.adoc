@@ -1,0 +1,36 @@
+---
+permalink: linux-administration/task_setting_up_http.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, http, configure, host 
+summary: 'Vous pouvez configurer SnapDrive pour UNIX afin qu"il utilise HTTP pour votre plate-forme hôte.' 
+---
+= Configuration de HTTP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer SnapDrive pour UNIX afin qu'il utilise HTTP pour votre plate-forme hôte.
+
+Assurez-vous d'être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Faire une sauvegarde du `snapdrive.conf` fichier.
+. Ouvrez le `snapdrive.conf` fichier dans un éditeur de texte.
+. Modifiez la valeur de `_use-https-to-filer_` variable à désactivé.
++
+Une bonne pratique à chaque fois que vous modifiez le `snapdrive.conf` le fichier doit effectuer les opérations suivantes :
+
++
+.. Faites un commentaire sur la ligne que vous souhaitez modifier.
+.. Copiez la ligne de commentaires.
+.. Annulez le commentaire du texte copié en supprimant le signe dièse (#).
+.. Modifier la valeur.
+
+
+. Enregistrez le fichier après avoir effectué vos modifications.
++
+SnapDrive for UNIX vérifie automatiquement ce fichier à chaque démarrage. Vous devez redémarrer le démon SnapDrive pour UNIX pour que les modifications prennent effet.
+
+

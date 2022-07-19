@@ -1,0 +1,35 @@
+---
+permalink: linux-administration/concept_snap_disconnect_procedure.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, disconnect, procedure, steps 
+summary: Cette section explique la procédure suivie pour la déconnexion par enclenchement. 
+---
+= Procédure de déconnexion par enclenchement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette section explique la procédure suivie pour la déconnexion par enclenchement.
+
+La procédure suivante décrit le `snap disconnect procedure`:
+
+. SnapDrive pour UNIX obtient les spécifications des fichiers hôtes `snap disconnect` CLI et trouve le volume de système de stockage.
+. Après avoir supprimé les spécifications des fichiers hôte et déassignation des LUN, SnapDrive for UNIX vérifie si le volume actuel est un clone créé par SnapDrive.
+. Si la FlexClone est créée par SnapDrive, SnapDrive for UNIX vérifie si :
++
+.. Le volume clone contient des LUN mappées
+.. Le volume cloné contient les nouvelles LUN
+.. Il y a de nouvelles copies Snapshot
+
+
+
+
+Si toutes les conditions sont remplies, SnapDrive pour UNIX supprime le volume cloné. Pour un FlexClone sans restriction, si le RBAC est configuré, SnapDrive pour UNIX n'effectue pas les vérifications des sous-étapes 1 et 2.
+
+Sur les systèmes de stockage avec Data ONTAP version antérieure à 7.2, des volumes FlexClone restreints ne sont pas supprimés par SnapDrive pour UNIX. Les commandes du système de stockage doivent être utilisées pour les supprimer. Cependant, les volumes FlexClone sans restriction sont supprimés lorsque la fonctionnalité RBAC appropriée est fournie à l'utilisateur.
+
+*Informations connexes*
+
+xref:concept_role_based_access_control_in_snapdrive_for_unix.adoc[Contrôle d'accès basé sur des rôles dans SnapDrive pour UNIX]

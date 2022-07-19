@@ -1,0 +1,18 @@
+---
+permalink: solaris/concept_displayingsnapshot_copiesresiding_on_astorage_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, display, snapshot, copy, storage 
+summary: Vous pouvez utiliser la commande SnapDrive pour afficher les copies Snapshot sur un système de stockage. 
+---
+= Affichage des copies Snapshot résidant sur un système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser la commande SnapDrive pour afficher les copies Snapshot sur un système de stockage.
+
+Pour afficher les informations relatives aux copies Snapshot résidant sur un système de stockage, utilisez la syntaxe suivante :
+
+`snapdrive snap show -filer filername [filername...] [-verbose]`

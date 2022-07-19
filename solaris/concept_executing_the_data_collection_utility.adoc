@@ -1,0 +1,34 @@
+---
+permalink: solaris/concept_executing_the_data_collection_utility.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, data, collection, utility 
+summary: 'Vous devez effectuer quelques étapes pour exécuter l"utilitaire de collecte des données.' 
+---
+= Exécution de l'utilitaire de collecte de données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez effectuer quelques étapes pour exécuter l'utilitaire de collecte des données.
+
+Assurez-vous d'être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Accédez au répertoire de diagnostic SnapDrive pour UNIX. Le chemin est : `install_directory/diag`
++
+`install_directory` Est le répertoire d'installation SnapDrive pour UNIX de votre système d'exploitation hôte. Ce répertoire peut varier en fonction de votre système d'exploitation hôte.
+
+. À l'invite de commande, entrez la commande suivante :
++
+`*snapdrive.dc [-d directory] [-n file_name] [-f]*`
+
++
+`-d directory` indique l'emplacement du fichier compressé créé par cet utilitaire. L'emplacement par défaut est `/tmp/netapp`.
+
++
+`-n file_name` spécifie une chaîne à inclure dans le nom du répertoire et du fichier de sortie compressé. Si vous fournissez une valeur pour cet argument, le `snapdrive.dc` utilitaire crée un répertoire appelé `ntap_snapdrive_name` et un nom de fichier appelé `ntap_snapdrive_name.tar.Z` Le nom par défaut du chemin d'accès est `/tmp/netapp/ntap_snapdrive_info.tar.Z`
+
+. Envoyer le `directory/ntap_snapdrive_name.tar.Z` Dossier sur le support technique de NetApp pour analyse.
+

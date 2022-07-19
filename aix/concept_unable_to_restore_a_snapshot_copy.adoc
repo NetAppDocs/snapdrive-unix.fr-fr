@@ -1,0 +1,44 @@
+---
+permalink: aix/concept_unable_to_restore_a_snapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, snapshot, copy 
+summary: Quelques conditions ont un impact sur la capacité de la commande SnapDrive snap restore à restaurer une copie Snapshot. 
+---
+= Impossible de restaurer une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il y a peu de conditions qui affectent le `snapdrive snap restore` Fonctionnalité de restauration d'une copie Snapshot.
+
+* Le `snapdrive snap restore` la commande doit être capable d'effectuer les tâches suivantes :
++
+** Interroger tous les groupes de disques pour obtenir la liste des LUN.
+** Interroger toutes les LUN via la commande SCSI. Les volumes hôtes et les systèmes de fichiers n'ont pas besoin d'être disponibles et montés pour le système `snapdrive snap restore` pour réussir.
+
+
+* Les autorisations d'accès doivent permettre à l'hôte de créer et de restaurer une copie Snapshot des informations de ce système de stockage.
+* Le répertoire monté sur NFS doit être exporté correctement vers l'hôte, de sorte qu'il puisse être monté.
+
+
+
+NOTE: Vous devez toujours créer une autre copie Snapshot après avoir ajouté une LUN à un groupe de disques ou en supprimer.
+
+* Si vous ajoutez un volume hôte ou des systèmes de fichiers à un groupe de disques après avoir créé une copie Snapshot, puis essayez de restaurer la copie Snapshot, un message d'erreur s'affiche. Vous devez inclure le `force` option (`-f`) sur la ligne de commande pour que l'opération de restauration réussisse dans cette situation.
++
+
+NOTE: Les volumes hôtes et les systèmes de fichiers que vous ajoutez après avoir créé une copie Snapshot ne sont plus accessibles lors de la création et de la restauration de la copie Snapshot.
+
+* Si vous renommez un volume d'hôte ou un système de fichiers, ou modifiez le point de montage après avoir pris une copie Snapshot, puis essayez de la restaurer, l'opération échoue. Vous devez inclure le `force` option (`-f`) sur la ligne de commande pour que l'opération de restauration réussisse dans cette situation.
++
+
+NOTE: Utilisez le `-f` option particulièrement importante afin de vous assurer de ne pas écraser accidentellement un élément que vous n'aviez pas l'intention d'écraser.
+
+* Si vous renommez une LUN après en avoir créé une copie Snapshot, puis essayez de restaurer cette copie Snapshot, l'opération échoue. Après avoir renommé une LUN, vous devez créer une nouvelle copie Snapshot.
++
+
+NOTE: Après avoir démarré une opération de restauration Snapshot, ne l'arrêtez pas. L'arrêt de cette opération peut laisser le système dans un état incohérent. Vous devrez peut-être effectuer une récupération manuelle.
+
+

@@ -1,0 +1,26 @@
+---
+permalink: aix/concept_commands_appear_blocked_commands_appear_blocked.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, blocked 
+summary: 'Vous ne pouvez pas exécuter les commandes SnapDrive pour UNIX car celles-ci semblent bloquées pendant plus de 10 minutes. Il peut être nécessaire d"attendre la fin de la commande.' 
+---
+= Les commandes semblent bloquées
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous ne pouvez pas exécuter les commandes SnapDrive pour UNIX car celles-ci semblent bloquées pendant plus de 10 minutes. Il peut être nécessaire d'attendre la fin de la commande.
+
+Ce comportement se produit dans de rares cas lorsque VxVM/DMP a besoin de temps pour gérer le démon de configuration de volume. Les déclencheurs de ce comportement incluent les éléments suivants :
+
+* Système de stockage restauré à partir d'un incident de panique
+* Un adaptateur cible du système de stockage qui est passé d'une connexion hors ligne à une version en ligne
+
+
+
+
+== Solution de contournement
+
+Attendez la fin de la commande. L'exécution du démon de configuration Veritas nécessite plusieurs minutes et détecte l'état actuel des périphériques.

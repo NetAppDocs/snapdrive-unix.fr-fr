@@ -1,0 +1,25 @@
+---
+permalink: solaris/task_adding_sd_hostname_to_the_storage_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, add, hostname, storage, system, sd 
+summary: 'L"administrateur de la console Operations Manager peut créer l"utilisateur sd-hostname sur le système de stockage à l"aide de la console Operations Manager. Une fois les étapes terminées, l"administrateur de la console Operations Manager doit envoyer manuellement les informations d"identification à l"administrateur SnapDrive for UNIX. Vous pouvez utiliser n"importe quel nom à la place de sd-hostname ; cependant, il est préférable d"utiliser sd-hostname.' 
+---
+= Ajout du nom d'hôte sd au système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'administrateur de la console Operations Manager peut créer l'utilisateur sd-hostname sur le système de stockage à l'aide de la console Operations Manager. Une fois les étapes terminées, l'administrateur de la console Operations Manager doit envoyer manuellement les informations d'identification à l'administrateur SnapDrive for UNIX. Vous pouvez utiliser n'importe quel nom à la place de sd-hostname ; cependant, il est préférable d'utiliser sd-hostname.
+
+.Étapes
+. Obtenir le mot de passe root du système de stockage et stocker le mot de passe.
++
+Pour ajouter le mot de passe du système de stockage, sélectionnez *Management* > *Storage System*.
+
+. Créez un utilisateur sd-hostname pour chaque système UNIX.
+. Attribuer des fonctionnalités `api-*` et `login-*` à un rôle, tel que sd-role.
+. Inclure ce rôle (sd-role) dans un nouveau groupe d'utilisateurs, tel que sd-usergroup.
+. Associez ce groupe d'utilisateurs (sd-usergroup) à l'utilisateur sd-hostname sur le système de stockage.
+

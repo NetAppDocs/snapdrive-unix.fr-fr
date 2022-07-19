@@ -1,0 +1,186 @@
+---
+permalink: solaris/reference_stack_requirements.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, stack, requirements 
+summary: 'SnapDrive pour UNIX nécessite un système d"exploitation hôte, des systèmes de fichiers hôtes, NFS, des gestionnaires de volumes, des utilitaires hôtes FC ou iSCSI, des licences de système de stockage, des logiciels ONTAP, des logiciels MultiStore et l"accès au protocole \(IP\) Internet. SnapDrive pour UNIX a également certaines exigences de pile qu"il doit remplir.' 
+---
+= De la pile
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX nécessite un système d'exploitation hôte, des systèmes de fichiers hôtes, un NFS, des gestionnaires de volumes, des utilitaires hôtes FC ou iSCSI, des licences de système de stockage, des logiciels ONTAP, des logiciels MultiStore et l'accès au protocole IP (Internet Protocol). SnapDrive pour UNIX a également certaines exigences de pile qu'il doit remplir.
+
+
+
+== Entités côté hôte
+
+Voici une liste d'entités côté hôte :
+
+* Système d'exploitation hôte
+* Un gestionnaire de volumes
+* Système de fichiers
+* Solaris Host Utilities
+
+
+
+
+== Entités côté invité pour la prise en charge des LUN RDM
+
+Voici la liste des entités côté client :
+
+* Le système d'exploitation invité
+* Un gestionnaire de volumes
+* Système de fichiers
+* Solaris iSCSI Host Utility seul est adéquat, si le protocole est iSCSI
+
+
+
+
+== Pile SnapDrive pour UNIX
+
+Vous devez entrer des valeurs acceptables pour l' `_multipathing-type_`, `_fstype_`, `_default-transport_`, et `_vmtype_` variables dans le `snapdrive.conf` fichier fourni dans la pile de matrices. Vous devez vérifier que les valeurs saisies sont installées et exécutées dans votre système hôte.
+
+|===
+| Plateforme hôte | Type de transport par défaut | Type de chemins d'accès multiples | fstype | type vmtype 
+
+
+ a| 
+Solaris x86
+ a| 
+FCP
+ a| 
+Aucune
+ a| 
+ufs
+ a| 
+svm
+
+
+
+ a| 
+FCP
+ a| 
+mpxio
+ a| 
+ufs
+ a| 
+svm
+
+
+
+ a| 
+ISCSI
+ a| 
+Aucune
+ a| 
+ufs
+ a| 
+svm
+
+
+
+ a| 
+ISCSI
+ a| 
+mpxio
+ a| 
+ufs
+ a| 
+svm
+
+
+
+ a| 
+SPARC Solaris
+ a| 
+FCP
+ a| 
+DMP
+ a| 
+vxfs
+ a| 
+vxvm
+
+
+
+ a| 
+FCP
+ a| 
+Aucune
+ a| 
+ufs
+ a| 
+svm
+
+
+
+ a| 
+FCP
+ a| 
+mpxio
+ a| 
+ufs
+ a| 
+svm
+
+
+
+ a| 
+ISCSI
+ a| 
+Aucune
+ a| 
+ufs
+ a| 
+svm
+
+
+
+ a| 
+ISCSI
+ a| 
+mpxio
+ a| 
+ufs
+ a| 
+svm
+
+|===
+* Si vous disposez de piles de stockage FCP et iSCSI, SnapDrive ne prend en charge que les piles de stockage FCP.
++
+SnapDrive ne prend pas en charge les piles de stockage iSCSI pour AIX.
+
+* Le système d'exploitation hôte et les correctifs appropriés pour Solaris sont installés.
+* Le gestionnaire de volumes pour Solaris est VxVM et Solaris Volume Manager (SVM).
++
+Vous devez installer VxVM séparément ; SVM est inclus avec le système d'exploitation Solaris.
+
+* Les utilitaires hôtes sont installés dans Solaris
+* Le logiciel ONTAP est installé sur votre système de stockage.
+* Le logiciel MultiStore est installé sur votre système de stockage dans le cadre d'une configuration d'unité vFiler.
+* L'accès IP est disponible entre l'hôte et le système de stockage.
+
+
+NetApp modifie régulièrement les utilitaires et composants hôtes. Vous pouvez suivre ces modifications à l'aide de la matrice d'interopérabilité qui contient des informations à jour sur l'utilisation des produits NetApp dans un environnement SAN.
+
+La licence du système de stockage et la licence MultiStore constituent les entités du système de stockage.
+
+
+
+== Exigences en matière de licences du système de stockage
+
+* Une licence FC, iSCSI ou NFS, selon votre configuration
+* Licence FlexClone
+* Une licence SnapRestore sur le système de stockage
+
+
+*Informations connexes*
+
+xref:concept_unable_to_select_a_storage_stack.adoc[Impossible de sélectionner une pile de stockage]
+
+xref:concept_when_to_use_the_snapdrive_configuration_wizard.adoc[Assistant de configuration SnapDrive]
+
+https://mysupport.netapp.com/NOW/products/interoperability["Interopérabilité NetApp"]

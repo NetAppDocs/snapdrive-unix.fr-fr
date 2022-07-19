@@ -1,0 +1,29 @@
+---
+permalink: solaris/task_tips_for_usingthe_storage_disconnect_command.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, disconnect, command 
+summary: 'Lorsque vous utilisez la commande de déconnexion du stockage SnapDrive sur certains systèmes d"exploitation, des informations telles que les noms des volumes hôtes, le point de montage du système de fichiers, les noms des volumes du système de stockage et les noms des LUN sont perdues. Sans ces informations, il est difficile de se reconnecter au stockage ultérieurement.' 
+---
+= Conseils pour l'utilisation de la commande de déconnexion du stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous utilisez le `snapdrive storage disconnect` Sur certains systèmes d'exploitation, vous perdez des informations, telles que les noms des volumes hôtes, le point de montage du système de fichiers, les noms des volumes du système de stockage et les noms des LUN. Sans ces informations, il est difficile de se reconnecter au stockage ultérieurement.
+
+Pour éviter de perdre des informations, vous devez d'abord créer une copie Snapshot du stockage à l'aide du `snapdrive snap create` avant d'exécuter le `snapdrive storage disconnect` commande.
+
+Ainsi, si vous souhaitez reconnecter le stockage ultérieurement, vous pouvez utiliser la solution de contournement suivante :
+
+.Étapes
+. Exécutez la commande suivante :
++
+`snapdrive snap restore filespec -snapname long_snap_name`
+
++
+Incluez le chemin complet vers la copie Snapshot dans cette commande.
+
+. Supprimez éventuellement la copie Snapshot en exécutant le `snapdrive snap delete` commande.
+

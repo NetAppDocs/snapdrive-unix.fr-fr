@@ -1,0 +1,14 @@
+---
+permalink: solaris/concept_thin_provisioning_in_snapdrive_for_unix_overview.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, thin, provisioning 
+summary: 'La valeur de la réserve fractionnaire ne peut pas être définie et aucune intégration n"est possible avec les fonctionnalités Data ONTAP telles que la suppression automatique et la taille automatique dans SnapDrive for UNIX. Bien que vous puissiez utiliser les fonctionnalités Data ONTAP en toute sécurité avec SnapDrive for UNIX, SnapDrive for UNIX n"enregistre pas les événements de suppression automatique ou de dimensionnement automatique.' 
+---
+= Provisionnement fin dans SnapDrive for UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La valeur de la réserve fractionnaire ne peut pas être définie et aucune intégration n'est possible avec les fonctionnalités Data ONTAP telles que la suppression automatique et la taille automatique dans SnapDrive for UNIX. Bien que vous puissiez utiliser les fonctionnalités Data ONTAP en toute sécurité avec SnapDrive for UNIX, SnapDrive for UNIX n'enregistre pas les événements de suppression automatique ou de dimensionnement automatique.

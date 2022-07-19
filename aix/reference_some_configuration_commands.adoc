@@ -1,0 +1,108 @@
+---
+permalink: aix/reference_some_configuration_commands.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, configuration 
+summary: Il y a quelques commandes qui vous aident à configurer SnapDrive pour UNIX. 
+---
+= Certaines commandes de configuration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il y a quelques commandes qui vous aident à configurer SnapDrive pour UNIX.
+
+Le tableau suivant récapitule les commandes supplémentaires qui sont utiles pour configurer SnapDrive pour UNIX :
+
+|===
+| Commande ou action | Description 
+
+
+ a| 
+Configuration et vérification de votre version du logiciel SnapDrive pour UNIX
+
+
+
+ a| 
+`*snapdrive config show*`
+ a| 
+Vérifier les valeurs dans le `snapdrive.conf` fichier.
+
+
+
+ a| 
+`*snapdrive version*`
+ a| 
+Vérifier la version de SnapDrive pour UNIX.
+
+
+
+ a| 
+`*snapdrived start*`
+ a| 
+Démarrez le démon SnapDrive pour UNIX.
+
+
+
+ a| 
+`*snapdrive config prepare luns -count count_value*`
+ a| 
+Préparez l'hôte pour la création d'un nombre spécifique de LUN et pour déterminer le nombre de LUN que vous pouvez créer.
+
+
+
+ a| 
+`*snapdrive clone split*`
+ a| 
+Estimer, démarrer, arrêter et interroger le statut de fractionnement pour un clone de volume ou de LUN.
+
+
+
+ a| 
+Modifiez les variables dans `snapdrive.conf` fichier.
+ a| 
+Modifiez le nom du chemin d'accès et les options des fichiers journaux. SnapDrive pour UNIX enregistre les informations dans trois fichiers :
+
+* Un fichier d'audit
+* Un fichier de restauration
+* Un fichier de trace
+
+
+
+
+ a| 
+Définition et affichage des autorisations de contrôle d'accès entre un hôte et un système de stockage.
+
+
+
+ a| 
+Modifiez le fichier des autorisations de contrôle d'accès (sd `_hostname_`.prbac) sur le système de stockage associé à cet hôte.
+ a| 
+Spécifiez les autorisations de contrôle d'accès dont dispose un hôte sur un système de stockage. Vous pouvez définir les niveaux d'accès suivants pour un hôte sur un système de stockage :
+
+* AUCUN--pas d'accès.
+* CRÉER DES copies Snapshot--Créer des copies Snapshot.
+* SNAP USE--supprimez et renommez les copies Snapshot.
+* SNAP ALL--Créer, restaurer, supprimer et renommer les copies Snapshot.
+* CRÉER STOCKAGE SUPPRIMER --Créer, redimensionner et supprimer du stockage.
+* UTILISATION DU STOCKAGE : permet de connecter et de déconnecter le stockage.
+* STORAGE ALL--Créez, supprimez, connectez et déconnectez le stockage.
+* TOUS LES ACCÈS--toutes les opérations.
+
+
+
+
+ a| 
+`*snapdrive config access show <filer_name>*`
+ a| 
+Afficher des informations sur les autorisations de contrôle d'accès qu'un hôte a à un système de stockage.
+
+
+
+ a| 
+`*snapdrive config delete <filername> [<filername> . . .]*`
+ a| 
+Supprimez la paire nom d'utilisateur-mot de passe spécifiée de SnapDrive pour UNIX.
+
+|===

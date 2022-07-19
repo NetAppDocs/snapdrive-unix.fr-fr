@@ -1,0 +1,20 @@
+---
+permalink: linux-administration/concept_guidelines_fordisconnectingsnapshot_copies.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, disconnect, snapshot, copy, lun, storage, nfs 
+summary: Les consignes suivantes vous permettent de déconnecter une copie Snapshot pour les LUN, les entités de stockage ou les répertoires NFS. 
+---
+= Instructions pour la déconnexion des copies Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les consignes suivantes vous permettent de déconnecter une copie Snapshot pour les LUN, les entités de stockage ou les répertoires NFS.
+
+* Lorsque vous déconnectez un système de fichiers, SnapDrive pour UNIX supprime toujours le point de montage.
+* Les hôtes Linux vous permettent d'attacher plusieurs systèmes de fichiers à un seul point de montage. Cependant, SnapDrive pour UNIX nécessite un point de montage unique pour chaque système de fichiers. Le `snapdrive snap disconnect` la commande échoue si vous l'utilisez pour déconnecter des systèmes de fichiers rattachés à un seul point de montage.
+* Pour annuler les effets de l'opération de connexion Snapshot, utilisez la commande Snapshot déconnecter.
+* Si vous définissez le `enable-split-clone` valeur de la variable de configuration à `on` ou `sync` Pendant l'opération de connexion Snapshot et `off` Lors de l'opération de déconnexion Snapshot, SnapDrive pour UNIX ne supprime pas le volume ou la LUN d'origine présent dans la copie Snapshot.
+

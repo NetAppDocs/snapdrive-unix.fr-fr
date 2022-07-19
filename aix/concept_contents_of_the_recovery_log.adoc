@@ -1,0 +1,20 @@
+---
+permalink: aix/concept_contents_of_the_recovery_log.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, recovery, log 
+summary: 'Le journal de reprise vous aide à suivre les raisons d"un état système incohérent. SnapDrive pour UNIX génère ce fichier lorsque certaines opérations cessent de fonctionner.' 
+---
+= Contenu du journal de récupération
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le journal de reprise vous aide à suivre les raisons d'un état système incohérent. SnapDrive pour UNIX génère ce fichier lorsque certaines opérations cessent de fonctionner.
+
+Si vous appuyez sur Ctrl-C pour arrêter SnapDrive pour UNIX ou si l'hôte ou le système de stockage tombe en panne au cours d'une opération, il se peut que le système ne puisse pas récupérer automatiquement.
+
+Lors d'une opération qui, en cas d'interruption, pourrait laisser le système dans un état incohérent, SnapDrive for UNIX écrit des informations dans un fichier journal de reprise. En cas de problème, vous pouvez envoyer ce fichier au support technique NetApp afin qu'il vous aide à restaurer l'état du système.
+
+L'utilitaire de journal de reprise conserve les enregistrements des commandes émises pendant l'opération. Chaque commande est marquée par un index_opération (un nombre qui identifie de manière unique l'opération exécutée), suivi de l'estampillage date/heure et du texte du message.

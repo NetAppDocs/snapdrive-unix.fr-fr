@@ -1,0 +1,14 @@
+---
+permalink: aix/concept_snapdrive_for_unix_security.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, security, feature 
+summary: 'Avant d"utiliser SnapDrive pour UNIX, vous devez comprendre ses fonctions de sécurité et apprendre à y accéder.' 
+---
+= Fonctions de sécurité d'SnapDrive for UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant d'utiliser SnapDrive pour UNIX, vous devez comprendre ses fonctions de sécurité et apprendre à y accéder.

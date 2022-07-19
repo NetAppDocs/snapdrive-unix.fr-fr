@@ -1,0 +1,19 @@
+---
+permalink: aix/concept_guidelines_for_usingthe_storage_deletecommand.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, guidelines, storage, delete, command 
+summary: La commande SnapDrive Storage delete comporte des restrictions dans SnapDrive for UNIX. 
+---
+= Instructions d'utilisation de la commande Storage delete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le `snapdrive storage delete` La commande comporte des restrictions dans SnapDrive pour UNIX.
+
+* Lorsque vous supprimez un système de fichiers, SnapDrive pour UNIX supprime toujours le point de montage du système de fichiers.
+* Si vous utilisez le `-lun` Option permettant de spécifier le nom d'une LUN membre d'un groupe de disques hôtes ou d'un système de fichiers, le `snapdrive storage delete` échec de la commande.
+* Si vous utilisez `-lun` Option permettant de spécifier le nom de la LUN qui n'est pas détecté par le logiciel de chemins d'accès multiples sur l'hôte, le `snapdrive storage delete` échec de la commande.
+

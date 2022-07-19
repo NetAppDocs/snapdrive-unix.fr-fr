@@ -1,0 +1,46 @@
+---
+permalink: aix/concept_volume_managers_on_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, volume, manager 
+summary: 'Sous AIX, le gestionnaire de volumes est appelé LVM natif et Veritas Volume Manager \(VxVM\).' 
+---
+= Gestionnaires de volumes sur SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sous AIX, le gestionnaire de volumes est appelé LVM natif et Veritas Volume Manager (VxVM).
+
+Le tableau suivant décrit les gestionnaires de volumes de votre plate-forme hôte :
+
+|===
+| Hôte | Gestionnaire de volumes | Volume ou groupes de disques | Emplacement des volumes logiques | Emplacement des périphériques multipathing 
+
+
+ a| 
+AIX
+ a| 
+LVM natif
+ a| 
+Groupes de volumes `vg`
+ a| 
+`dev/lvol`
+
+Tous les volumes logiques partagent le même espace de nom
+ a| 
+`/dev/hdisk` (FC uniquement) les chemins d'accès multiples ne sont pas pris en charge avec ISCSI
+
+
+
+ a| 
+Veritas Volume Manager (VxVM)
+ a| 
+Groupes de volumes `vg`
+ a| 
+`/dev/vx/dsk/ dg/lvol`
+ a| 
+`/dev/vx/dmp/Disk_1`
+
+|===

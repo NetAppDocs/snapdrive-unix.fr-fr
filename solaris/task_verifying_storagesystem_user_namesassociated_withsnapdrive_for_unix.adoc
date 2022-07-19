@@ -1,0 +1,38 @@
+---
+permalink: solaris/task_verifying_storagesystem_user_namesassociated_withsnapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, verify, storage, system, user, name 
+summary: 'Vous pouvez vérifier le nom d"utilisateur SnapDrive pour UNIX associé à un système de stockage en exécutant la commande SnapDrive config list.' 
+---
+= Vérification des noms d'utilisateur du système de stockage associés à SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier le nom d'utilisateur SnapDrive pour UNIX associé à un système de stockage en exécutant le `snapdrive config list` commande.
+
+Vous devez vous connecter en tant qu'utilisateur root.
+
+.Étapes
+. Saisissez la commande suivante :
++
+`*snapdrive config list*`
+
++
+Cette commande affiche les paires de nom d'utilisateur ou de système de stockage pour tous les systèmes ayant des utilisateurs spécifiés dans SnapDrive pour UNIX. Elle n'affiche pas les mots de passe des systèmes de stockage.
+
++
+Cet exemple présente les utilisateurs associés aux systèmes de stockage appelés raiponce et le système de stockage moyen format :
+
++
+[listing]
+----
+# snapdrive config list
+user name           storage system name
+-----------------------------
+rumplestiltskins    rapunzel
+longuser            mediumstoragesystem
+----
+

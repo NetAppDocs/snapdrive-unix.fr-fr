@@ -1,0 +1,31 @@
+---
+permalink: aix/concept_error_message_format.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, error, message, format 
+summary: 'Le format du message d"erreur vous aide à déterminer la cause de l"erreur.' 
+---
+= Format des messages d'erreur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le format du message d'erreur vous aide à déterminer la cause de l'erreur.
+
+SnapDrive for UNIX renvoie les informations de code d'erreur standard, qui fournissent une description plus précise de la cause de la condition d'erreur initiale. Les messages d'erreur SnapDrive pour UNIX sont conformes au format suivant :
+
+`return code message-ID error type: message text`
+
+* `_return code_` -- ID de message d'erreur SnapDrive pour UNIX lié à une valeur d'état de sortie qui indique la cause de base de la condition d'erreur.
+* `_message-ID_` -- Un identifiant unique utilisé par le support technique NetApp pour localiser le code spécifique qui a généré l'erreur. Si vous devez contacter le support technique NetApp, NetApp vous recommande d'enregistrer le message ayant accompagné le message d'erreur.
+* `_error type_` -- Spécifie le type d'erreur rencontrée par SnapDrive pour UNIX. Les valeurs de retour sont les suivantes :
++
+** `_Warning_` -- SnapDrive pour UNIX a exécuté la commande mais a émis un avertissement sur des conditions qui peuvent nécessiter votre attention.
+** `_Command_` -- SnapDrive pour UNIX n'a pas pu exécuter la commande en raison d'une erreur dans la ligne de commande. Vérifiez le format de la ligne de commande et les variables pour vous assurer qu'elles sont correctes.
+** `_Admin_` -- SnapDrive pour UNIX n'a pas pu exécuter la commande en raison d'incompatibilités dans la configuration système. Contactez votre administrateur système pour vérifier vos paramètres de configuration.
+** `_Fatal_` -- SnapDrive pour UNIX n'a pas pu exécuter la commande en raison d'une condition inattendue. Les erreurs fatales sont rares. Si une erreur fatale se produit et que vous rencontrez des problèmes pour résoudre ce problème, contactez le support technique de NetApp pour obtenir de l'aide.
+
+
+* `_message text_`--informations expliquant l'erreur. Ce texte peut inclure des informations provenant d'un autre composant afin de fournir plus de détails sur l'erreur. Par exemple, si un argument de ligne de commande tel qu'un groupe de disques est manquant, le message d'erreur vous indique ce qui est manquant. Ou la fonction Manage ONTAP APIs utilisée par SnapDrive pour UNIX pour contrôler le système de stockage peut fournir du texte supplémentaire pour expliquer l'erreur. Dans ce cas, le texte suit le message d'erreur SnapDrive de base pour UNIX.
+

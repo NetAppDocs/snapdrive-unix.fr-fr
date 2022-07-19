@@ -1,0 +1,22 @@
+---
+permalink: aix/concept_what_configuration_checker_is.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, configuration, checker, tool 
+summary: 'L"outil de vérification de la configuration SnapDrive vous aide à identifier et à vérifier les configurations prises en charge par SnapDrive pour UNIX.' 
+---
+= Quel est le vérificateur de configuration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'outil de vérification de la configuration SnapDrive vous aide à identifier et à vérifier les configurations prises en charge par SnapDrive pour UNIX.
+
+L'outil de vérification de la configuration permet de résoudre le problème lié à plusieurs configurations de support en vérifiant la configuration utilisateur dans les environnements NAS et SAN.
+
+L'outil de vérification de la configuration SnapDrive prend en charge les vérifications de configuration suivantes dans SnapDrive pour UNIX :
+
+* Vérifie la configuration spécifiée dans le `snapdrive.conf` fichier disponible à l'emplacement par défaut.
+* Vérifie la configuration spécifiée à l'aide de l'interface de ligne de commande.
+

@@ -1,0 +1,17 @@
+---
+permalink: aix/concept_configuring_igroups.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, configure, igroup 
+summary: 'SnapDrive pour UNIX vous permet de configurer un groupe initiateur existant sur le système de stockage. Le groupe initiateur configuré est utilisé pour mapper les LUN sur le système de stockage. Vous devez configurer un groupe initiateur pour un système de stockage afin d"assurer une migration transparente dans un environnement virtualisé.' 
+---
+= Configuration des igroups
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX vous permet de configurer un groupe initiateur existant sur le système de stockage. Le groupe initiateur configuré est utilisé pour mapper les LUN sur le système de stockage. Vous devez configurer un groupe initiateur pour un système de stockage afin d'assurer une migration transparente dans un environnement virtualisé.
+
+
+NOTE: Les igroups doivent contenir l'initiateur source et l'initiateur destination.

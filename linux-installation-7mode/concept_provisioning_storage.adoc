@@ -1,0 +1,14 @@
+---
+permalink: linux-installation-7mode/concept_provisioning_storage.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, provision, connect 
+summary: 'SnapDrive pour UNIX permet de provisionner le stockage et de se connecter à un système de stockage existant à l"aide des options de ligne de commande de l"hôte. Vous pouvez également provisionner le stockage à l"aide de Data ONTAP.' 
+---
+= Provisionnement du stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX permet de provisionner le stockage et de se connecter à un système de stockage existant à l'aide des options de ligne de commande de l'hôte. Vous pouvez également provisionner le stockage à l'aide de Data ONTAP.

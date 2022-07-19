@@ -1,0 +1,33 @@
+---
+permalink: solaris/concept_storage_system_partner_ip_address_or_interface_name_confirmation.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, partner, ip, address, interface, name 
+summary: 'Lorsque vous exécutez le programme de configuration sur votre système de stockage, il vous invite à fournir une adresse IP ou un nom d"interface pour un système de stockage partenaire à utiliser en cas de basculement. Si vous ne le fournissez pas, SnapDrive for UNIX ne peut pas rechercher les entités de stockage sur un système de stockage qu"il a pris en charge.' 
+---
+= Confirmation de l'adresse IP ou du nom de l'interface du partenaire du système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous exécutez le programme de configuration sur votre système de stockage, il vous invite à fournir une adresse IP ou un nom d'interface pour un système de stockage partenaire à utiliser en cas de basculement. Si vous ne le fournissez pas, SnapDrive for UNIX ne peut pas rechercher les entités de stockage sur un système de stockage qu'il a pris en charge.
+
+L'adresse IP partenaire ou le nom de l'interface correspond à l'adresse IP ou au nom de l'interface du système de stockage partenaire dans une configuration de paire haute disponibilité. En cas de panne du système de stockage principal, le système partenaire prend le relais du fonctionnement du système de stockage principal.
+
+
+
+== Exemple : script de configuration du système de stockage
+
+L'exemple de résultat suivant du script de configuration du système de stockage demande l'adresse IP :
+
+[listing]
+----
+storage_system_A> setup...
+Should interface e0 take over a partner IP address during failover?
+[n]: y
+Please enter the IP address or interface name to be taken over by e0
+[]: 10.2.21.35
+storage_system_A> reboot -t 0
+----
+Cet exemple utilise l'adresse IP 10.2.21.35.

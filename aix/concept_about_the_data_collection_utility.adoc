@@ -1,0 +1,23 @@
+---
+permalink: aix/concept_about_the_data_collection_utility.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, data, collection, utility 
+summary: 'SnapDrive pour UNIX fournit l"utilitaire de collecte de données \(snapdrive.dc\) qui collecte des informations de diagnostic sur SnapDrive pour UNIX, le vérificateur de configuration SnapDrive et la configuration de votre système.' 
+---
+= À propos de l'utilitaire de collecte de données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX est un utilitaire de collecte de données (`snapdrive.dc`) Qui collecte des informations de diagnostic sur SnapDrive pour UNIX, le vérificateur de configuration SnapDrive et la configuration du système.
+
+Pour ce faire, il exécute des utilitaires de diagnostic NetApp et copie des fichiers journaux SnapDrive pour UNIX dans un répertoire spécial. Il crée ensuite un fichier compressé contenant ces informations que vous pouvez envoyer au support technique de NetApp pour analyse.
+
+Dans SnapDrive 5.0 pour UNIX, le `-dump` et `-dumpall` les options sont mises en œuvre. Le `-dump` Option collecte le premier journal de la commande SnapDrive et le `-dumpall` Option collecte tous les logs de la commande SnapDrive. Lorsque vous effectuez les opérations SnapDrive à l'aide de `-dump` ou `-dumpall` en option, `snapdrive.dc` est généré et répertorie l'emplacement du fichier compressé. Le fichier tar collecte toutes les informations de journal des commandes SnapDrive, vous pouvez le détar et le récupérer à partir de leur emplacement respectif.
+
+Le `-dump` ou `-dumpall` Cette option est implémentée pour les commandes SnapDrive telles que `snapdrive storage show`, `snapdrive storage create`, `snapdrive storage delete`, `snapdrive snap create`, `snapdrive snap connect`, `snapdrive snap disconnect`, `snapdrive snap restore`, `snapdrive clone split estimate`, et `snapdrive clone split start` exploitation.
+
+
+NOTE: Il ne copie pas le fichier contenant les informations de connexion pour les systèmes de stockage. Il ne modifie pas non plus la configuration.

@@ -1,0 +1,14 @@
+---
+permalink: solaris/reference_command_summary.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, summary 
+summary: SnapDrive pour UNIX prend en charge différentes lignes de commande, telles que la configuration, le provisionnement du stockage, la gestion côté hôte, Et le snapshot. 
+---
+= Récapitulatif des commandes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX prend en charge différentes lignes de commande, telles que la configuration, le provisionnement du stockage, la gestion côté hôte, Et le snapshot.

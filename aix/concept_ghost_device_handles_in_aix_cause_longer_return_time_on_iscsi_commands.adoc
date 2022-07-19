@@ -1,0 +1,22 @@
+---
+permalink: aix/concept_ghost_device_handles_in_aix_cause_longer_return_time_on_iscsi_commands.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, ghost, device, aix, handle, iscsi, command, return 
+summary: 'L"interrogation des périphériques AIX via iSCSI ou FC dotés d"un périphérique fantôme prend en charge \(les périphériques sont pris en charge dans un état défini ou en échec\) peut provoquer l"attente des commandes SCSI pour le délai par défaut AIX, soit environ 30 secondes.' 
+---
+= Les poignées de périphérique Ghost sous AIX entraînent un délai de retour plus long sur les commandes iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interrogation des périphériques AIX via iSCSI ou FC dotés de poignées de périphériques fantômes (les poignées de périphériques à l'état défini ou en échec) peut entraîner l'attente des commandes SCSI pour le délai par défaut d'AIX, soit environ 30 secondes.
+
+Vous pouvez voir ce problème après le passage d'un système AIX à l'aide de FC à l'aide d'iSCSI si les poignées de périphérique enfant FC ne sont pas nettoyées ou si un HBA FC n'est toujours pas connecté à un commutateur.
+
+*Solution de contournement :*
+
+* Si l'adaptateur HBA Fibre Channel n'est pas connecté à un commutateur, installez un module de bouclage Fibre Channel IOA dans tous les initiateurs Fibre Channel non connectés à un commutateur Fibre Channel.
+* Si la carte HBA Fibre Channel est connectée à un commutateur mais que le périphérique est défectueux ou défini comme périphériques enfants, supprimez les poignées du périphérique fantôme obsolète avec le `rmdev` commande.
+

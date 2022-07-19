@@ -1,0 +1,16 @@
+---
+permalink: solaris/concept_restoring_a_single_storage_entity_on_a_storage_system_or_storagesystem_cluster.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, snapshot, copy, ha, storage, pair 
+summary: Vous pouvez restaurer une copie Snapshot contenant une entité de stockage unique. 
+---
+= Restauration d'une entité de stockage unique sur une paire haute disponibilité de système de stockage ou de système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez restaurer une copie Snapshot contenant une entité de stockage unique.
+
+Vous pouvez restaurer une copie Snapshot contenant une entité de stockage unique résidant sur un système de stockage ou sur une paire haute disponibilité du système de stockage. Le nom du volume sur le système de stockage de destination doit correspondre au nom du volume sur le système de stockage source.

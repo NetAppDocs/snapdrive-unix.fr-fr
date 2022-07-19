@@ -1,0 +1,16 @@
+---
+permalink: linux-administration/concept_support_for_partitioned_or_non_partitioned_devices_in_rhel_and_suse.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, suse, server, sles, partitioning, scheme, rhel, red, enterprise 
+summary: Sous RHEL, SnapDrive for UNIX partitionne les disques pour provisionner les entités de stockage hôte. Cependant, SnapDrive pour UNIX permet de provisionner et de gérer des opérations SnapDrive pour les périphériques de partitionnement et de non-partitionnement sur SLES 11, et uniquement pour les périphériques sans partitionnement sur SLES 10. 
+---
+= Schéma de partitionnement du stockage dans Red Hat Enterprise Linux (RHEL) et SUSE Linux Enterprise Server (SLES)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sous RHEL, SnapDrive for UNIX partitionne les disques pour provisionner les entités de stockage hôte. Cependant, SnapDrive pour UNIX permet de provisionner et de gérer des opérations SnapDrive pour les périphériques de partitionnement et de non-partitionnement sur SLES 11, et uniquement pour les périphériques sans partitionnement sur SLES 10.
+
+Les versions de noyau Linux 2.2 et 2.4 ne pouvaient pas utiliser de disques bruts pour créer des systèmes de fichiers car historiquement toute l'architecture de système Microsoft x86 utilisait le système d'exploitation Windows, et toujours partitionnée les disques durs. Comme le noyau initial a été écrit pour fonctionner sur les systèmes d'exploitation Windows, le noyau a également été écrit de manière à s'attendre à ce que les partitions sur le disque dur. Un partitionnement supplémentaire a toujours été effectué pour créer des systèmes de fichiers sur les périphériques bruts. Le partitionnement n'a jamais été effectué pour les LUN faisant partie d'un groupe de disques et/ou pour les LUN brutes. Par conséquent, toute modification relative au schéma de partitionnement est limitée au comportement en cas de systèmes de fichiers sur les périphériques bruts uniquement.

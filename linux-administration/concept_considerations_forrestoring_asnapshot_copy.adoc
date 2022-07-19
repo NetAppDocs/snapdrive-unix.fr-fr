@@ -1,0 +1,21 @@
+---
+permalink: linux-administration/concept_considerations_forrestoring_asnapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, snapshot, copy 
+summary: 'Avant de restaurer les copies Snapshot, assurez-vous que vous n"utilisez pas le système de fichiers et que vous n"interrompez pas le processus de restauration.' 
+---
+= Considérations relatives à la restauration d'une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de restaurer les copies Snapshot, assurez-vous que vous n'utilisez pas le système de fichiers et que vous n'interrompez pas le processus de restauration.
+
+Avant de restaurer une copie Snapshot, prenez en compte les informations importantes suivantes :
+
+* Assurez-vous que vous ne vous trouvez dans aucun répertoire sur un système de fichiers que vous souhaitez restaurer. Vous pouvez effectuer le `snapdrive snap restore` commande à partir de n'importe quel répertoire, à l'exception de celui d'un système de fichiers vers lequel vous souhaitez restaurer les informations.
+* N'interrompez pas l'opération de restauration en entrant Ctrl-C. Cela pourrait laisser votre système dans une configuration inutilisable. Si cela se produit, vous devrez peut-être contacter le support technique de NetApp pour effectuer une restauration.
+* Lors de l'exportation des entités NFS vers un volume, définissez l'option d'ID utilisateur anonyme sur « 0 » pour le système `snapdrive snap restore` commande pour fonctionner avec succès.
+

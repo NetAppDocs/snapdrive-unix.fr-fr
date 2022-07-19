@@ -1,0 +1,26 @@
+---
+permalink: solaris/concept_guidelines_for_disconnecting_snapshot_copies_in_a_host_clusterenvironment.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, disconnect, snapshot, copy, host, cluster 
+summary: 'Lors de la déconnexion d"une copie Snapshot pour une entité NFS, SnapDrive pour UNIX démontez le système de fichiers, supprime l"entrée de montage du système de fichiers, supprime le point de montage, etc.' 
+---
+= Consignes de déconnexion des copies Snapshot dans un environnement de cluster hôte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lors de la déconnexion d'une copie Snapshot pour une entité NFS, SnapDrive pour UNIX démontez le système de fichiers, supprime l'entrée de montage du système de fichiers, supprime le point de montage, etc.
+
+* Le `snapdrive snap disconnect` il est possible d'exécuter une commande depuis n'importe quel nœud du cluster hôte.
+* Pour que l'opération de déconnexion de Snapshot réussit, l'une des conditions suivantes doit être vraie :
++
+** Les entités de stockage doivent être partagées entre tous les nœuds du cluster hôte.
+** Les LUN doivent être mappées sur tous les nœuds du cluster hôte.
+
+
+* Vous pouvez déconnecter une entité de stockage d'un nœud spécifique à l'aide du `-devicetype dedicated` ou le `shared` option. Si vous déconnectez une entité de stockage qui est en mode dédié, vous pouvez l'omettre `-devicetype` option de la syntaxe de ligne de commande, car la valeur par défaut est dédiée.
+* Le `snapdrive snap disconnect` La commande indique une erreur si une entité de stockage partagé ou une LUN est déconnectée du système `dedicated` Option, ou si une entité de stockage dédiée ou une LUN est déconnectée avec l'option partagée.
+* SnapDrive pour UNIX exécute `snapdrive snap disconnect` sur le nœud maître. Elle détruit les entités de stockage, déconnecte les LUN de tous les nœuds non maîtres, puis déconnecte les LUN du nœud maître du cluster hôte. En cas d'erreur, l'opération de déconnexion de Snapshot échoue.
+

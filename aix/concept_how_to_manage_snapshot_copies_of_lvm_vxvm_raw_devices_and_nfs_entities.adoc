@@ -1,0 +1,32 @@
+---
+permalink: aix/concept_how_to_manage_snapshot_copies_of_lvm_vxvm_raw_devices_and_nfs_entities.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, lvm, raw, device, nfs, entities, copy, snapshot 
+summary: 'Vous pouvez utiliser les commandes SnapDrive pour créer, restaurer et gérer des copies Snapshot de LVM, de périphériques bruts et d"entités NFS.' 
+---
+= Comment gérer les copies Snapshot de LVM, d'appareils bruts et d'entités NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser les commandes SnapDrive pour créer, restaurer et gérer des copies Snapshot de LVM, de périphériques bruts et d'entités NFS.
+
+Vous devez exécuter les commandes sur l'hôte pour créer, restaurer et gérer les copies Snapshot des entités de stockage.
+
+* Entités du gestionnaire de volumes
++
+Les entités du gestionnaire de volumes sont des groupes de disques avec des volumes hôtes et des systèmes de fichiers que vous avez créés à l'aide du gestionnaire de volumes hôte.
+
+* Entités brutes
++
+Les entités brutes sont des LUN ou des LUN qui contiennent des systèmes de fichiers sans créer de volumes ou de groupes de disques et sont mappées directement à l'hôte.
+
+* Entités NFS
++
+Les entités NFS sont des fichiers NFS et des arborescences de répertoires.
+
+
+
+La copie Snapshot que vous créez peut exister sur plusieurs systèmes de stockage et volumes du système de stockage. SnapDrive vérifie le privilège de lecture ou d'écriture sur les entités de stockage de la copie Snapshot pour s'assurer que toutes les données de la copie Snapshot sont cohérentes après panne. La SnapDrive ne crée pas de copie Snapshot sauf si les données sont cohérentes après panne.

@@ -1,0 +1,72 @@
+---
+permalink: linux-administration/concept_clustered_data_ontap_features_available_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, data, ontap, clustered 
+summary: SnapDrive pour UNIX 5.0 et les versions ultérieures prennent en charge certaines fonctionnalités de clustered Data ONTAP. 
+---
+= Fonctionnalités clustered Data ONTAP disponibles dans SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX 5.0 et les versions ultérieures prennent en charge certaines fonctionnalités de clustered Data ONTAP.
+
+Les fonctionnalités suivantes sont prises en charge :
+
+* Jeux de ports
+* Un vServer
+* Gestion des erreurs causées par la migration de volume à l'aide des variables de configuration appropriées
+* Copies Snapshot cohérentes après panne (groupes de cohérence
+* AutoSupport
+* RAW Device Mapping (RDM) Logical Unit Number (LUN) pour vServers
+* Contrôle d'accès basé sur des rôles (RBAC) avec la console Operations Manager
+* Miroirs de partage de charge (LSM)
++
+Un miroir de partage de la charge réduit le trafic réseau vers un volume FlexVol en fournissant un accès supplémentaire en lecture seule aux clients. Vous pouvez créer et gérer les miroirs de partage de charge pour distribuer le trafic en lecture seule à distance d'un volume FlexVol. Les miroirs de partage de charge ne prennent pas en charge Infinite volumes. Un ensemble de miroirs de partage de charge se compose d'un volume source capable de se connecter à un ou plusieurs volumes de destination. Chaque miroir de partage de charge de l'ensemble doit appartenir au même SVM (Storage Virtual machine) que le volume source de l'ensemble. Les miroirs de partage de charge doivent également être créés sur différents agrégats et accessibles par différents nœuds du cluster pour assurer un équilibrage de la charge approprié des requêtes des clients. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["Guide de gestion du stockage logique de clustered Data ONTAP"].
+
++
+[NOTE]
+====
+** LSM est pris en charge avec clustered Data ONTAP 8.2 et version ultérieure de ONTAP. Mais vous devrez configurer l'administrateur du cluster si vous utilisez clustered Data ONTAP 8.2.2 et les versions ci-dessous à l'aide de `snapdrive config set-cserver` commande.
+** LSM n'est pas pris en charge sur les versions antérieures à ONTAP 8.2, même si l'administrateur de cluster est configuré.
+
+
+====
+* Les IPspaces
++
+Un IPspace définit un espace d'adresse IP distinct dans lequel des SVM (Storage Virtual machines) peuvent être créés. Une table de routage est maintenue pour chaque SVM au sein d'un IPspace ; aucun routage de trafic cross-SVM ou cross-IPspace n'a lieu. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/home.html["Guide de gestion réseau clustered Data ONTAP"].
+
++
+
+NOTE: Cette fonctionnalité n'est prise en charge que si vous utilisez clustered Data ONTAP 8.3.
+
+* Définition MetroCluster
++
+Cette fonctionnalité n'est prise en charge que si vous utilisez clustered Data ONTAP 8.3. Pour plus d'informations sur la configuration de MetroCluster, consultez le link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-mcc-inst-cnfg-fabric/home.html["Guide d'installation et de configuration de clustered Data ONTAP MetroCluster"].
+
+* Jetons pour réserver de l'espace sur le nœud pour la création de fichiers FlexClone et de LUN FlexClone
++
+Vous devez disposer de la licence FlexClone pour pouvoir utiliser cette fonctionnalité. Pour plus d'informations, reportez-vous à la section link:https://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-vsmg/home.html["Guide de gestion du stockage logique de clustered Data ONTAP"].
+
+* Exportations de qtrees personnalisées
++
+Le qtree peut avoir une politique d'exportfs différente de celle du volume parent.
+
++
+
+NOTE: Cette fonctionnalité n'est prise en charge que si vous utilisez clustered Data ONTAP 8.2.1 ou version ultérieure.
+
+* Aux États-Unis, conformément à la norme FIPS (Federal information Processing Standard)
+
+
+*Informations connexes*
+
+link:concept_support_for_storage_system_rename.adoc["Prise en charge du renommage du système de stockage"]
+
+link:concept_using_port_set_in_snapdrive_for_unix.adoc["Utilisation du port défini dans SnapDrive pour UNIX"]
+
+link:concept_managing_volume_migration_using_snapdrive_for_unix.adoc["Migration de volumes dans SnapDrive pour UNIX"]
+
+link:concept_support_for_vserver.adoc["Prise en charge du Vserver"]

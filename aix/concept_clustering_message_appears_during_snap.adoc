@@ -1,0 +1,26 @@
+---
+permalink: aix/concept_clustering_message_appears_during_snap.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, cluster, message, snaprestore, restore 
+summary: 'Un message générique s"applique à tout système d"exploitation hôte SnapDrive pour UNIX avec surveillance de cluster hôte. Elle apparaît même si votre système ne fournit pas de surveillance des clusters hôtes ou si vous l"avez désactivé.' 
+---
+= Un message de mise en cluster apparaît pendant SnapRestore
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un message générique s'applique à tout système d'exploitation hôte SnapDrive pour UNIX avec surveillance de cluster hôte. Elle apparaît même si votre système ne fournit pas de surveillance des clusters hôtes ou si vous l'avez désactivé.
+
+Le message suivant apparaît lorsque vous exécutez la commande snap restore `# snapdrive snap restore -vg clustervg -snapname mysnap`
+
+`It appears you are using high-availability host clustering software. To avoid a possible cluster failover, please disable cluster monitoring for the resources you want to restore before restoring them. Do you want to continue?(y/n)`: Le problème se produit parce que `snapdrive snap restore` la commande fait descendre temporairement le groupe de volumes. Si le processus de surveillance du cluster est actuellement exécuté, une opération SnapDrive SnapRestore peut provoquer le basculement du cluster.
+
+
+
+== Solution de contournement
+
+Ce ne devrait pas être un problème sur les hôtes AIX exécutant HACMP car HACMP ne fournit pas de surveillance des ressources par défaut pour les groupes de volumes et les applications.
+
+Si vous avez personnalisé une application pour fournir la surveillance du stockage dans le cadre de HACMP, vous devez désactiver l'application et la surveillance avant d'exécuter une `snapdrive snap restore` commande

@@ -1,0 +1,18 @@
+---
+permalink: linux-administration/concept_what_snapshot_operations_are_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snapshot, ontap, image, host, storage, data, unix 
+summary: 'SnapDrive pour UNIX permet d"utiliser la technologie Snapshot de Data ONTAP pour créer une image \(copie Snapshot\) de données hôtes stockées sur un système de stockage.' 
+---
+= Quelles sont les opérations Snapshot dans SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive for UNIX permet d'utiliser la technologie Snapshot de Data ONTAP pour créer une image (copie Snapshot) des données hôte stockées sur un système de stockage.
+
+Cette copie Snapshot vous fournit une copie des données que vous pouvez restaurer par la suite. Les données de la copie Snapshot peuvent résider sur un seul système de stockage ou s'étendre sur plusieurs systèmes de stockage et leurs volumes. Ces systèmes de stockage peuvent se trouver dans une paire haute disponibilité ou des systèmes de fichiers locaux par nœud, ou dans des groupes de disques ou des LUN dans un environnement de clusters hôtes. Sur un hôte UNIX non mis en cluster avec SnapDrive pour UNIX installé, vous pouvez créer une copie Snapshot d'un ou de plusieurs groupes de volumes sur un système de stockage.
+
+La copie Snapshot peut contenir des systèmes de fichiers, des volumes logiques, des groupes de disques, des LUN et des arborescences de répertoires NFS. Une fois la copie Snapshot créée, vous pouvez la renommer, la restaurer ou la supprimer. Vous pouvez également vous connecter à un autre emplacement sur le même hôte ou sur un autre hôte. Lorsque vous vous connectez, vous pouvez afficher et modifier le contenu de la copie Snapshot ou déconnecter la copie Snapshot. En outre, SnapDrive pour UNIX vous permet d'afficher les informations relatives à la copie Snapshot que vous avez créée. Sur un hôte UNIX en cluster sur lequel SnapDrive for UNIX est installé, vous pouvez effectuer des opérations Snapshot sur les nœuds de cluster hôte, y compris les groupes de disques et les systèmes de fichiers. Les opérations Snapshot incluent la création, le renommage, la restauration, la connexion, la déconnexion, afficher et supprimer.

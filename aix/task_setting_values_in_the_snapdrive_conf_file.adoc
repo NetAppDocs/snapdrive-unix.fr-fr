@@ -1,0 +1,68 @@
+---
+permalink: aix/task_setting_values_in_the_snapdrive_conf_file.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, value, name, add, change 
+summary: Vous pouvez modifier les valeurs dans le fichier snapdrive.conf ou ajouter de nouvelles paires nom-valeur. 
+---
+= Définition des valeurs dans le fichier snapdrive.conf
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les valeurs dans `snapdrive.conf` ou ajoutez de nouvelles paires nom-valeur.
+
+Vous devez être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Sauvegardez le `snapdrive.conf` fichier.
+. Ouvrez le `snapdrive.conf` fichier dans un éditeur de texte.
+. Pour ajouter une paire nom-valeur, utilisez le format suivant :
++
+`*config-option-name=value _value_ # optional comment*`
+
++
+`_config-option-name_` est le nom de la variable que vous souhaitez configurer ; par exemple, audit-log-file. `_value_` est la valeur que vous souhaitez attribuer à cette option.
+
++
+Si vous souhaitez inclure un commentaire avec la paire nom-valeur, faites précéder le commentaire d'un signe numérique (#).
+
++
+Vous ne devez entrer qu'une seule paire nom-valeur, par ligne.
+
++
+Si le nom ou la valeur utilise une chaîne, placez-la entre guillemets simples (''') ou doubles ("). Vous pouvez placer les guillemets autour de la paire nom-valeur entière ou autour de la valeur uniquement. Les exemples suivants montrent comment utiliser des guillemets et des commentaires avec des paires nom-valeur :
+
++
+`*"config-option-one=string with white space" # double quotes around the pair*`
+
++
+`*config-option-two="string with white space" # double quotes around the value*`
+
++
+`*config-option-2B=`'string with white space`' # single quotes around the value*`
+
+. Pour modifier une paire nom-valeur, remplacez la valeur actuelle par la nouvelle valeur.
++
+Suivez les étapes ci-dessous pour vous assurer que les valeurs par défaut sont enregistrées dans le fichier.
+
++
+.. Ajoutez le signe (#) à la ligne que vous souhaitez modifier.
+.. Copier la ligne.
+.. Activez le texte copié en supprimant le signe numérique (#).
+.. Modifier la valeur.
+
+
++
+Si vous souhaitez spécifier une valeur vide (par exemple, pour désactiver le fichier journal d'audit), entrez une paire de guillemets doubles ("").
+
+. Enregistrez le fichier après avoir effectué vos modifications.
++
+SnapDrive for UNIX vérifie automatiquement ce fichier à chaque démarrage. Vos modifications prennent effet au prochain démarrage.
+
+. Redémarrez le démon SnapDrive pour UNIX en utilisant le `snapdrived restart` commande.
++
+Le redémarrage du démon est nécessaire pour `snapdrive.conf` modification des fichiers à appliquer.
+
+

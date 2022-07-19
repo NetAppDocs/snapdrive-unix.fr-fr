@@ -1,0 +1,35 @@
+---
+permalink: linux-administration/concept_guidelines_fordisconnectingsnapshot_copies_for_nfs_entities.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snapshot, copy, nfs, disconnect, host, command 
+summary: 'L"opération de déconnexion d"une copie Snapshot peut être exécutée depuis n"importe quel nœud dans un environnement de cluster hôte. Utilisez les options de commande pour déconnecter une entité de stockage d"un nœud spécifique.' 
+---
+= Instructions pour la déconnexion des copies Snapshot pour les entités NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'opération de déconnexion d'une copie Snapshot peut être exécutée depuis n'importe quel nœud dans un environnement de cluster hôte. Utilisez les options de commande pour déconnecter une entité de stockage d'un nœud spécifique.
+
+Suivez ces instructions pour la déconnexion des copies Snapshot contenant des entités NFS :
+
+* Si vous déconnectez une arborescence de répertoires NFS que vous avez connectée avec l'autorisation lecture seule, SnapDrive pour UNIX effectue les opérations suivantes :
++
+** Démonte le système de fichiers.
+** Supprime l'entrée de montage dans le fichier de table du système de fichiers.
+** Supprime le point de montage.
+** Ne supprime pas les règles d'exportation du répertoire de copie Snapshot qui ont été créées lors de la connexion de filespec NFS à partir de l'hôte secondaire (l'hôte qui ne dispose pas des droits d'exportation sur le volume parent).
+
+
+* Si vous déconnectez une arborescence de répertoires NFS que vous avez connectée avec l'autorisation lecture-écriture, SnapDrive pour UNIX effectue les opérations suivantes :
++
+** Démonte le système de fichiers.
+** Supprime l'entrée de montage dans le fichier de table du système de fichiers.
+** Supprime l'arborescence du répertoire NFS correspondant au système de fichiers dans le clone de volume FlexVol.
+** Détruit le clone de volume FlexVol sous-jacent (s'il est vide).
+** Supprime le point de montage.
+
+
+

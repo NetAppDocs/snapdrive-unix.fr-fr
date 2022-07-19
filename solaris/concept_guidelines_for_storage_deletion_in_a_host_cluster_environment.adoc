@@ -1,0 +1,38 @@
+---
+permalink: solaris/concept_guidelines_for_storage_deletion_in_a_host_cluster_environment.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, delete, host, cluster 
+summary: 'Vous devez connaître certaines directives concernant l"utilisation de la commande de suppression du stockage napDrive dans un environnement de cluster hôte.' 
+---
+= Consignes de suppression du stockage dans un environnement de cluster hôte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez connaître certaines directives d'utilisation du `snapdrive storage delete` commande dans un environnement de cluster hôte.
+
+* Si vous lancez le `snapdrive storage delete` commande avec `-devicetype` option partagée à partir de n'importe quel nœud non maître du cluster hôte, la commande est envoyée au nœud maître et exécutée. Pour que cela se produise, vous devez vous assurer que le rsh ou ssh `access-without-password-prompt` est autorisé sur tous les nœuds du cluster hôte.
+* Le `snapdrive storage delete` il est possible d'exécuter une commande depuis n'importe quel nœud du cluster hôte.
+* Pour que l'opération de suppression du stockage réussit, aucune des deux ne doit être fausse :
++
+** Les entités de stockage doivent être partagées.
+** Les LUN doivent être mappées sur tous les nœuds du cluster hôte.
+
+
+* Vous pouvez supprimer une entité de stockage sur un nœud spécifique en utilisant le `-devicetype dedicated` ou en omettant le `-devicetype` option dans la syntaxe de ligne de commande, tout à fait parce que la valeur par défaut est dédiée.
+* Le `snapdrive storage delete` La commande affiche un message d'erreur lorsqu'une entité de stockage partagé ou une LUN est supprimée avec `-devicetype dedicated` Ou si une entité de stockage dédiée ou une LUN est supprimée par l'option partagée.
+* La suppression du stockage échoue si l'une des opérations suivantes se produit :
++
+** Si une erreur se produit pendant le processus de suppression d'une entité de stockage.
++
+SnapDrive for UNIX supprime les entités de stockage, déconnecte les LUN de tous les nœuds non maîtres, puis déconnecte et supprime les LUN du nœud maître du cluster hôte.
+
+** Si un nœud du cluster hôte s'arrête et redémarre avant le `snapdrive storage delete` la commande est exécutée.
++
+Cela se produit, car les LUN sont toujours mappées sur le nœud non existant. Pour éviter cela, utilisez le `-force` option.
+
+
+
+

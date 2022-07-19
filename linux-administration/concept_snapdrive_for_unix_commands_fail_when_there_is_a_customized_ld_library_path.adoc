@@ -1,0 +1,20 @@
+---
+permalink: linux-administration/concept_snapdrive_for_unix_commands_fail_when_there_is_a_customized_ld_library_path.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, fail, customized 
+summary: 'Les commandes SnapDrive pour UNIX échouent s"il y a un LD_LIBRARY_PATH personnalisé et également si snapcreate-check-detemporaire-nfs est défini sur off.' 
+---
+= Les commandes SnapDrive pour UNIX échouent avec le CHEMIN LD_LIBRARY_personnalisé
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les commandes SnapDrive pour UNIX échouent s'il y a un personnalisé `LD_LIBRARY_PATH` et aussi si `snapcreate-check-nonpersistent-nfs` est défini sur désactivé .
+
+
+
+== Solution de contournement
+
+Réglez le `env` Variable dans un script wrapper pour s'assurer que la variable n'est visible que pour les binaires SnapDrive.

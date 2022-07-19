@@ -1,0 +1,88 @@
+---
+permalink: aix/task_disconnectingsnapshot_copy_withstorage_entities.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, disconnect, command, snapshot, storage 
+summary: Vous pouvez utiliser la commande SnapDrive snap shONNEXION pour déconnecter une copie Snapshot qui contient des entités de stockage. 
+---
+= Déconnexion de la copie Snapshot avec les entités de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `snapdrive snap disconnect` Commande permettant de déconnecter une copie Snapshot contenant des entités de stockage.
+
+.Étapes
+. Saisissez la commande suivante :
++
+`*snapdrive snap disconnect {-dg | -fs | -hostvol} _file_spec_ [_file_spec..._]{-dg | -fs | -hostvol} file_spec [file_spec...]] [-full] [-fstype type] [-vmtype type] [-split]*`
+
++
+Cette commande doit toujours commencer avec l'entité de stockage, par exemple, `-lun`, `-dg`, `-hostvol`, ou `-fs`.
+
++
+** Si vous spécifiez une LUN  `-lun`), vous devez entrer le nom de la LUN longue. Vous ne pouvez pas spécifier une LUN avec le `-lun` sur la même ligne de commande que les autres entités de stockage (`-vg`, `-dg`, `-fs`, `-lvol`, ou `-hostvol` options).
+** Si vous spécifiez un point de montage NFS, vous ne pouvez pas spécifier d'entités non NFS (`-vg`, `-dg`, `-fs`, `-lvol`, ou `-hostvol`) sur la même ligne de commande. Vous devez utiliser une commande distincte pour spécifier le point de montage NFS.
+
+
+
+
+
+NOTE: Un message d'erreur se produit si l'entité hôte utilise des LUN qui ne font pas partie de la copie Snapshot. Une erreur se produit également si vous spécifiez un sous-ensemble des volumes hôtes et/ou des systèmes de fichiers contenus dans chaque groupe de disques cible.
+
+SnapDrive pour UNIX supprime les mappages des entités de stockage spécifiées dans la ligne de commande.
+
+Cette ligne de commande supprime les mappages à toutes les LUN sous-jacentes au volume hôte dg5/myvolume. Il supprime toutes les LUN temporaires créées avec une opération de connexion Snapshot :
+
+[listing]
+----
+# snapdrive snap disconnect -hostvol dg5/myvolume
+----
+Cette ligne de commande supprime les mappages à toutes les LUN sous-jacentes au volume hôte dg5/myvolume. Il supprime toutes les LUN temporaires créées avec une opération de connexion Snapshot :
+
+[listing]
+----
+# snapdrive snap disconnect -hostvol dg5/myvolume
+----
+Cette commande déconnecte le mappage avec le groupe de disques 1 (dg1) et avec la LUN sous-jacente. Elle supprime également les LUN temporaires créées avec l'opération de connexion Snapshot :
+
+[listing]
+----
+# snapdrive snap disconnect -lun toaster:/vol/vol1/luna -dg dg1
+----
+Cette ligne de commande supprime le mappage vers le système de fichiers fs1, ainsi que vers la LUN qui la sous-jacente. Elle supprime également les LUN temporaires créées avec l'opération de connexion Snapshot :
+
+[listing]
+----
+# snapdrive snap disconnect -fs mnt/fs1
+----
+Cette ligne de commande supprime les mappages des groupes de disques dg1, dg2 et dg3. Elle supprime toutes les LUN temporaires créées avec l'opération de connexion Snapshot :
+
+[listing]
+----
+# snapdrive snap disconnect -dg dg1 dg2 dg3
+----
+Cet exemple déconnecte une copie Snapshot avec un système de fichiers, un groupe de disques sur la pile Veritas :
+
+[listing]
+----
+# snapdrive snap disconnect -fs /mnt/fs1_clone -fstype vxfs
+delete file system /mnt/fs1_clone
+- fs /mnt/fs1_clone ... deleted
+- hostvol vxvm1_0/fs1_SdHv_0 ... deleted
+- dg vxvm1_0 ... deleted
+- LUN snoopy:/vol/vol1/lunVxvm1_0 ... deleted
+----
+Dans cet exemple, une copie Snapshot est déconnectée du système de fichiers, groupe de disques sur la pile LVM :
+
+[listing]
+----
+# snapdrive snap disconnect -fs /mnt/fs1_clone -fstype jfs2
+
+delete file system /mnt/fs1_clone
+- fs /mnt/fs1_clone ... deleted
+- hostvol lvm1_0/fs1_SdHv_0 ... deleted
+- dg lvm1_0 ... deleted
+- LUN snoopy:/vol/vol1/lunLvm1_0 ... deleted
+----

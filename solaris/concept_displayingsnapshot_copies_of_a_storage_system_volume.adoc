@@ -1,0 +1,18 @@
+---
+permalink: solaris/concept_displayingsnapshot_copies_of_a_storage_system_volume.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snapshot, copy, storage, colume, display 
+summary: Vous pouvez utiliser la commande SnapDrive pour afficher les copies Snapshot sur un volume de système de stockage. 
+---
+= Affichage des copies Snapshot d'un volume de système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser la commande SnapDrive pour afficher les copies Snapshot sur un volume de système de stockage.
+
+Pour afficher des informations sur les copies Snapshot d'un volume de système de stockage, utilisez la syntaxe suivante :
+
+`snapdrive snap show -filervol filervol [filervol...] [-verbose]`

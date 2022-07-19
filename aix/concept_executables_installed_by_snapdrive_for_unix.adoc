@@ -1,0 +1,16 @@
+---
+permalink: aix/concept_executables_installed_by_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, executables, install, unix 
+summary: 'SnapDrive pour UNIX installe des exécutables pour le système d"exploitation AIX.' 
+---
+= Exécutables installés par SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX installe des exécutables pour le système d'exploitation AIX.
+
+Ces exécutables sont installés à `/opt/NetApp/snapdrive/bin/snapdrive`.

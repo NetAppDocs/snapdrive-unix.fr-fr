@@ -1,0 +1,85 @@
+---
+permalink: linux-administration/concept_volume_based_snaprestore_command.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snaprestore, volume, command 
+summary: 'Cette section décrit les commandes et les options permettant d"utiliser la fonction SnapRestore basée sur les volumes.' 
+---
+= Commande SnapRestore basée sur les volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette section décrit les commandes et les options permettant d'utiliser la fonction SnapRestore basée sur les volumes.
+
+`-vbsr` Une option est ajoutée dans l'interface de ligne de commande snap restore pour sélectionner SnapRestore basée sur les volumes. Utilisez la syntaxe de commande suivante pour effectuer la restauration à l'aide de la SnapRestore basée sur les volumes :
+
+[listing]
+----
+snapdrive snap restore {-lun | -dg | -vg | -hostvol |
+-lvol | -fs |-file} file_spec [file_spec ...] [{-lun | -dg |
+-vg | -hostvol | -lvol | -fs -file} file_spec [file_spec ...]
+...] -snapname snap_name [-force [-noprompt]][{-reserve |
+-noreserve}]
+[-vbsr [execute | preview]]
+----
+Si aucun argument n'est fourni avec le `-vbsr`, la sortie par défaut est celle du `preview` option. A `-verbose` cette option permet d'activer la sortie détaillée de toutes les vérifications obligatoires pouvant être surremplacées par l'utilisateur. La sortie par défaut lorsque `-verbose` l'option n'est pas fournie affiche les résultats des vérifications qui ont échoué.
+
+Si vous ne voulez pas qu'un message de confirmation vous invite, vous pouvez utiliser lors de l'exécution de SnapRestore en fonction du volume `-noprompt` et `-force` option avec `snap restore -vbsr execute` commande. Le tableau suivant décrit le comportement de SnapDrive pour UNIX en fonction des options que vous avez fournies.
+
+|===
+| N° DE SÉRIE | -vbsr exécuter | -force | -noprompt | Résultat 
+
+
+ a| 
+1.
+ a| 
+Non
+ a| 
+NA
+ a| 
+NA
+ a| 
+Le mode Aperçu est le mode par défaut. Toutes les vérifications sont effectuées et un rapport est généré pour chaque vérification.
+
+
+
+ a| 
+2.
+ a| 
+Oui.
+ a| 
+Non
+ a| 
+Non
+ a| 
+Toutes les vérifications sont effectuées. Si des vérifications obligatoires qu'un utilisateur peut remplacer échouent, SnapDrive pour UNIX affiche un message d'erreur.
+
+
+
+ a| 
+3.
+ a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Non
+ a| 
+Toutes les vérifications sont effectuées. Si des vérifications obligatoires échouent, SnapDrive for UNIX affiche un message d'erreur. Si une vérification qu'un utilisateur peut remplacer échoue, SnapDrive for UNIX vous invite à effectuer une demande.
+
+
+
+ a| 
+4.
+ a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Oui.
+ a| 
+Toutes les vérifications sont effectuées. Si des vérifications obligatoires échouent, SnapDrive for UNIX affiche un message d'erreur. Si une vérification qu'un utilisateur peut remplacer échoue, SnapDrive pour UNIX ne vous invite pas.
+
+|===

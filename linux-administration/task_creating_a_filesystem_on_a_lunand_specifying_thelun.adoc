@@ -1,0 +1,30 @@
+---
+permalink: linux-administration/task_creating_a_filesystem_on_a_lunand_specifying_thelun.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, lun, file, create 
+summary: Vous pouvez créer un système de fichiers sur une LUN et lui spécifier les LUN créées. 
+---
+= Création d'un système de fichiers sur une LUN et spécification de la LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer un système de fichiers sur une LUN et lui spécifier les LUN créées.
+
+.Étapes
+. Utiliser le format de commande suivant pour effectuer cette opération :
++
+`*snapdrive storage create _-fsfile_spec_ -nolvm [-fstype type] [-vmtype _type_] [-fsopts _options_] [-mntopts _options_] [-nopersist] -lun _long_lun_name_ -lun _size sizeig_name_ [_ig_name..._]] [{ -reserve | -noreserve }]*`
+
++
+SnapDrive pour UNIX crée le système de fichiers sur le système de stockage, le volume et la LUN que vous spécifiez. Il effectue toutes les tâches associées à la préparation et à la découverte des hôtes pour les LUN, ainsi que le mappage et la connexion des LUN à l'entité hôte.
+
+
+
+
+
+== Exemple : création d'un système de fichiers de 100 Mo sur luna dans acctFiler:/vol/vol1
+
+`# snapdrive storage create -fs /mnt/acct1 -lun acctfiler:/vol/vol1/luna -lunsize 100m -nolvm`

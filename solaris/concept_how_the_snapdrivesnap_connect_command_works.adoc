@@ -1,0 +1,26 @@
+---
+permalink: solaris/concept_how_the_snapdrivesnap_connect_command_works.html 
+sidebar: sidebar 
+keywords: snapdrive, snap, connect, command 
+summary: 'Lorsque vous utilisez la commande SnapDrive snap Connect, il cloner le stockage de l"entité que vous spécifiez et l"importe sur l"hôte.' 
+---
+= Fonctionnement de la commande SnapDrive snap Connect
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous utilisez le `snapdrive snap connect` il clone le stockage de l'entité que vous spécifiez et l'importe vers l'hôte :
+
+* Si vous spécifiez une copie Snapshot qui contient une LUN (`-lun`), SnapDrive pour UNIX mappe une nouvelle copie du LUN sur l'hôte. Vous ne pouvez pas utiliser `snapdrive snap connect` Commande permettant de spécifier une LUN sur la même ligne de commande avec d'autres entités de stockage (`-vg`, `-dg`, `-fs`, `-lvol`, ou `- hostvol`).
+* Si vous spécifiez un système de fichiers qui réside directement sur un LUN, SnapDrive for UNIX mappe ce LUN sur l'hôte et monte le système de fichiers.
+* Si le point de montage source est spécifié comme chemin d'accès relatif dans le `snap connect` SnapDrive pour UNIX ignore le point de montage de destination spécifié dans l'interface de ligne de commande et utilise la convention de nommage interne au format `source_mount_point_<N>` pour nommer le point de montage de destination.
+* Si vous spécifiez une copie Snapshot contenant un groupe de disques, ou un volume hôte ou un système de fichiers faisant partie d'un groupe de disques, l' `snapdrive snap connect` la commande connecte l'ensemble du groupe de disques cible. Pour établir la connexion, SnapDrive for UNIX réactive tous les volumes logiques du groupe de disques cible et monte tous les systèmes de fichiers sur les volumes logiques.
+* Si vous spécifiez `autorename` option avec la commande snap connect, les volumes hôtes et les systèmes de fichiers sont toujours renommés. Les groupes de disques sont renommés uniquement s'ils existent déjà sur l'hôte.
+* Si vous spécifiez une copie Snapshot contenant une arborescence de répertoires NFS, SnapDrive for UNIX crée un clone du volume FlexVol qui contient l'arborescence de répertoires NFS. SnapDrive pour UNIX connecte ensuite le volume à l'hôte et monte le système de fichiers NFS. Dans l'arborescence des répertoires, SnapDrive for UNIX supprime tous les nouveaux fichiers ou répertoires NFS que vous créez après avoir créé la copie Snapshot. SnapDrive for UNIX supprime tous les fichiers ou répertoires du volume FlexVol situés en dehors des répertoires NFS que vous connectez, le cas échéant `snapconnect-nfs-removedirectories` l'option de configuration est définie sur activé.
+* Si vous connectez une copie Snapshot contenant des arborescences de répertoires NFS à l'aide de `-readonly` Option, SnapDrive pour UNIX monte la copie Snapshot du répertoire directement sans créer de clone. Vous ne pouvez pas utiliser `snapdrive snap connect` Commande pour spécifier des points de montage NFS sur la même ligne de commande que des entités non NFS, c'est-à-dire à l'aide des options `-vg`, `-dg`, `-fs`, `-lvol`, ou `- hostvol`.
+
+
+
+NOTE: Le `snap connect` exploitation avec `-split` Dans un environnement vFiler, l'option est prise en charge par Data ONTAP 7.3 et les versions ultérieures.

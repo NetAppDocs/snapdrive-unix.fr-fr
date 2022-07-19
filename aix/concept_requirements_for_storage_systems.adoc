@@ -1,0 +1,69 @@
+---
+permalink: aix/concept_requirements_for_storage_systems.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, system, requirement 
+summary: Vous devez tenir compte de la configuration requise pour le système de stockage avant de le configurer. 
+---
+= Configuration requise pour les systèmes de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez tenir compte de la configuration requise pour le système de stockage avant de le configurer.
+
+|===
+| Composant | Conditions requises 
+
+
+ a| 
+Système d'exploitation
+ a| 
+Data ONTAP 7.3.5 ou version ultérieure
+
+* SnapDrive pour UNIX prend en charge les volumes FlexVol, mais n'utilise pas toutes les fonctionnalités de volume FlexVol.
+* Les configurations qui utilisent NFS doivent utiliser Data ONTAP 7.3.5 ou version ultérieure et les volumes FlexVol doivent être utilisés `snapdrive snap connect` Pour lire et écrire dans un fichier NFS ou une arborescence de répertoires connectés.
++
+Les configurations dotées de volumes traditionnels peuvent accéder en lecture seule aux fichiers NFS et aux arborescences de répertoires.
+
+
+
+
+
+ a| 
+Configuration du système de stockage
+ a| 
+Vous devez spécifier l'adresse IP du partenaire dans la paire haute disponibilité pouvant être utilisée en cas de basculement du système de stockage.
+
+
+NOTE: Vous spécifiez l'adresse IP lorsque vous exécutez le programme de configuration sur le système de stockage.
+
+
+
+ a| 
+Licences
+ a| 
+* FC, iSCSI ou NFS, selon la plateforme hôte
+* Licence FlexClone
++
+
+NOTE: Vous devez disposer des protocoles appropriés en cours d'exécution sur le système de stockage pour que SnapDrive pour UNIX puisse s'exécuter.
+
+* Logiciel SnapRestore
+* Logiciel MultiStore
++
+Lors de la configuration du système de stockage, vous devez configurer les licences SnapRestore et MultiStore. Il vous faut une licence MultiStore pour configurer un environnement vFiler.
+
+* Accès HTTP sécurisé au système de stockage.
+
+
+|===
+Les opérations SnapDrive pour UNIX ne sont pas sensibles à la casse en ce qui concerne le nom d'hôte du système de stockage, vous devez vous assurer que les adresses IP sont uniques lors de la configuration du système de stockage.
+
+
+NOTE: Pour connaître les dernières exigences en matière de SnapDrive, consultez la matrice d'interopérabilité.
+
+*Informations connexes*
+
+https://mysupport.netapp.com/NOW/products/interoperability["Interopérabilité NetApp"]

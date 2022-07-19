@@ -1,0 +1,22 @@
+---
+permalink: linux-administration/concept_snapshot_connectand_snapshotrestore_operations.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, connect, restore, clones, copy, snapshot 
+summary: La copie Snapshot clone les informations lorsque vous vous connectez à la copie Snapshot. 
+---
+= Opérations de connexion Snapshot et de restauration des snapshots
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La copie Snapshot clone les informations lorsque vous vous connectez à la copie Snapshot.
+
+Contrairement à l'opération de restauration Snapshot, l'opération de connexion Snapshot ne remplace pas le contenu existant des LUN qui constituent l'entité hôte par le contenu de la copie Snapshot. Il cloner les informations.
+
+Une fois la connexion établie, les opérations de connexion Snapshot et de restauration Snapshot permettent d'effectuer des activités similaires :
+
+* L'opération Snapshot Connect active les volumes logiques de l'entité de stockage, monte les systèmes de fichiers et ajoute éventuellement une entrée à la table du système de fichiers hôte.
+* L'opération de restauration Snapshot active les volumes logiques de l'entité de stockage, monte les systèmes de fichiers et applique les entrées de montage du système de fichiers hôte conservées dans la copie Snapshot.
+

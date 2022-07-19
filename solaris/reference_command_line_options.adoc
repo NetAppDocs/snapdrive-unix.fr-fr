@@ -1,0 +1,281 @@
+---
+permalink: solaris/reference_command_line_options.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, line, options 
+summary: Plusieurs options sont utilisées avec les commandes SnapDrive pour UNIX. 
+---
+= Options de ligne de commande
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Plusieurs options sont utilisées avec les commandes SnapDrive pour UNIX.
+
+SnapDrive pour UNIX vous permet d'inclure les options suivantes à ses commandes. Dans certains cas, vous pouvez abréger ces options. Par exemple, vous pouvez utiliser `-h` au lieu de `-help`.
+
+|===
+| Option | Description 
+
+
+ a| 
+`-addlun`
+ a| 
+Indique à SnapDrive for UNIX d'ajouter une nouvelle LUN générée en interne à une entité de stockage afin d'augmenter sa taille.
+
+
+
+ a| 
+`-all`
+ a| 
+Utilisé avec le stockage SnapDrive `{show | list}` Commande permettant d'afficher tous les périphériques et entités LVM connus de l'hôte.
+
+
+
+ a| 
+`-autoexpand`
+ a| 
+Utilisé avec le `snapdrive snap connect` commande pour vous permettre de demander qu'un groupe de disques soit connecté lorsque vous fournissez un sous-ensemble de volumes logiques ou de systèmes de fichiers dans le groupe de disques.
+
+
+
+ a| 
+`-autorename`
+ a| 
+Utilisé avec le `snapdrive snap connect` Commande pour permettre à la commande de renommer toutes les entités LVM nouvellement connectées pour lesquelles le nom par défaut est déjà utilisé.
+
+
+
+ a| 
+`-clone type`
+ a| 
+Méthode de clonage à utiliser pendant `snap connect` fonctionnement. Ce type fait référence à lunclone (crée un ou plusieurs clones de lun), optimal (SnapDrive choisit automatiquement les clones de LUN et FlexClone restreints en fonction de la configuration du stockage) et non restreints (crée des FlexClone pouvant être utilisés pour le provisionnement et les opérations Snapshot, comme pour les volumes flexibles standard).
+
+
+
+ a| 
+-`apabilities`
+ a| 
+utilisé avec `snapdrive storage show` commande pour connaître les opérations autorisées sur les spécifications du fichier hôte.
+
+
+
+ a| 
+`-devices` ou `-dev`
+ a| 
+Utilisé avec le stockage `{show | list}` commande permettant d'afficher tous les périphériques connus de l'hôte.
+
+
+
+ a| 
+`-devicetype`
+ a| 
+Spécifie le type de périphérique à utiliser pour les opérations SnapDrive sous UNIX. Les valeurs de cette option sont les suivantes :
+
+* `shared`-- spécifie la portée du LUN, du groupe de disques et du système de fichiers en tant que cluster hôte.
+* `dedicated`--spécifie la portée de LUN, de groupe de disques et de système de fichiers comme local. Il s'agit de la valeur par défaut.
+
+
+Si vous ne spécifiez pas le `-devicetype` Option dans les commandes SnapDrive pour UNIX qui prennent en charge cette option, elle équivaut à spécifier `-devicetype dedicated`.
+
+
+
+ a| 
+`-dgsize` ou `-vgsize`
+ a| 
+Utilisé avec le `snapdrive storage create` commande permettant de spécifier la taille en octets du groupe de disques à créer.
+
+
+
+ a| 
+`-force` (ou `-f`)
+ a| 
+Provoque la tentative d'opérations que SnapDrive pour UNIX ne s'entreprendrait normalement pas. SnapDrive for UNIX vous invite à demander confirmation avant d'exécuter l'opération.
+
+
+
+ a| 
+`-fsopts`
+ a| 
+Les options que vous voulez passer à l'opération hôte qui crée le nouveau système de fichiers. Selon votre système d'exploitation hôte, cette opération hôte peut être une commande telle que `mkfs` commande.
+
+L'argument que vous fournissez avec cette option doit généralement être spécifié comme une chaîne de devis et doit contenir le texte exact à transmettre à la commande.
+
+Par exemple, vous pouvez entrer `-o largefiles` comme option que vous souhaitez transmettre à l'opération hôte.
+
+
+
+ a| 
+`-fstype`
+ a| 
+Type de système de fichiers à utiliser pour les opérations SnapDrive pour UNIX. Le système de fichiers doit être un type pris en charge par SnapDrive pour UNIX pour votre système d'exploitation. Les valeurs actuelles que vous pouvez définir pour cette variable sont
+
+Vous pouvez également spécifier le type de système de fichiers que vous souhaitez utiliser à l'aide de `-fstype` variable de configuration.
+
+
+
+ a| 
+`-full`
+ a| 
+Permet d'effectuer des opérations sur une entité côté hôte spécifiée, même si l'entité n'est pas vide (par exemple, l'entité peut être un groupe de volumes contenant un ou plusieurs volumes logiques).
+
+
+
+ a| 
+`-growby`
+ a| 
+Nombre d'octets à ajouter à une LUN ou à un groupe de disques pour augmenter sa taille.
+
+
+
+ a| 
+`-growto`
+ a| 
+Taille cible en octets d'une LUN, d'un groupe de disques ou d'un groupe de volumes. SnapDrive pour UNIX calcule automatiquement le nombre d'octets nécessaires pour atteindre la taille cible et augmente la taille de l'objet en fonction de ce nombre d'octets.
+
+
+
+ a| 
+`-help`
+ a| 
+Imprime le message d'utilisation pour la commande et l'opération. Entrez cette option par elle-même sans autres options. Voici des exemples de lignes de commande possibles :
+
+
+
+ a| 
+`-lunsize`
+ a| 
+Taille de la LUN en octets à créer par une commande donnée.
+
+
+
+ a| 
+`-mntopts`
+ a| 
+Spécifie les options que vous souhaitez transmettre à la commande de montage de l'hôte (par exemple, pour spécifier le comportement de journalisation du système de fichiers). Les options sont également stockées dans le fichier de table du système de fichiers hôte. Les options autorisées dépendent du type de système de fichiers hôte.
+
+Le `-mntopts` argument que vous fournissez est une option de type système de fichiers spécifiée à l'aide de l' `mount` commande `"`- o»» drapeau. Ne pas inclure le `"`- o»» dans le drapeau `-mntopts` argument. Par exemple, la séquence `-mntopts _tmplog_` passe la chaîne `-o _tmplog_` à la ligne de commande mount et insère le texte `"`tmplog`"` sur une nouvelle ligne de commande.
+
+
+
+ a| 
+`-nofilerfence`
+ a| 
+Supprime l'utilisation de la fonctionnalité de groupe de cohérence Data ONTAP dans la création de copies Snapshot réparties sur plusieurs volumes du filer.
+
+Dans Data ONTAP 7.2 ou version ultérieure, vous pouvez suspendre l'accès à l'intégralité d'un volume filer. À l'aide du `-nofilerfence` Option, vous pouvez bloquer l'accès à un LUN individuel.
+
+
+
+ a| 
+`-nolvm`
+ a| 
+Connecte ou crée un système de fichiers directement sur une LUN sans impliquer le LVM de l'hôte.
+
+Toutes les commandes qui prennent cette option pour la connexion ou la création d'un système de fichiers directement sur une LUN ne l'acceptent pas pour le cluster hôte ou les ressources partagées. Cette option n'est autorisée que pour les ressources locales. Si vous avez activé le `-devicetype` cette option ne peut pas être utilisée, car `-nolvm` l'option est valide uniquement pour les ressources locales et non pour la ressource partagée.
+
+
+
+ a| 
+`-nopersist`
+ a| 
+Connecte ou crée un système de fichiers, ou une copie Snapshot possédant un système de fichiers, sans ajouter d'entrée dans le fichier d'entrée de montage persistant de l'hôte.
+
+
+
+ a| 
+`-prefixfv`
+ a| 
+préfixe à utiliser lors de la génération du nom du volume cloné Le format du nom du nouveau volume serait `<pre-fix>_<original_volume_name>`.
+
+
+
+ a| 
+`-reserve - noreserve`
+ a| 
+Utilisé avec le `snapdrive storage create`, `snapdrive snap connect` ou `snapdrive snap restore` Les commandes à spécifier si SnapDrive pour UNIX crée ou non une réservation d'espace. Par défaut, SnapDrive pour UNIX crée une réservation pour les opérations de création du stockage, de redimensionnement et de création Snapshot, et ne crée pas de réservation pour l'opération de connexion Snapshot.
+
+
+
+ a| 
+`-noprompt`
+ a| 
+Supprime les invites lors de l'exécution de la commande. Par défaut, toute opération pouvant avoir des effets secondaires dangereux ou non intuitifs vous invite à confirmer que SnapDrive pour UNIX doit être tenté. Cette option remplace cette invite ; lorsqu'elle est associée à l' `-force` Option, SnapDrive pour UNIX effectue l'opération sans demander confirmation.
+
+
+
+ a| 
+`-quiet` (ou `-q`)
+ a| 
+Supprime les rapports d'erreurs et d'avertissements, qu'ils soient normaux ou diagnostiques. Elle renvoie le statut zéro (réussite) ou non nul. Le `-quiet` l'option remplace le `-verbose` option.
+
+Cette option sera ignorée pour `snapdrive storage show`, `snapdrive snap show`, et `snapdrive config show` commandes.
+
+
+
+ a| 
+`-readonly`
+ a| 
+Obligatoire pour les configurations avec Data ONTAP 7.1 ou toute configuration utilisant des volumes traditionnels. Connecte le fichier ou le répertoire NFS avec un accès en lecture seule.
+
+Facultatif pour les configurations avec Data ONTAP 7.0 qui utilisent des volumes FlexVol. Connecte le fichier NFS ou l'arborescence de répertoires avec un accès en lecture seule. (La valeur par défaut est lecture/écriture).
+
+
+
+ a| 
+`-split`
+ a| 
+Permet de séparer les volumes ou les LUN clonés lors des opérations de connexion Snapshot et de déconnexion des snapshots.
+
+Vous pouvez également séparer les volumes ou les LUN clonés à l'aide de `_enable-split-clone_` variable de configuration.
+
+
+
+ a| 
+`-status`
+ a| 
+Utilisé avec le `snapdrive storage show` Commande permettant de savoir si le volume ou la LUN est cloné
+
+
+
+ a| 
+`-unrelated`
+ a| 
+Crée une copie Snapshot de `_file_spec_` Les entités qui n'ont pas d'écritures dépendantes lors de la création de la copie Snapshot. Étant donné que les entités n'ont pas d'écritures dépendantes, SnapDrive for UNIX crée une copie Snapshot cohérente après panne des entités de stockage individuelles, mais ne prend pas les mesures nécessaires pour que les entités soient cohérentes entre elles.
+
+
+
+ a| 
+`-verbose` (ou `-v`)
+ a| 
+Affiche une sortie détaillée, le cas échéant. Toutes les commandes et opérations acceptent cette option, bien que certaines puissent l'ignorer.
+
+
+
+ a| 
+`-vgsize` ou `-dgsize`
+ a| 
+Utilisé avec le `storage create` commande permettant de spécifier la taille en octets du groupe de volumes à créer.
+
+
+
+ a| 
+`-vmtype`
+ a| 
+Type de gestionnaire de volumes à utiliser pour les opérations SnapDrive pour UNIX.
+
+Si l'utilisateur spécifie `-vmtype` Option dans la ligne de commande explicitement, SnapDrive for UNIX utilise la valeur spécifiée dans l'option quelle que soit la valeur spécifiée dans la `vmtype` variable de configuration. Si le `-vmtype` L'option n'est pas spécifiée dans l'option de ligne de commande, SnapDrive for UNIX utilise le gestionnaire de volumes qui se trouve dans le fichier de configuration.
+
+Le gestionnaire de volumes doit être un type pris en charge par SnapDrive pour UNIX pour votre système d'exploitation. Les valeurs actuelles que vous pouvez définir pour cette variable comme vxvm.
+
+Vous pouvez également spécifier le type de gestionnaire de volumes à utiliser en utilisant la variable de configuration vmtype.
+
+
+
+ a| 
+`-vbsr {preview|execute}`
+ a| 
+Le `preview` Cette option lance un mécanisme d'aperçu SnapRestore basé sur le volume pour la spécification de fichier hôte donnée. Avec le `execute` Option, SnapDrive pour UNIX se produit avec SnapRestore basée sur le volume pour la spécification de fichier spécifiée.
+
+|===

@@ -1,0 +1,70 @@
+---
+permalink: aix/task_estimating_the_storage_space_using_a_snapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, space, snapshot, copy 
+summary: 'L"estimation du fractionnement des clones permet d"estimer l"espace de stockage requis \(en Mo\) par le biais d"une copie Snapshot, lorsqu"aucun clone n"est disponible pour une copie Snapshot dans le système de stockage.' 
+---
+= Estimation de l'espace de stockage à l'aide d'une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'estimation du fractionnement des clones permet d'estimer l'espace de stockage requis (en Mo) avec une copie Snapshot, lorsqu'aucun clone n'est disponible pour une copie Snapshot dans le système de stockage.
+
+.Étapes
+. Entrez la commande suivante pour estimer l'espace de stockage requis.
++
+`*snapdrive clone split estimate -snapname [_long_snap_name_] {-volclone|-lunclone}] [-v | -verbose]*`
+
+
+
+L'exemple suivant estime l'espace de stockage permettant de séparer un clone de LUN à l'aide d'une copie Snapshot.
+
+[listing]
+----
+snapdrive clone split estimate -snapname f3050-220-112:/vol/vol_1:snap_1 -lunclone
+Resource       Container  Required Available Storage
+                          Space(MB)Space(MB) Status
+f3050-220-112: f3050-220 	5120	   14078    AVAILABLE
+/vol/vol_1:snap_1 -112:/vol/vol_1
+----
+L'exemple suivant estime que l'espace de stockage permet de séparer un clone de LUN à l'aide d'une copie Snapshot avec le `-fs` option.
+
+[listing]
+----
+# snapdrive clone split estimate -fs /mnt/my_mnt1 -snapname f3050-220-112:/vol/vol_1:snap_1 -lunclone
+Resource         Container Required Available Storage
+                            Space(MB)Space(MB) Status
+f3050-220-112:   f3050-220  4120     14078  AVAILABLE
+/vol/vol_1:snap_1 -112:/vol/vol_1
+----
+L'exemple suivant estime que l'espace de stockage peut séparer un clone de volume à l'aide d'une copie Snapshot avec le `-fs` option.
+
+[listing]
+----
+# snapdrive clone split estimate -fs /mnt/fs1 -snapname f3050-220-112:/vol/vol_1:snap_1 -volclone
+Resource      Container   Required Available Storage
+                          Space(MB)Space(MB) Status
+f3050-220-112:  f3050-220 54019   54517  AVAILABLE
+/vol/vol0:snap_1 112:aggr0
+----
+L'exemple suivant estime l'espace de stockage permettant de séparer un clone de volume à l'aide d'une copie Snapshot.
+
+[listing]
+----
+# snapdrive clone split estimate -snapname f3050-220-112:/vol/vol_1:snap_1 -volclone
+Resource      Container   Required Available Storage
+                          Space(MB)Space(MB) Status
+f3050-220-112:  f3050-220 54019    54517    AVAILABLE
+/vol/vol0:snap_1 112:aggr0
+----
+[NOTE]
+====
+* Le champ « ressource » contient le nom de la copie Snapshot si l'estimation du fractionnement du clone est effectuée pour une copie Snapshot.
+* Si vous fournissez des spécifications de fichier mort avec la copie Snapshot avec `-lunclone` L'option « espace requis » indique 0.
+* L'estimation du fractionnement du clone de LUN à l'aide de Snapshot est disponible uniquement pour les copies Snapshot créées à partir de SnapDrive 4.2 pour UNIX et les versions ultérieures.
+
+
+====

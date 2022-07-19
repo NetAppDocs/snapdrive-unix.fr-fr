@@ -1,0 +1,52 @@
+---
+permalink: solaris/concept_host_filespec_information_for_a_particular_volume.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, host, filespec, volume 
+summary: SnapDrive pour UNIX dans le cadre du rapport de prévisualisation de la restauration de volumes, affiche les informations de mappage de LUN. Ces informations affichées concernent les vérifications et les fichiers normaux sont restaurés. La recherche de tous les fichiers hôtes basés sur des LUN sur un volume donné est un processus chronophage et ralentit le processus de restauration du volume. 
+---
+= Informations de spécification de fichier hôte pour un volume particulier
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX dans le cadre du rapport de prévisualisation de la restauration de volumes, affiche les informations de mappage de LUN. Ces informations affichées concernent les vérifications et les fichiers normaux sont restaurés. La recherche de tous les fichiers hôtes basés sur des LUN sur un volume donné est un processus chronophage et ralentit le processus de restauration du volume.
+
+Si vous souhaitez savoir que les informations de spécification de fichier hôte pour l'hôte local mappé à un volume de système de stockage particulier, vous pouvez utiliser `snapdrive storage show -filervol <full-volume-name>`. Voici un exemple.
+
+[listing]
+----
+#snapdrive storage show -filervol bart:/vol/volusecase2
+
+Connected LUNs and devices:
+
+ device filename        adapter path    size    proto   state   clone   lun path           backing snapshot
+----------------        ------- ----    ----    -----   -----   -----   --------                        ----------------
+/dev/sdg                  -     P       100m    iscsi   online   No     bart:/vol/volusecase2/lun5          -
+
+Host devices and file systems:
+
+dg: vbsrfs_1_SdDg               dgtype lvm
+hostvol: /dev/mapper/vbsrfs_1_SdDg-vbsrfs_1_SdHv        state: AVAIL
+fs: /dev/mapper/vbsrfs_1_SdDg-vbsrfs_1_SdHv     mount point: /mnt/vbsrfs_1 (persistent) fstype ufs
+
+ device filename     adapter path    size    proto   state   clone   lun path           backing snapshot
+----------------        ------- ----    ----    -----   -----   -----   --------                        ----------------
+/dev/sdbe                 -     P       100m    iscsi   online   No     bart:/vol/volusecase1/lun9_0        -
+/dev/sdbf                 -     P       100m    iscsi   online   No     bart:/vol/volusecase2/lun4_0        -
+
+raw device: /dev/sdbr1  mount point: /mnt/fs11 (persistent) fstype ufs
+
+ device filename     adapter path    size    proto   state   clone   lun path           backing snapshot
+----------------        ------- ----    ----    -----   -----   -----   --------                        ----------------
+/dev/sdbr                 -     P       200m    iscsi   online   No     bart:/vol/volusecase2/fs11_SdLun    -
+
+NFS device: bart:/vol/volusecase1        mount point: /mnt/volusecase1 (non-persistent)
+
+LUNs not connected to this host:
+
+ lun path                                           size   state
+ -----------------------------               ------ ------
+ bart:/vol/volusecase2/lunotherhost 20m   online
+----

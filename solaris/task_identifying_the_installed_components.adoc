@@ -1,0 +1,28 @@
+---
+permalink: solaris/task_identifying_the_installed_components.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, install, components, identify 
+summary: 'Vous pouvez identifier les composants installés sur la plate-forme hôte à l"aide de l"outil de vérification de la configuration SnapDrive pour UNIX.' 
+---
+= Identification des composants installés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez identifier les composants installés sur la plate-forme hôte à l'aide de l'outil de vérification de la configuration SnapDrive pour UNIX.
+
+.Étapes
+. Identifier les composants installés :
++
+`*sdconfcheck detect*`
+
++
+Le `sdconfcheck.out` le fichier journal est utilisé pour identifier les composants installés dans le `/var/log` fichier. Les fichiers journaux sont renommés de manière incrémentielle en tant que `sdconfcheck.out.1`, `sdconfcheck.out.2`, etc.
+
++
+L'outil de vérification de la configuration SnapDrive pour UNIX ne détecte pas le système de fichiers ext3 dans un environnement Red Hat Enterprise Linux 6. Vous devez exécuter le `modprobe -v ext3` Commande permettant de charger le système de fichiers ext3.
+
+. Vous devrez peut-être installer ou configurer le composant répertorié après avoir exécuté le `sdconfcheck detect` commande.
+

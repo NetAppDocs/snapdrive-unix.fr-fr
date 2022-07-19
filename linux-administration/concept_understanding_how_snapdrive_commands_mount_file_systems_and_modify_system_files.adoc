@@ -1,0 +1,44 @@
+---
+permalink: linux-administration/concept_understanding_how_snapdrive_commands_mount_file_systems_and_modify_system_files.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, mount, file, modify, unmount, name 
+summary: 'Certaines commandes de SnapDrive pour UNIX peuvent entraîner le montage ou le montage de systèmes de fichiers. Lorsqu"une commande exécute une opération de montage d"un système de fichiers, SnapDrive pour UNIX ajoute le nom du système de fichiers au fichier système standard de votre plate-forme hôte. Si une opération démonte un système de fichiers, SnapDrive for UNIX supprime ce nom du fichier système. Cela ne devrait pas poser de problème, mais il est utile de savoir quand les fichiers système sont modifiés.' 
+---
+= Les commandes SnapDrive entraînent parfois le montage ou le démontage de systèmes de fichiers et modifient les fichiers système
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Certaines commandes de SnapDrive pour UNIX peuvent entraîner le montage ou le montage de systèmes de fichiers. Lorsqu'une commande exécute une opération de montage d'un système de fichiers, SnapDrive pour UNIX ajoute le nom du système de fichiers au fichier système standard de votre plate-forme hôte. Si une opération démonte un système de fichiers, SnapDrive for UNIX supprime ce nom du fichier système. Cela ne devrait pas poser de problème, mais il est utile de savoir quand les fichiers système sont modifiés.
+
+Le nom du fichier système varie en fonction de votre plate-forme hôte. Le tableau suivant répertorie les plates-formes hôtes et leurs fichiers système.
+
+|===
+| *Hôte* | *Fichier système* 
+
+
+ a| 
+Linux
+ a| 
+`etc/fstab`
+
+|===
+L'une des commandes suivantes peut monter des systèmes de fichiers :
+
+* `snapdrive snap restore`
+* `snapdrive snap connect`
+* `snapdrive storage create`
+* `snapdrive host connect`
+* `snapdrive storage connect`
+
+
+Les commandes suivantes effectuent des opérations qui peuvent démonter un système de fichiers :
+
+* `snapdrive snap restore`
+* `snapdrive snap disconnect`
+* `snapdrive storage disconnect`
+* `snapdrive storage delete`
+* `snapdrive host disconnect`
+

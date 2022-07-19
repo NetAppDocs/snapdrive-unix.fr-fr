@@ -1,0 +1,44 @@
+---
+permalink: linux-administration/task_creating_an_lvm_a_vxvm_entity_and_settingup_the_lunautomatically.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, lvm, lun, logical, disk, unix 
+summary: 'Vous pouvez créer une entité telle qu"un système de fichiers, un volume logique ou un groupe de disques sur l"hôte et faire en sorte que SnapDrive pour UNIX crée automatiquement la LUN associée.' 
+---
+= Création d'une entité LVM et configuration automatique de la LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer une entité telle qu'un système de fichiers, un volume logique ou un groupe de disques sur l'hôte et faire en sorte que SnapDrive pour UNIX crée automatiquement la LUN associée.
+
+* Le `host_lvm_fspec` argument vous permet de spécifier si vous souhaitez créer un système de fichiers, un volume logique ou un groupe de disques. Cet argument a trois formats généraux. Le format que vous utilisez dépend de l'entité que vous souhaitez créer.
++
+Pour créer un système de fichiers, utilisez le format suivant : `-fs file_spec [-fstype type] [-fsopts options] [-mntopts options] [-nopersist] [ -hostvol file_spec] [ -dg dg_name]`
+
++
+Pour créer un volume logique ou hôte, utilisez le format suivant :
+
++
+`*[-hostvol file_spec] _file_spec_ [-dg _dg_name_]*`
+
++
+Pour créer un disque ou un groupe de volumes, utilisez le format suivant :
+
++
+`*-dg__dg_name__*`
+
+* Si vous créez un système de fichiers, vous pouvez également inclure les spécifications du volume hôte, des spécifications du groupe de disques ou les deux pour indiquer le volume hôte et le groupe de disques sur lequel réside le système de fichiers. Si vous n'incluez pas ces spécifications, SnapDrive for UNIX génère automatiquement des noms pour le volume hôte et le groupe de disques, ou les deux.
+* Lorsque vous spécifiez un volume hôte, SnapDrive pour UNIX crée un volume hôte concaténé. Ce format est le seul pris en charge par SnapDrive pour UNIX lors de la création de volumes hôtes, mais il permet de manipuler des volumes hôtes répartis existants.
+
+
+.Étapes
+. En ligne de commande, entrez la commande suivante :
++
+`*snapdrive storage create _host_vxvm_fspec_ -filervol _long_filer_path_ -dgsize size [-igroup _ig_name[ig_name ...]]_ [{ -reserve | -noreserve }]*`
+
++
+SnapDrive for UNIX crée l'entité hôte que vous spécifiez et crée des LUN pour celle-ci sur le système de stockage que vous spécifiez. Il effectue toutes les tâches associées à la préparation et à la découverte des hôtes pour chacune des LUN, ainsi que le mappage et la connexion des LUN à l'entité hôte.
+
+

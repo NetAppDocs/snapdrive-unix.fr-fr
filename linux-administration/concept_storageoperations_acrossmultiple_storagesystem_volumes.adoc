@@ -1,0 +1,14 @@
+---
+permalink: linux-administration/concept_storageoperations_acrossmultiple_storagesystem_volumes.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, volume, lvm, logical, manager 
+summary: 'SnapDrive pour UNIX vous permet d"effectuer de nombreuses opérations de stockage sur plusieurs volumes du système de stockage, tant que les opérations ne manipulent pas le gestionnaire de volume logique \(LVM\). Vous pouvez ainsi travailler avec des listes de LUN existantes sur plusieurs volumes de système de stockage.' 
+---
+= Opérations de stockage sur plusieurs volumes de système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX vous permet d'effectuer de nombreuses opérations de stockage sur plusieurs volumes du système de stockage, tant que les opérations ne manipulent pas le gestionnaire de volume logique (LVM). Vous pouvez ainsi travailler avec des listes de LUN existantes sur plusieurs volumes de système de stockage.

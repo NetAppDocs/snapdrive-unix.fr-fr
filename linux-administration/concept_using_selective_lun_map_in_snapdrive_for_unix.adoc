@@ -1,0 +1,92 @@
+---
+permalink: linux-administration/concept_using_selective_lun_map_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, lun, selective, map, path, ha, data, clustered, slm 
+summary: 'Depuis clustered Data ONTAP 8.3, le mappage de LUN sélectif \(SLM\) est activé par défaut sur tous les nouveaux mappages de LUN. Lorsque vous créez un nouveau mappage de LUN, la LUN est accessible uniquement via les chemins situés sur le nœud propriétaire de la LUN et de son partenaire haute disponibilité.' 
+---
+= Utilisation du mappage de LUN sélectif dans SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depuis clustered Data ONTAP 8.3, le mappage de LUN sélectif (SLM) est activé par défaut sur tous les nouveaux mappages de LUN. Lorsque vous créez un nouveau mappage de LUN, la LUN est accessible uniquement via les chemins situés sur le nœud propriétaire de la LUN et de son partenaire haute disponibilité.
+
+Par défaut, les LUN sont accessibles sur toutes les LIFs d'un Storage Virtual machine (SVM). Vous devez attribuer des LIF aux SVM sur chaque nœud de cluster du réseau. Lorsque le nombre de nœuds augmente, le nombre de chemins potentiels se multiplie également. Cela peut entraîner un nombre excessif de chemins d'accès à une LUN, plusieurs groupes initiateurs par hôte et des événements de mobilité entraînant des perturbations. SLM résout ces problèmes en limitant l'accès des LUN au nœud propriétaire du LUN et au nœud partenaire HA. Il crée également un groupe initiateur unique par hôte et prend en charge les opérations de mobilité des LUN sans interruption qui ne nécessitent pas de manipulation de l'ensemble de ports ou de remappage des LUN.
+
+
+NOTE: SLM ne s'applique pas automatiquement aux mappages de LUN créés avant clustered Data ONTAP 8.3.
+
+Si vous accédez à la LUN via le nœud propriétaire de la LUN, son chemin est appelé « actif optimisé ». Toutefois, si vous accédez à cette LUN via le nœud partenaire de haute disponibilité, le chemin est appelé « actif non optimisé ».
+
+|===
+| Commande SnapDrive | Description 
+
+
+ a| 
+`snapdrive lun showpaths _long_lun_name_`
+ a| 
+Le `snapdrive lun showpaths` Commande répertorie tous les chemins d'accès à la LUN. Elle affiche également le chemin actif optimisé et le chemin actif non optimisé.
+
+`_long_lun_name_` Est le nom de la LUN. Si vous ne spécifiez pas la LUN, l'opération est effectuée sur toutes les LUN.
+
+[listing]
+----
+snapdrive lun showpaths
+lun path            device filename                   asymmetric access state
+------------------------------------------------------------------------------
+vs1:/vol/vol2/lun10  /dev/mapper/3600a09807746505a4e24455450473655   Non-optimized
+vs1:/vol/vol2/lun2  /dev/mapper/3600a09807746505a4d3f455432474b30    Optimized
+vs1:/vol/vol2/lun1  /dev/mapper/3600a09807746505a4e24455450473656    Optimized
+----
+
+
+ a| 
+`snapdrive lun fixpaths _long_lun_name_`
+ a| 
+Le `snapdrive lun fixpaths` La commande tente de corriger le chemin d'accès des LUN pour les LUN qui ne disposent d'au moins un chemin optimisé actif.
+
+`_long_lun_name_` Est le nom de la LUN. Si vous ne spécifiez pas la LUN, l'opération s'effectue sur toutes les LUN qui ne disposent pas d'au moins un chemin optimisé actif.
+
+[listing]
+----
+snapdrive lun fixpaths
+The following LUNs are using Non-optimized paths
+-------------------------------------------------
+vs1:/vol/vol2/lun10
+
+Path correction successful for the following LUNs
+--------------------------------------------------
+vs1:/vol/vol2/lun10
+----
+
+NOTE: Le `snapdrive lun fixpaths` la commande ne fonctionne pas dans le système d'exploitation invité.
+
+|===
+Le `lunpath-monitor-frequency` Paramètre vous permet de spécifier la fréquence dans laquelle SnapDrive for UNIX fixe automatiquement le chemin des LUN. La valeur par défaut est 24 heures.
+
+Si le `snapdrive lun fixpaths` Opération échoue, un message AutoSupport (ASUP) est généré pour toutes les LUN. Le message ASUP contient les informations suivantes :
+
+* Nom de l'ordinateur
+* Source d'événements
+* AppVersion
+* Éventid
+* catégorie
+* objet
+
+
+Voici un exemple de message ASUP :
+
+[listing]
+----
+computerName="owhyee"
+       eventSource="snapdrive"
+       appVersion="5.2.2 for UNIX"
+       eventID="6"
+       category="lun path"
+       subject="Paths are misconfigured for the Luns /vol/June12v1/LUN2 in storage system sdu_100_101_60_62_vs1 on owhyee host."
+----
+*Informations connexes*
+
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-sanag/home.html["Guide d'administration du SAN ONTAP 9"]

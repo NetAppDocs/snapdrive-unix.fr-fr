@@ -1,0 +1,24 @@
+---
+permalink: linux-administration/reference_examples_of_using_snapdrive_dc.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, example, data, collection 
+summary: Voici un exemple de commande de collecte de données. 
+---
+= Exemples d'utilisation de snapdrive.dc
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Voici un exemple de commande de collecte de données.
+
+Cet exemple utilise les options de ligne de commande pour spécifier un répertoire et un nom pour le fichier résultant.
+
+[listing]
+----
+# snapdrive.dc -d . -n mysystem
+...
+     Compressed file is ./ntap_snapdrive_mysystem.tar.Z.
+     Please send this file to technical support for analysis.
+----

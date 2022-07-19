@@ -1,0 +1,26 @@
+---
+permalink: solaris/concept_nfs_configuration_checks.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, nfs, configuration, check 
+summary: 'Pour les configurations qui utilisent le système de fichiers réseau \(NFS\), vous devez vérifier que les clients NFS fonctionnent correctement avant de configurer votre hôte et vos systèmes de stockage.' 
+---
+= Vérifications de la configuration NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour les configurations qui utilisent le système NFS (Network File System), vérifiez que les clients NFS fonctionnent correctement avant de configurer l'hôte et les systèmes de stockage.
+
+Si vous disposez d'une configuration utilisant NFS, vous devez effectuer les tâches suivantes :
+
+* Assurez-vous que les clients NFS fonctionnent correctement.
++
+Pour plus d'informations sur la gestion des protocoles NFS, reportez-vous au link:https://library.netapp.com/ecm/ecm_download_file/ECMP1401220["Guide de gestion des protocoles et d'accès aux fichiers pour 7-mode"] Si vous utilisez Data ONTAP 7-mode, reportez-vous à la link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.cdot-famg-nfs/home.html["Guide de gestion des accès aux fichiers pour NFS"] Si vous utilisez clustered Data ONTAP.
+
+* Configurez les hôtes et les systèmes de stockage.
++
+Pour utiliser SnapDrive pour UNIX avec des répertoires montés sur NFS sur les systèmes de stockage, vous devez vous assurer que les répertoires du système de stockage sont correctement exportés vers l'hôte. Si votre hôte possède plusieurs interfaces IP (Internet Protocol) ainsi que des interfaces de données et de gestion vers le système de stockage, vous devez vous assurer que le répertoire est exporté correctement vers les interfaces de données et de gestion. SnapDrive for UNIX émet des avertissements à moins que toutes ces interfaces ne disposent d'autorisations de lecture ou d'écriture, ou dans le cas du `snapdrive snap connect` commande avec `-readonly` au moins des autorisations en lecture seule. Le `snapdrive snap restore` et `snapdrive snap connect` les commandes échouent si aucune de ces interfaces n'est autorisée à accéder au répertoire.
+
+

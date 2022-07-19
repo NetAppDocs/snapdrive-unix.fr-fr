@@ -1,0 +1,74 @@
+---
+permalink: linux-administration/concept_managing_snapshot_copy_using_a_wizard.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snapshot, wizard, manage, restore, disconnect 
+summary: Un assistant permet de gérer les copies Snapshot. Cet assistant vous guide dans un ensemble de questions et vous aide à effectuer les opérations de connexion Snap, de restauration rapide et de déconnexion SNAP. 
+---
+= Gestion des copies Snapshot à l'aide d'un assistant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un assistant permet de gérer les copies Snapshot. Cet assistant vous guide dans un ensemble de questions et vous aide à effectuer les opérations de connexion Snap, de restauration rapide et de déconnexion SNAP.
+
+Vous pouvez exécuter l'assistant à l'aide de `snapdrive snap wizard` commande.
+
+Le tableau suivant répertorie les différentes opérations et les commandes correspondantes à exécuter l'assistant. Après le lancement de l'assistant, suivez les étapes de la fenêtre de l'application.
+
+|===
+| Fonctionnement | Commande 
+
+
+ a| 
+Restauration Snapshot
+ a| 
+`snapdrive snap wizard restore`
+
+
+
+ a| 
+Connexion Snapshot
+ a| 
+`snapdrive snap wizard connect`
+
+
+
+ a| 
+Opération de connexion Snapshot pour le système de fichiers avec le volume du système de stockage
+
+
+
+ a| 
+Connexion de snapshot pour le groupe de disques
+
+
+
+ a| 
+Déconnexion Snapshot pour la LUN
+ a| 
+`snapdrive snap wizard disconnect`
+
+
+
+ a| 
+Déconnexion de l'instantané d'un groupe de disques
+
+
+
+ a| 
+Déconnexion Snapshot pour le volume hôte
+
+
+
+ a| 
+Déconnexion Snapshot pour le système de fichiers
+
+|===
+*Limitations :* dans SnapDrive pour UNIX 4.1 et versions ultérieures, le `snapdrive snap wizard` la commande présente les limites suivantes :
+
+* La SnapRestore basée sur les volumes n'est pas prise en charge par le système `snap wizard restore` commande.
+* Le volume FlexClone® n'est pas pris en charge avec le `snap wizard connect` commande.
+* Les opérations sur les spécifications de fichier qui ne répondent pas sont prises en charge par `snap wizard` commandes.
+

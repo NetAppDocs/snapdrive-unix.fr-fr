@@ -1,0 +1,20 @@
+---
+permalink: solaris/reference_storage_disconnect_of_disk_group_fails.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, disconnect, disk, group, fail 
+summary: 'Sur les systèmes de stockage utilisant Solaris version 10, Update 10 ou version ultérieure, la commande SnapDrive pour UNIX pour supprimer et déconnecter les groupes de disques échoue sans l"option -full. La commande de suppression et de déconnexion échoue car les volumes hôtes ne sont pas complètement déconnectés ou supprimés.' 
+---
+= La déconnexion du stockage du groupe de disques échoue
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sur les systèmes de stockage utilisant Solaris version 10, Update 10 ou version ultérieure, la commande SnapDrive pour UNIX pour supprimer et déconnecter les groupes de disques échoue sans l' `-full` option. La commande de suppression et de déconnexion échoue car les volumes hôtes ne sont pas complètement déconnectés ou supprimés.
+
+
+
+== Solution de contournement
+
+Exécutez le `-full` commande permettant de déconnecter tous les systèmes de fichiers et les volumes hôtes associés.

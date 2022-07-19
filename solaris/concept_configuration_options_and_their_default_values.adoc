@@ -1,0 +1,1027 @@
+---
+permalink: solaris/concept_configuration_options_and_their_default_values.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, configuration, default, value 
+summary: Vous pouvez déterminer les variables configurables actuelles et leurs paramètres en exécutant la commande SnapDrive config show. 
+---
+= Les options de configuration et leurs valeurs par défaut
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez déterminer les variables configurables actuelles et leurs paramètres en exécutant le `snapdrive config show` commande.
+
+Les éléments configurables pris en charge et leurs paramètres par défaut peuvent varier selon les systèmes d'exploitation hôtes et les différentes versions de SnapDrive pour UNIX. Par exemple, sous Solaris, le chemin par défaut est `/var/log/...`
+
+Le tableau suivant décrit les paramètres du `snapdrive.conf` fichier :
+
+|===
+| Variable | Description 
+
+
+ a| 
+`lunpath-monitor-frequency`
+ a| 
+Spécification de la fréquence à laquelle SnapDrive for UNIX corrige automatiquement les chemins LUN. La valeur par défaut est 24 heures.
+
+
+
+ a| 
+`blacklist-interfaces`
+ a| 
+Permet de spécifier, lorsqu'il existe plusieurs interfaces Ethernet, les interfaces que vous ne souhaitez pas utiliser, afin de réduire le temps d'opération.
+
+Si la configuration comporte plusieurs interfaces Ethernet, SnapDrive for UNIX recherche parfois dans la liste des interfaces pour déterminer si l'interface peut envoyer une requête ping. Si l'interface ne parvient pas à envoyer de commande ping, elle tente cinq fois avant de vérifier l'interface suivante. L'opération prend donc plus de temps.
+
+Si vous souhaitez que SnapDrive ignore certaines interfaces, vous pouvez spécifier ces interfaces dans le `blacklist-interfaces` paramètre. Cela réduit le temps de fonctionnement.
+
+
+
+ a| 
+`all-access-if-rbac-unspecified=on`
+ a| 
+Spécifie les autorisations de contrôle d'accès pour chaque hôte sur lequel SnapDrive for UNIX s'exécute en entrant la chaîne d'autorisation dans un fichier de contrôle d'accès. La chaîne que vous spécifiez contrôle les copies Snapshot SnapDrive pour UNIX ainsi que d'autres opérations de stockage qu'un hôte peut exécuter sur un système de stockage. (Ces autorisations d'accès n'affectent pas les opérations d'affichage ou de liste.)
+
+Définissez cette valeur sur l'une ou l'autre `on` ou `off` où ?
+
+* `on` Spécifie que SnapDrive pour UNIX active toutes les autorisations d'accès si aucun fichier d'autorisation de contrôle d'accès n'existe sur le système de stockage. La valeur par défaut est on.
+* `off` indique que le système de stockage autorise l'hôte uniquement les autorisations mentionnées dans le fichier d'autorisations de contrôle d'accès.
+
+
+Si vous fournissez un fichier de contrôle d'accès, cette option n'a aucun effet.
+
+
+
+ a| 
+`allow-partial-clone-connect=on`
+ a| 
+SnapDrive pour UNIX vous permet de vous connecter à un sous-ensemble de systèmes de fichiers ou uniquement au volume hôte du groupe de disques cloné.
+
+Définissez cette valeur sur `on` ou `off`:
+
+* `on` Indique que SnapDrive pour UNIX permet de se connecter à un sous-ensemble de systèmes de fichiers ou uniquement au volume hôte du groupe de disques cloné.
+* `off` Détermine que SnapDrive pour UNIX ne peut pas se connecter à un sous-ensemble de systèmes de fichiers ou uniquement au volume hôte du groupe de disques cloné.
+
+
+
+
+ a| 
+`audit-log-file="/var/log/sd-audit.log"`
+ a| 
+Spécifie l'emplacement où SnapDrive for UNIX écrit le fichier journal d'audit.
+
+La valeur par défaut dépend de votre système d'exploitation hôte. Le chemin indiqué dans l'exemple est le chemin par défaut pour un hôte Solaris.
+
+
+
+ a| 
+`audit-log-max-size=20480`
+ a| 
+Indique la taille maximale, en octets, du fichier journal d'audit. Lorsque le fichier atteint cette taille, SnapDrive pour UNIX le renomme et lance un nouveau journal d'audit. La valeur par défaut est `20480` octets. Étant donné que SnapDrive pour UNIX ne démarre jamais un nouveau fichier journal au milieu d'une opération, la taille correcte du fichier peut varier légèrement de la valeur indiquée ici.
+
+
+NOTE: Vous devez utiliser la valeur par défaut. Si vous décidez de modifier la valeur par défaut, n'oubliez pas qu'un trop grand nombre de fichiers journaux peut prendre de l'espace sur votre disque et éventuellement affecter les performances.
+
+
+
+ a| 
+`audit-log-save=2`
+ a| 
+Détermine le nombre d'anciens fichiers journaux d'audit que SnapDrive for UNIX doit enregistrer. Une fois cette limite atteinte, SnapDrive for UNIX supprime le fichier le plus ancien et en crée un nouveau.
+
+SnapDrive pour UNIX fait pivoter ce fichier en fonction de la valeur spécifiée dans `audit-log-save` variable. La valeur par défaut est `2`.
+
+
+NOTE: Vous devez utiliser la valeur par défaut. Si vous décidez de modifier la valeur par défaut, n'oubliez pas qu'un trop grand nombre de fichiers journaux peut prendre de l'espace sur votre disque et éventuellement affecter les performances.
+
+
+
+ a| 
+`autosupport-enabled`
+ a| 
+Détermine que l'option `autosupport-enabled` est `on` par défaut.
+
+Cette option est activée par défaut pour stocker les informations AutoSupport dans le journal système de gestion des événements (EMS) du système de stockage.
+
+
+NOTE: SnapDrive 4.2 pour UNIX et les versions ultérieures n'ont pas la possibilité `autosupport-filer`.
+
+
+
+ a| 
+`available-lun-reserve=8`
+ a| 
+Spécifie le nombre de LUN que l'hôte doit être prêt à créer une fois l'opération SnapDrive actuelle pour UNIX terminée. Si peu de ressources du système d'exploitation sont disponibles pour créer le nombre de LUN spécifié, SnapDrive pour UNIX demande des ressources supplémentaires, en fonction de la valeur fournie dans `_enable-implicit-host-preparation_` variable.
+
+La valeur par défaut est `8`.
+
+[NOTE]
+====
+Cette variable ne s'applique qu'aux systèmes qui nécessitent une préparation de l'hôte avant de pouvoir créer des LUN. Les hôtes Solaris nécessitent cette préparation.
+
+Cette variable est utilisée dans les configurations qui incluent des LUN.
+
+====
+
+
+ a| 
+`bypass-snapdrive-clone-generated-check`
+ a| 
+Spécifie que la suppression de la SnapDrive générée ou non snapdrive a été générée.
+
+Définissez cette valeur sur l'une ou l'autre `on` ou `off` où ?
+
+* `on` - Spécifie que SnapDrive pour UNIX permet de supprimer le volume FlexClone de la copie FlexClone générée par snapdrive ou non.
+*  `off` - Spécifie que SnapDrive pour UNIX permet de supprimer uniquement le volume FlexClone du volume généré par snapdrive. La valeur par défaut est `off`.
+
+
+
+
+ a| 
+`check-export-permission-nfs-clone`
+ a| 
+Détermine que la définition de l'autorisation d'exportation NFS autorise/désactive la création d'un clonage dans l'hôte secondaire (hôte qui ne dispose pas d'autorisations d'exportation sur le volume parent) ou dans le système de stockage.
+
+* `on` - SnapDrive for UNIX vérifie l'autorisation d'exportation appropriée sur le volume pour l'hôte secondaire. La valeur par défaut est on.
+* `off` - SnapDrive pour UNIX ne vérifie pas l'autorisation d'exportation appropriée sur le volume pour l'hôte secondaire.
+
+
+SnapDrive pour UNIX n'autorise pas le clonage s'il n'existe pas d'autorisation d'exportation pour un volume d'une entité NFS. Pour surmonter cette situation, désactivez cette variable dans l' `snapdrive.conf` fichier. Suite à l'opération de clonage, SnapDrive fournit des autorisations d'accès appropriées sur le volume cloné.
+
+Réglage de la valeur sur `off` Permet à la protection secondaire de fonctionner dans clustered Data ONTAP.
+
+
+
+ a| 
+`cluster-operation-timeout-secs=600`
+ a| 
+Spécifie le délai d'expiration du fonctionnement du cluster hôte, en secondes. Vous devez définir cette valeur lors de l'utilisation des opérations sur les nœuds distants et les paires haute disponibilité afin de déterminer quand le délai d'attente du fonctionnement de SnapDrive pour UNIX doit être écoulé. La valeur par défaut est `600` secondes.
+
+Autre que le nœud non maître, le nœud maître du cluster hôte peut également être le nœud distant, si l'opération SnapDrive pour UNIX est lancée à partir d'un nœud non maître.
+
+Si les opérations SnapDrive pour UNIX effectuées sur un nœud du cluster hôte dépassent la valeur définie ou si la valeur par défaut est de 600 secondes (si vous ne définissez pas de valeur), l'opération s'exécute avec le message suivant :
+
+`Remote Execution of command on slave node sfrac-57 timed out. Possible reason could be that timeout is too less for that system. You can increase the cluster connect timeout in snapdrive.conf file. Please do the necessary cleanup manually. Also, please check the operation can be restricted to lesser jobs to be done so that time required is reduced.`
+
+
+
+ a| 
+`contact-http-port=80`
+ a| 
+Spécifie le port HTTP à utiliser pour communiquer avec un système de stockage. La valeur par défaut est `80`.
+
+
+
+ a| 
+`contact-ssl-port=443`
+ a| 
+Spécifie le port SSL à utiliser pour communiquer avec un système de stockage. La valeur par défaut est `443`.
+
+
+
+ a| 
+`contact-http-port-sdu-daemon=4094`
+ a| 
+Spécifie le port HTTP à utiliser pour communiquer avec le démon SnapDrive pour UNIX. La valeur par défaut est `4094`.
+
+
+
+ a| 
+`contact-http-dfm-port=8088`
+ a| 
+Spécifie le port HTTP à utiliser pour communiquer avec un serveur Operations Manager. La valeur par défaut est `8088`.
+
+
+
+ a| 
+`contact-ssl-dfm-port=8488`
+ a| 
+Spécifie le port SSL à utiliser pour communiquer avec un serveur Operations Manager. La valeur par défaut est `8488`.
+
+
+
+ a| 
+`contact-viadmin-port=8043`
+ a| 
+Spécifie le port HTTP/HTTPS pour communiquer avec le serveur d'administration virtuelle. La valeur par défaut est `8043`.
+
+
+NOTE: Cette variable est disponible pour la prise en charge des LUN RDM.
+
+
+
+ a| 
+`datamotion-cutover-wait=120`
+ a| 
+Spécifie le nombre de secondes pendant lesquelles SnapDrive pour UNIX attend la fin des opérations DataMotion for vFiler (phase de mise en service), puis retente les commandes SnapDrive pour UNIX. La valeur par défaut est `120` secondes.
+
+
+
+ a| 
+`dfm-api-timeout=180`
+ a| 
+Spécifie le nombre de secondes que SnapDrive pour UNIX attend que l'API DFM retourne. La valeur par défaut est `180` secondes.
+
+
+
+ a| 
+`dfm-rbac-retries=12`
+ a| 
+Spécifie le nombre de fois où SnapDrive for UNIX vérifie les tentatives d'accès pour une actualisation d'Operations Manager. La valeur par défaut est `12`.
+
+
+
+ a| 
+`dfm-rbac-retry-sleep-secs=15`
+ a| 
+Spécifie le nombre de secondes d'attente de SnapDrive pour UNIX avant de réessayer d'effectuer une vérification d'accès pour une actualisation d'Operations Manager. La valeur par défaut est `15`.
+
+
+
+ a| 
+`default-noprompt=off`
+ a| 
+Indiquez si vous souhaitez que le système `-noprompt` option à disponibilité. La valeur par défaut est `off` (non disponible).
+
+Si vous définissez cette option sur onSnapDrive pour UNIX, vous n'êtes pas invité à confirmer une action demandée par `-force`.
+
+
+
+ a| 
+`device-retries=3`
+ a| 
+Spécifie le nombre de demandes que SnapDrive pour UNIX peut effectuer sur le périphérique sur lequel réside la LUN. La valeur par défaut est `3`.
+
+Dans des circonstances normales, la valeur par défaut doit être adéquate. Dans d'autres cas, les requêtes LUN pour une opération de création d'instantanés peuvent échouer car le système de stockage est exceptionnellement occupé.
+
+Si les requêtes LUN échouent, même si les LUN sont en ligne et correctement configurées, vous pouvez augmenter le nombre de tentatives.
+
+Cette variable est utilisée dans les configurations qui incluent des LUN.
+
+
+NOTE: Vous devez configurer la même valeur pour le `device-retries` variable sur tous les nœuds du cluster hôte. Dans le cas contraire, la détection de périphériques impliquant plusieurs nœuds de cluster hôte peut échouer sur certains nœuds et réussir sur d'autres.
+
+
+
+ a| 
+`device-retry-sleep-secs=1`
+ a| 
+Spécifie le nombre de secondes que SnapDrive pour UNIX attend entre les requêtes relatives au périphérique sur lequel réside la LUN. La valeur par défaut est `1` deuxième.
+
+Dans des circonstances normales, la valeur par défaut doit être adéquate. Dans d'autres cas, les requêtes LUN pour une opération de création d'instantanés peuvent échouer car le système de stockage est exceptionnellement occupé.
+
+Si les requêtes LUN échouent, même si les LUN sont en ligne et correctement configurées, vous pouvez augmenter le nombre de secondes entre les tentatives.
+
+Cette variable est utilisée dans les configurations qui incluent des LUN.
+
+
+NOTE: Vous devez configurer la même valeur pour le `device-retry-sleep-secs` option sur tous les nœuds du cluster hôte Dans le cas contraire, la détection de périphériques impliquant plusieurs nœuds de cluster hôte peut échouer sur certains nœuds et réussir sur d'autres.
+
+
+
+ a| 
+`default-transport=FCP`
+ a| 
+Spécifie le protocole utilisé par SnapDrive pour UNIX comme type de transport lors de la création de stockage, si une décision est requise. Les valeurs acceptables sont iscsi ou FCP.
+
+
+NOTE: Si un hôte est configuré pour un seul type de transport et que ce type est pris en charge par SnapDrive pour UNIX, SnapDrive pour UNIX utilise ce type de transport, quel que soit le type spécifié dans `snapdrive.conf` fichier.
+
+
+NOTE: Si les opérations SnapDrive pour UNIX impliquent des groupes de disques partagés et des systèmes de fichiers, vous devez spécifier FCP pour la variable de transport par défaut sur tous les nœuds du cluster hôte. Dans le cas contraire, la création du stockage échoue.
+
+
+
+ a| 
+`enable-alua=on`
+ a| 
+Détermine que le protocole ALUA est pris en charge pour les chemins d'accès multiples sur le groupe initiateur. Les systèmes de stockage doivent être des paires haute disponibilité et un état de basculement de paire haute disponibilité dans `_single-image_` mode.
+
+* La valeur par défaut est `on` Pour prendre en charge ALUA pour igroup
+* Vous pouvez désactiver la prise en charge ALUA en définissant l'option `off`
+
+
+
+
+ a| 
+`enable-implicit-host-preparation=on`
+ a| 
+Détermine si SnapDrive pour UNIX demande implicitement la préparation de l'hôte pour les LUN ou vous informe qu'il est nécessaire et qu'il quitte.
+
+*  `on` - SnapDrive pour UNIX demande implicitement à l'hôte de créer plus de ressources, si la quantité de ressources disponible est insuffisante pour créer le nombre requis de LUN. Le nombre de LUN créées est spécifié dans le `_available-lun-reserve_` variable. La valeur par défaut est `on`.
+* `off` - SnapDrive pour UNIX vous informe si une préparation d'hôte supplémentaire est nécessaire pour la création de LUN et SnapDrive quitte l'opération. Vous pouvez ensuite effectuer les opérations nécessaires pour libérer les ressources nécessaires à la création de LUN. Par exemple, vous pouvez exécuter le `snapdrive config prepare luns` commande. Une fois la préparation terminée, vous pouvez entrer de nouveau la commande Current SnapDrive for UNIX.
+
+
+
+NOTE: Cette variable ne s'applique qu'aux systèmes où la préparation de l'hôte est nécessaire avant de pouvoir créer des LUN pour les hôtes Solaris qui nécessitent la préparation. Cette variable est utilisée uniquement dans les configurations qui incluent des LUN.
+
+
+
+ a| 
+`enable-migrate-nfs-version`
+ a| 
+Permet de cloner/restaurer à l'aide de la version supérieure de NFS.
+
+Dans un environnement utilisant NFSv4 uniquement, lorsque les opérations de gestion des snapshots telles que le clonage et la restauration sont effectuées avec une copie Snapshot créée sur NFSv3, l'opération de gestion des snapshots échoue.
+
+La valeur par défaut est `off`. Au cours de cette migration, seule la version du protocole est prise en compte et d'autres options telles que `rw` et `largefiles` Ne sont pas pris en compte par SnapDrive pour UNIX.
+
+Par conséquent, seule la version NFS pour la spécification de fichier NFS correspondante est ajoutée dans le `/etc/fstab` fichier. Assurez-vous que la version NFS appropriée est utilisée pour monter la spécification de fichier à l'aide de `-o vers=3` Pour NFSv3 et `-o vers=4` Pour NFSv4. Si vous souhaitez migrer la spécification de fichier NFS avec toutes les options de montage, il est recommandé d'utiliser `-mntopts` dans les opérations de gestion des instantanés. Il est obligatoire de l'utiliser `nfs` Dans la valeur d'attribut du protocole d'accès dans les règles d'export policy du volume parent pendant la migration dans clustered Data ONTAP .
+
+
+NOTE: Assurez-vous que vous utilisez uniquement le `nfsvers` ou `vers` Commandes comme options de montage, pour vérifier la version de NFS.
+
+
+
+ a| 
+`enable-ping-to-check-filer-reachability`
+ a| 
+Si l'accès au protocole ICMP est désactivé ou si des paquets ICMP sont supprimés entre l'hôte et le réseau du système de stockage sur lequel SnapDrive for UNIX est déployé, cette variable doit être définie sur `off`, Afin que SnapDrive pour UNIX ne commande pas de ping pour vérifier si le système de stockage est accessible ou non. Si cette variable est définie sur on seule l'opération de connexion SnapDrive SNAP ne fonctionne pas en raison de l'échec de la commande ping. Par défaut, cette variable est définie sur `on`
+
+
+
+ a| 
+`enable-split-clone=off`
+ a| 
+Permet le fractionnement des volumes ou des LUN clonés lors des opérations de connexion Snapshot et de déconnexion Snapshot, si cette variable est définie sur `on` ou `sync`. Vous pouvez définir les valeurs suivantes pour cette variable :
+
+* `on` - Permet une séparation asynchrone de volumes ou de LUN clonés.
+* `sync` - Permet un fractionnement synchrone des volumes ou des LUN clonés.
+*  `off` - Désactive le fractionnement des volumes ou des LUN clonés. La valeur par défaut est `off`.
+
+
+Si vous définissez cette valeur sur `on` ou `sync` Au cours de l'opération de connexion Snapshot et hors connexion pendant l'opération de déconnexion Snapshot, SnapDrive pour UNIX ne supprime pas le volume d'origine ou la LUN présent dans la copie Snapshot.
+
+Vous pouvez également séparer les volumes ou les LUN clonés à l'aide de `-split` option.
+
+
+
+ a| 
+`enforce-strong-ciphers=off`
+ a| 
+Définissez cette variable sur `on` Pour que le démon SnapDrive force TLSv1 à communiquer avec le client.
+
+Il améliore la sécurité de la communication entre le client et le démon SnapDrive en utilisant un meilleur chiffrement.
+
+Par défaut, cette option est définie sur `off`.
+
+
+
+ a| 
+`filer-restore-retries=140`
+ a| 
+Spécifie le nombre de fois que SnapDrive tente de restaurer une copie Snapshot sur un système de stockage en cas de défaillance durant la restauration. La valeur par défaut est `140`.
+
+Dans des circonstances normales, la valeur par défaut doit être adéquate. Dans d'autres cas, cette opération peut tomber en panne, car le système de stockage est exceptionnellement occupé. Si le problème se maintient même si les LUN sont en ligne et correctement configurées, vous pouvez augmenter le nombre de tentatives.
+
+
+
+ a| 
+`filer-restore-retry-sleep-secs=15`
+ a| 
+Spécifie le nombre de secondes que SnapDrive pour UNIX attend entre les tentatives de restauration d'une copie Snapshot. La valeur par défaut est `15` secondes.
+
+Dans des circonstances normales, la valeur par défaut doit être adéquate. Dans d'autres cas, cette opération peut tomber en panne, car le système de stockage est exceptionnellement occupé. Si le problème se maintient même si les LUN sont en ligne et correctement configurées, vous pouvez augmenter le nombre de secondes entre les tentatives.
+
+
+
+ a| 
+`filesystem-freeze-timeout-secs=300`
+ a| 
+Spécifie le nombre de secondes pendant lesquelles SnapDrive pour UNIX attend entre les tentatives d'accès au système de fichiers. La valeur par défaut est `300` secondes.
+
+Cette variable est utilisée uniquement dans les configurations qui incluent des LUN.
+
+
+
+ a| 
+`flexclone-writereserve-enabled=on`
+ a| 
+Il peut prendre l'une des valeurs suivantes :
+
+* `on`
+* `off`
+
+
+Détermine la réservation d'espace du volume FlexClone créé. Les valeurs acceptables sont `on` et `off`, selon les règles suivantes.
+
+* Réservation: On
+* Optimal : fichier
+* Sans restriction : volume
+* Réservation: Désactivé
+* Optimal : fichier
+* Sans restriction : aucune
+
+
+
+
+ a| 
+`fstype=vxfs For Solaris (x86), fstype=ufs`
+ a| 
+Indique le type de système de fichiers que vous souhaitez utiliser pour les opérations SnapDrive sous UNIX. Le système de fichiers doit être un type pris en charge par SnapDrive pour UNIX pour votre système d'exploitation.
+
+Sous Solaris, la valeur par défaut dépend de l'architecture que l'hôte exécute. Ce peut être non plus `vxfs` ou `ufs`.
+
+Vous pouvez également spécifier le type de système de fichiers que vous souhaitez utiliser à l'aide de `-fstype` Option via l'interface de ligne de commande.
+
+
+
+ a| 
+`lun-onlining-in-progress-sleep-secs=3`
+ a| 
+Spécifie le nombre de secondes entre les tentatives de remise en ligne d'un LUN après une opération SnapRestore basée sur le volume. La valeur par défaut est `3`.
+
+
+
+ a| 
+`lun-on-onlining-in-progress-retries=40`
+ a| 
+Spécifie le nombre de tentatives de remise en ligne d'un LUN après une opération SnapRestore basée sur le volume. La valeur par défaut est `40`.
+
+
+
+ a| 
+`mgmt-retry-sleep-secs=2`
+ a| 
+Spécifie le nombre de secondes d'attente de SnapDrive pour UNIX avant de tenter de nouveau une opération sur le canal de contrôle de gestion ONTAP. La valeur par défaut est `2` secondes.
+
+
+
+ a| 
+`mgmt-retry-sleep-long-secs=90`
+ a| 
+Spécifie le nombre de secondes d'attente de SnapDrive pour UNIX avant de tenter de nouveau une opération sur le canal de contrôle de gestion ONTAP après qu'un message d'erreur de basculement se produise. La valeur par défaut est `90` secondes.
+
+
+
+ a| 
+`multipathing-type=NativeMPIO`
+ a| 
+Spécifie le logiciel de chemins d'accès multiples à utiliser. La valeur par défaut dépend du système d'exploitation hôte. Cette variable ne s'applique que si l'une des affirmations suivantes est vraie :
+
+* Plusieurs solutions de chemins d'accès multiples sont disponibles.
+* Les configurations incluent des LUN.
+
+
+Vous pouvez définir les valeurs suivantes pour cette variable :
+
+Pour Solaris 10, mise à jour 1, vous pouvez définir la valeur mpxio pour activer le multipathing à l'aide de Solaris MPxIO.
+
+Pour activer le multipathing à l'aide de MPxIO, vous devez ajouter les lignes suivantes à la `_/kernel/drv/scsi_vhci.conf` fichier :
+
+[listing]
+----
+device-type-scsi-options-list = "NETAPP LUN", "symmetric-option"; symmetric-option = 0x1000000;
+----
+Ensuite, procédez comme suit pour effectuer un démarrage de reconfiguration pour activer les modifications :
+
+. Connectez-vous à la console en tant que root.
+. À l'invite du shell, entrez la commande suivante :
++
+`*# shutdown -y -i0*`
+
+. À l'invite OK, entrez la commande suivante :
++
+`*ok> boot -r*`
+
+
+
+Si les opérations SnapDrive pour UNIX impliquent des groupes de disques partagés et des systèmes de fichiers, définissez cette variable sur l'une des valeurs suivantes :
+
+* Si vous ne souhaitez pas de chemins d'accès multiples, définissez la valeur sur `none`.
+* Si vous souhaitez que VxDMP soit explicitement disponible sur un système sur lequel plusieurs solutions de chemins d'accès multiples sont disponibles, définissez la valeur sur `DMP`.
+
+
+
+NOTE: S'assurer que le `_multipathing-type_` la variable est définie sur la même valeur pour tous les nœuds du cluster hôte.
+
+
+
+ a| 
+`override-vbsr-snapmirror-check`
+ a| 
+Vous pouvez définir la valeur du `_override-vbsr-snapmirror-check_` variable à `on` Pour remplacer la relation SnapMirror, lorsqu'une copie Snapshot à restaurer est antérieure à la copie Snapshot de base SnapMirror, pendant la SnapRestore basée sur les volumes (VBSR). Vous pouvez utiliser cette variable uniquement si le gestionnaire de Data Fabric OnCommand (DFM) n'est pas configuré.
+
+Par défaut, la valeur est définie sur `off`. Cette variable n'est pas applicable à clustered Data ONTAP version 8.2 ou ultérieure.
+
+
+
+ a| 
+`PATH="/sbin:/usr/sbin:/bin:/usr/lib/vxvm/ bin:/usr/bin:/opt/NTAPontap/SANToolkit/bin:/opt/NTAPsanlun/bin:/opt/VRTS/bin:/etc/vx/bi n"`
+ a| 
+Indique le chemin de recherche utilisé par le système pour rechercher des outils.
+
+Vous devez vérifier que cette option est correcte pour votre système. Si elle n'est pas correcte, remplacez-la par le chemin approprié.
+
+La valeur par défaut peut varier en fonction de votre système d'exploitation. Ce chemin est le chemin par défaut pour l'hôte Solaris.
+
+
+
+ a| 
+`passwordfile="/opt/NTAPsnapdrive/.pwfile"`
+ a| 
+Indique l'emplacement du fichier de mot de passe pour la connexion utilisateur des systèmes de stockage.
+
+La valeur par défaut peut varier en fonction de votre système d'exploitation.
+
+Le chemin par défaut pour Solaris est `/opt/NTAPsnapdrive/.pwfile`
+
+Le chemin par défaut pour Linux est `/opt/NetApp/snapdrive/.pwfile`
+
+
+
+ a| 
+`ping-interfaces-with-same-octet`
+ a| 
+Évite les requêtes ping inutiles à travers toutes les interfaces disponibles de l'hôte qui peuvent avoir des adresses IP de sous-réseau différentes configurées. Si cette variable est définie sur `on`, SnapDrive pour UNIX prend uniquement en compte les mêmes adresses IP de sous-réseau du système de stockage et envoie une commande ping au système de stockage pour vérifier la réponse de l'adresse. Si cette variable est définie sur `off`, SnapDrive prend toutes les adresses IP disponibles dans le système hôte et envoie une commande ping au système de stockage pour vérifier la résolution de l'adresse via chaque sous-réseau, qui peut être détecté localement comme une attaque ping.
+
+
+
+ a| 
+`prefix-filer-lun`
+ a| 
+Spécifie le préfixe qu'SnapDrive pour UNIX s'applique à tous les noms de LUN qu'il génère en interne. La valeur par défaut de ce préfixe est une chaîne vide.
+
+Cette variable permet aux noms de toutes les LUN créées à partir de l'hôte actuel, mais pas explicitement nommées sur une ligne de commande SnapDrive pour UNIX, de partager une chaîne initiale.
+
+
+NOTE: Cette variable est utilisée uniquement dans les configurations qui incluent des LUN.
+
+
+
+ a| 
+`prefix-clone-name`
+ a| 
+La chaîne indiquée est ajoutée avec le nom du volume du système de stockage d'origine, pour créer un nom pour le volume FlexClone.
+
+
+
+ a| 
+`prepare-lun-count=16`
+ a| 
+Spécifie le nombre de LUN que SnapDrive pour UNIX doit préparer à créer. SnapDrive pour UNIX vérifie cette valeur lorsqu'il reçoit une demande de préparation de l'hôte pour la création de LUN supplémentaires.
+
+La valeur par défaut est `16`, Ce qui signifie que le système peut créer 16 LUN supplémentaires une fois la préparation terminée.
+
+
+NOTE: Cette variable ne s'applique qu'aux systèmes pour lesquels une préparation de l'hôte est nécessaire avant de pouvoir créer des LUN. Cette variable est utilisée uniquement dans les configurations qui incluent des LUN. Les hôtes Solaris nécessitent cette préparation.
+
+
+
+ a| 
+`rbac-method=dfm`
+ a| 
+Spécifie les méthodes de contrôle d'accès. Les valeurs possibles sont `native` et `dfm`.
+
+Si la variable est définie sur `native`, le fichier de contrôle d'accès qui est stocké dans `/vol/vol0/sdprbac/sdhost-name.prbac` ou `/vol/vol0/sdprbac/sdgeneric-name.prbac` est utilisé pour les vérifications d'accès.
+
+Si la variable est définie sur `dfm`, Operations Manager est une condition préalable. Dans ce cas, SnapDrive for UNIX effectue des vérifications d'accès à Operations Manager.
+
+
+
+ a| 
+`rbac-cache=off`
+ a| 
+Indique s'il faut activer ou désactiver le cache. SnapDrive pour UNIX conserve un cache de requêtes de vérification d'accès et les résultats correspondants. SnapDrive pour UNIX utilise ce cache uniquement lorsque tous les serveurs Operations Manager configurés sont en panne.
+
+Vous pouvez définir la valeur de la variable sur l'une ou l'autre `on` pour activer le cache, ou à `off` pour le désactiver. La valeur par défaut est `off`, Qui configure SnapDrive pour UNIX pour utiliser Operations Manager et l'ensemble `_rbac-method_` variable de configuration à `dfm`.
+
+
+
+ a| 
+`rbac-cache-timeout`
+ a| 
+Spécifie la période d'expiration du cache rbac et est applicable uniquement lorsque `_rbac-cache_` est activé. La valeur par défaut est `24` heures SnapDrive pour UNIX utilise ce cache uniquement lorsque tous les serveurs Operations Manager configurés sont en panne.
+
+
+
+ a| 
+`recovery-log-file=/var/log/sdrecovery.log`
+ a| 
+Spécifie l'emplacement où SnapDrive for UNIX écrit le fichier journal de reprise.
+
+La valeur par défaut dépend de votre système d'exploitation hôte.
+
+
+
+ a| 
+`recovery-log-save=20`
+ a| 
+Indique le nombre d'anciens fichiers journaux de récupération que SnapDrive pour UNIX doit enregistrer. Une fois cette limite atteinte, SnapDrive pour UNIX supprime le fichier le plus ancien lorsqu'il en crée un nouveau.
+
+SnapDrive pour UNIX fait pivoter ce fichier journal chaque fois qu'il démarre une nouvelle opération. La valeur par défaut est `20`.
+
+
+NOTE: Vous devez utiliser la valeur par défaut. Si vous décidez de modifier la valeur par défaut, n'oubliez pas qu'un trop grand nombre de fichiers journaux volumineux peut libérer de l'espace sur votre disque et éventuellement affecter les performances.
+
+
+
+ a| 
+`san-clone-method`
+ a| 
+Spécifie le type de clone que vous pouvez créer.
+
+Il peut prendre les valeurs suivantes :
+
+* `lunclone`
++
+Permet une connexion en créant un clone de la LUN dans le même volume de système de stockage. La valeur par défaut est `lunclone`.
+
+* `optimal`
++
+Permet la connexion en créant un volume FlexClone restreint du volume du système de stockage.
+
+* `unrestricted`
++
+Permet la connexion en créant un volume FlexClone illimité du volume du système de stockage.
+
+
+
+
+
+ a| 
+`secure-communication-among-clusternodes=on`
+ a| 
+Spécifie une communication sécurisée au sein des nœuds du cluster hôte pour l'exécution à distance des commandes SnapDrive for UNIX.
+
+Vous pouvez diriger SnapDrive pour UNIX afin d'utiliser RSH ou SSH en modifiant la valeur de cette variable de configuration. La méthodologie RSH ou SSH adoptée par SnapDrive pour UNIX pour l'exécution à distance est déterminée uniquement par la valeur définie dans le répertoire d'installation de `snapdrive.conf` fichier des deux composants suivants :
+
+* Hôte sur lequel l'opération SnapDrive pour UNIX est exécutée, afin d'obtenir les informations relatives au WWPN hôte et au chemin d'accès aux périphériques des nœuds distants.
++
+Par exemple : `snapdrive storage create` Exécuté sur le nœud de cluster hôte maître utilise la variable de configuration RSH ou SSH uniquement dans le local `snapdrive.conf` fichier à effectuer l'une des opérations suivantes :
+
++
+** Déterminez le canal de communication distant.
+** Exécutez le `devfsadm` commande sur les nœuds distants
+
+
+* Nœud de cluster hôte non-maître, si la commande SnapDrive for UNIX doit être exécutée à distance sur le nœud de cluster hôte maître.
++
+Pour envoyer la commande SnapDrive pour UNIX au nœud de cluster hôte maître, la variable de configuration RSH ou SSH dans le local `snapdrive.conf` Le fichier est consulté pour déterminer le mécanisme RSH ou SSH pour l'exécution de commande à distance.
+
+
+
+La valeur par défaut de `on` Signifie que SSH est utilisé pour l'exécution de commande à distance. La valeur `off` Signifie que le RSH est utilisé pour l'exécution.
+
+
+
+ a| 
+`snapcreate-cg-timeout=relaxed`
+ a| 
+Spécifie l'intervalle que le `snapdrive snap create` la commande permet à un système de stockage de terminer l'escrime. Les valeurs de cette variable sont les suivantes :
+
+* `urgent` - spécifie un court intervalle.
+* `medium` - spécifie un intervalle entre urgent et détendu.
+* `relaxed` - spécifie l'intervalle le plus long. Cette valeur est la valeur par défaut.
+
+
+Si un système de stockage ne termine pas la clôture dans le temps imparti, SnapDrive for UNIX crée une copie Snapshot en utilisant la méthodologie pour les versions Data ONTAP antérieures à 7.2.
+
+
+
+ a| 
+`snapcreate-check-nonpersistent-nfs=on`
+ a| 
+Active et désactive l'opération Snapshot create pour fonctionner avec un système de fichiers NFS non persistant. Les valeurs de cette variable sont les suivantes :
+
+* `on` - SnapDrive for UNIX vérifie si les entités NFS spécifiées dans l' `snapdrive snap create` la commande est présente dans la table de montage du système de fichiers. L'opération de création de snapshot échoue si les entités NFS ne sont pas montées de manière persistante via la table de montage du système de fichiers. Il s'agit de la valeur par défaut.
+* `off` - SnapDrive pour UNIX crée une copie Snapshot des entités NFS qui ne possèdent pas d'entrée de montage dans la table de montage du système de fichiers.
++
+L'opération de restauration Snapshot restaure et monte automatiquement le fichier NFS ou l'arborescence de répertoires que vous spécifiez.
+
+
+
+Vous pouvez utiliser le `-nopersist` dans le `snapdrive snap connect` Commande pour empêcher les systèmes de fichiers NFS d'ajouter des entrées de montage dans la table de montage du système de fichiers.
+
+
+
+ a| 
+`snapcreate-consistency-retry-sleep=1`
+ a| 
+Spécifie le nombre de secondes entre les tentatives de cohérence des copies Snapshot les plus faciles. La valeur par défaut est `1` deuxième.
+
+
+
+ a| 
+`snapconnect-nfs-removedirectories=off`
+ a| 
+Détermine si SnapDrive pour UNIX supprime ou conserve les répertoires NFS non autorisés du volume FlexClone lors de l'opération de connexion Snapshot.
+
+* `on` - Supprime les répertoires NFS non désirés (répertoires du système de stockage non mentionnés dans le `snapdrive snap connect` Commande) du volume FlexClone pendant l'opération de connexion Snapshot.
++
+Le volume FlexClone est détruit si celui-ci est vide pendant l'opération de déconnexion Snapshot.
+
+*  `off` - Conserve les répertoires indésirables du système de stockage NFS pendant l'opération de connexion Snapshot. La valeur par défaut est `off`.
++
+Lors de l'opération de déconnexion de Snapshot, seuls les répertoires du système de stockage spécifiés sont démontés de l'hôte. Si rien n'est monté du volume FlexClone sur l'hôte, le volume FlexClone est détruit pendant l'opération de déconnexion Snapshot.
+
+
+
+Si vous définissez cette variable sur `off` Lors de l'opération de connexion ou lors de l'opération de déconnexion, le volume FlexClone ne doit pas être détruit, même s'il dispose de répertoires de système de stockage non souhaités et qu'il n'est pas vide.
+
+
+
+ a| 
+`snapcreate-must-make-snapinfo-on-qtree=off`
+ a| 
+Définissez cette variable sur sur activé pour permettre à l'opération de création de Snapshot de créer des informations de copie Snapshot relatives à un qtree. La valeur par défaut est `off` (désactivé).
+
+SnapDrive pour UNIX tente toujours d'écrire snapinfo à la racine d'un qtree si les LUN sont toujours aimantées et se trouvent au niveau du qtree. Lorsque vous définissez cette variable sur activé, SnapDrive pour UNIX échoue l'opération de création de snapshots s'il ne peut pas écrire ces données. Vous ne devez définir cette variable que sur `on` Si vous répliquez des copies Snapshot à l'aide de SnapMirror qtree.
+
+
+NOTE: Les copies Snapshot de qtrees fonctionnent de la même façon que les copies Snapshot de volumes.
+
+
+
+ a| 
+`snapcreate-consistency-retries=3`
+ a| 
+Spécifie le nombre de fois que SnapDrive pour UNIX tente une vérification de cohérence sur une copie Snapshot après réception d'un message indiquant l'échec d'une vérification de cohérence.
+
+Cette variable est particulièrement utile sur les plates-formes hôtes qui n'incluent pas de fonction de gel. Cette variable est utilisée uniquement dans les configurations qui incluent des LUN.
+
+La valeur par défaut est `3`.
+
+
+
+ a| 
+`snapdelete-delete-rollback-withsnap=off`
+ a| 
+Définissez cette valeur sur `on` Pour supprimer toutes les copies Snapshot de restauration liées à une copie Snapshot. Réglez-le sur `off` pour désactiver cette fonction. La valeur par défaut est `off`.
+
+Cette variable n'est appliquée qu'au cours d'une opération de suppression Snapshot et est utilisée par le fichier journal de reprise en cas de problème d'opération.
+
+Il est préférable d'accepter le paramètre par défaut.
+
+
+
+ a| 
+`snapmirror-dest-multiple-filervolumesenabled=off`
+ a| 
+Définissez cette variable sur activé pour restaurer les copies Snapshot s'étendent sur plusieurs systèmes de stockage ou volumes sur des systèmes de stockage de destination (en miroir). Réglez-le sur `off` pour désactiver cette fonction. La valeur par défaut est `off`.
+
+
+
+ a| 
+`snaprestore-delete-rollback-afterrestore=off`
+ a| 
+Définissez cette variable sur activé pour supprimer toutes les copies Snapshot de restauration après la réussite de l'opération de restauration Snapshot. Réglez-le sur `off` pour désactiver cette fonction. La valeur par défaut est `off` (activé).
+
+Cette option est utilisée par le fichier journal de récupération si vous rencontrez un problème avec une opération.
+
+Il est préférable d'accepter la valeur par défaut.
+
+
+
+ a| 
+`snaprestore-make-rollback=on`
+ a| 
+Définissez cette valeur sur activé pour créer une copie Snapshot de restauration ou sur Désactivé pour désactiver cette fonctionnalité. La valeur par défaut est `on`.
+
+La restauration est une copie des données que SnapDrive place sur le système de stockage avant de lancer une opération de restauration Snapshot. En cas de problème pendant l'opération de restauration Snapshot, vous pouvez utiliser la copie de restauration Snapshot pour restaurer l'état des données avant le début de l'opération.
+
+Si vous ne souhaitez pas bénéficier de la sécurité supplémentaire d'une copie Snapshot restaurée au moment de la restauration, configurez cette option sur `off`. Si vous souhaitez que la restauration échoue, mais pas assez pour que votre opération de restauration snapshot échoue si vous ne pouvez pas en effectuer une, définissez la variable `snaprestore-must-makerollback` à `off`.
+
+Cette variable est utilisée par le fichier journal de récupération que vous envoyez au support technique NetApp en cas de problème.
+
+Il est préférable d'accepter la valeur par défaut.
+
+
+
+ a| 
+`snaprestore-must-make-rollback=on`
+ a| 
+Définissez cette variable sur `on` Pour provoquer l'échec d'une opération de restauration de snapshot en cas d'échec de la création de la restauration. Réglez-le sur `off` pour désactiver cette fonction. La valeur par défaut est `on`.
+
+* `on` - SnapDrive for UNIX tente de faire une copie de restauration des données du système de stockage avant de lancer l'opération de restauration Snapshot. S'il ne peut pas effectuer de copie de restauration des données, SnapDrive pour UNIX réduit de moitié l'opération de restauration Snapshot.
+* `off` - Utilisez cette valeur si vous voulez la sécurité supplémentaire d'une copie Snapshot de restauration au moment de la restauration, mais pas assez pour que l'opération de restauration Snapshot échoue si vous ne pouvez pas en faire une.
+
+
+Cette variable est utilisée par le fichier journal de récupération si vous rencontrez un problème avec une opération.
+
+Il est préférable d'accepter la valeur par défaut.
+
+
+
+ a| 
+`snaprestore-snapmirror-check=on`
+ a| 
+Définissez cette variable sur `on` pour activer `snapdrive snap restore` Commande pour vérifier le volume de destination SnapMirror. S'il est réglé sur `off`, le `snapdrive snap restore` la commande ne peut pas vérifier le volume de destination. La valeur par défaut est on.
+
+Si la valeur de cette variable de configuration est `on` Et l'état de la relation SnapMirror est `broken-off`, la restauration peut continuer.
+
+
+
+ a| 
+`space-reservations-enabled=on`
+ a| 
+Active la réservation d'espace lors de la création des LUN. Par défaut, cette variable est définie sur `on`; Par conséquent, les LUN créées par SnapDrive pour UNIX ont une réservation d'espace.
+
+Vous pouvez utiliser cette variable pour désactiver la réservation d'espace pour les LUN créées par `snapdrive snap connect` commande et `snapdrive storage create` commande. Il est préférable d'utiliser le `-reserve` et `-noreserve` Options de ligne de commande pour activer ou désactiver la réservation d'espace LUN dans le `snapdrive storage create`, `snapdrive snap connect`, et `snapdrive snap restore` commandes.
+
+SnapDrive pour UNIX crée des LUN, redimensionne le stockage, effectue des copies Snapshot et connecte ou restaure les copies Snapshot en fonction de l'autorisation de réservation d'espace spécifiée dans cette variable ou par le `of-reserve` ou `-noreserve` options de ligne de commande. Elle n'utilise pas les options de provisionnement fin côté système de stockage avant d'effectuer les tâches ci-dessus.
+
+
+
+ a| 
+`trace-enabled=on`
+ a| 
+Définissez cette variable sur activé pour activer le fichier journal de trace, ou sur `off` pour le désactiver. La valeur par défaut est `on`. L'activation de ce fichier n'a aucun impact sur les performances.
+
+
+
+ a| 
+`trace-level=7`
+ a| 
+Spécifie les types de messages écrits par SnapDrive pour UNIX dans le fichier journal de trace. Cette variable accepte les valeurs suivantes :
+
+* `1` - Enregistrer les erreurs fatales
+* `2` - Noter les erreurs d'administration
+* `3` - Enregistrer les erreurs de commande
+* `4` - Noter les avertissements
+* `5` - Enregistrer des messages d'information
+* `6` - Enregistrer en mode détaillé
+* `7` - Sortie de diagnostic complète
+
+
+La valeur par défaut est `7`.
+
+
+NOTE: Il est préférable de ne pas modifier la valeur par défaut. Définir une valeur autre que `7` ne recueille pas les informations adéquates pour un diagnostic réussi.
+
+
+
+ a| 
+`trace-log-file=/var/log/sd-trace.log`
+ a| 
+Spécifie l'emplacement où SnapDrive for UNIX écrit le fichier journal de trace.
+
+La valeur par défaut varie en fonction du système d'exploitation hôte.
+
+Le chemin indiqué dans cet exemple est le chemin par défaut pour un hôte Solaris.
+
+
+
+ a| 
+`trace-log-max-size=0`
+ a| 
+Indique la taille maximale du fichier journal en octets. Lorsque le fichier journal atteint cette taille, SnapDrive pour UNIX le renomme et lance un nouveau fichier journal.
+
+
+NOTE: Cependant, aucun nouveau fichier journal de trace n'est créé lorsque le fichier journal de trace atteint la taille maximale. Pour le fichier journal de trace du démon, un nouveau fichier journal est créé lorsque le fichier journal atteint sa taille maximale.
+
+La valeur par défaut est `0`. SnapDrive pour UNIX ne lance jamais de nouveau fichier journal au cours d'une opération. La taille réelle du fichier peut varier légèrement par rapport à la valeur indiquée ici.
+
+
+NOTE: Il est préférable d'utiliser la valeur par défaut. Si vous modifiez la valeur par défaut, n'oubliez pas qu'un trop grand nombre de fichiers journaux volumineux peut libérer de l'espace sur votre disque et éventuellement affecter les performances.
+
+
+
+ a| 
+`trace-log-save=100`
+ a| 
+Indique le nombre d'anciens fichiers journaux de trace que SnapDrive pour UNIX doit enregistrer. Une fois cette limite atteinte, SnapDrive pour UNIX supprime le fichier le plus ancien lorsqu'il en crée un nouveau. Cette variable fonctionne avec l' `_tracelog-max-size_` variable. Par défaut, `_trace-logmax- size=0_` enregistre une commande dans chaque fichier, et `_trace-log-save=100_` conserve les 100 derniers fichiers journaux.
+
+
+
+ a| 
+`use-https-to-dfm=on`
+ a| 
+Indique si vous souhaitez que SnapDrive pour UNIX utilise le cryptage SSL (HTTPS) pour communiquer avec Operations Manager. La valeur par défaut est on.
+
+
+
+ a| 
+`use-https-to-filer=on`
+ a| 
+Indique si vous souhaitez que SnapDrive pour UNIX utilise le cryptage SSL (HTTPS) lorsqu'il communique avec le système de stockage.
+
+La valeur par défaut est `on`.
+
+
+NOTE: Si vous utilisez une version de Data ONTAP antérieure à la version 7.0, vous verrez peut-être des performances plus lentes lorsque HTTPS est activé. Le ralentissement des performances n'est pas un problème si vous exécutez Data ONTAP 7.0 ou une version ultérieure.
+
+
+
+ a| 
+`use-efi-label=off`
+ a| 
+Indique si vous souhaitez que les SnapDrive créent des LUN de type `_solaris-efi_`.
+
+La valeur par défaut de ce libellé est `off` Uniquement lorsque cette étiquette est activée, `_lun-type_` de `_solaris-efi_` est créé, sinon `_lun-type_` de `_solaris_` est créé.
+
+Avec Veritas, a `_lun-type_` de `_solaris-efi_` Est nécessaire pour la création de LUN supérieures à 1 téraoctet (To).
+
+
+NOTE: L'étiquetage EFI pour les LUN de plus de 1 To, dans Solaris 10, mise à jour 10, avec les configurations Emulex Host bus adapter (HBA) requiert l'installation du correctif 146019-02 (SPARC) ou 146020 (X86) de l'architecture Solaris.
+
+
+
+ a| 
+`use-https-to-viadmin=on`
+ a| 
+Indique si vous souhaitez utiliser HTTP ou HTTPS pour communiquer avec Virtual Storage Console.
+
+
+NOTE: Cette variable est utilisée pour la prise en charge des LUN RDM.
+
+
+
+ a| 
+`vif-password-file=/opt/NetApp/snapdrive/.vifpw`
+ a| 
+Spécifie l'emplacement du fichier de mot de passe pour Virtual Storage Console.
+
+Le chemin par défaut pour Solaris est `/opt/NTAPsnapdrive/.vifpw`
+
+
+NOTE: Cette variable est utilisée pour la prise en charge des LUN RDM.
+
+
+
+ a| 
+`virtualization-operation-timeout-secs=600`
+ a| 
+Spécifie le nombre de secondes que SnapDrive pour UNIX attend pour la réponse de NetApp Virtual Storage Console pour VMware vSphere. La valeur par défaut est `600` secondes.
+
+
+NOTE: Cette variable est utilisée pour la prise en charge des LUN RDM.
+
+
+
+ a| 
+`For Solaris (SPARC) vmtype=vxvm`
+
+`For Solaris (x86) vmtype=svm`
+ a| 
+Spécifiez le type de gestionnaire de volumes à utiliser pour les opérations SnapDrive pour UNIX. Le gestionnaire de volumes doit être un type pris en charge par SnapDrive pour UNIX pour votre système d'exploitation. Les valeurs que vous pouvez définir pour cette variable sont les suivantes et la valeur par défaut varie en fonction des systèmes d'exploitation hôtes :
+
+* Solaris : `vxvm`
+
+
+Vous pouvez également spécifier le type de gestionnaire de volumes que vous souhaitez utiliser à l'aide du `-vmtype` option.
+
+
+
+ a| 
+`vol-restore`
+ a| 
+Détermine si SnapDrive pour UNIX doit effectuer une restauration snapshot basée sur les volumes (vbsr) ou une restauration SNAP à un seul fichier (umbr).
+
+Les valeurs possibles sont les suivantes :
+
+* `preview` - Spécifie que SnapDrive pour UNIX lance un mécanisme d'aperçu SnapRestore basé sur les volumes pour la spécification de fichier hôte donnée.
+* `execute` - Spécifie que SnapDrive pour UNIX produit des SnapRestore basées sur le volume pour la spécification de fichier spécifiée.
+* `off` - Désactive l'option vbsr et active l'option de bimr. La valeur par défaut est Désactivé.
++
+
+NOTE: Si la variable est définie sur Aperçu/exécution, vous ne pouvez pas remplacer ce paramètre à l'aide de l'interface de ligne de commande pour effectuer des opérations SFSR.
+
+
+
+
+
+ a| 
+`volmove-cutover-retry=3`
+ a| 
+Spécifie le nombre de tentatives de SnapDrive pour UNIX pendant la phase de transfert de volume.
+
+La valeur par défaut est `3`.
+
+
+
+ a| 
+`volmove-cutover-retry-sleep=3`
+ a| 
+Spécifie le nombre de secondes d'attente de SnapDrive pour UNIX entre l'opération volume-déplacement-mise-service-retry.
+
+La valeur par défaut est `3`.
+
+
+
+ a| 
+`volume-clone-retry=3`
+ a| 
+Spécifie le nombre de fois que SnapDrive pour UNIX tente de réduire l'opération lors de la création de FlexClone.
+
+La valeur par défaut est `3`.
+
+
+
+ a| 
+`volume-clone-retry-sleep=3`
+ a| 
+Spécifie le nombre de secondes pendant lesquelles SnapDrive pour UNIX attend entre les tentatives lors de la création de FlexClone.
+
+La valeur par défaut est `3`.
+
+|===
+*Informations connexes*
+
+xref:concept_guest_os_preparation_for_installing_sdu.adoc[Préparation du système d'exploitation invité pour l'installation de SnapDrive pour UNIX]
+
+xref:task_configuring_virtual_storage_console_in_snapdrive_for_unix.adoc[Configuration de Virtual Storage Console pour SnapDrive pour UNIX]
+
+xref:task_considerations_for_provisioning_rdm_luns.adoc[Considérations relatives au provisionnement des LUN RDM]

@@ -1,0 +1,24 @@
+---
+permalink: aix/concept_deleting_storage_using_a_wizard.html 
+sidebar: sidebar 
+keywords: delete, storage, wizard, snap, snapdrive 
+summary: 'Vous pouvez utiliser l"assistant de suppression de stockage pour effectuer certaines opérations de suppression.' 
+---
+= Suppression du stockage à l'aide d'un assistant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser l'assistant de suppression de stockage pour effectuer certaines opérations de suppression.
+
+Vous pouvez démarrer l'assistant à l'aide de `snapdrive storage wizard delete` commande.
+
+Vous pouvez supprimer les entités suivantes :
+
+* UNE LUN
+* Un groupe de disques
+* Un volume logique
+* Un système de fichiers
+

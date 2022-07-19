@@ -1,0 +1,16 @@
+---
+permalink: aix/concept_what_the_trace_log_file_is.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, trace, log, file 
+summary: Le support technique utilise le fichier journal de trace pour résoudre les problèmes. 
+---
+= Qu'est-ce que le fichier journal de trace
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le support technique utilise le fichier journal de trace pour résoudre les problèmes.
+
+L'activation du fichier journal de trace n'a aucune incidence sur les performances du système. Par défaut, ce fichier est activé. Vous pouvez désactiver en définissant le `snapdrive.conf trace-enabled` variable à `off`.

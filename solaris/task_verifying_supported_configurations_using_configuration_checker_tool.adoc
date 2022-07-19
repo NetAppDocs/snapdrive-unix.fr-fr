@@ -1,0 +1,18 @@
+---
+permalink: solaris/task_verifying_supported_configurations_using_configuration_checker_tool.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, configuration, verify 
+summary: 'L"outil de vérification de la configuration SnapDrive pour UNIX vous aide à identifier et à vérifier les configurations prises en charge pour exécuter SnapDrive pour UNIX.' 
+---
+= Vérification des configurations prises en charge
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'outil de vérification de la configuration SnapDrive pour UNIX vous aide à identifier et à vérifier les configurations prises en charge pour exécuter SnapDrive pour UNIX.
+
+L'outil de vérification de la configuration avec le fichier de données mis à jour vérifie les configurations prises en charge par SnapDrive pour UNIX et répertorie tous les composants pris en charge et non pris en charge dans le système.
+
+L'outil permet de vérifier que tous les composants nécessaires et les versions correctes sont disponibles dans l'hôte avant d'utiliser SnapDrive pour UNIX.

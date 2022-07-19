@@ -1,0 +1,37 @@
+---
+permalink: aix/concept_tasks_performed_by_snapdrive_dc.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, data, collection, utility 
+summary: 'L"utilitaire de collecte des données exécute les utilitaires de diagnostic NetApp, copie SnapDrive pour les fichiers journaux UNIX et crée un fichier compressé utilisé pour l"analyse.' 
+---
+= Tâches effectuées par snapdrive.dc
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'utilitaire de collecte des données exécute les utilitaires de diagnostic NetApp, copie SnapDrive pour les fichiers journaux UNIX et crée un fichier compressé utilisé pour l'analyse.
+
+Le `snapdrive.dc` utilitaire effectue les tâches suivantes :
+
+* Exécute le `host_info` et `filer_info` utilitaires permettant de collecter des informations sur l'hôte et les systèmes de stockage connectés à l'hôte et d'enregistrer ces informations dans un fichier compressé. Le `host_info` utilitaires et `filer_info` Utilitaire fourni avec le package d'installation de SnapDrive pour UNIX.
++
+Par exemple, onAIX, il s'agit du `_aix_info_` informatique.
+
+* Crée un répertoire appelé /tmp/netapp/ntap_snapdrive_name. L'outil place des copies des fichiers suivants dans le répertoire :
++
+** SnapDrive pour la version UNIX, comme indiqué en exécutant la commande SnapDrive version
+** Le `snapdrive.conf` fichier
+** Les fichiers journaux d'audit
+** Les fichiers journaux de trace
+** Les fichiers journaux de récupération
+** Les fichiers créés par l'utilitaire Host_info
+
+
+* Crée un fichier compressé du contenu du répertoire et affiche un message indiquant que vous envoyez ce fichier au support technique de NetApp.
+
+
+*Informations connexes*
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1119223["Guide d'installation et de configuration d'AIX Host Utilities 6.0"]

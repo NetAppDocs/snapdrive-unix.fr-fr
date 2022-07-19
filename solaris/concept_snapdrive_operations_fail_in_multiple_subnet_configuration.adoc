@@ -1,0 +1,20 @@
+---
+permalink: solaris/concept_snapdrive_operations_fail_in_multiple_subnet_configuration.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, fail, multiple, subnet, configuration 
+summary: 'Les opérations SnapDrive échouent dans plusieurs configurations de sous-réseau si l"accès au protocole \(ICMP\) de message de contrôle Internet est désactivé ou si les paquets ICMP sont supprimés entre l"hôte et le réseau du système de stockage.' 
+---
+= Les opérations SnapDrive échouent dans la configuration à plusieurs sous-réseaux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les opérations SnapDrive échouent dans plusieurs configurations de sous-réseau, si l'accès au protocole ICMP (Internet Control message Protocol) est désactivé ou si les paquets ICMP sont abandonnés entre l'hôte et le réseau du système de stockage.
+
+
+
+== Solution de contournement
+
+S'assurer que `_enable-ping-to-check-filer-reachability_` est défini sur `off`.

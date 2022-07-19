@@ -1,0 +1,18 @@
+---
+permalink: solaris/concept_login_information_for_storage_systems.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, login, storage, system 
+summary: 'Un nom d"utilisateur ou un mot de passe permet à SnapDrive for UNIX d"accéder à chaque système de stockage. En plus d"être connecté en tant que root, la personne exécutant SnapDrive pour UNIX doit fournir le nom d"utilisateur ou le mot de passe approprié lorsque vous y êtes invité. Si une connexion est compromise, vous pouvez la supprimer et définir une nouvelle connexion utilisateur.' 
+---
+= Informations de connexion des systèmes de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un nom d'utilisateur ou un mot de passe permet à SnapDrive for UNIX d'accéder à chaque système de stockage. En plus d'être connecté en tant que root, la personne exécutant SnapDrive pour UNIX doit fournir le nom d'utilisateur ou le mot de passe approprié lorsque vous y êtes invité. Si une connexion est compromise, vous pouvez la supprimer et définir une nouvelle connexion utilisateur.
+
+Vous avez créé le login utilisateur pour chaque système de stockage lors de sa configuration. Pour que SnapDrive pour UNIX puisse fonctionner avec le système de stockage, vous devez lui fournir ces informations de connexion. En fonction de ce que vous avez spécifié lors de la configuration des systèmes de stockage, chaque système de stockage peut utiliser le même identifiant ou une seule connexion.
+
+SnapDrive pour UNIX stocke ces connexions et mots de passe sous une forme chiffrée sur chaque hôte. Vous pouvez spécifier que SnapDrive pour UNIX chiffre ces informations lorsqu'il communique avec le système de stockage en configurant le `_snapdrive.conf_` variable de configuration `_use-https-to-filer=on_`.

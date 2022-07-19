@@ -1,0 +1,42 @@
+---
+permalink: linux-administration/task_configuring_virtual_storage_console_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, configure, storage, virtual, console 
+summary: Vous devez configurer Virtual Storage Console pour accéder au système de stockage et utiliser les noms de connexion et les mots de passe attribués au système de stockage. 
+---
+= Configuration de Virtual Storage Console pour SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez configurer Virtual Storage Console pour accéder au système de stockage et utiliser les noms de connexion et les mots de passe attribués au système de stockage.
+
+Assurez-vous que Virtual Storage Console est installé dans le système Windows sur lequel réside VMware vCenter.
+
+. Dans la vue *vCenter Home*, sous *Solutions et applications*, cliquez sur *NetApp* dans l'écran *NetApp Virtual Console*.
+. Cliquez sur *Backup and Recovery*, puis sur *Setup* pour afficher les entrées du système de stockage.
+. S'il n'y a pas d'entrées de système de stockage, cliquez sur *Ajouter* pour ajouter le système de stockage requis dans Virtual Storage Console.
++
+La boîte de dialogue *Ajouter un système de stockage* apparaît.
+
+. Dans la fenêtre *Add Storage System*, entrez l'adresse IP, le nom d'utilisateur et le mot de passe du système de stockage. Cliquez ensuite sur *OK*.
++
+Le système de stockage est désormais prêt à communiquer avec Virtual Storage Console.
+
+
+
+*Informations connexes*
+
+xref:task_verifying_virtual_storage_console.adoc[Vérification des informations de connexion à Virtual Storage Console]
+
+xref:task_deleting_a_user_login_for_a_virtual_storage_console.adoc[Suppression d'une connexion utilisateur pour Virtual Storage Console]
+
+xref:concept_storage_provisioning_for_rdm_luns.adoc[Prise en charge de VMware VMotion dans SnapDrive for UNIX]
+
+xref:concept_configuration_options_and_their_default_values.adoc[Les options de configuration et leurs valeurs par défaut]
+
+xref:task_considerations_for_provisioning_rdm_luns.adoc[Considérations relatives au provisionnement des LUN RDM]
+
+xref:concept_limitations_of_rdm_luns_managed_by_snapdrive.adoc[Limitations des LUN RDM gérés par SnapDrive]

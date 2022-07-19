@@ -1,0 +1,28 @@
+---
+permalink: linux-administration/concept_checks_that_can_be_overridden_by_the_user.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, override, check 
+summary: 'Avant d"effectuer une opération SnapRestore basée sur les volumes, SnapDrive for UNIX vérifie qu"un utilisateur peut remplacer à l"aide de l"option -force. Ces contrôles sont nécessaires pour que le SnapRestore basé sur les volumes soit utilisé en toute sécurité.' 
+---
+= Vérifications pouvant être remplacées par l'utilisateur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant d'effectuer une SnapRestore basée sur les volumes, SnapDrive for UNIX vérifie qu'un utilisateur peut remplacer par `-force` option. Ces contrôles sont nécessaires pour que le SnapRestore basé sur les volumes soit utilisé en toute sécurité.
+
+Il est recommandé de suivre les différentes vérifications effectuées par le système, mais vous pouvez annuler ces vérifications en utilisant le `-force` option.
+
+Vous pouvez remplacer le SnapDrive suivant pour UNIX pour les vérifications SnapRestore basées sur les volumes :
+
+* SnapDrive pour UNIX vérifie que les LUN de la copie Snapshot, qui ne sont pas cohérentes après panne. S'il trouve une LUN incohérente dans la copie Snapshot, il vous avertit.
+* SnapDrive pour UNIX vérifie s'il existe d'autres LUN dans le volume actif qui ont été créées après la copie Snapshot. Si SnapDrive for UNIX détecte des LUN supplémentaires, il vous avertit que ces LUN supplémentaires du volume actif sont perdues.
+* SnapDrive for UNIX recherche de nouvelles copies Snapshot. Ces nouvelles copies Snapshot ne sont pas restaurées et sont perdues.
+* SnapDrive for UNIX recherche le fichier normal (fichiers visibles depuis l'hôte local) dans un volume.
+* SnapDrive pour UNIX recherche les exportations NFS.
+* SnapDrive for UNIX recherche les partages CIFS.
+
+
+Si des copies Snapshot ont été créées à l'aide de SnapDrive 3.0 pour UNIX ou version antérieure, la prévisualisation de SnapRestore basée sur des volumes ne peut pas effectuer les deux premières vérifications de la liste précédente. Si vous l'avez fourni `-force` Ensuite, pendant l'exécution de SnapRestore basée sur le volume, un message d'invite s'affiche pour effectuer ces vérifications et continuer.

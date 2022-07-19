@@ -1,0 +1,23 @@
+---
+permalink: linux-administration/task_checking_the_status_of_the_daemon.html 
+sidebar: sidebar 
+keywords: daemon, status, snap, snapdrive 
+summary: 'Vous pouvez vérifier l"état du démon pour savoir si celui-ci est en cours d"exécution. Si le démon est déjà en cours d"exécution, il n"est pas nécessaire de le redémarrer tant que le fichier de configuration SnapDrive pour UNIX n"a pas été mis à jour.' 
+---
+= Vérification de l'état du démon
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier l'état du démon pour savoir si celui-ci est en cours d'exécution. Si le démon est déjà en cours d'exécution, il n'est pas nécessaire de le redémarrer tant que le fichier de configuration SnapDrive pour UNIX n'a pas été mis à jour.
+
+Vous devez être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Vérifiez le statut du démon :
++
+`*snapdrived status*`
+
+

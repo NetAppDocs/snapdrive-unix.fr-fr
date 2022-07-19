@@ -1,0 +1,38 @@
+---
+permalink: linux-administration/concept_storageprovisioning_withsnapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, provision, lvm, logical, manager 
+summary: 'SnapDrive for UNIX offre une gestion du stockage de bout en bout. Vous pouvez provisionner le stockage d"un hôte vers un système de stockage et gérer ce stockage avec ou sans l"aide de l"hôte Logical Volume Manager \(LVM\).' 
+---
+= Opérations de stockage dans SnapDrive for UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive for UNIX offre une gestion du stockage de bout en bout. Vous pouvez provisionner le stockage d'un hôte à un système de stockage et gérer ce stockage avec ou sans l'aide de l'hôte Logical Volume Manager (LVM).
+
+SnapDrive pour UNIX vous permet d'effectuer les opérations de stockage suivantes :
+
+* Créez le stockage en créant des LUN, des systèmes de fichiers, des volumes logiques et des groupes de disques.
+* Afficher des informations sur le stockage.
+* Connectez-vous au stockage.
+* Redimensionner le stockage.
+* Déconnexion du stockage.
+* Supprimez le stockage.
+
+
+Lorsque vous créez un stockage à l'aide du `snapdrive storage create` SnapDrive for UNIX exécute automatiquement toutes les tâches nécessaires à la configuration des LUN, y compris la préparation de l'hôte, le mappage de découverte et la connexion à chaque LUN que vous créez. Vous pouvez utiliser le `snapdrive storage show` Commande pour afficher des informations sur les LUN NetApp, les groupes de disques, les volumes hôtes, les systèmes de fichiers ou les arborescences de répertoire NFS que vous créez.
+
+Vous pouvez utiliser le `snapdrive storage connect` commande permettant de mapper le stockage à un nouvel emplacement. Cette commande vous permet d'accéder au stockage existant à partir d'un hôte différent de celui utilisé pour le créer. Le `snapdrive storage connect` La commande vous permet de rendre les LUN, les systèmes de fichiers, les groupes de disques et les volumes logiques existants accessibles sur un nouvel hôte. Cette fonction peut être utile si vous souhaitez sauvegarder une entité de stockage du nouvel hôte vers un autre hôte.
+
+À l'aide du `snapdrive storage resize` vous pouvez augmenter la taille du stockage de plusieurs manières :
+
+* Spécifier la taille cible à laquelle l'entité hôte doit atteindre
+* Entrez un nombre défini d'octets pour augmenter le stockage
+
+
+Si vous ne souhaitez plus que votre stockage soit mappé à son emplacement actuel, vous pouvez utiliser le `snapdrive storage disconnect` commande. Cette commande supprime les mappages d'un ou plusieurs emplacements hôte vers les LUN créant le stockage pour cet emplacement.
+
+Si vous souhaitez supprimer le stockage, vous pouvez utiliser le `snapdrive storage delete` commande. SnapDrive for UNIX supprime toutes les entités côté hôte que vous spécifiez ainsi que toutes leurs entités sous-jacentes et les LUN qui leur sont associées.

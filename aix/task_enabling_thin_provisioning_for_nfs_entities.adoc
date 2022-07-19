@@ -1,0 +1,18 @@
+---
+permalink: aix/task_enabling_thin_provisioning_for_nfs_entities.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, enable, thin, provisioning, nfs 
+summary: 'Vous pouvez utiliser SnapDrive pour UNIX pour effectuer le provisionnement fin pour les entités NFS sur votre système de stockage. L"allocation dynamique est appelée « réservation d"espace ».' 
+---
+= Activation du provisionnement fin pour les entités NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser SnapDrive pour UNIX pour effectuer le provisionnement fin pour les entités NFS sur votre système de stockage. L'allocation dynamique est appelée « réservation d'espace ».
+
+.Étapes
+. Pour activer la réservation d'espace pour les opérations snap Connect, vous pouvez activer la réservation d'espace pour les volumes en utilisant le `-reserve` Paramètre avec les commandes impliquant des entités NFS. Pour les entités NFS, SnapDrive for UNIX utilise la réservation d'espace disponible dans la copie Snapshot si le système `-reserve` ou `-noreserve` les paramètres ne sont pas spécifiés dans une commande.
+

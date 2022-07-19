@@ -1,0 +1,198 @@
+---
+permalink: linux-administration/task_enabling_multipathing.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, multipathing, enable, hba 
+summary: 'Pour utiliser les chemins d"accès multiples dans SnapDrive for UNIX, vous devez effectuer les étapes suivantes : installation et démarrage du HBA. Si vous utilisez une solution de chemins d"accès multiples non NetApp, vous devez télécharger le logiciel et le package d"applications depuis le site Web du fournisseur HBA.' 
+---
+= Activation des chemins d'accès multiples
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour utiliser les chemins d'accès multiples dans SnapDrive for UNIX, vous devez effectuer les étapes suivantes : installation et démarrage du HBA. Si vous utilisez une solution de chemins d'accès multiples non NetApp, vous devez télécharger le logiciel et le pack d'applications depuis le site Web du fournisseur HBA.
+
+Votre système doit exécuter les versions actuelles des composants du système FC et iSCSI.
+
+http://mysupport.netapp.com/matrix["Matrice d'interopérabilité NetApp"]
+
+.Étapes
+. Installez les HBA pris en charge avant d'installer le logiciel Host Utilities approprié.
++
+
+NOTE: SnapDrive pour UNIX prend en charge les HBA multifournisseurs.
+
+. Démarrez le service HBA.
++
+Si le service HBA n'est pas en cours d'exécution, le message d'erreur suivant s'affiche lorsque vous exécutez des commandes SnapDrive pour UNIX, telles que `snapdrive storage create` et `snapdrive config prepare luns`:
+
++
+[listing]
+----
+0001-876 Admin error: HBA assistant not found
+----
++
+Vous devez vérifier que le nombre requis de chemins est opérationnel. Vous pouvez vérifier les chemins à l'aide de la `sanlun` Utilitaire inclus avec le logiciel Host Utilities. Par exemple, dans la configuration des chemins d'accès multiples FC, vous pouvez utiliser le `sanlun fcp show adapter -v` commande.
+
++
+Dans l'exemple suivant, deux ports HBA (fcd0 et fcd1) sont connectés à l'hôte qui sont opérationnels (état du port). Vous ne pouvez avoir qu'un seul HBA ou initiateur iSCSI et vous devez configurer des chemins d'accès multiples en fournissant plusieurs chemins d'accès aux LUN cibles.
+
++
+[listing]
+----
+# sanlun fcp show adapter -v
+adapter name: fcd0
+WWPN: 50060b000038c428
+WWNN: 50060b000038c429
+driver name: fcd
+model: A6826A
+model description: Fibre Channel Mass Storage Adapter
+(PCI/PCI-X)
+serial number: Not Available
+hardware version: 3
+driver version: @(#) libfcd.a HP Fibre Channel
+ISP 23xx & 24xx Driver B.11.23.04
+/ux/core/isu/FCD/kern/src/common/wsio/fcd_init.c:Oct 18
+2005,08:19:50
+firmware version: 3.3.18
+Number of ports: 1 of 2
+port type: Fabric
+port state: Operational
+supported speed: 2 GBit/sec
+negotiated speed: 2 GBit/sec
+OS device name: /dev/fcd0
+adapter name: fcd1
+WWPN: 50060b000038c42a
+WWNN: 50060b000038c42b
+driver name: fcd
+model: A6826A
+model description: Fibre Channel Mass Storage Adapter
+(PCI/PCI-X)
+serial number: Not Available
+hardware version: 3
+driver version: @(#) libfcd.a HP Fibre Channel
+ISP 23xx & 24xx Driver B.11.23.04
+/ux/core/isu/FCD/kern/src/common/wsio/fcd_init.c:Oct 18
+2005,08:19:50
+firmware version: 3.3.18
+Number of ports: 2 of 2 port type: Fabric
+port state: Operational
+supported speed: 2 GBit/sec
+negotiated speed: 2 GBit/sec
+OS device name: /dev/fcd1
+----
++
+Si les chemins d'accès multiples sont activés sur un hôte, plusieurs chemins sont visibles pour la même LUN. Vous pouvez utiliser le `sanlun lun show all` commande pour vérifier les chemins. Dans l'exemple suivant, vous pouvez trouver plusieurs chemins d'accès à la même LUN (`fish: /vol/vol1/lun`) :
+
++
+[listing]
+----
+ [root@lnx221-75 ~]# sanlun lun show
+filer:        lun-pathname device filename adapter protocol lun size lun state
+f960-221-167: /vol/vol1/lun1 /dev/sdd host5 FCP 100m (104857600)      GOOD
+f960-221-167: /vol/vol1/lun1 /dev/sdc host6 FCP 100m (104857600)      GOOD
+----
+. Si une solution de chemins d'accès multiples tierce est prise en charge par SnapDrive pour UNIX ou les utilitaires hôtes, téléchargez le pack logiciel du pilote HBA et le package d'application à partir du site Web du fournisseur HBA.*QLogic* : pour les HBA QLogic, rendez-vous sur http://support.qlogic.com/[]. Depuis les modèles OEM, sélectionnez NetApp. Localisez la version du pilote répertoriée dans la matrice d'assistance et téléchargez-la. *Emulex:* pour les HBA Emulex, allez à http://www.emulex.com/ts/index.html[]. Dans Downloads, sélectionnez NetApp. Localisez la version du pilote répertoriée dans la matrice d'assistance et téléchargez-la. Téléchargez également le package d'applications Emulex à partir du même emplacement.
++
+Si vous utilisez un adaptateur QLogic avec connectivité FC, téléchargez le script d'analyse QLogic depuis le site web QLogic et copiez-le sur le `/root` chemin (par exemple, `/root/dynamic-lun-rescan.sh`). Le script d'analyse à nouveau QLogic demande une confirmation de l'utilisateur. SnapDrive pour UNIX peut se bloquer indéfiniment à cette étape de confirmation. Vous pouvez éviter cette confirmation en définissant la variable `_QL_DISABLE_WARNING_` à `1` dans le script.
+
++
+Les versions antérieures de SnapDrive pour UNIX utilisaient des scripts de scan SCSI propres au fournisseur pour analyser les LUN via FC, et ainsi copier le script spécifique au fournisseur vers `/root/dynamic-lun-rescan.sh`. Cette solution a été mise à disposition jusqu'à RHEL 5U3.
+
++
+Pour RHEL 5U4/SLES 10SP2 et versions ultérieures, le script de nouvelle analyse est actuellement disponible dans l' `/usr/bin` répertoire. Si le script de nouvelle analyse n'est pas disponible dans le répertoire, il est présent avec le `sg3_utils` création de package.
+
++
+
+NOTE: Vous devez vous assurer que le `sg3_utils` et `sg3_utils-libs` Des bibliothèques sont disponibles pour les versions Red Hat Enterprise Linux (RHEL) et Oracle Enterprise Linux (OEL). Cependant, le `sg3_utils` Les bibliothèques sont disponibles pour la version SUSE Linux Enterprise Server (SLES) dans le `scsci utility.rpm` création de package.
+
+. Dans une configuration FC, segmenter les ports HBA hôte et les ports cibles en utilisant la configuration de segmentation du commutateur.
+. Installer et configurer le commutateur FC approprié.
+. Vérifier la configuration requise de la pile SnapDrive pour UNIX.
+. Installez ou mettez à niveau SnapDrive pour UNIX.
+. Vérifiez l'installation de SnapDrive pour UNIX.
+. Localisez le `snapdrive.conf` chemin des fichiers.
+. Configurez les variables de configuration suivantes dans le `snapdrive.conf` fichier :
++
+** `_multipathing-type_`
+** `_default-transport_`
+** `_fstype_`
+** `_vmtype_`
++
+Pour chaque hôte, le type de chemins d'accès multiples, le type de transport, le système de fichiers et le type de gestionnaire de volumes dépendent les uns des autres. Le tableau suivant décrit toutes les combinaisons possibles :
+
++
+|===
+| Plateforme hôte | Type de transport par défaut | Type de chemins d'accès multiples | fstype | type vmtype 
+
+
+ a| 
+Linux
+ a| 
+iscsi
+ a| 
+nativempio
+ a| 
+ext4 ou ext3
+ a| 
+lvm
+
+
+
+ a| 
+iscsi
+ a| 
+Aucune
+ a| 
+ext4 ou ext3
+ a| 
+lvm
+
+
+
+ a| 
+FCP
+ a| 
+Aucune
+ a| 
+ext4 ou ext3
+ a| 
+lvm
+
+
+
+ a| 
+FCP
+ a| 
+nativempio
+ a| 
+ext4 ou ext3
+ a| 
+lvm
+
+|===
++
+Le tableau précédent donne les valeurs prises en charge du `_multipathing-type_`, `_default-transport_`, `_fstype_`, et `_vmtype_` variables de configuration.
+
++
+
+NOTE: Si le protocole de transport est de `iSCSI`, et le type de chemins d'accès multiples est défini sur `none`, Vous devez arrêter le démon multipath et exécuter les commandes SnapDrive pour UNIX.
+
+
+
+. Enregistrez le `snapdrive.conf` fichier.
++
+SnapDrive for UNIX vérifie automatiquement ce fichier à chaque démarrage. Vous devez redémarrer le démon SnapDrive pour UNIX pour que les modifications prennent effet.
+
+
+
+*Informations connexes*
+
+xref:concept_snaprestore_and_snapconnect_operations_do_not_work_in_linux_after_multipathing_migration.adoc[Les opérations SnapRestore et Snapconnect ne fonctionnent pas sous Linux après la migration de type multipathing]
+
+http://mysupport.netapp.com["Support NetApp"]
+
+https://mysupport.netapp.com/NOW/products/interoperability["Interopérabilité NetApp"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2547936["Guide d'installation de Linux Unified Host Utilities 7.1"]

@@ -1,0 +1,24 @@
+---
+permalink: solaris/reference_sample_error_message.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, error, message 
+summary: 'Il s"agit d"un message d"erreur dans SnapDrive pour UNIX.' 
+---
+= Exemple de message d'erreur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il s'agit d'un message d'erreur dans SnapDrive pour UNIX.
+
+Le message suivant indique un problème à l'invite de commande. L'ID du message est 0001-377.
+
+[listing]
+----
+Return Code: 43
+
+0001-377 Command error: Disk group name dg2 is already in use or
+conflicts with another entity.
+----

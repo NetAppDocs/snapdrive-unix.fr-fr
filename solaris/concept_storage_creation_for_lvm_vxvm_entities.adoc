@@ -1,0 +1,14 @@
+---
+permalink: solaris/concept_storage_creation_for_lvm_vxvm_entities.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, creat, vxvm 
+summary: 'Si vous utilisez SnapDrive pour UNIX pour créer un volume logique ou un système de fichiers à l"aide de VxVM, SnapDrive pour UNIX crée automatiquement le groupe de disques requis. SnapDrive pour UNIX crée le système de fichiers en fonction du type pris en charge par le gestionnaire de volumes hôte. Pour Solaris, il inclut VxFS et UFS.' 
+---
+= Création de stockage pour les entités VxVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous utilisez SnapDrive pour UNIX pour créer un volume logique ou un système de fichiers à l'aide de VxVM, SnapDrive pour UNIX crée automatiquement le groupe de disques requis. SnapDrive pour UNIX crée le système de fichiers en fonction du type pris en charge par le gestionnaire de volumes hôte. Pour Solaris, il inclut VxFS et UFS.

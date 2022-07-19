@@ -1,0 +1,103 @@
+---
+permalink: solaris/concept_after_rebooting_the_host_os_and_cluster_services_fail_to_start.html 
+sidebar: sidebar 
+keywords: reboot, host, os, cluster, fail, start 
+summary: 'Sur un hôte Solaris 10, si le système de fichiers ne parvient pas à monter après le redémarrage, le système d"exploitation et le cluster ne démarrent pas.' 
+---
+= Après le redémarrage de l'hôte, les services du système d'exploitation et du cluster ne parviennent pas à démarrer
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sur un hôte Solaris 10, si le système de fichiers ne parvient pas à monter après le redémarrage, le système d'exploitation et le cluster ne démarrent pas.
+
+Après le redémarrage de l'hôte Solaris 10, si le service s'en charge `svc:/system/filesystem/local` Ne parvient pas à monter l'un des systèmes de fichiers suivants, le système d'exploitation ou les services de cluster dépendants ne démarrent pas.
+
+* Système de fichiers local
+* Système de fichiers partagés
+
+
+
+NOTE: Le système de fichiers précédent doit être créé par SnapDrive pour UNIX.
+
+
+
+== Solution de contournement
+
+. Recherchez le service qui n'a pas pu démarrer après le redémarrage en utilisant la commande suivante :
++
+`svcs -vx /network/inetd`
+
++
+*Exemple:*
+
++
+[listing]
+----
+# svcs -vx /network/inetd
+svc:/network/inetd:default (inetd)
+State: offline since Fri 25 May 2008 04:06:59 PM IST
+Reason: Service svc:/system/filesystem/local:default
+is not running because a method failed.
+----
+. Si le `service/system/filesystem/local:default` échec, recherchez le système de fichiers persistant qui n'a pas pu être monté à l'aide de la commande suivante :
++
+`tail /var/svc/log/system-filesystem-local:default.log`
+
++
+*Exemple:*
+
++
+[listing]
+----
+# tail /var/svc/log/system-filesystem-local:default.log
+[ May 25 15:58:35 Method "start" exited with status 95 ]
+[ May 25 16:07:17 Executing start method
+("/lib/svc/method/fs-local") ]
+UX:vxfs fsck: ERROR: V-3-20693: cannot access device
+/dev/vx/rdsk/dg2/fs1_SdHv:
+UX:vxfs mount: ERROR: V-3-20003: Cannot open
+/dev/vx/dsk/dg2/fs1_SdHv: No such device or address
+UX:vxfs mount: ERROR: V-3-24996: Unable to get disk
+layout version
+WARNING: /sbin/mountall -l failed: exit status 1
+[ May 25 16:07:18 Method "start" exited with status 95 ]
+----
+. Commenter les entrées dans `/etc/vfstab` pour le système de fichiers qui n'a pas pu monter après le redémarrage de l'hôte.
+. Redémarrez le service OS : `svc:/system/filesystem/local:default` en exécutant les commandes suivantes :
++
+.. `svcadm disable`
++
+`svc:/system/filesystem/local:default`
+
+.. `svcadm enable`
++
+`svc:/system/filesystem/local:default`
+
+
+
++
+Le système d'exploitation et le service de cluster démarre.
+
+. Pour le système de fichiers local qui n'a pas pu monter, procédez comme suit :
++
+.. Montez manuellement le système de fichiers.
+.. Décommentez le `/etc/vfstab` entrée.
+
+
+. Pour les services de cluster, effectuez les opérations suivantes :
++
+.. Utilisez le `cfsmount` commande permettant de vérifier si les systèmes de fichiers partagés sont correctement montés.
+.. Décommentez le `/etc/vfstab` entrée sur tous les nœuds de cluster pour ce système de fichiers.
++
+`svcadm enable`
+
++
+`svc:/system/filesystem/local:default`
+
+
+
+. Si le système de fichiers local ou en cluster ne parvient pas à monter même après les étapes précédentes, contactez le support technique de NetApp.
+

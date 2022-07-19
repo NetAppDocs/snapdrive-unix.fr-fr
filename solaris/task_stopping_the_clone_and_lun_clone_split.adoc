@@ -1,0 +1,56 @@
+---
+permalink: solaris/task_stopping_the_clone_and_lun_clone_split.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, stop, volume, clone, split, operation, lun 
+summary: 'Vous pouvez arrêter le fractionnement du clone d"un clone de volume ou d"un clone de LUN à l"aide de l"ID de travail ou de la spécification de fichier.' 
+---
+= Arrêt du fractionnement du clone de volume ou du clone de LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez arrêter le fractionnement du clone d'un clone de volume ou d'un clone de LUN à l'aide de l'ID de travail ou de la spécification de fichier.
+
+.Étapes
+. Saisissez la commande suivante :
++
+`*snapdrive clone split stop [-lun] _long_lun_name_ [_long_lun_name..._] |[{-dg | -vg | -fs | -hostvol | -lvol} _file_spec_ [_file_spec..._]] | [-job _<jobid>_]*`
+
++
+SnapDrive pour UNIX arrête l'opération de séparation des clones en cours.
+
+
+
+L'exemple suivant montre l'opération de fractionnement de clone arrêtée via la spécification de fichier.
+
+[listing]
+----
+# snapdrive clone split stop -fs /mnt/my_mnt4 /mnt/my_mnt3
+Clone-Split for "/mnt/my_mnt4" is 0% Completed and Stopped.
+Clone-Split for "/mnt/my_mnt3" is 0% Completed and Stopped.
+----
+L'exemple suivant montre l'opération de fractionnement de clone arrêtée via l'ID de tâche.
+
+[listing]
+----
+# snapdrive clone split stop -job B265Dbv8gh
+Clone-Split for "/mnt/my_mnt3" is 14% Completed and Stopped.
+Clone-Split for "/mnt/my_mnt4" is 17% Completed and Stopped.
+----
+L'exemple suivant est une sortie type qui affiche l'opération d'arrêt de séparation de clone pour une spécification de fichier déjà arrêtée.
+
+[listing]
+----
+# snapdrive clone split stop -fs /mnt/my_mnt4 /mnt/my_mnt3
+Clone-Split for "/mnt/my_mnt3" is not stopped : No split is in progress for this resource
+Clone-Split for "/mnt/my_mnt4" is not stopped : No split is in progress for this resource
+----
+[NOTE]
+====
+* Si le fractionnement du clone est arrêté pour une spécification de fichier particulière dans l'ID de travail et que l'arrêt de fractionnement du clone a réussi, la spécification de fichier est supprimée du travail.
+* Si le groupe de clones est arrêté pour un travail et que l'arrêt de fractionnement du clone réussit pour toutes les spécifications de fichier du travail, le travail est supprimé du jeu de travaux.
+
+
+====

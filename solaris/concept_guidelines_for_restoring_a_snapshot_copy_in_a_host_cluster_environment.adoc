@@ -1,0 +1,30 @@
+---
+permalink: solaris/concept_guidelines_for_restoring_a_snapshot_copy_in_a_host_cluster_environment.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snapshot, copy, host, restore 
+summary: 'Suivez les instructions indiquées lors de la restauration d"une copie Snapshot.' 
+---
+= Instructions relatives à la restauration d'une copie Snapshot dans un environnement de cluster hôte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Suivez les instructions indiquées lors de la restauration d'une copie Snapshot.
+
+* Le `snapdrive snapshot restore` il est possible d'exécuter une commande depuis n'importe quel nœud du cluster hôte.
+* Le système de fichiers ou les groupes de disques doivent être partagés entre tous les nœuds du cluster hôte, s'ils sont actifs.
+* L'opération de restauration d'instantané sur un système de fichiers partagé ou un groupe de disques échoue si l'une des LUN est mappée à un nœud en dehors du cluster hôte. Assurez-vous qu'aucune des LUN partagées n'est mappée à un nœud en dehors du cluster hôte.
+* L'opération Snapshot create peut être effectuée sur un système de fichiers ou un groupe de disques dédié, mais pour restaurer la copie Snapshot en mode partagé, vous devez vous assurer que le système de fichiers ou le groupe de disques n'existe pas en mode dédié sur un nœud du cluster hôte. Sinon, SnapDrive pour UNIX vous donne une erreur.
+* Si aucun système de fichiers ou groupe de disques n'existe dans le cluster hôte, SnapDrive pour UNIX crée les LUN à partir de la copie Snapshot, les mappe à tous les nœuds du cluster hôte et active le groupe de disques et le système de fichiers. Une fois les LUN mises en correspondance avec tous les nœuds du cluster hôte, Veritas cluster Volume Manager actualise les informations de LUN entre tous les nœuds du cluster hôte. Toute tentative d'activation d'un groupe de disques avant la mise à jour des informations relatives aux LUN entre les instances CVM des nœuds de cluster risque d'entraîner l'échec de l'opération de restauration Snapshot. Pour le renouvellement CVM, vous devez réémettre le `snapdrive snap restore` commande.
+* Une copie Snapshot créée sur un nœud hors cluster hôte peut être restaurée et partagée uniquement si l'une des conditions suivantes est vraie :
++
+** Le système de fichiers ou le groupe de disques n'existe pas en mode dédié sur un nœud du cluster hôte.
+** Les LUN sont invisibles pour le nœud en dehors du cluster hôte.
+
+
+* Vous ne pouvez pas restaurer les copies Snapshot sur les systèmes partagés et dédiés au cours d'une opération de restauration Snapshot.
+* Si le `snapdrive snap restore` la commande est émise avec le `-devicetype` option dédiée ou sans `-devicetype` Option spécifiée sur un groupe de disques ou un système de fichiers partagé, SnapDrive pour UNIX vous alerte que les LUN connectées à plusieurs nœuds sont restaurées.
+* Si la configuration des groupes de disques est modifiée entre la création de copie Snapshot et la restauration de copie Snapshot, SnapDrive for UNIX vous alerte que la configuration a été modifiée.
+

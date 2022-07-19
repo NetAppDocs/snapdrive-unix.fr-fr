@@ -1,0 +1,25 @@
+---
+permalink: solaris/task_resetting_the_snap_reserve_option_on_the_storage_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, reset, reserve, option, storage, system 
+summary: 'Lorsque vous utilisez Data ONTAP dans un environnement Fibre Channel ou Internet Small Computer System interface \(iSCSI\), vous devez réinitialiser l"option de réserve Snap à zéro % sur le système de stockage pour optimiser les volumes.' 
+---
+= Réinitialisation de l'option de réserve d'instantanés du système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous utilisez Data ONTAP dans un environnement iSCSI (Fibre Channel ou Internet Small Computer System interface), vous devez réinitialiser le `snap reserve` possibilité de réduire de zéro % le système de stockage pour l'optimisation des volumes
+
+.Étapes
+. Pour accéder au système de stockage, exécutez la `telnet` commande depuis l'hôte ou depuis la console du système de stockage.
+. Saisissez la commande suivante :
++
+`*snap reserve _vol_name 0_*`
+
++
+`_vol_name_` est le nom du volume sur lequel vous souhaitez définir `snap reserve` option.
+
+

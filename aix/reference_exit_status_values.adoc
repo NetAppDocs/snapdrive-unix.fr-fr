@@ -1,0 +1,653 @@
+---
+permalink: aix/reference_exit_status_values.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, exit, status, value 
+summary: 'Chaque valeur d"état de sortie a un nom d"erreur et le type associé. Consultez le tableau pour en savoir plus sur la valeur de l"état de sortie, le nom de l"erreur, le type et la description.' 
+---
+= Quitter les valeurs d'état
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Chaque valeur d'état de sortie a un nom d'erreur et le type associé. Consultez le tableau pour en savoir plus sur la valeur de l'état de sortie, le nom de l'erreur, le type et la description.
+
+Le tableau suivant contient des informations sur les valeurs d'état de sortie. Les valeurs d'état de sortie sont numérotées de façon séquentielle. Si SnapDrive pour UNIX ne met pas actuellement en œuvre d'erreur, cette valeur d'état de sortie n'est pas incluse dans le tableau. Par conséquent, il peut y avoir des écarts dans les nombres.
+
+|===
+| Valeur de sortie | Nom de l'erreur | Type | Description 
+
+
+ a| 
+1
+ a| 
+Non pris en charge
+ a| 
+Erreur de commande
+ a| 
+Une fonction appelée qui n'est pas prise en charge dans cette version de SnapDrive pour UNIX a été appelée.
+
+
+
+ a| 
+2
+ a| 
+Pas de mémoire
+ a| 
+Mortel
+ a| 
+La mémoire du système est insuffisante. SnapDrive pour UNIX ne peut pas continuer tant que vous ne disposez pas de suffisamment de mémoire pour fonctionner. Vérifiez que d'autres applications sont en cours d'exécution pour vous assurer qu'elles ne consomment pas trop de mémoire.
+
+
+
+ a| 
+3
+ a| 
+Commande non valide
+ a| 
+Erreur de commande
+ a| 
+Vous avez émis une commande non valide ; il s'agit probablement d'une erreur de syntaxe dans le texte de la commande que vous avez saisie.
+
+
+
+ a| 
+4
+ a| 
+Existe déjà
+ a| 
+Erreur de commande
+ a| 
+Vous avez demandé qu'un élément existe déjà. En général, cette erreur fait référence au nom d'une copie Snapshot. Elle ne doit pas exister sur le volume de stockage où vous prenez la copie Snapshot.
+
+
+
+ a| 
+5
+ a| 
+Echec de la création du filetage
+ a| 
+Erreur d'administration
+ a| 
+SnapDrive pour UNIX n'a pas pu créer de thread de processus. Vérifiez les autres processus exécutés sur le système pour vous assurer que suffisamment de ressources de thread sont disponibles.
+
+
+
+ a| 
+6
+ a| 
+Introuvable
+ a| 
+Erreur de commande
+ a| 
+Vous avez inclus un fichier, un groupe de données, un volume hôte, un système de fichiers ou un autre argument dans la ligne de commande SnapDrive for UNIX qui n'existe pas.
+
+
+
+ a| 
+7
+ a| 
+Système de fichiers non monté
+ a| 
+Erreur de commande
+ a| 
+Le système de fichiers auquel vous souhaitez accéder n'est pas un système de fichiers valide ou n'est pas monté.
+
+
+
+ a| 
+9
+ a| 
+Erreur du gestionnaire de volumes
+ a| 
+Erreur de commande
+ a| 
+Une erreur s'est produite lors de l'accès au gestionnaire de volumes. Consultez le message d'erreur spécifique pour obtenir des détails sur l'erreur et les raisons.
+
+
+
+ a| 
+10
+ a| 
+Nom non valide
+ a| 
+Erreur de commande
+ a| 
+Vous avez indiqué un nom sur la ligne de commande qui n'a pas été correctement formaté.
+
+Par exemple, un volume système de stockage n'a pas été spécifié en tant que `filer:/vol/vol_name`. Ce message s'affiche également lorsqu'un caractère non valide est donné dans un système de stockage ou un nom basé sur le gestionnaire de volumes.
+
+
+
+ a| 
+11
+ a| 
+Périphérique introuvable
+ a| 
+Erreur d'administration
+ a| 
+SnapDrive pour UNIX ne peut pas accéder à une LUN du groupe de disques que vous souhaitez créer une copie Snapshot de.
+
+Vérifiez l'état de toutes les LUN sur l'hôte et sur le système de stockage. Vérifiez également que le volume du système de stockage est en ligne, et que le système de stockage est activé et connecté à l'hôte.
+
+
+
+ a| 
+12
+ a| 
+Occupé
+ a| 
+Erreur de commande
+ a| 
+Le périphérique LUN, fichier, répertoire, groupe de disques, volume hôte, ou une autre entité est occupée.
+
+Il s'agit généralement d'une erreur non fatale qui s'éteint lorsque vous relancez la commande. Il indique parfois qu'une ressource ou un processus est arrêté, ce qui entraîne l'arrêt de l'objet et l'indisponibilité de SnapDrive pour UNIX.
+
+Il peut également indiquer que vous tentez de faire une copie Snapshot pendant un point lorsque le trafic d'E/S est trop important pour que la copie Snapshot puisse être effectuée.
+
+
+
+ a| 
+13
+ a| 
+Initialisation impossible
+ a| 
+Mortel
+ a| 
+SnapDrive pour UNIX n'a pas pu initialiser le matériel tiers dont il a besoin. Cela peut faire référence aux systèmes de fichiers, aux gestionnaires de volumes, aux logiciels de cluster d'hôtes, aux logiciels de chemins d'accès multiples, etc.
+
+
+
+ a| 
+14
+ a| 
+SnapDrive occupé
+ a| 
+SnapDrive occupé
+ a| 
+Un autre utilisateur ou processus exécute une opération sur les mêmes hôtes ou systèmes de stockage en même temps que vous avez demandé à SnapDrive pour UNIX d'effectuer une opération. Recommencez l'opération.
+
+Parfois, ce message signifie que l'autre processus est suspendu et que vous devez le tuer.
+
+
+NOTE: L'opération de restauration Snapshot peut prendre un certain temps dans certaines circonstances. Assurez-vous que le processus que vous pensez avoir arrêté n'attend pas juste la fin de l'opération de restauration Snapshot.
+
+
+
+ a| 
+15
+ a| 
+Erreur du fichier de configuration
+ a| 
+Mortel
+ a| 
+Le fichier snapdrive.conf contient des entrées non valides, inadéquates ou incohérentes. Voir le message d'erreur spécifique pour plus de détails. Vous devez corriger ce fichier pour pouvoir continuer avec SnapDrive pour UNIX.
+
+
+
+ a| 
+17
+ a| 
+Autorisations incorrectes
+ a| 
+Erreur de commande
+ a| 
+Vous n'êtes pas autorisé à exécuter cette commande. Vous devez être connecté en tant que root pour exécuter SnapDrive pour UNIX.
+
+
+
+ a| 
+18
+ a| 
+Aucun fichier
+ a| 
+Erreur d'administration
+ a| 
+SnapDrive for UNIX ne peut pas contacter le système de stockage requis pour cette commande. Vérifiez la connectivité au système de stockage indiqué dans le message d'erreur.
+
+
+
+ a| 
+19
+ a| 
+Connexion au filer incorrecte
+ a| 
+Erreur d'administration
+ a| 
+SnapDrive pour UNIX ne peut pas se connecter au système de stockage à l'aide des informations de connexion fournies.
+
+
+
+ a| 
+20
+ a| 
+Licence incorrecte
+ a| 
+Erreur d'administration
+ a| 
+Un service SnapDrive pour UNIX ne nécessite pas de licence pour s'exécuter sur ce système de stockage.
+
+
+
+ a| 
+22
+ a| 
+Impossible de geler fs
+ a| 
+Erreur d'administration
+ a| 
+Une opération de création de snapshot a échoué car SnapDrive pour UNIX n'a pas pu geler les systèmes de fichiers spécifiés pour effectuer la copie Snapshot. Vérifiez que le trafic d'E/S du système est suffisamment faible pour geler le système de fichiers, puis relancez la commande.
+
+
+
+ a| 
+27
+ a| 
+La copie Snapshot incohérente
+ a| 
+Erreur d'administration
+ a| 
+L'opération de restauration de snapshot a échoué, car vous avez demandé une restauration à partir d'une copie Snapshot avec des images incohérentes du groupe de disques. Des images incohérentes peuvent se produire dans les cas suivants :
+
+* Vous n'avez pas effectué de copie Snapshot à l'aide de SnapDrive pour UNIX.
+* L'opération Snapshot create a été interrompue avant qu'elle ne fixe des bits cohérents, ce qui a donc pu être nettoyé (comme en cas de panne catastrophique du système).
+* Un problème de type de données s'est produit sur la copie Snapshot après sa création.
+
+
+
+
+ a| 
+28
+ a| 
+Panne de HBA
+ a| 
+Erreur d'administration
+ a| 
+SnapDrive pour UNIX a rencontré une erreur lors de la tentative de récupération des informations depuis le HBA.
+
+
+
+ a| 
+29
+ a| 
+Métadonnées incorrectes
+ a| 
+Erreur d'administration
+ a| 
+SnapDrive pour UNIX a rencontré une erreur dans les métadonnées de la copie Snapshot qu'elle a écrites au moment de la création de la copie Snapshot.
+
+
+
+ a| 
+30
+ a| 
+Pas de métadonnées de copie Snapshot
+ a| 
+Erreur d'administration
+ a| 
+SnapDrive pour UNIX ne peut pas effectuer une opération de restauration Snapshot, car les métadonnées ne contiennent pas tous les groupes de disques requis.
+
+
+
+ a| 
+31
+ a| 
+Fichier de mot de passe incorrect
+ a| 
+Erreur d'administration
+ a| 
+L'entrée du fichier de mot de passe est incorrecte. Utilisez le `snapdrive config delete` commande permettant de supprimer l'entrée de connexion pour ce système de stockage. Entrez ensuite de nouveau les informations de connexion à l'aide de la `snapdrive config set _user_name_` commande.
+
+
+
+ a| 
+33
+ a| 
+Aucune entrée de fichier de mot de passe
+ a| 
+Erreur d'administration
+ a| 
+Le fichier de mot de passe n'a pas d'entrée pour ce système de stockage. Exécutez le `snapdrive config set _username filername_` Commande de chaque système de stockage sur lequel vous devez exécuter SnapDrive pour UNIX. Puis réessayez.
+
+
+
+ a| 
+34
+ a| 
+Ce n'est pas un NetAPPLUN
+ a| 
+Erreur d'administration
+ a| 
+Une commande SnapDrive pour UNIX a rencontré une LUN qui ne se trouve pas sur un système de stockage NetApp.
+
+
+
+ a| 
+35
+ a| 
+Utilisateur abandonné
+ a| 
+Erreur d'administration
+ a| 
+Le système affiche une invite vous demandant de confirmer une opération et vous avez indiqué que vous ne voulez pas que l'opération soit effectuée.
+
+
+
+ a| 
+36
+ a| 
+Erreur de flux d'E/S.
+ a| 
+Erreur d'administration
+ a| 
+Les routines d'entrée ou de sortie système du système ont renvoyé une erreur que SnapDrive pour UNIX n'avait pas bien compris.
+
+Exécutez snapdrive.dc et envoyez ces informations au support technique NetApp de manière à ce qu'elles puissent vous aider à déterminer les étapes à suivre pour effectuer la restauration.
+
+
+
+ a| 
+37
+ a| 
+Système de fichiers plein
+ a| 
+Erreur d'administration
+ a| 
+La tentative d'écriture d'un fichier a échoué car l'espace sur le système de fichiers était insuffisant. SnapDrive pour UNIX peut continuer lorsque vous libérez suffisamment d'espace sur le système de fichiers approprié.
+
+
+
+ a| 
+38
+ a| 
+Erreur de fichier
+ a| 
+Erreur d'administration
+ a| 
+Une erreur d'E/S s'est produite lors de la lecture ou de l'écriture d'un fichier de configuration du système ou d'un fichier temporaire par SnapDrive pour UNIX.
+
+
+
+ a| 
+39
+ a| 
+Groupe de disques en double
+ a| 
+Erreur de commande
+ a| 
+SnapDrive pour UNIX a un numéro de nœud mineur en double lors de la tentative d'activation d'un groupe de disques.
+
+
+
+ a| 
+40
+ a| 
+Echec de la décongélation du système de fichiers.
+ a| 
+Erreur d'administration
+ a| 
+Une commande snap create a échoué en raison de l'activité système sur le système de fichiers. Cela se produit généralement lorsque le blocage du système de fichiers SnapDrive pour UNIX, requis pour la copie Snapshot, est multiplié par quelques heures avant la fin de la copie Snapshot.
+
+
+
+ a| 
+43
+ a| 
+Nom déjà utilisé
+ a| 
+Erreur de commande
+ a| 
+SnapDrive pour UNIX a tenté de créer un groupe de disques, un volume hôte, un système de fichiers ou une LUN, mais son nom était déjà utilisé. Pour corriger ce problème, sélectionnez un nom qui n'est pas utilisé et entrez à nouveau la commande SnapDrive pour UNIX.
+
+
+
+ a| 
+44
+ a| 
+Erreur du gestionnaire du système de fichiers
+ a| 
+Mortel
+ a| 
+SnapDrive pour UNIX a rencontré une erreur inattendue du système de fichiers lorsque :
+
+* tentative de création du système de fichiers
+* création d'une entrée dans la table de montage du système de fichiers pour monter automatiquement le système de fichiers au démarrage.
+
+
+Le texte du message d'erreur affiché avec ce code décrit l'erreur que le système de fichiers a rencontrée. Enregistrez le message et envoyez-le au support technique NetApp pour qu'il vous aide à déterminer les étapes à suivre pour effectuer la restauration.
+
+
+
+ a| 
+45
+ a| 
+Erreur de point de montage
+ a| 
+Erreur d'administration
+ a| 
+Le point de montage du système de fichiers apparaît dans le fichier de la table de montage du système. Pour corriger, sélectionnez un point de montage non utilisé ou listé dans la table mount, et entrez de nouveau la commande SnapDrive pour UNIX.
+
+
+
+ a| 
+46
+ a| 
+LUN introuvable
+ a| 
+Erreur de commande
+ a| 
+Une commande SnapDrive pour UNIX a tenté d'accéder à une LUN qui n'existait pas sur le système de stockage.
+
+Pour corriger, vérifiez que la LUN existe et que le nom de la LUN a été correctement saisi.
+
+
+
+ a| 
+47
+ a| 
+Groupe initiateur introuvable
+ a| 
+Erreur d'administration
+ a| 
+Impossible d'accéder à un groupe initiateur du système de stockage comme prévu. Par conséquent, SnapDrive pour UNIX ne peut pas terminer l'opération en cours.
+
+Le message d'erreur spécifique décrit le problème et les étapes à suivre pour le résoudre. Corrigez le problème, puis répétez la commande.
+
+
+
+ a| 
+48
+ a| 
+Objet hors ligne
+ a| 
+Erreur d'administration
+ a| 
+SnapDrive pour UNIX a tenté d'accéder à un objet (par exemple un volume), mais a échoué parce que l'objet était hors ligne.
+
+
+
+ a| 
+49
+ a| 
+Entité en conflit
+ a| 
+Erreur de commande
+ a| 
+SnapDrive pour UNIX a tenté de créer un groupe initiateur, mais a rencontré un groupe initiateur du même nom.
+
+
+
+ a| 
+50
+ a| 
+Erreur de nettoyage
+ a| 
+Mortel
+ a| 
+SnapDrive pour UNIX a rencontré un élément qui devrait être supprimé mais qui existe toujours.
+
+
+
+ a| 
+51
+ a| 
+Conflit d'ID du groupe de disques
+ a| 
+Erreur de commande
+ a| 
+A `snapdrive snap connect` La commande a demandé un ID de groupe de disques qui entre en conflit avec un groupe de disques existant.
+
+Cela signifie généralement qu'un `snapdrive snap connect` la commande sur un hôte d'origine est en cours de tentative sur un système qui ne le prend pas en charge. Pour résoudre ce problème, essayez d'effectuer l'opération à partir d'un hôte différent.
+
+
+
+ a| 
+52
+ a| 
+LUN non mappée à un hôte
+ a| 
+Erreur d'administration
+ a| 
+Une LUN n'est mappée sur aucun hôte. En d'autres termes, il n'appartient pas à un groupe initiateur du système de stockage. Pour être accessible, la LUN doit être mappée sur l'hôte actuel en dehors de SnapDrive pour UNIX.
+
+
+
+ a| 
+53
+ a| 
+LUN non mappée sur l'hôte local
+ a| 
+Erreur d'administration
+ a| 
+Une LUN n'est pas mappée sur l'hôte actuel. En d'autres termes, il n'appartient pas à un groupe initiateur du système de stockage qui inclut des initiateurs de l'hôte actuel. Pour être accessible, la LUN doit être mappée sur l'hôte actuel en dehors de SnapDrive pour UNIX.
+
+
+
+ a| 
+54
+ a| 
+La LUN est mappée à l'aide d'un groupe initiateur étranger
+ a| 
+Erreur d'administration
+ a| 
+Une LUN est mappée à l'aide d'un groupe initiateur de système de stockage étranger. En d'autres termes, il appartient à un groupe initiateur du système de stockage contenant uniquement les initiateurs introuvables sur l'hôte local.
+
+Par conséquent, SnapDrive pour UNIX ne peut pas supprimer la LUN.
+
+Pour utiliser SnapDrive pour UNIX afin de supprimer une LUN, la LUN doit appartenir uniquement aux igroups locaux, c'est-à-dire qui ne contiennent que des initiateurs trouvés sur l'hôte local.
+
+
+
+ a| 
+55
+ a| 
+La LUN est mappée à l'aide d'un groupe initiateur mixte
+ a| 
+Erreur d'administration
+ a| 
+Une LUN est mappée à l'aide d'un groupe initiateur du système de stockage mixte. En d'autres termes, il appartient à un groupe initiateur du système de stockage contenant les initiateurs trouvés sur l'hôte local et les initiateurs introuvables.
+
+Par conséquent, SnapDrive pour UNIX ne peut pas déconnecter la LUN.
+
+Pour utiliser SnapDrive pour UNIX afin de déconnecter une LUN, celle-ci doit appartenir uniquement aux igroups locaux ou des groupes initiateurs étrangers, mais pas des groupes initiateurs mixtes. (Les igroups locaux ne contiennent que des initiateurs trouvés sur l'hôte local ; des igroups étrangers contiennent des initiateurs qui ne sont pas trouvés sur l'hôte local.)
+
+
+
+ a| 
+56
+ a| 
+Échec de la restauration de la copie Snapshot
+ a| 
+Erreur d'administration
+ a| 
+SnapDrive pour UNIX a tenté une opération de restauration Snapshot, mais celle-ci a échoué sans restaurer de LUN dans la copie Snapshot.
+
+Le message d'erreur spécifique décrit le problème et les étapes à suivre pour le résoudre. Corrigez le problème, puis répétez la commande.
+
+
+
+ a| 
+58
+ a| 
+Redémarrage de l'hôte requis
+ a| 
+Erreur d'administration
+ a| 
+Le système d'exploitation hôte nécessite un redémarrage pour mettre à jour les données internes. SnapDrive pour UNIX a préparé l'hôte pour cette mise à jour, mais ne peut pas terminer l'opération en cours.
+
+Redémarrez l'hôte, puis entrez à nouveau la ligne de commande SnapDrive pour UNIX qui a provoqué l'affichage de ce message. Après le redémarrage, l'opération peut se terminer.
+
+
+
+ a| 
+59
+ a| 
+Préparation de l'hôte ou de la LUN requise
+ a| 
+Erreur d'administration
+ a| 
+Le système d'exploitation hôte nécessite une mise à jour des données internes pour terminer l'opération en cours. Cette mise à jour est requise pour permettre la création d'une LUN.
+
+SnapDrive pour UNIX ne peut pas effectuer la mise à jour, car la préparation automatique de l'hôte pour le provisionnement a été désactivée car le `snapdrive.conf` variable `_enable-implicit-host-preparation_` est défini sur « désactivé ». Lorsque la préparation automatique de l'hôte est désactivée, vous devez utiliser la commande SnapDrive config préparer lun pour préparer l'hôte au provisionnement des LUN ou effectuer les étapes de préparation manuellement.
+
+Pour éviter ce message d'erreur, définissez l' `_enable-implicit-host-preparation_` valeur à « on » dans le `snapdrive.conf` fichier.
+
+
+
+ a| 
+62
+ a| 
+Non vide
+ a| 
+Erreur de commande
+ a| 
+Une erreur s'est produite car SnapDrive pour UNIX n'a pas pu supprimer un volume ou un répertoire du système de stockage. Cela peut se produire lorsqu'un autre utilisateur ou un autre processus crée un fichier exactement en même temps et dans le même répertoire que SnapDrive tente de supprimer. Pour éviter cette erreur, assurez-vous qu'un seul utilisateur fonctionne à la fois avec le volume du système de stockage.
+
+
+
+ a| 
+63
+ a| 
+Expiration du délai
+ a| 
+Erreur de commande
+ a| 
+Une erreur s'est produite, car SnapDrive pour UNIX n'a pas pu restaurer une LUN au cours de la période de délai d'expiration de 50 minutes.
+
+Enregistrez le message et envoyez-le au support technique NetApp pour qu'il vous aide à déterminer les étapes à suivre pour effectuer la restauration.
+
+
+
+ a| 
+64
+ a| 
+Service non en cours d'exécution
+ a| 
+Erreur d'administration
+ a| 
+Une erreur s'est produite car une commande SnapDrive pour UNIX a spécifié une entité NFS et le système de stockage n'exécutait pas le service NFS.
+
+
+
+ a| 
+126
+ a| 
+Erreur inconnue
+ a| 
+Erreur d'administration
+ a| 
+Une erreur inconnue s'est produite et peut être grave. Exécutez le `snapdrive.dc` Utilité et envoyer ses résultats à un support technique de NetApp pour analyse
+
+
+
+ a| 
+127
+ a| 
+Erreur interne
+ a| 
+Mortel
+ a| 
+Une erreur interne de SnapDrive pour UNIX s'est produite. Exécutez le `snapdrive.dc` Et transmettez ses résultats au support technique de NetApp pour analyse.
+
+|===

@@ -1,0 +1,78 @@
+---
+permalink: aix/task_installing_snapdrive_for_unix_on_an_aix_host.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, install, aix, host, unix 
+summary: 'Vous pouvez utiliser l"outil d"interface de gestion de système \(SMIT\) pour installer SnapDrive pour UNIX sur l"hôte AIX.' 
+---
+= Installation de SnapDrive pour UNIX sur un hôte AIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser l'outil SMIT (System Management interface Tool) pour installer SnapDrive pour UNIX sur l'hôte AIX.
+
+Vous devez vous assurer que vous êtes connecté en tant qu'utilisateur root.
+
+
+IMPORTANT: Vous ne devez pas supprimer le répertoire d'installation de SnapDrive pour UNIX. Si vous supprimez le répertoire, il peut y avoir des problèmes de démarrage et d'arrêt du démon.
+
+.Étapes
+. Téléchargez le logiciel depuis le site de support NetApp.
+. Accédez au répertoire dans lequel vous avez placé le non compressé `NetApp.snapdrive_aix_5_2.z file`.
+. Lancez SMIT en exécutant la commande suivante :
++
+`*smit*`
+
+. Sélectionnez l'option *installation et maintenance du logiciel*.
+. Sur l'écran suivant, sélectionnez l'option de menu *installer et mettre à jour le logiciel*.
+. Dans l'écran installer le logiciel, spécifiez l'emplacement du logiciel de l'une des manières suivantes :
++
+** Saisissez manuellement le chemin de l'emplacement du logiciel.
+** Appuyez sur F4 pour afficher une liste d'options.
+
+
++
+Pour utiliser la méthode F4, procédez comme suit :
+
++
+.. Appuyez sur F4.
+.. À l'invite vous demandant quel logiciel vous souhaitez installer, entrez :
++
+`*NetApp.snapdrive*`.
+
+.. À l'invite vous demandant si vous souhaitez continuer ou annuler, appuyez sur entrée pour terminer l'installation.
+
+
+. Vérifiez l'installation du progiciel à l'aide de l' `lslpp -l NetApp.snapdrive` commande.
+. Terminez l'installation en configurant SnapDrive pour UNIX pour le système.
++
+La plupart de ces informations sont définies par défaut. Cependant, vous devez spécifier les informations suivantes :
+
++
+.. Informations de connexion du système de stockage
+.. Paramètres AutoSupport
+.. Définissez la valeur de configuration correcte pour les options suivantes,SnapDrive pour UNIX selon que vous utilisez le protocole FC ou le protocole iSCSI :
++
+*** `default-transport`
++
+Sélectionnez `FCP` ou `iscsi` selon le protocole.
+
+*** `multipathing-type`
++
+Pour FC, définissez-le sur l'une des valeurs suivantes :
+
++
+**** `NativeMPIO`
+**** `DMP`
+
+
+
+
+
+
++
+Pour iSCSI, définissez cette option sur `NativeMPIO` ou `DMP`.
+
+

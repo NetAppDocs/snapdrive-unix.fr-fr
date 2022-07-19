@@ -1,0 +1,14 @@
+---
+permalink: linux-administration/concept_multipath_setup.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, multipath, steup, host, hba, driver, lvm, multipath 
+summary: 'Linux MPIO fonctionne si la configuration de l"hôte est terminée. La configuration de l"hôte est généralement classée comme configuration HBA, configuration des paramètres du pilote HBA, configuration de chemins d"accès multiples, configuration LVM et configuration SnapDrive pour UNIX.' 
+---
+= Configuration multivoie
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Linux MPIO fonctionne si la configuration de l'hôte est terminée. La configuration de l'hôte est généralement classée comme configuration HBA, configuration des paramètres du pilote HBA, configuration de chemins d'accès multiples, configuration LVM et configuration SnapDrive pour UNIX.

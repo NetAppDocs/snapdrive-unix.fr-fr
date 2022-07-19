@@ -1,0 +1,24 @@
+---
+permalink: solaris/concept_support_for_guest_operating_systems.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, support, guest, operating, system 
+summary: 'La prise en charge de SnapDrive pour UNIX pour les systèmes d"exploitation invités permet de créer le stockage et de gérer les copies Snapshot de LUN, de systèmes de fichiers, de volumes logiques et de groupes de disques. Pour l"approvisionnement des LUN RDM, vous devez spécifier le protocole Fibre Channel \(FC\) dans le fichier snapdrive.conf.' 
+---
+= Prise en charge des systèmes d'exploitation invités
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La prise en charge de SnapDrive pour UNIX pour les systèmes d'exploitation invités permet de créer le stockage et de gérer les copies Snapshot de LUN, de systèmes de fichiers, de volumes logiques et de groupes de disques. Pour le provisionnement des LUN RDM, vous devez spécifier le protocole Fibre Channel (FC) dans le fichier snapdrive.conf.
+
+* Créer un stockage qui inclut les LUN, les LUN RDM, les systèmes de fichiers, les volumes logiques et les groupes de disques
++
+Une fois le stockage créé, vous pouvez augmenter ou réduire la capacité de stockage, connecter le stockage à un hôte ou le déconnecter et afficher les informations de configuration relatives au stockage.
+
+* Créez une copie Snapshot d'un ou de plusieurs groupes de volumes sur un système de stockage.
++
+La copie Snapshot peut contenir des systèmes de fichiers, des volumes logiques, des groupes de disques, des LUN, des LUN RDM, Et les arborescences d'annuaire NFS. Après avoir créé une copie Snapshot, vous pouvez renommer, restaurer ou supprimer la copie Snapshot. Vous pouvez également connecter une copie Snapshot à un autre emplacement sur le même hôte ou sur un hôte différent. Une fois la copie Snapshot connectée, vous pouvez afficher et modifier le contenu ou vous déconnecter. Vous pouvez également afficher des informations sur les copies Snapshot.
+
+

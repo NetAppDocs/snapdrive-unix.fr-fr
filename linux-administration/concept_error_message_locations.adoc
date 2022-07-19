@@ -1,0 +1,43 @@
+---
+permalink: linux-administration/concept_error_message_locations.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, error, message, location 
+summary: 'SnapDrive pour UNIX fournit des informations sur les messages d"erreur en tant que sortie de commande et dans divers fichiers journaux.' 
+---
+= Emplacements des messages d'erreur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX fournit des informations sur les messages d'erreur en tant que sortie de commande et dans divers fichiers journaux.
+
+SnapDrive pour UNIX fournit des informations sur les messages d'erreur aux emplacements suivants :
+
+* Sortie de la commande
++
+Il affiche tous les messages à la sortie d'erreur standard de la commande SnapDrive pour UNIX.
+
+* Le journal système
++
+SnapDrive for UNIX consigne toutes les erreurs ayant un niveau de gravité d'erreur fatale et d'erreur d'administration dans le journal système à l'aide du mécanisme syslog(3).
+
+* Le fichier journal d'audit
++
+Le journal d'audit enregistre les informations suivantes pour chaque commande SnapDrive pour UNIX :
+
++
+** Qui l'a émis
+** Quand il a été émis
+** Quel était son état de sortie.
++
+Cela est très utile pour déterminer ce qui s'est réellement passé sur un système.
+
+
+
+* Le fichier journal de trace
++
+Le journal de suivi enregistre des informations plus détaillées sur les erreurs qui se produisent. Le support technique NetApp utilise ce journal pour diagnostiquer les problèmes.
+
+

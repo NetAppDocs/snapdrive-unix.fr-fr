@@ -1,0 +1,24 @@
+---
+permalink: aix/concept_how_snapdrive_forunix_usesautosupport.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, autosupport, support 
+summary: 'Les messages AutoSupport sont consignés dans la vue log EMS du système de stockage lorsque l"option autosupport-enabled est définie sur On dans le fichier snapdrive.conf. Par défaut, cette option est définie sur On dans le fichier snapdrive.conf. SnapDrive for UNIX envoie des messages AutoSupport au système de stockage, dans lequel les messages sont consignés dans le système de gestion des événements \(EMS\).' 
+---
+= Utilisation de AutoSupport par SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les messages AutoSupport sont consignés dans la vue log EMS du système de stockage lorsque `_autosupport-enabled_` l'option est définie sur activé dans `snapdrive.conf` fichier. Par défaut, cette option est définie sur `_on_` dans le `snapdrive.conf` fichier. SnapDrive for UNIX envoie des messages AutoSupport au système de stockage, dans lequel les messages sont consignés dans le système de gestion des événements (EMS).
+
+Un message AutoSupport est envoyé dans l'un des scénarios suivants :
+
+* Lorsqu'une opération est arrêtée en raison d'une panne opérationnelle, un message AutoSupport est envoyé au système de stockage pour lequel l'opération a échoué.
+* Si plusieurs systèmes de stockage sont connectés à l'hôte et que la défaillance opérationnelle se produit dans plusieurs systèmes de stockage, SnapDrive for UNIX envoie le message AutoSupport à un système de stockage spécifique pour lequel l'opération échoue.
+* Lorsqu'un nouveau contrôleur de stockage est ajouté par `_snapdrive config set <username> <filername>_`, SnapDrive pour UNIX envoie un message AutoSupport au système de stockage spécifié.
+* Lorsque le démon SnapDrive est redémarré ou démarré, le message AutoSupport est envoyé au système de stockage configuré.
+* Lorsque le `snapdrive storage show -all` La commande est exécutée, le message AutoSupport est envoyé à tous les systèmes de stockage configurés.
+* Lorsqu'une opération Snap create a réussi, le message AutoSupport est envoyé au système de stockage.
+

@@ -1,0 +1,28 @@
+---
+permalink: solaris/task_viewing_the_migrated_new_storage_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, view, migrate, storage, system 
+summary: Vous pouvez vérifier si le système de stockage migré est inclus dans le système hôte en exécutant la commande SnapDrive config migrate list. 
+---
+= Affichage du nouveau système de stockage migré
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier si le système de stockage migré est inclus dans le système hôte en exécutant le `snapdrive config migrate list` commande.
+
+.Étapes
+. Saisissez la commande suivante :
++
+`*snapdrive config migrate list*`
+
++
+[listing]
+----
+New Entry            Old Entry
+------------------------------------------------
+roaster              tuffleskin
+----
+

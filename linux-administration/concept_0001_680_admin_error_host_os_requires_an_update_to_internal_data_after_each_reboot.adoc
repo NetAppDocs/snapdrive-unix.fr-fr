@@ -1,0 +1,39 @@
+---
+permalink: linux-administration/concept_0001_680_admin_error_host_os_requires_an_update_to_internal_data_after_each_reboot.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, reboot, error, update, connect, admin, administration 
+summary: 'Sur les hôtes Red Hat Enterprise Linux 4 et Oracle Enterprise Linux 4, après chaque redémarrage, les opérations de connexion Snapshot et de création de stockage rencontrent un message d"erreur.' 
+---
+= Après chaque redémarrage, la connexion snap Connect génère « 0001-680 erreur d'administration : le système d'exploitation hôte nécessite une mise à jour des données internes ».
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sur les hôtes Red Hat Enterprise Linux 4 et Oracle Enterprise Linux 4, après chaque redémarrage, les opérations de connexion Snapshot et de création de stockage rencontrent un message d'erreur.
+
+Le message d'erreur suivant s'affiche car le `sg driver` supprime tous les périphériques inactifs dans `/dev/sgXX` fichier après le redémarrage.
+
+
+
+== Solution de contournement
+
+. Vérifier la valeur de la variable de configuration `_enable-implicithost- preparation_` dans le ``/opt/Netapp/snapdrive/snapdrive.conf` fichier. Il doit être réglé sur activé.
++
+Après avoir redémarré l'hôte et avant d'utiliser SnapDrive pour UNIX, procédez comme suit.
+
+. Vérifiez que les services sg et iSCSI sont chargés en entrant la commande suivante :
++
+`lsmod`
+
+. Si les services sg et iSCSI (si le setup iSCSI est utilisé) ne sont pas chargés, entrez les commandes suivantes :
++
+** `modprobe sg`
+** `service iscsi start`
+
+
+
+
+
+NOTE: Si vous ne souhaitez pas effectuer manuellement les étapes 2 et 3, ajoutez le `modprobe sg` et `service iscsi start` commandes du script de démarrage de l'hôte.

@@ -1,0 +1,28 @@
+---
+permalink: solaris/task_viewing_the_list_of_storage_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, view, list, storage, system 
+summary: 'Vous pouvez afficher tous les systèmes de stockage à l"aide de la commande SnapDrive config list du système hôte.' 
+---
+= Affichage de la liste des systèmes de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez afficher tous les systèmes de stockage à l'aide de `snapdrive config list` commande dans le système hôte.
+
+. Saisissez la commande suivante :
++
+`*snapdrive config list*`
+
++
+[listing]
+----
+snapdrive config list
+username appliance name appliance type
+-----------------------------------------------------
+root      roaster     StorageSystem
+----
+

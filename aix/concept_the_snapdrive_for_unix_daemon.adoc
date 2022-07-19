@@ -1,0 +1,14 @@
+---
+permalink: aix/concept_the_snapdrive_for_unix_daemon.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, daemon 
+summary: 'Avant d"exécuter toute commande SnapDrive pour UNIX, vous devez comprendre les services Web et le démon et leur utilisation. Toutes les commandes SnapDrive pour UNIX fonctionnent avec le service démon. Avant de pouvoir utiliser SnapDrive pour UNIX sur votre hôte AIX, vous devez démarrer le démon qui permet à SnapDrive pour UNIX de s"intégrer en toute transparence et en toute sécurité avec d"autres produits NetApp et autres.' 
+---
+= Présentation du démon SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant d'exécuter toute commande SnapDrive pour UNIX, vous devez comprendre les services Web et le démon et leur utilisation. Toutes les commandes SnapDrive pour UNIX fonctionnent avec le service démon. Avant de pouvoir utiliser SnapDrive pour UNIX sur votre hôte AIX, vous devez démarrer le démon qui permet à SnapDrive pour UNIX de s'intégrer en toute transparence et en toute sécurité avec d'autres produits NetApp et autres.

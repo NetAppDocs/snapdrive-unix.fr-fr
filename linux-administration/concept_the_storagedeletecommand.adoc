@@ -1,0 +1,17 @@
+---
+permalink: linux-administration/concept_the_storagedeletecommand.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, delete, command, host, lun 
+summary: 'La commande SnapDrive Storage delete supprime les entités de stockage de l"hôte en plus de toutes les entités côté hôte sous-jacentes et les LUN du système de stockage qui les hébergent.' 
+---
+= Commande Storage delete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le `snapdrive storage delete` La commande supprime les entités de stockage de l'hôte en plus de toutes les entités côté hôte sous-jacentes et les LUN du système de stockage qui les hébergent.
+
+
+IMPORTANT: Cette commande supprime les données.

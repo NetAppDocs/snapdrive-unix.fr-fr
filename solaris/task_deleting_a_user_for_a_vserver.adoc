@@ -1,0 +1,33 @@
+---
+permalink: solaris/task_deleting_a_user_for_a_vserver.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, delete, user, vserver 
+summary: 'Vous pouvez supprimer les informations de connexion d"un Vserver en exécutant la commande SnapDrive config delete.' 
+---
+= Suppression d'un utilisateur d'un Vserver
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer les informations de connexion d'un Vserver en exécutant le `snapdrive config delete` commande.
+
+.Étapes
+. Saisissez la commande suivante :
++
+`*snapdrive config delete _appliance_name_*`
+
++
+`_appliance_name_` Est le nom du Vserver sur lequel vous souhaitez supprimer les informations de connexion.
+
++
+[listing]
+----
+# snapdrive config delete clstr-vs2
+Deleted configuration for appliance: clstr-vs2
+----
++
+SnapDrive pour UNIX supprime les informations de connexion au Vserver que vous spécifiez.
+
+

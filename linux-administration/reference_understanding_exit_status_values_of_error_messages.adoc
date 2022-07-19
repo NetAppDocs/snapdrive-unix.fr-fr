@@ -1,0 +1,27 @@
+---
+permalink: linux-administration/reference_understanding_exit_status_values_of_error_messages.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, exit, error, status, warning, admin, command, fatal 
+summary: 'Chaque message d"erreur SnapDrive pour UNIX est associé à une valeur d"état de sortie. La valeur d"état de sortie contient la cause de l"erreur et son type-Avertissement, commande, Admin ou fatal.' 
+---
+= Description des valeurs d'état de sortie des messages d'erreur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Chaque message d'erreur SnapDrive pour UNIX est associé à une valeur d'état de sortie. La valeur d'état de sortie contient la cause de l'erreur et son type-Avertissement, commande, Admin ou fatal.
+
+Chaque ID de message d'erreur SnapDrive est lié à une valeur d'état de sortie. Les valeurs d'état de sortie contiennent les informations suivantes :
+
+* Valeur d'état de sortie--indique la cause de base de la condition d'erreur.
+* Type--indique le type d'erreur. Le niveau de gravité dépend du message et non de la valeur. Les valeurs possibles sont les suivantes :
++
+** Avertissement : SnapDrive pour UNIX a exécuté la commande, mais a émis un avertissement concernant des conditions qui peuvent nécessiter votre attention.
+** Commande--SnapDrive pour UNIX n'a pas pu exécuter la commande en raison d'une erreur dans la ligne de commande. Vérifiez le format de la ligne de commande pour vous assurer qu'elles sont correctes.
+** Admin--SnapDrive pour UNIX n'a pas pu exécuter la commande en raison des incompatibilités dans la configuration du système. Contactez votre administrateur système pour vérifier vos paramètres de configuration.
+** Fatal--SnapDrive pour UNIX n'a pas pu exécuter la commande en raison d'une condition inattendue. Les erreurs fatales sont rares. Si une erreur fatale se produit et que vous rencontrez des problèmes, contactez le support technique de NetApp pour savoir comment effectuer la restauration correctement et corriger les erreurs.
+
+
+

@@ -1,0 +1,32 @@
+---
+permalink: solaris/concept_unable_to_start_the_daemon.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, start, daemon, error 
+summary: 'Le démon ne peut pas être démarré lorsque le démon trouve peu d"entrées obsolètes dans le processus SnapDrive.' 
+---
+= Impossible de démarrer le démon
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le démon ne peut pas être démarré lorsque le démon trouve peu d'entrées obsolètes dans le processus SnapDrive.
+
+Le message d'erreur suivant s'affiche lorsque le démon est démarré ou redémarré.
+
+[listing]
+----
+Starting snapdrive daemon: snapdrive daemon port 4094 is in use ...
+snapdrive daemon port 4094 is in use ...
+snapdrive daemon port 4094 is in use ...
+snapdrive daemon port 4094 is in use ...
+Unable to start daemon...check daemon log file for more details
+----
+Pendant l'opération de redémarrage/démarrage du démon, vous pouvez rencontrer des entrées de processus staled SnapDrive, ce qui entraîne l'échec du démon.
+
+La solution à ce problème consiste à exécuter les opérations suivantes :
+
+* Supprimez manuellement les entrées obsolètes dans le processus SnapDrive.
+* Recherchez les ports disponibles dans l'hôte. Ensuite, dans le `snapdrive.conf` spécifiez le port dans l'option `_contact-http-port-sdu-daemon_`.
+

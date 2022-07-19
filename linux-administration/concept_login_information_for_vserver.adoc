@@ -1,0 +1,14 @@
+---
+permalink: linux-administration/concept_login_information_for_vserver.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, login, vserver, security 
+summary: 'Un nom d"utilisateur et un mot de passe permettent à SnapDrive pour UNIX d"accéder au Vserver. Outre la connexion vsadmin, il est également nécessaire d"exécuter SnapDrive for UNIX et de fournir le nom d"utilisateur et le mot de passe appropriés lorsque vous y êtes invité.' 
+---
+= Informations de connexion au Vserver
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un nom d'utilisateur et un mot de passe permettent à SnapDrive pour UNIX d'accéder au Vserver. Outre la connexion vsadmin, il est également nécessaire d'exécuter SnapDrive for UNIX et de fournir le nom d'utilisateur et le mot de passe appropriés lorsque vous y êtes invité.

@@ -1,0 +1,37 @@
+---
+permalink: solaris/task_enabling_thin_provisioning_for_luns.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, enable, thin, provisioning, lun 
+summary: 'Vous pouvez utiliser SnapDrive pour UNIX pour effectuer le provisionnement fin sur votre système de stockage. Le provisionnement fin est également appelé « réservation d"espace ».' 
+---
+= Activation du provisionnement fin pour les LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser SnapDrive pour UNIX pour effectuer le provisionnement fin sur votre système de stockage. Le provisionnement fin est également appelé « réservation d'espace ».
+
+.Étapes
+. Réglez le `_space-reservations-enabled_` valeur de la variable de configuration à `_on_`.
++
+Vous pouvez également activer le provisionnement fin en utilisant `-reserve` et `-noreserve` paramètres.
+
++
+Paramètre remplace la valeur mentionnée dans la variable -space-réservations-activées.
+
++
+Vous pouvez utiliser -Reserve et -noreserve avec les commandes suivantes pour activer ou désactiver la réservation de LUN :
+
++
+** `snapdrive storage create`
+** `snapdrive storage resize`
+** `snapdrive snap connect`
+** `snapdrive snap restore`
+
+
++
+Par défaut, SnapDrive pour UNIX permet de réserver de l'espace pour une nouvelle ou nouvelle opération de création de stockage. Pour les opérations de restauration en snapshots et de connexion en snapshots, il utilise l'espace réservé présent dans la copie Snapshot si `_-reserve_` ou `_-noreserve_` les paramètres ne sont pas spécifiés à la ligne de commande ou si la valeur du fichier de configuration n'est pas commenté.
+
+

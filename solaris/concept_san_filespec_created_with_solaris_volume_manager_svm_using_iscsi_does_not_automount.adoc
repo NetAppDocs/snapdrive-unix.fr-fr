@@ -1,0 +1,40 @@
+---
+permalink: solaris/concept_san_filespec_created_with_solaris_volume_manager_svm_using_iscsi_does_not_automount.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, filespec, iscsi, volume, solaris, manager, network, mount 
+summary: 'Lors du redémarrage du système hôte, la spécification de fichier réseau de la zone de stockage créée avec Solaris Volume Manager \(SVM\) utilisant iSCSI ne se monte pas automatiquement et l"hôte ne démarre pas.' 
+---
+= La spécification de fichier réseau de zone de stockage créée avec Solaris Volume Manager utilisant iSCSI ne s'adapte pas automatiquement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lors du redémarrage du système hôte, la spécification de fichier réseau de zone de stockage créée avec Solaris Volume Manager (SVM) utilisant iSCSI ne s'adapte pas automatiquement et l'hôte ne démarre pas.
+
+Si l'hôte démarre, vous pouvez monter la spécification de fichier en suivant les étapes indiquées.
+
+
+
+== Solution de contournement
+
+. Entrez dans le métaet
++
+`*-s dgname -t*`
+
++
+commande pour modifier la propriété du jeu de disques manuellement.
+
++
+
+NOTE: Assurez-vous que le métadb est défini.
+
+. Entrez le
++
+`*mount -a*`
+
++
+commande permettant de monter la spécification de fichier.
+
+

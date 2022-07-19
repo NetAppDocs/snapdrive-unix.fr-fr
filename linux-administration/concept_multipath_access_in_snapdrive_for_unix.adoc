@@ -1,0 +1,26 @@
+---
+permalink: linux-administration/concept_multipath_access_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, support, storage, standard, multipath, multiple, network, path, host 
+summary: 'SnapDrive pour UNIX prend en charge l"accès multivoie FC aux systèmes de stockage via la solution logicielle standard de chemins d"accès multiples. En utilisant les chemins d"accès multiples, vous pouvez configurer plusieurs chemins réseau entre l"hôte et le système de stockage.' 
+---
+= Prise en charge des chemins d'accès multiples dans SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX prend en charge l'accès multivoie FC aux systèmes de stockage via la solution logicielle standard de chemins d'accès multiples. En utilisant les chemins d'accès multiples, vous pouvez configurer plusieurs chemins réseau entre l'hôte et le système de stockage.
+
+|===
+| Plateforme | Solution de chemins d'accès multiples 
+
+
+ a| 
+Linux
+ a| 
+NativeMPIO [DM Multipath]
+
+|===
+Si un chemin tombe en panne, le trafic FC continue sur les chemins restants. Des chemins d'accès multiples sont nécessaires si l'hôte possède plusieurs chemins d'accès à une LUN et fonctionne avec la mise en transparence des chemins sous-jacents pour l'utilisateur. Si la solution de chemins d'accès multiples spécifiée dans le fichier de configuration pour les opérations SnapDrive pour UNIX est configurée et prise en charge, SnapDrive pour UNIX utilise la solution de chemins d'accès multiples spécifiée.

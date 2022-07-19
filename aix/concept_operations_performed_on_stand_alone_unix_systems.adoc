@@ -1,0 +1,24 @@
+---
+permalink: aix/concept_operations_performed_on_stand_alone_unix_systems.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, operation, stand, alone 
+summary: SnapDrive pour UNIX sur des systèmes UNIX autonomes, vous permet de créer du stockage et de gérer des copies Snapshot de LUN, de systèmes de fichiers, de volumes logiques et de groupes de disques. 
+---
+= Opérations effectuées sur des systèmes UNIX autonomes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX sur des systèmes UNIX autonomes, vous permet de créer du stockage et de gérer des copies Snapshot de LUN, de systèmes de fichiers, de volumes logiques et de groupes de disques.
+
+* Créer un stockage comprenant des LUN, des systèmes de fichiers, des volumes logiques et des groupes de disques.
++
+Une fois le stockage créé, vous pouvez augmenter ou réduire la capacité de stockage, connecter le stockage à un hôte ou le déconnecter et afficher les informations de configuration relatives au stockage.
+
+* Créez une copie Snapshot d'un ou de plusieurs groupes de volumes sur un système de stockage.
++
+La copie Snapshot peut contenir des systèmes de fichiers, des volumes logiques, des groupes de disques, des LUN et des arborescences de répertoires NFS. Après avoir créé une copie Snapshot, vous pouvez renommer, restaurer ou supprimer la copie Snapshot. Vous pouvez également connecter une copie Snapshot à un autre emplacement sur le même hôte ou sur un hôte différent. Une fois la copie Snapshot connectée, vous pouvez afficher et modifier le contenu ou vous déconnecter. Vous pouvez également afficher des informations sur les copies Snapshot que vous créez.
+
+

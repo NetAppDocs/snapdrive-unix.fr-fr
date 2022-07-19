@@ -1,0 +1,24 @@
+---
+permalink: solaris/concept_diagnostic_files_installed_by_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snaprive, diagnostic, file 
+summary: SnapDrive pour UNIX installe des fichiers de diagnostic qui aident à détecter des problèmes dans SnapDrive pour UNIX. 
+---
+= Fichiers de diagnostic installés par SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX installe des fichiers de diagnostic qui aident à détecter des problèmes dans SnapDrive pour UNIX.
+
+* `/opt/NTAPsnapdrive/diag/snapdrive.dc`
+* `/opt/NTAPsnapdrive/diag/solaris_info`
+* `/opt/NTAPsnapdrive/diag/filer_info`
+* `/opt/NTAPsnapdrive/diag/brocade_info`
+* `/opt/NTAPsnapdrive/diag/cisco_info`
+* `/opt/NTAPsnapdrive/diag/mcdata_info`
+* `/opt/NTAPsnapdrive/diag/SHsupport.pm`
+* `/opt/NTAPsnapdrive/diag/Telnet.pm`
+

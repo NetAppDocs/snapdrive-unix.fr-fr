@@ -1,0 +1,40 @@
+---
+permalink: linux-administration/reference_snapdrive_for_unix_operations_fails_improper_multipath_settings_aliased_devices_used.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, unix, fail, multipath, settings, device, error, sdu, rhel, command 
+summary: 'Lorsque vous exécutez la commande Storage show ou snap create dans RHEL 5.11, la commande affiche le message d"erreur suivant. Échec de l"appel d"état au démon SDU et dans l"hôte SLES11SP3 avec l"option –nolvm lorsque l"hôte LVM n"est pas impliqué.' 
+---
+= Les opérations SnapDrive pour UNIX échouent en raison de paramètres de chemins d'accès multiples incorrects lors de l'utilisation de périphériques avec alias.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous exécutez le `storage show` ou `snap create` Commande dans RHEL 5.11, la commande affiche le message d'erreur suivant :
+
+`Status call to SDU daemon failed and in SLES11SP3 host with --nolvm option when the host LVM is not involved.`
+
+* *`snapdrive storage show -all` la commande n'affiche pas le nom d'alias correct*
++
+SnapDrive pour UNIX n'affiche pas le nom d'alias correct pour les périphériques mapper. Ce problème se produit lorsque la section multichemins{ } n'est pas correcte dans l' `multipath.conf` fichier.
+
+* *Solution de contournement*
++
+Vous devez vous assurer que les accolades sont saisies dans les paramètres des chemins d'accès multiples.
+
+* *Les opérations SnapDrive échouent avec l'erreur ci-dessous lorsque les noms d'alias ont été définis pour les périphériques mapper*
++
+[listing]
+----
+Snapdrive could not import /dev/mapper/lvm_fs_SdDg:   device-mapper: resume ioctl failed: Invalid argument
+  Unable to resume lvm_fs_SdDg-lvm_fs_SdHv (252:4)   1 logical volume(s) in volume group "lvm_fs_SdDg" now active”
+----
++
+Ce problème survient lorsque le mappage des noms d'alias avec les périphériques n'est pas correct.
+
+* *Solution de contournement*
++
+Optimisation `multipath-ll` Assurez-vous que le mappage de nom d'alias avec les périphériques est correct, puis exécutez les opérations SnapDrive pour UNIX.
+
+

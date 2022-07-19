@@ -1,0 +1,36 @@
+---
+permalink: linux-administration/concept_support_for_vserver.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, support, vserver, storage, lif, data 
+summary: 'SnapDrive pour UNIX prend en charge Vserver. Vserver est un serveur de stockage virtuel sécurisé, qui prend en charge de nombreux protocoles ainsi qu"un stockage unifié. Un Vserver contient des volumes de données et une ou plusieures LIFs à utiliser pour fournir les données aux clients.' 
+---
+= Prise en charge du Vserver
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX prend en charge Vserver. Vserver est un serveur de stockage virtuel sécurisé, qui prend en charge de nombreux protocoles ainsi qu'un stockage unifié. Un Vserver contient des volumes de données et une ou plusieures LIFs à utiliser pour fournir les données aux clients.
+
+Le Vserver isole en toute sécurité le réseau et le stockage des données virtualisés partagés, et apparaît comme un serveur dédié unique aux clients. Chaque Vserver dispose d'un domaine d'authentification d'administrateur distinct et peut être géré de façon indépendante par un administrateur Vserver.
+
+Les volumes de chaque Vserver sont liés via des jonctions et sont montés sur les chemins de jonction. Le système de fichiers de chaque volume semble être monté au niveau des jonctions. Le volume root du Vserver est trouvé au niveau supérieur de la hiérarchie de l'espace de noms ; des volumes supplémentaires sont montés sur le volume root du Vserver afin d'étendre le namespace global. Les volumes de données du Vserver contiennent des fichiers et des LUN.
+
+* Vous pouvez utiliser SnapDrive pour UNIX pour effectuer des opérations de provisionnement du stockage, de copie Snapshot et de configuration sur un vServer.
+* Les données d'application ne sont pas stockées dans le volume root du Vserver.
+* Si la racine du Vserver est un qtree, les opérations de copie Snapshot ne sont pas prises en charge.
+* Chaque volume créé sur le Vserver doit être monté sur un Junction path.
+
+
+*Informations connexes*
+
+link:concept_configuration_information_for_vserver_environment.adoc["Informations de configuration pour Vserver"]
+
+link:task_verifying_login_information_for_vserver.adoc["Vérification des informations de connexion pour le Vserver"]
+
+link:task_specifying_login_information_for_vserver.adoc["Spécification des informations de connexion pour le Vserver"]
+
+link:task_deleting_a_user_for_a_vserver.adoc["Suppression d'un utilisateur d'un Vserver"]
+
+link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-ssg/home.html["Guide de configuration du logiciel ONTAP 9"]

@@ -1,0 +1,14 @@
+---
+permalink: solaris/concept_restoring_a_snapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, snapshot copy 
+summary: 'Vous pouvez restaurer une copie Snapshot d"une entité de stockage unique ou de plusieurs entités de stockage.' 
+---
+= Restaurer une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez restaurer une copie Snapshot d'une entité de stockage unique ou de plusieurs entités de stockage.

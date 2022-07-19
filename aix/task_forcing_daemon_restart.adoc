@@ -1,0 +1,26 @@
+---
+permalink: aix/task_forcing_daemon_restart.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, force, daemon, restart, command 
+summary: 'Vous pouvez forcer le redémarrage du démon. Un redémarrage puissant du démon arrête l"exécution de toutes les commandes en cours d"exécution.' 
+---
+= Redémarrage forcé du démon
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez forcer le redémarrage du démon. Un redémarrage puissant du démon arrête l'exécution de toutes les commandes en cours d'exécution.
+
+Assurez-vous d'être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Entrez la commande suivante pour redémarrer avec force le démon :
++
+`*snapdrived -force restart*`
+
++
+Une fois la demande de redémarrage forcé reçue, le démon arrête toutes les commandes en cours d'exécution et en file d'attente. Le démon n'est redémarré qu'après l'annulation de l'exécution de toutes les commandes en cours d'exécution.
+
+

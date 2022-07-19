@@ -1,0 +1,20 @@
+---
+permalink: linux-administration/concept_guidelines_fordeleting_snapshotcopies.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, delete, snapshot, copy, storage, command 
+summary: 'Vous ne pouvez pas supprimer une copie Snapshot en cours d"utilisation ou si la copie Snapshot se trouve sur plusieurs volumes de système de stockage.' 
+---
+= Consignes de suppression des copies Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous ne pouvez pas supprimer une copie Snapshot en cours d'utilisation ou si la copie Snapshot se trouve sur plusieurs volumes de système de stockage.
+
+Suivez ces instructions lorsque vous utilisez le `snapdrive snap delete` commande :
+
+* L'opération de suppression de Snapshot échoue si l'une des copies Snapshot à supprimer est en cours d'utilisation ou non créée par SnapDrive pour UNIX. Vous pouvez modifier ce comportement en incluant le `-force` avec le `snapdrive snap delete` commande.
+* Si une copie Snapshot s'étend sur plusieurs volumes du système de stockage, vous devez supprimer manuellement la copie Snapshot de chaque volume.
+

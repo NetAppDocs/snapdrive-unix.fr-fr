@@ -1,0 +1,36 @@
+---
+permalink: solaris/concept_verify_that_the_hosts_are_ready.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, host, verify 
+summary: 'Vous devez vérifier que les hôtes sont prêts. Pour démarrer les opérations de vérification, vous devez d"abord vérifier si l"hôte est connecté au système de stockage en entrant la commande ping filername.' 
+---
+= Vérification que les hôtes sont prêts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez vérifier que les hôtes sont prêts. Pour démarrer les opérations de vérification, vous devez d'abord vérifier si l'hôte est connecté au système de stockage en entrant dans le `ping filername` commande.
+
+Vous devez également vérifier que les hôtes et le système de stockage peuvent communiquer les uns avec les autres. Pour confirmer cela, exécutez le `snapdrive storage show -all` contrôlez et vérifiez si les hôtes et le système de stockage communiquent. Vérifiez que les hôtes sont prêts en effectuant certaines opérations :
+
+* Vérifiez que vous avez correctement configuré l'hôte et le système de stockage en suivant les instructions de la documentation Host Utilities de l'hôte.
+* Vérifiez que vous disposez d'une configuration qui utilise NFS et configurez le fichier d'exportations.
+* Vérifiez que l'hôte répond aux exigences minimales de SnapDrive pour UNIX, y compris les correctifs requis pour le système d'exploitation.
+* Installez la bibliothèque NTAPasl avant d'installer la pile Veritas sur l'hôte.
++
+
+NOTE: Si vous avez installé la pile Veritas sans installer la bibliothèque NTAPasl, vous devez installer la bibliothèque NTAPasl et exécuter l' `vxinstall` Commande pour mettre les LUN et les groupes de disques en ligne.
+
+
+
+*Informations connexes*
+
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.cdot-famg-nfs/home.html["Référence ONTAP 9 NFS"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1401220["Guide de gestion des protocoles et des accès aux fichiers Data ONTAP 8.2 pour 7-mode"]
+
+http://mysupport.netapp.com["Support NetApp"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1148981["Solaris Host Utilities 6.1 - Guide d'installation et de configuration"]

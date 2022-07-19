@@ -1,0 +1,23 @@
+---
+permalink: aix/task_starting_the_snapdrive_for_unix_daemon.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, start, daemon, command 
+summary: 'Vous devez démarrer et exécuter le démon SnapDrive pour UNIX avant de pouvoir utiliser n"importe quelle commande SnapDrive pour UNIX.' 
+---
+= Démarrage du démon SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez démarrer et exécuter le démon SnapDrive pour UNIX avant de pouvoir utiliser n'importe quelle commande SnapDrive pour UNIX.
+
+Vous devez être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Lancez le démon :
++
+`*snapdrived start*`
+
+

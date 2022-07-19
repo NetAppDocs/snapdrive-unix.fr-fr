@@ -1,0 +1,56 @@
+---
+permalink: solaris/concept_contents_of_an_audit_log_file.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, audit, log, file 
+summary: 'Le journal d"audit affiche les informations relatives aux commandes que vous avez émises avec SnapDrive pour UNIX.' 
+---
+= Contenu d'un fichier journal d'audit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le journal d'audit affiche les informations relatives aux commandes que vous avez émises avec SnapDrive pour UNIX.
+
+Le fichier journal d'audit conserve l'historique des informations suivantes :
+
+* Les commandes générées.
+* Valeur renvoyée par ces commandes.
+* ID utilisateur de l'utilisateur qui a appelé la commande.
+* Horodatage indiquant le début de la commande (sans code retour) et un autre horodatage indiquant que la commande a terminé (avec un code retour). L'enregistrement du journal d'audit affiche uniquement les informations sur `snapdrive` utiliser (commandes émises).
+
+
+Un fichier journal d'audit contient les informations suivantes.
+
+|===
+| Champ | Description 
+
+
+ a| 
+uid
+ a| 
+ID d'utilisateur
+
+
+
+ a| 
+gids
+ a| 
+ID de groupe
+
+
+
+ a| 
+MsgText
+ a| 
+texte du message
+
+
+
+ a| 
+Code retour
+ a| 
+code retour à partir d'une commande
+
+|===

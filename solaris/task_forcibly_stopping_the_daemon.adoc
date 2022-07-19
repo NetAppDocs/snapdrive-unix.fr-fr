@@ -1,0 +1,23 @@
+---
+permalink: solaris/task_forcibly_stopping_the_daemon.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, forcibly, stop, daemon, command 
+summary: 'Vous pouvez forcer l"arrêt du démon lorsque vous ne voulez pas attendre que toutes les commandes soient terminées. Une fois la demande d"arrêt forcé du démon reçue, le démon SnapDrive pour UNIX annule toutes les commandes en cours d"exécution ou en file d"attente. Lorsque vous arrêtez le démon de force, il est possible que l"état de votre système ne soit pas défini. Cette méthode n"est pas recommandée.' 
+---
+= Arrêt forcé du démon
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez forcer l'arrêt du démon lorsque vous ne voulez pas attendre que toutes les commandes soient terminées. Une fois la demande d'arrêt forcé du démon reçue, le démon SnapDrive pour UNIX annule toutes les commandes en cours d'exécution ou en file d'attente. Lorsque vous arrêtez le démon de force, il est possible que l'état de votre système ne soit pas défini. Cette méthode n'est pas recommandée.
+
+Vous devez être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Arrêtez le démon de force :
++
+`*snapdrived -force stop*`
+
+

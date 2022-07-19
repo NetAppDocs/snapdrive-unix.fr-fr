@@ -1,0 +1,44 @@
+---
+permalink: aix/concept_postinstallation_checks.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, check, post, installation 
+summary: 'Une fois l"installation terminée, vous devez effectuer quelques tâches pour vous assurer que SnapDrive pour UNIX est correctement installé.' 
+---
+= Réalisation de vérifications post-installation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fois l'installation terminée, vous devez effectuer quelques tâches pour vous assurer que SnapDrive pour UNIX est correctement installé.
+
+.Étapes
+. Vérifiez que le programme d'installation a installé tous les fichiers nécessaires sur votre hôte.
+. Vérifiez que les variables de configuration dans l' `snapdrive.conf` les paramètres du fichier sont corrects.
++
+Pour la majorité de ces variables, les valeurs par défaut doivent être applicables.
+
+. Fournissez à SnapDrive for UNIX les informations de connexion actuelles au système de stockage.
++
+Lorsque vous configurez votre système de stockage, vous avez fourni un identifiant d'utilisateur. SnapDrive for UNIX a besoin de ces informations de connexion pour fonctionner avec le système de stockage.
+
+. Pour utiliser le contrôle d'accès basé sur des rôles (RBAC), définissez la `_rbac-method=dfm_` variable dans le `snapdrive.conf` fichier.
++
+Par défaut, SnapDrive 4.0 pour UNIX et versions ultérieures accède aux systèmes de stockage via les identifiants root. La fonctionnalité RBAC n'est pas activée.
+
+. Pour utiliser HTTPS pour une connexion sécurisée avec le système de stockage et le service démon, définissez l' `_use-https-to-sdu-daemon=on_` dans le `snapdrive.conf` fichier.
++
+
+NOTE: SnapDrive 5.0 pour UNIX et les versions ultérieures prennent en charge HTTPS pour la communication des démons. Par défaut, l'option est définie sur `off`.
+
+. Installez le certificat de serveur utilisé par SnapDrive pour UNIX dans
++
+`sdu-daemon-certificate-path=/opt/NetApp/snapdrive/snapdrive.pem path as specified in the snapdrive.conf` fichier.
+
+. Modifiez le mot de passe par défaut du service démon SnapDrive pour UNIX en exécutant la commande suivante :
++
+`*snapdrived passwd*`
+
+. Vérifier les détails des composants de configuration installés dans la `/var/log/sdconfcheck.out`.
+

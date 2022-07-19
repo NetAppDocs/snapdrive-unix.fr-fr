@@ -1,0 +1,27 @@
+---
+permalink: aix/concept_automatic_storage_system_update_on_operations_manager.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, automatic, storage, update, operations, manager, console 
+summary: 'La console Operations Manager détecte les systèmes de stockage pris en charge sur votre réseau. Il surveille régulièrement les données collectées à partir des systèmes de stockage découverts. Les données sont actualisées à un intervalle défini. L"administrateur de la console Operations Manager peut configurer l"intervalle d"actualisation.' 
+---
+= Mise à jour automatique du système de stockage sur la console Operations Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La console Operations Manager détecte les systèmes de stockage pris en charge sur votre réseau. Il surveille régulièrement les données collectées à partir des systèmes de stockage découverts. Les données sont actualisées à un intervalle défini. L'administrateur de la console Operations Manager peut configurer l'intervalle d'actualisation.
+
+Intervalle de surveillance des LUN, intervalle de surveillance des qtrees et intervalle de surveillance vFiler sont des champs importants qui déterminent la fréquence des mises à jour de LUN, qtree et vFiler. Par exemple, si une nouvelle LUN est créée sur un système de stockage, la nouvelle LUN n'est pas immédiatement mise à jour sur la console Operations Manager. C'est pour cette raison que la vérification d'accès émise à la console d'Operations Manager pour cette LUN vers la console d'Operations Manager échoue. Pour éviter cette situation, vous pouvez modifier l'intervalle de surveillance des LUN en fonction de vos besoins.
+
+. Sélectionnez *Setup* > *Options* dans la console Operations Manager pour modifier l'intervalle de surveillance.
+. L'administrateur de la console Operations Manager peut également actualiser la console Operations Manager avec force `dfm host discovery filername` dans l'interface de ligne de commande.
+. L'administrateur de la console Operations Manager peut également accorder des droits `DFM.Database.Write` Fonctionnalité du groupe global sur sd-admin pour permettre à SnapDrive for UNIX d'actualiser les entités du système de stockage sur la console Operations Manager.
++
+[listing]
+----
+# dfm role add sd-admin-role DFM.Database.Write Global
+Added 1 capability to role sd-admin-role.
+----
+

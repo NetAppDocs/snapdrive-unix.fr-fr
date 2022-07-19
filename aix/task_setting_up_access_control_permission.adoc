@@ -1,0 +1,62 @@
+---
+permalink: aix/task_setting_up_access_control_permission.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, access, control, permission 
+summary: 'Vous pouvez configurer l"autorisation de contrôle d"accès dans SnapDrive for UNIX en créant un répertoire et un fichier spéciaux dans le volume racine du système de stockage.' 
+---
+= Configuration de l'autorisation de contrôle d'accès
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer l'autorisation de contrôle d'accès dans SnapDrive for UNIX en créant un répertoire et un fichier spéciaux dans le volume racine du système de stockage.
+
+Assurez-vous d'être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Créez le répertoire `sdprbac` dans le volume racine du système de stockage cible.
++
+Pour rendre le volume racine accessible, vous pouvez monter le volume via NFS.
+
+. Créez le fichier d'autorisations dans le `sdprbac` répertoire. Assurez-vous que les affirmations suivantes sont vraies :
++
+** Le fichier doit être nommé `sdhost-name.prbac` où nom-hôte est le nom de l'hôte pour lequel vous spécifiez des autorisations d'accès.
+** Le fichier doit être en lecture seule pour que SnapDrive pour UNIX puisse le lire, mais qu'il ne peut pas être modifié.
++
+Pour donner l'autorisation d'accès dev-sun1 à un hôte, créez le fichier suivant sur le système de stockage : `/vol/vol1/sdprbac/sddev-sun1.prbac`
+
+
+
+. Définissez les autorisations dans le fichier pour cet hôte.
++
+Vous devez utiliser le format suivant pour le fichier :
+
++
+** Vous ne pouvez spécifier qu'un seul niveau d'autorisation. Pour donner à l'hôte un accès complet à toutes les opérations, entrez la chaîne TOUT ACCÈS.
+** La chaîne d'autorisation doit être la première chose dans le fichier. Le format de fichier n'est pas valide si la chaîne d'autorisation n'est pas dans la première ligne.
+** Les chaînes de permission ne sont pas sensibles à la casse.
+** Aucun espace blanc ne peut précéder la chaîne d'autorisation.
+** Aucun commentaire n'est autorisé.
++
+Ces chaînes d'autorisation valides autorisent les niveaux d'accès suivants :
+
+** AUCUN - l'hôte n'a pas accès au système de stockage.
+** SNAP CREATE--l'hôte peut créer des copies Snapshot.
+** SNAP USE--l'hôte peut supprimer et renommer les copies Snapshot.
+** SNAP ALL - l'hôte peut créer, restaurer, supprimer et renommer des copies Snapshot.
+** SUPPRESSION DE LA FONCTION DE CRÉATION DE STOCKAGE - l'hôte peut créer, redimensionner et supprimer du stockage.
+** UTILISATION DU STOCKAGE : l'hôte peut connecter et déconnecter le stockage, ainsi que réaliser une estimation de la répartition des clones et le démarrage par clone sur le stockage.
+** TOUT LE STOCKAGE- l'hôte peut créer, supprimer, connecter et déconnecter le stockage, mais aussi réaliser une estimation du fractionnement du clone et le démarrage du fractionnement du clone sur le stockage.
+** TOUS LES ACCÈS--l'hôte a accès à toutes les opérations SnapDrive pour UNIX ci-dessus. Chacune de ces chaînes d'autorisation est discrète. Si vous spécifiez SNAP USE, l'hôte peut supprimer ou renommer les copies Snapshot, mais il ne peut pas créer de copies Snapshot, ni restaurer, ni effectuer d'opérations de provisionnement du stockage.
+
+
++
+Quelles que soient les autorisations que vous avez définies, l'hôte peut effectuer des opérations d'affichage et de liste.
+
+. Vérifiez les autorisations d'accès en entrant la commande suivante :
++
+`*snapdrive config access show _filer_name_*`
+
+

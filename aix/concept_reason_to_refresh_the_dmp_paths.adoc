@@ -1,0 +1,36 @@
+---
+permalink: aix/concept_reason_to_refresh_the_dmp_paths.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, dmp, path, refresh 
+summary: Sur les hôtes avec des configurations FC et DMP, la commande SnapDrive Storage delete - lun peut suspendre. 
+---
+= Raison d'actualiser les chemins DMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sur les hôtes avec des configurations FC et DMP, le `snapdrive storage delete - lun` la commande peut être suspendue.
+
+La commande peut se bloquer en raison d'une installation ou d'une configuration inappropriées des composants suivants :
+
+* NAPasl
+* Pile Veritas (base de stockage)
+* Licences de chemins d'accès multiples
+
+
+Vous devez actualiser correctement les informations des chemins DMP après l'activation, la désactivation ou l'ajout d'un chemin FC. Pour actualiser les chemins DMP, exécutez les commandes suivantes de manière séquentielle comme indiqué ci-dessous.
+
+|===
+| *Plate-forme* | *Commande* 
+
+
+ a| 
+AIX
+ a| 
+* `cfgmg`
+* `vxdisk scandisk`
+
+
+|===

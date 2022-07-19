@@ -1,0 +1,18 @@
+---
+permalink: aix/concept_preparation_for_installing_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, install, prepare 
+summary: 'Les hôtes sur lesquels vous installez SnapDrive pour UNIX doivent répondre à la configuration logicielle, matérielle, navigateur, base de données et système d"exploitation spécifique. Pour obtenir les dernières informations sur ces exigences, consultez la matrice d"interopérabilité.' 
+---
+= Préparation de l'installation de SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les hôtes sur lesquels vous installez SnapDrive pour UNIX doivent répondre à la configuration logicielle, matérielle, navigateur, base de données et système d'exploitation spécifique. Pour obtenir les dernières informations sur ces exigences, consultez la matrice d'interopérabilité.
+
+*Informations connexes*
+
+https://mysupport.netapp.com/NOW/products/interoperability["Interopérabilité NetApp"]

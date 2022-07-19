@@ -1,0 +1,24 @@
+---
+permalink: aix/concept_space_reservation_with_a_flexclone_volume.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, space, reservation, flexclone, volume 
+summary: 'Vous pouvez effectuer une réservation d"espace sur des volumes FlexClone dont l"accès est restreint ou sans restriction. Les volumes FlexClone par défaut n"ont pas de réservation d"écriture.' 
+---
+= Réservation d'espace avec un volume FlexClone
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez effectuer une réservation d'espace sur des volumes FlexClone dont l'accès est restreint ou sans restriction. Les volumes FlexClone par défaut n'ont pas de réservation d'écriture.
+
+Voici les paramètres de réservation d'espace pour le FlexClone pour les volumes FlexClone sans restriction et soumis à des restrictions :
+
+*Volumes FlexClone sans restriction :* si `-reserve` Cette option est indiquée dans l'interface de ligne de commandes ou `flexclone-writereserve-enabled = on` dans `snapdrive.conf`, L'espace de réservation serait défini sur volume sur le FlexClone, sinon il n'est pas. SnapDrive pour UNIX affiche un message d'erreur si l'espace disponible sur l'agrégat n'est pas suffisant pour respecter ce paramètre.
+
+*Volumes FlexClone restreints:*
+
+* Le paramètre de réservation d'espace au niveau du volume est toujours désactivé, c'est-à-dire l'espace réservé est défini sur AUCUN.
+* Si `-reserve` ou `-noreserve` L'option est donnée dans l'interface de ligne de commande, puis la réservation d'espace est activée ou désactivée respectivement sur les LUN qui appartiennent à la spécification de fichier hôte. Dans le cas contraire, les LUN associées aux spécifications du fichier hôte dans FlexClone héritent de la réservation d'espace des LUN du volume parent.
+

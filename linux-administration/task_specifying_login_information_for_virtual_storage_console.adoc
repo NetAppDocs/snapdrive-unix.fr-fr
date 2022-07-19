@@ -1,0 +1,56 @@
+---
+permalink: linux-administration/task_specifying_login_information_for_virtual_storage_console.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, login, virtual, storage, console, rdm, lun 
+summary: 'Virtual Storage Console doit être configuré dans SnapDrive pour UNIX afin de provisionner des LUN RDM dans le système d"exploitation invité. Cependant, il existe un nom d"utilisateur et un mot de passe qui permettent à SnapDrive pour UNIX d"accéder à Virtual Storage Console. Virtual Storage Console n"authentifie pas ces informations d"identification.' 
+---
+= Spécification des informations de connexion pour Virtual Storage Console
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Virtual Storage Console doit être configuré dans SnapDrive pour UNIX afin de provisionner des LUN RDM dans le système d'exploitation invité. Cependant, il existe un nom d'utilisateur et un mot de passe qui permettent à SnapDrive pour UNIX d'accéder à Virtual Storage Console. Virtual Storage Console n'authentifie pas ces informations d'identification.
+
+Assurez-vous que Virtual Storage Console est configuré avec vCenter.
+
+. Saisissez la commande suivante :
++
+`*snapdrive config set -viadmin <user> <viadmin_name>*`
+
++
+`_user_` est le nom d'utilisateur du système d'interface virtuelle.
+
++
+`_viadmin_name_` Est le nom ou l'adresse IP du système d'interface virtuelle.
+
+. À l'invite, entrez le mot de passe, s'il y en a un.
++
+[NOTE]
+====
+Si vous n'avez défini aucun mot de passe, appuyez sur
+
+`Enter`
+
+(valeur nulle) lorsque vous êtes invité à saisir un mot de passe.
+
+====
++
+Cet exemple définit un utilisateur appelé `sdadmin` pour une interface virtuelle :
+
++
+[listing]
+----
+guest# snapdrive config set -viadmin sdadmin ruffleskin
+Password for sdadmin:
+Retype Password:
+----
++
+SnapDrive pour UNIX est désormais prêt à provisionner des LUN RDM dans le système d'exploitation invité.
+
++
+
+NOTE: Si vous souhaitez configurer une nouvelle interface virtuelle, les informations de l'interface virtuelle existante sont écrasées, car SnapDrive pour UNIX vous permet de n'avoir qu'une seule interface virtuelle configurée pour un système d'exploitation invité.
+
+

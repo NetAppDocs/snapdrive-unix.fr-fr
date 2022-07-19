@@ -1,0 +1,54 @@
+---
+permalink: solaris/task_adding_sd_hostname_to_storage_system_using_cli.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, add, sd, hostname, storage, cli 
+summary: 'L"administrateur du système de stockage peut créer et configurer l"utilisateur sd-hostname à l"aide de la commande useradmin.' 
+---
+= Ajout du nom d'hôte sd au système de stockage à l'aide de l'interface de ligne de commande
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'administrateur du système de stockage peut créer et configurer l'utilisateur sd-hostname à l'aide de la commande useradmin.
+
+.Étapes
+. Ajouter du stockage.
++
+[listing]
+----
+# dfm host add storage_array1
+Added host storage_array1.lab.eng.btc.xyz.in
+----
+. Définissez le mot de passe de l'hôte.
++
+[listing]
+----
+# dfm host password save -u root -p xxxxxxxx storage_array1
+Changed login for host storage_array1.lab.eng.btc.xyz.in to root.
+Changed Password for host storage_array1.lab.eng.xyz.netapp
+.in
+----
+. Créer un rôle sur l'hôte.
++
+[listing]
+----
+# dfm host role create -h storage_array1 -c "api-*,login-*" sd-unixhost-role
+Created role sd-unixhost-role on storage_array1
+----
+. Créez un groupe d'utilisateurs.
++
+[listing]
+----
+# dfm host usergroup create -h storage_array1 -r sd-unixhost-role sd-unixhost-ug
+Created usergroup sd-unixhost-ug(44) on storage_array1
+----
+. Créez un utilisateur local.
++
+[listing]
+----
+# dfm host user create -h storage_array1 -p xxxxxxxx -g sd-unixhost-ug sd-unixhost
+Created local user sd-unixhost on storage_array1
+----
+

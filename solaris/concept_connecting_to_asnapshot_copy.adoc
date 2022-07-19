@@ -1,0 +1,27 @@
+---
+permalink: solaris/concept_connecting_to_asnapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, connect, snapshot, copy 
+summary: Vous pouvez connecter une copie Snapshot de un hôte à un autre. 
+---
+= Connexion à une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez connecter une copie Snapshot de un hôte à un autre.
+
+SnapDrive pour UNIX permet de connecter un hôte à une copie Snapshot à partir d'un autre emplacement sur un hôte. Ce nouvel emplacement peut se trouver sur l'hôte où la copie Snapshot a été effectuée (l'hôte d'origine) ou sur un autre hôte (l'hôte non originaire).
+
+Étant donné que vous pouvez configurer les copies Snapshot au nouvel emplacement, vous pouvez sauvegarder une copie Snapshot sur un autre support, effectuer des opérations de maintenance sur un groupe de disques ou accéder aux données de la copie Snapshot sans interrompre la copie d'origine des données.
+
+Grâce à cette commande, vous pouvez connecter un hôte à une copie Snapshot contenant les éléments suivants :
+
+* LUN
+* Système de fichiers créé directement sur une LUN
+* Groupes de disques, volumes hôtes et systèmes de fichiers créés sur des LUN
+* Arborescences de répertoires NFS
+* Groupes de disques, volumes hôtes et systèmes de fichiers sur un système de stockage partagé
+

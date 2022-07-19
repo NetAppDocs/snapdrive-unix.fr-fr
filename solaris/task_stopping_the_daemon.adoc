@@ -1,0 +1,14 @@
+---
+permalink: solaris/task_stopping_the_daemon.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, stop, daemon 
+summary: Si vous modifiez le fichier de configuration SnapDrive pour UNIX, vous devez arrêter et redémarrer le démon. Vous pouvez arrêter le démon de force ou de force. 
+---
+= Arrêt du démon
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous modifiez le fichier de configuration SnapDrive pour UNIX, vous devez arrêter et redémarrer le démon. Vous pouvez arrêter le démon de force ou de force.

@@ -1,0 +1,28 @@
+---
+permalink: linux-administration/concept_snapdrive_create_comand_fails_while_discovering_mapped_devices.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, command, fail, discover, create, mapped, rejected 
+summary: Lorsque vous exécutez la commande Storage create dans SnapDrive for UNIX, pendant la phase de découverte, la détection de certains périphériques mappés est rejetée et la commande échoue. 
+---
+= La commande de création du stockage SnapDrive pour UNIX échoue lors de la détection de certains périphériques mappés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous exécutez le `storage create` Commande dans SnapDrive pour UNIX, lors de la phase de découverte, la découverte de certains périphériques mappés est rejetée et la commande échoue.
+
+
+
+== Solution de contournement
+
+Pour que tous les périphériques soient acceptés, modifiez la section de filtre du `/etc/lvm/lvm.conf` fichier :
+
+[listing]
+----
+filter = [ "a/.*/" ]
+----
+*Informations connexes*
+
+xref:concept_guidelines_for_thestorage_createoperation.adoc[Instructions pour l'opération de création de stockage]

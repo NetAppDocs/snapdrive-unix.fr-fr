@@ -1,0 +1,21 @@
+---
+permalink: solaris/concept_snapdrived_start_command_fails.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, start, command, fail 
+summary: Dans certains cas, la commande de démarrage à snapshots peut échouer. Pour résoudre ce problème, il existe quelques étapes de dépannage. 
+---
+= échec de la commande de démarrage du vivaneau
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dans certaines conditions `snapdrived start` la commande peut échouer. Pour résoudre ce problème, il existe quelques étapes de dépannage.
+
+* Vérifiez si le port du démon est spécifié dans `snapdrive.conf` le fichier est déjà utilisé par une autre application.
+* Vérifiez qu'une instance antérieure du démon est correctement arrêtée.
+* Vérifiez si la limite de sémaphore à l'échelle du système est atteinte, auquel cas le démarrage du démon ne fonctionne pas.
+* Vérifiez si l'un des services tels qu'iSCSI, VxVM n'est pas exécuté sur la machine.
+* Si HTTPS est défini sur `on`, vérifiez si le certificat auto-signé est installé dans le répertoire spécifié.
+

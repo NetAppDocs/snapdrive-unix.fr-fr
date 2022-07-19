@@ -1,0 +1,32 @@
+---
+permalink: aix/task_guidelines_fordisplayingsnapshot_copies.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, display, snapshot, copy 
+summary: Vous pouvez utiliser des caractères génériques pour afficher les copies Snapshot. Vous pouvez afficher toutes les copies Snapshot présentes dans un objet spécifique. 
+---
+= Consignes d'affichage des copies Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser des caractères génériques pour afficher les copies Snapshot. Vous pouvez afficher toutes les copies Snapshot présentes dans un objet spécifique.
+
+Gardez à l'esprit les points suivants avant de travailler sur les copies Snapshot :
+
+* Vous pouvez utiliser le caractère générique (*) dans les noms des copies Snapshot. L'opération Snapshot show permet d'utiliser le caractère générique pour afficher tous les noms de copie Snapshot qui correspondent à un modèle particulier ou à tous les noms de copie Snapshot sur un volume en particulier. Les règles suivantes s'appliquent lors de l'utilisation de caractères génériques dans les noms de copie Snapshot :
++
+** Vous pouvez utiliser un caractère générique à la fin du nom uniquement. Vous ne pouvez pas utiliser le caractère générique au début ou au milieu du nom d'une copie Snapshot.
+** Vous ne pouvez pas utiliser le caractère générique dans les champs système de stockage ou volume du système de stockage d'une copie Snapshot.
+
+
+* Vous pouvez également utiliser cette commande pour lister toutes les copies Snapshot sur des objets spécifiques, notamment les systèmes de stockage et leurs volumes, les groupes de disques, les groupes de volumes hôtes, les systèmes de fichiers, les volumes hôtes, et les volumes logiques.
+* Si vous saisissez un `snapdrive snap show` La commande et SnapDrive pour UNIX ne localisent aucune copie Snapshot, elle affiche le message « aucune copie Snapshot correspondante ». Si vous spécifiez des arguments sur la ligne de commande, et si certaines parties d'entre elles n'existent pas, SnapDrive pour UNIX renvoie une liste partielle des arguments pour lesquels des copies Snapshot sont trouvées. Elle répertorie également les arguments qui n'étaient pas valides.
+* Si le `snapdrive snap create` la commande est brusquement abandonnée, une commande incomplète `.stoc.xml` le fichier est stocké dans le volume sur le système de stockage. Par ailleurs, toutes les copies Snapshot planifiées effectuées par le système de stockage auront une copie de la liste incomplète `.stoc.xml` fichier. Pour le `snapdrive snap list` pour fonctionner correctement, procédez comme suit :
+
+
+.Étapes
+. Supprimer le fichier incomplet `.stoc.xml` fichier dans le volume.
+. Supprimez les copies Snapshot planifiées effectuées par le système de stockage qui contient la liste incomplète `.stoc.xml` fichier.
+

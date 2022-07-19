@@ -1,0 +1,31 @@
+---
+permalink: solaris/concept_guidelines_for_connecting_snapshot_copies_in_a_host_cluster_environment.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, guideline, connect, copy, host, cluster, snapshot 
+summary: 'Vous pouvez connecter une copie Snapshot à partir de n"importe quel nœud d"un cluster hôte. Suivez les instructions lorsque vous vous connectez à une copie Snapshot.' 
+---
+= Instructions relatives à la connexion des copies Snapshot dans un environnement de cluster hôte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez connecter une copie Snapshot à partir de n'importe quel nœud d'un cluster hôte. Suivez les instructions lorsque vous vous connectez à une copie Snapshot.
+
+* Le `snapdrive snapshot connect` il est possible d'exécuter une commande depuis n'importe quel nœud du cluster hôte. Si vous lancez le `snapdrive snap connect` commande avec `-devicetype shared` option à partir de n'importe quel nœud non maître du cluster hôte, la commande est envoyée au nœud maître et exécutée. Pour ce faire, assurez-vous que le `rsh` ou `ssh` access-sans-password-prompt est autorisé sur tous les nœuds du cluster hôte.
+* Les systèmes de fichiers et les groupes de disques spécifiés dans cette opération doivent avoir la même portée de type de périphérique, c'est-à-dire que tous doivent être partagés ou tous doivent être dédiés.
+* Le `snapdrive snap connect` La commande avec NFS ou les entités de stockage sur des LUN brutes n'est pas prise en charge.
+* Le `-igroup` cette option est prise en charge avec `-devicetype` option dédiée et non avec `-devicetype` option partagée dans `snapdrive snap connect` commande.
+* SnapDrive pour UNIX exécute `snapdrive snap connect` sur le nœud maître. Avant de créer les entités de stockage partagées, il crée et mappe la LUN sur le nœud maître, puis mappe les LUN sur tous les nœuds non maîtres. Est également créé et gère les igroups pour tous les nœuds du cluster hôte. Si un message d'erreur se produit au cours de cette séquence, l'opération de connexion à l'instantané échoue.
+* Le `snapdrive snap connect` la commande peut être utilisée pour connecter les entités de stockage suivantes :
++
+** Système de fichiers partagé ou groupe de disques déjà présent en mode partagé ou dédié dans le cluster hôte.
+** Un système de fichiers ou un groupe de disques dédié à un seul nœud du cluster hôte, même si le système de fichiers ou le groupe de disques est déjà présent en mode partagé dans le cluster hôte.
+** Copie Snapshot d'un système de fichiers ou d'un groupe de disques créé sur un nœud en dehors du cluster hôte.
+
+
+* Un système de fichiers dédié ou un groupe de disques déjà présent dans un nœud non maître ne peut pas être à nouveau connecté en mode partagé dans le cluster hôte sans `-destdg` option pour un groupe de disques et `-autorename` option pour un système de fichiers.
+
+
+C'est-à-dire, si un système de fichiers est déjà présent en mode dédié dans l'un des noeuds non maîtres du cluster hôte, vous devez spécifier le `snapdrive snap connect` commande avec `-destdg` et `-autorename` ou spécifiez explicitement le système de fichiers de destination dans la commande.

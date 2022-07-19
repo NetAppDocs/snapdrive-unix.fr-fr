@@ -1,0 +1,28 @@
+---
+permalink: aix/concept_unable_to_select_a_storage_stack.html 
+sidebar: sidebar 
+keywords: snap, snapshot, select, storage, stack, unable 
+summary: Vous ne pouvez pas sélectionner une pile de stockage en raison de valeurs inappropriées spécifiées dans le fichier snapdrive.conf. 
+---
+= Impossible de sélectionner une pile de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous ne pouvez pas sélectionner une pile de stockage en raison de valeurs inappropriées spécifiées dans la `snapdrive.conf` fichier.
+
+Le message d'avertissement suivant s'affiche.
+
+[listing]
+----
+WARNING!!! Unable to find a SAN storage stack. Please verify that the appropriate transport protocol, volume manager, file system and multipathing type are installed and configured in the system. If NFS is being used, this warning message can be ignored.
+----
+* Si vous utilisez un environnement NFS, ignorez le message d'avertissement et continuez à utiliser les opérations SnapDrive sur votre système hôte.
+* Si vous utilisez un environnement SAN, assurez-vous que les valeurs acceptables appropriées sont spécifiées dans le `snapdrive.conf` Fichier fourni dans la pile de matrice AIX. Redémarrez ensuite le démon.
+
+
+*Informations connexes*
+
+xref:reference_stack_requirements.adoc[De la pile]

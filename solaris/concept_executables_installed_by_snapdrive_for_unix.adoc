@@ -1,0 +1,20 @@
+---
+permalink: solaris/concept_executables_installed_by_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, executable, install, unix 
+summary: 'SnapDrive pour UNIX installe les exécutables du système d"exploitation Solaris.' 
+---
+= Exécutables installés par SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX installe les exécutables du système d'exploitation Solaris.
+
+Ces exécutables sont installés aux emplacements suivants :
+
+* `/opt/NTAPsnapdrive/bin/snapdrive`
+* `/opt/NTAPsnapdrive/bin/snapdrived`
+

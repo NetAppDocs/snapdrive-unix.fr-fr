@@ -1,0 +1,20 @@
+---
+permalink: solaris/concept_thin_provisioning_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, thin, provisioning 
+summary: 'La fonctionnalité de provisionnement fin de SnapDrive for UNIX permet à l"utilisateur de disposer d"un espace de stockage supérieur à celui qui est réellement disponible sur le système de stockage.' 
+---
+= Provisionnement fin dans SnapDrive for UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonctionnalité de provisionnement fin de SnapDrive for UNIX permet à l'utilisateur de disposer d'un espace de stockage supérieur à celui qui est réellement disponible sur le système de stockage.
+
+Dans SnapDrive for UNIX, vous ne pouvez pas définir la valeur de la réserve fractionnaire et il n'existe aucune intégration avec les fonctionnalités Data ONTAP telles que la suppression automatique et la taille automatique. Ces fonctionnalités Data ONTAP peuvent être utilisées en toute sécurité avec SnapDrive for UNIX. Toutefois, SnapDrive for UNIX ne peut pas être conscient en cas d'événement de suppression automatique ou de taille automatique.
+
+*Informations connexes*
+
+http://www.netapp.com/us/media/tr-3483.pdf["Rapport technique NetApp 3483 : « Thin Provisioning » dans un environnement d'entreprise NetApp SAN ou IP SAN"]

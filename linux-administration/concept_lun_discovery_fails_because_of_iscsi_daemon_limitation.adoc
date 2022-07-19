@@ -1,0 +1,89 @@
+---
+permalink: linux-administration/concept_lun_discovery_fails_because_of_iscsi_daemon_limitation.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, lun, discovery, fail, iscsi, daemon, limitation 
+summary: Les commandes SnapDrive pour UNIX ne parviennent pas à détecter les LUN après plusieurs itérations continues. 
+---
+= La détection de LUN échoue en raison de la limitation du démon iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les commandes SnapDrive pour UNIX ne parviennent pas à détecter les LUN après plusieurs itérations continues.
+
+Le message d'erreur suivant peut s'afficher.
+
+[listing]
+----
+0000-001 Admin error: iscsi transport protocol has dropped sessions in the host. Please ensure the connection and the service in the storage system.
+----
+Cela se produit en raison de la limite du démon iSCSI dans les hôtes suivants :
+
+* Red Hat Enterprise Linux 4.0
+* Oracle Enterprise Linux 4.0
+
+
+
+
+== Solution de contournement
+
+[listing]
+----
+Before modifying the following system parameters, contact the OS vendor.
+----
+. Ajoutez le `*fs.file-max*` paramètre au `/etc/sysctl.conf` fichier.
++
+Voici un exemple dans la ligne de commande.
+
++
+[listing]
+----
+# sysctl -w fs.file-max=65536
+----
++
+
+NOTE: Il est recommandé de définir la valeur du paramètre sur `65536`, mais vous pouvez également définir la valeur en fonction des applications de votre hôte.
+
+. Attribuer `65536` à la `*fs.file-max*` paramètre.
+. Mettre à jour le shell par défaut `start-up` Fichier du compte UNIX de l'utilisateur root.
++
+** Pour le shell Bourne, Bash ou Korn, ajoutez les lignes suivantes au `/etc/profile` file en exécutant la commande suivante :
++
+[listing]
+----
+cat >> /etc/profile <<EOF
+if [ \$USER = "root" ]; then
+if [ \$SHELL = "/bin/ksh" ]; then
+ulimit -p 16384
+ulimit -n 65536
+else
+ulimit -u 16384 -n 65536
+fi
+umask 022
+fi
+EOF
+----
+** Pour le shell C (csh ou tcsh), ajoutez les lignes suivantes à la `/etc/csh.login` file en exécutant la commande suivante :
++
+[listing]
+----
+cat >> /etc/csh.login <<EOF
+if ( \$USER == "root" ) then
+limit maxproc 16384
+limit descriptors 65536
+endif
+EOF
+----
+
+
+. Ajoutez les paramètres suivants à la `/etc/security/limits.conf` file en exécutant la commande suivante :
++
+[listing]
+----
+root soft nofile 65536
+root hard nofile 65536
+----
+. Activer tous les paramètres du noyau pour le système en exécutant la commande suivante : `sysctl -p`
+

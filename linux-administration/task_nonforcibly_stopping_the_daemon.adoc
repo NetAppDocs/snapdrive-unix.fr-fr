@@ -1,0 +1,23 @@
+---
+permalink: linux-administration/task_nonforcibly_stopping_the_daemon.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, daemon, stop, nonforcibly, command, configuration 
+summary: 'Si votre fichier de configuration SnapDrive pour UNIX est modifié, vous devez arrêter le démon pour que les modifications apportées au fichier de configuration prennent effet. Une fois le démon arrêté et redémarré, les modifications du fichier de configuration prennent effet. L"arrêt non forcé du démon permet à toutes les commandes mises en file d"attente de terminer l"exécution. Une fois la demande d"arrêt reçue, aucune nouvelle commande n"est exécutée.' 
+---
+= Arrêt non forcé du démon
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si votre fichier de configuration SnapDrive pour UNIX est modifié, vous devez arrêter le démon pour que les modifications apportées au fichier de configuration prennent effet. Une fois le démon arrêté et redémarré, les modifications du fichier de configuration prennent effet. L'arrêt non forcé du démon permet à toutes les commandes mises en file d'attente de terminer l'exécution. Une fois la demande d'arrêt reçue, aucune nouvelle commande n'est exécutée.
+
+Vous devez être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Entrez la commande suivante pour arrêter le démon de manière non forcée :
++
+`*snapdrived stop*`
+
+

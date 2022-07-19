@@ -1,0 +1,14 @@
+---
+permalink: aix/concept_multipathing_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, multipathing 
+summary: 'SnapDrive pour UNIX prend en charge les chemins d"accès multiples. SnapDrive pour UNIX ne prend pas en charge l"utilisation d"alias pour les périphériques créés à l"aide des commandes mknod et/ou rendev.' 
+---
+= Chemins d'accès multiples dans SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX prend en charge les chemins d'accès multiples. SnapDrive pour UNIX ne prend pas en charge l'utilisation d'alias pour les périphériques créés à l'aide de `mknod` et/ou `rendev` commandes.

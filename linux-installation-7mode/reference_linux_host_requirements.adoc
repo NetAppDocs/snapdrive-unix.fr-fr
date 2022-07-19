@@ -1,0 +1,59 @@
+---
+permalink: linux-installation-7mode/reference_linux_host_requirements.html 
+sidebar: sidebar 
+keywords: snapdrive, snap, host, linux, requirements 
+summary: 'Vous devez préparer l"hôte Linux avant de pouvoir installer SnapDrive pour UNIX.' 
+---
+= Configuration requise pour l'hôte Linux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez préparer l'hôte Linux avant de pouvoir installer SnapDrive pour UNIX.
+
+* Vous devez télécharger et installer les utilitaires d'hôtes Linux à partir du site de support NetApp si vous utilisez le protocole FC ou iSCSI.
++
+http://mysupport.netapp.com/NOW/cgi-bin/software["Téléchargements NetApp : logiciels"]
+
++
+Vous devez vérifier que les utilitaires hôtes Linux sont correctement installés à l'aide de `sanlun version` commande.
+
+* Vous devez installer le `sg3_utils` Empaquetage dans tous les systèmes Linux de sorte que les commandes SnapDrive pour UNIX fonctionnent correctement.
++
+
+NOTE: Vous devez vous assurer que le `sg3_utils` et `sg3_utils-libs` Des bibliothèques sont disponibles pour Red Hat Enterprise Linux (RHEL) et Oracle Enterprise Linux (OEL). Le `sg3_utils` les bibliothèques sont disponibles dans le `scsi*` Package pour SUSE Linux Enterprise Server (SLES) 10, versions antérieures et dans `sg3_utils*` Package pour SLES 11 et versions ultérieures.
+
+* Vous devez télécharger et installer ces bibliothèques ou packages binaires si votre hôte est un système d'exploitation Linux 64 bits et que vous essayez d'installer SnapDrive 32 bits pour UNIX.
++
+** version 32 bits du `glibc`, `libnl`, `libhba`, `libgcc` Packages du _Red Hat Enterprise Linux site_.
++
+http://www.redhat.com["Site Red Hat Enterprise Linux"]
+
++
+L'installation de SnapDrive pour UNIX échoue si la version 32 bits du système``glibc`` le package est manquant dans le système hôte.
+
+** binaires 32 bits du `QConvergeConsoleCLI` Package du site _QLogic_ . Vous devez également le modifier `qla2xxx64 /usr/lib64/libqlsdm.so` à `qla2xxx /usr/lib/libqlsdm.so` dans le `/etc/hba.conf` Fichier pour les HBA QLogic si votre hôte est un système d'exploitation Linux 64 bits et installe les binaires 32 bits des packages Emulex OnCommand Manager pour les HBA Emulex.
++
+http://support.qlogic.com/["Site QLogic"]
+
+** Vous devez installer le `libHBAAPI` un package ou un package spécifique au fournisseur si le protocole de transport est `FC` Pour que SnapDrive pour UNIX fonctionne sur l'hôte.
+
+
+* Vous devez installer les Service Packs hôtes pris en charge sur l'hôte avant d'installer SnapDrive pour UNIX.
++
+L'outil _Interoperability Matrix Tool_ fournit des informations supplémentaires sur les Service Packs pris en charge.
+
++
+http://mysupport.netapp.com/matrix["Matrice d'interopérabilité NetApp"]
+
+
+
+*Informations connexes*
+
+http://mysupport.netapp.com/matrix["Matrice d'interopérabilité NetApp"]
+
+http://mysupport.netapp.com["Support NetApp"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2547936["Guide d'installation de Linux Unified Host Utilities 7.1"]

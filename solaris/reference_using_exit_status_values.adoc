@@ -1,0 +1,18 @@
+---
+permalink: solaris/reference_using_exit_status_values.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, exit, status, value 
+summary: 'Les valeurs d"état de sortie sont utilisées dans les scripts pour déterminer le succès ou l"échec d"une commande SnapDrive pour UNIX.' 
+---
+= Utilisation des valeurs d'état de sortie
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les valeurs d'état de sortie sont utilisées dans les scripts pour déterminer le succès ou l'échec d'une commande SnapDrive pour UNIX.
+
+* Une valeur de zéro indique que la commande a été exécutée avec succès.
+* Une valeur autre que zéro indique que la commande n'a pas été terminée et fournit des informations sur la cause et la gravité de la condition d'erreur.
+

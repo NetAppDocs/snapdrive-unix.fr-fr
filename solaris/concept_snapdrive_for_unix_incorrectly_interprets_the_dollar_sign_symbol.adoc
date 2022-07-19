@@ -1,0 +1,51 @@
+---
+permalink: solaris/concept_snapdrive_for_unix_incorrectly_interprets_the_dollar_sign_symbol.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, dollar, sign 
+summary: 'SnapDrive pour UNIX interprète incorrectement le signe dollar \($\) et tous les caractères spéciaux différemment, si les caractères spéciaux sont spécifiés comme faisant partie d"une valeur de configuration.' 
+---
+= SnapDrive pour UNIX interprète incorrectement le signe dollar
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX interprète incorrectement le signe dollar ($) et tous les caractères spéciaux différemment, si les caractères spéciaux sont spécifiés comme faisant partie d'une valeur de configuration.
+
+Toutes les valeurs de configuration spécifiées doivent être numériques. Si vous indiquez $ ou tout autre caractère spécial dans la valeur de configuration, SnapDrive for UNIX accepte la valeur mais interprète la valeur numérique mentionnée après le caractère spécial de manière différente.
+
+
+
+== Exemple
+
+Voici un exemple d'interprétation de $ :
+
+[listing]
+----
+#a=$123
+#echo $a
+23
+
+[root@vm-linux-51-233 ~]# /opt/NetApp/snapdrive/bin/config_set volume-clone-retry-sleep=$129
+[root@vm-linux-51-233 ~]# /opt/NetApp/snapdrive/bin/config_show |grep volume-clone-retry-sleep
+volume-clone-retry-sleep:Number of seconds between retries during flex-clone create:'3':'29':1:0:'^[0-9]+$':filer
+----
+Dans cet exemple, SnapDrive for UNIX interprète la valeur de configuration (123 $) comme 23.
+
+
+
+== Solution de contournement
+
+Spécifiez une barre oblique inverse (\) avant $. Modifier l'exemple précédent comme suit :
+
+[listing]
+----
+#a=\$123
+#echo $a
+23
+
+[root@vm-linux-51-233 ~]# /opt/NetApp/snapdrive/bin/config_set volume-clone-retry-sleep=$129
+[root@vm-linux-51-233 ~]# /opt/NetApp/snapdrive/bin/config_show |grep volume-clone-retry-sleep
+volume-clone-retry-sleep:Number of seconds between retries during flex-clone create:'3':'29':1:0:'^[0-9]+$':filer
+----

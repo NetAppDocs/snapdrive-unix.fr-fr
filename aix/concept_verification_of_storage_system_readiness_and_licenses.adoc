@@ -1,0 +1,36 @@
+---
+permalink: aix/concept_verification_of_storage_system_readiness_and_licenses.html 
+sidebar: sidebar 
+keywords: snap, snapshot, verification, storage, license, system, readiness 
+summary: 'Avant d"installer SnapDrive pour UNIX, vous devez vérifier que le système de stockage est prêt et vérifier si les licences de certains logiciels sont requises.' 
+---
+= Vérification de l'état du système de stockage et des licences
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant d'installer SnapDrive pour UNIX, vous devez vérifier que le système de stockage est prêt et vérifier si les licences de certains logiciels sont requises.
+
+Vous devez vous assurer que les conditions suivantes sont remplies :
+
+* Les systèmes de stockage sont en ligne.
+* Les systèmes de stockage satisfont à la configuration système minimale requise pour SnapDrive pour UNIX.
+* Les HBA ou les cartes d'interface réseau (NIC) de vos systèmes de stockage répondent aux exigences de votre système d'exploitation hôte.
++
+Pour plus d'informations sur les cartes HBA, consultez la matrice d'interopérabilité.
+
+* Les hôtes et les systèmes de stockage peuvent communiquer via un protocole IP (Internet Protocol).
+* Les licences suivantes sont valides :
++
+** SnapRestore
+** Logiciel MultiStore
+** Accès HTTP sécurisé au système de stockage
+
+
+
+
+*Informations connexes*
+
+https://mysupport.netapp.com/NOW/products/interoperability["Interopérabilité NetApp"]

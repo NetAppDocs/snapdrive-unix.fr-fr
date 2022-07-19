@@ -1,0 +1,54 @@
+---
+permalink: linux-administration/reference_limitations.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, limitations, limits 
+summary: 'Lorsque vous utilisez SnapDrive pour UNIX, vous devez connaître certaines limites susceptibles d"affecter votre environnement.' 
+---
+= Limites
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous utilisez SnapDrive pour UNIX, vous devez connaître certaines limites susceptibles d'affecter votre environnement.
+
+
+
+== Limitations génériques
+
+* SnapDrive pour UNIX nécessite que les machines virtuelles utilisent le BIOS au démarrage pour la prise en charge de SnapManager pour infrastructure virtuelle (SMVI). L'utilisation de l'interface UEFI (Unified extensible Firmware interface) n'est pas prise en charge.
+* SnapDrive pour UNIX ne prend pas en charge la configuration MetroCluster dans un environnement RDM (Raw Device Mapping) dans un système d'exploitation invité, car la configuration MetroCluster n'est pas prise en charge par Virtual Storage Console (VSC).
+* SnapDrive pour UNIX ne prend pas en charge les opérations Snapshot sur un point de montage NFS lorsque le volume est exporté avec les types d'authentification de sécurité Kerberos dont les types krb5, krb5i ou krb5p.
+* Les opérations de snapshot peuvent être incohérentes si vous effectuez une opération de restauration instantanée sur un point de montage où une entité différente de celle créée dans la copie Snapshot est montée.
+* SnapDrive pour UNIX ne prend pas en charge les opérations sur les spécifications de fichiers ou les LUN s'ils sont situés sur des systèmes de stockage Data ONTAP sous 7-mode et clustered Data ONTAP.
+* Si vous utilisez clustered Data ONTAP pour configurer un SVM (Storage Virtual machine) avec SnapDrive pour UNIX, vérifier que l'adresse IP du LIF du SVM est mappée sur le nom de SVM dans le DNS ou dans le `/etc/hosts` fichier.
++
+On doit également vérifier que le nom du SVM est configuré en SnapDrive pour UNIX en utilisant le `snapdrive config setvsadminVserver name` commande.
+
+* SnapDrive pour UNIX modifie les autorisations de point de montage d'un utilisateur non root vers un utilisateur root pour un qtree après des opérations VBSR.
+* SnapDrive pour UNIX ne prend pas en charge les environnements en langue non anglaise.
+* L'opération de restauration Snapshot échoue si elle est restaurée à partir de la copie Snapshot créée avant le déplacement des LUN vers un autre volume.
+* Si vous utilisez ONTAP 8.2 ou version ultérieure, les opérations Snapshot peuvent échouer sur une copie Snapshot si une opération de clonage en cours utilise la même copie Snapshot.
++
+Vous devez réessayer ultérieurement.
+
+* OnCommand Unified Manager 6.0 ou une version ultérieure ne prend pas en charge protection Manager sur clustered Data ONTAP. Par conséquent, l'intégration entre OnCommand Unified Manager 6.0 ou version ultérieure et SnapDrive pour UNIX n'est pas prise en charge, et les fonctions SnapDrive pour UNIX suivantes ne sont pas prises en charge :
++
+** Intégration du contrôle d'accès basé sur des rôles (RBAC) sur OnCommand Unified Manager 6.0 ou version ultérieure sur ONTAP
+** Intégration de protection Manager à OnCommand Unified Manager 6.0 ou version ultérieure sur ONTAP
+
+
+* On doit assigner les agrégats contenant des volumes du SVM à la liste d'agrégats du SVM afin de configurer le SVM et d'exécuter des opérations SnapDrive pour UNIX.
+* SnapDrive pour UNIX ne prend pas en charge le montage automatique, l'utilisation de n'importe quel type de montage automatique risque d'entraîner l'échec des opérations SnapDrive pour UNIX.
+
+
+
+
+== Limitations de Linux
+
+* Dans un environnement à chemins d'accès multiples, le `snapdrive snap list-v` ou `snapdrive snap show-v` L'opération n'affiche pas le chemin de développement dans une LUN brute et dans `snapdrive storage show-all` L'opération n'affiche pas de périphérique brut et de point de montage si l'hôte LVM n'est pas impliqué.
+* SnapDrive pour UNIX n'affiche pas le nom d'alias complet si le nom d'alias a le caractère spécial "` - `". SnapDrive pour UNIX ne prend en charge que le caractère spécial "`_" dans le nom d'alias.
+* Le `snapdrive config prepare luns` La commande n'est pas prise en charge dans l'environnement RDM LUN.
+* Le `snapdrive lun fixpaths` la commande n'est pas prise en charge dans un système d'exploitation invité.
+

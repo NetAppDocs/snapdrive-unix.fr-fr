@@ -1,0 +1,26 @@
+---
+permalink: aix/concept_unable_to_start_daemon.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restart, daemon, storage, system, host 
+summary: 'Le démon ne peut pas être démarré lorsque l"hôte n"est pas en mesure de communiquer avec un système de stockage configuré.' 
+---
+= Impossible de redémarrer le démon lorsque l'hôte ne parvient pas à communiquer avec le système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le démon ne peut pas être démarré lorsque l'hôte n'est pas en mesure de communiquer avec un système de stockage configuré.
+
+Dans ce cas, lorsque vous essayez de redémarrer le démon, celui-ci ne démarre pas et le message d'erreur suivant s'affiche.
+
+[listing]
+----
+Unable to start daemon...check daemon log file for more details
+----
+En premier lieu, vous devez vous assurer que l'hôte communique avec le système de stockage en exécutant la commande ping au système de stockage. Si l'hôte ne peut toujours pas communiquer avec le système de stockage, essayez d'utiliser les options suivantes :
+
+* Supprimez le système de stockage qui ne communique pas avec l'hôte, puis essayez de redémarrer le démon.
+* Dans le cas contraire, vous ne souhaitez pas supprimer le système de stockage configuré pour l'hôte, puis désactiver l'option `_autosupport-enabled_` à `_off_` dans le `snapdrive.conf` fichier pour supprimer le message d'erreur.
+

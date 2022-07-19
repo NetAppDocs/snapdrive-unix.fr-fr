@@ -1,0 +1,39 @@
+---
+permalink: solaris/concept_snapdrive_storage_create_command_fails_when_multiple_san_paths_are_present.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, create, command, fail, san, multipathing, disable 
+summary: 'La commande SnapDrive Storage create échoue lorsque plusieurs chemins SAN sont présents, mais que les chemins d"accès multiples sont désactivés.' 
+---
+= La commande SnapDrive Storage create échoue lorsque plusieurs chemins SAN sont présents, mais que les chemins d'accès multiples sont désactivés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le stockage SnapDrive `create` La commande échoue lorsque plusieurs chemins SAN sont présents mais que le chemins d'accès multiples est désactivé.
+
+Par exemple pour deux LIF iSCSI pour un SVM :
+
+[listing]
+----
+[root@scspr0189449001 etc]# iscsiadm --mode session --rescan
+Rescanning session [sid: 1, target: iqn.1992-08.com.netapp:sn.f7335762b23e11e695360050569c153a:vs.3, portal: 10.224.70.253,3260]
+Rescanning session [sid: 2, target: iqn.1992-08.com.netapp:sn.f7335762b23e11e695360050569c153a:vs.3, portal: 10.224.70.254,3260]
+----
+Quand `multipathing-type` est défini sur `none` Dans le fichier snapdrive.conf et le service multichemin est désactivé, la tentative de création du stockage à l'aide de LVM renvoie l'erreur suivante :
+
+[listing]
+----
+root@scspr0189449001 etc]# snapdrive storage create -fs /mnt/test -lun rgvsim:/vol/asmvol/test -lunsize 500m
+        LUN rgvsim:/vol/asmvol/test ... created
+        mapping new lun(s) ... done
+        discovering new lun(s) ... *failed*
+        Cleaning up ...
+         - LUN rgvsim:/vol/asmvol/test ... deleted
+         0001-422 Admin error: LVM initialization of luns failed:
+        Device /dev/sdb,/dev/sdc not found (or ignored by filtering).
+----
+Cela se produit parce que le `pvcreate` la commande utilise les deux périphériques séparés par une virgule comme un seul périphérique `pvcreate /dev/sdb,/dev/sdc` et un périphérique nommé `/dev/sdb,/dev/sdc` ce n'existe pas.
+
+Lorsqu'il existe plusieurs chemins d'accès au stockage et que LVM doit être utilisé, les chemins d'accès multiples doivent être activés.

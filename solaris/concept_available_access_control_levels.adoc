@@ -1,0 +1,28 @@
+---
+permalink: solaris/concept_available_access_control_levels.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, access, control, level 
+summary: 'SnapDrive pour UNIX fournit différents niveaux de contrôle d"accès aux utilisateurs. Ces niveaux d"accès sont liés aux copies Snapshot et aux opérations du système de stockage.' 
+---
+= Niveaux de contrôle d'accès disponibles
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX fournit différents niveaux de contrôle d'accès aux utilisateurs. Ces niveaux d'accès sont liés aux copies Snapshot et aux opérations du système de stockage.
+
+Vous pouvez définir les niveaux d'accès suivants :
+
+* AUCUN - l'hôte n'a pas accès au système de stockage.
+* SNAP CREATE--l'hôte peut créer des copies Snapshot.
+* SNAP USE--l'hôte peut supprimer et renommer les copies Snapshot.
+* SNAP ALL - l'hôte peut créer, restaurer, supprimer et renommer des copies Snapshot.
+* SUPPRESSION DE LA FONCTION DE CRÉATION DE STOCKAGE - l'hôte peut créer, redimensionner et supprimer du stockage.
+* UTILISATION DU STOCKAGE : l'hôte peut connecter et déconnecter le stockage, ainsi que réaliser une estimation de la répartition des clones et le démarrage par clone sur le stockage.
+* TOUT LE STOCKAGE- l'hôte peut créer, supprimer, connecter et déconnecter le stockage, mais aussi réaliser une estimation du fractionnement du clone et le démarrage du fractionnement du clone sur le stockage.
+* TOUS LES ACCÈS--l'hôte a accès à toutes les opérations SnapDrive pour UNIX ci-dessus.
+
+
+Chaque niveau est distinct. Si vous spécifiez une autorisation pour certaines opérations uniquement, SnapDrive pour UNIX ne peut exécuter que ces opérations. Par exemple, si vous spécifiez L'UTILISATION DU STOCKAGE, l'hôte peut utiliser SnapDrive pour UNIX pour connecter et déconnecter le stockage, mais il ne peut pas effectuer d'autres opérations régies par les autorisations de contrôle d'accès.

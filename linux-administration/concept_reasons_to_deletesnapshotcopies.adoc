@@ -1,0 +1,26 @@
+---
+permalink: linux-administration/concept_reasons_to_deletesnapshotcopies.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, delete, why, snapshot, copy, old, space 
+summary: 'Supprimez les anciennes copies Snapshot pour libérer de l"espace sur le volume du système de stockage ou conserver moins de copies Snapshot.' 
+---
+= Motifs de suppression des copies Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Supprimez les anciennes copies Snapshot pour libérer de l'espace sur le volume du système de stockage ou conserver moins de copies Snapshot.
+
+Il est possible de supprimer d'anciennes copies Snapshot pour les raisons suivantes :
+
+* Pour conserver moins de copies Snapshot stockées que la limite matérielle de 255 sur un volume de système de stockage. Dès qu'elle atteint la limite, les tentatives de création de copies Snapshot échouent.
+* Pour libérer de l'espace sur le volume du système de stockage. Même avant que la copie Snapshot n'atteigne la limite, une copie Snapshot échoue si l'espace réservé du disque est insuffisant.
+* Vous pouvez également utiliser le caractère générique (*) dans les noms de copie Snapshot. L'opération Snapshot show vous permet d'utiliser le caractère générique pour afficher tous les noms de copie Snapshot qui correspondent à un modèle particulier. Les règles suivantes s'appliquent à l'utilisation de caractères génériques dans les noms de copie Snapshot :
++
+** Vous pouvez utiliser un caractère générique à la fin du nom uniquement. Vous ne pouvez pas utiliser le caractère générique au début ou au milieu du nom d'une copie Snapshot.
+** Vous ne pouvez pas utiliser le caractère générique dans les champs système de stockage ou volume du système de stockage d'une copie Snapshot.
+
+
+

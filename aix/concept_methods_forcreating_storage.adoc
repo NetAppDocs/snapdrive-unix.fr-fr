@@ -1,0 +1,22 @@
+---
+permalink: aix/concept_methods_forcreating_storage.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, create, storage, method 
+summary: 'SnapDrive pour UNIX propose des formats de base pour la commande SnapDrive Storage create afin de créer plus facilement le stockage souhaité. L"opération de création de stockage se divise en plusieurs catégories générales.' 
+---
+= Méthodes de création de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX fournit certains formats de base pour le `snapdrive storage create` pour créer plus facilement le stockage souhaité. L'opération de création de stockage se divise en plusieurs catégories générales.
+
+* Création de LUN --le `snapdrive storage create` La commande crée automatiquement les LUN sur le système de stockage, mais ne crée aucune entité de stockage supplémentaire. SnapDrive pour UNIX effectue toutes les tâches associées à la préparation des hôtes et crée une découverte de stockage pour chaque LUN, ainsi que le mappage et la connexion à celle-ci.
+* Création directe d'un système de fichiers sur une LUN et configuration automatique de la LUN-- SnapDrive pour UNIX effectue toutes les actions nécessaires à la configuration du système de fichiers. Il n'est donc pas nécessaire de spécifier les LUN à créer.
+* Création directe d'un système de fichiers sur une LUN et spécification de la LUN que vous souhaitez associée. Dans ce cas, vous utilisez le `snapdrive storage create` Commande pour spécifier le système de fichiers à configurer et la LUN à associer au système de fichiers.
+* Création d'un LVM et configuration automatique de la LUN--le `snapdrive storage create` commande permet de créer un système de fichiers, un volume logique ou un groupe de disques sur l'hôte. SnapDrive for UNIX effectue toutes les actions nécessaires à la configuration de l'entité, y compris la création automatique du groupe de disques et de la LUN requis. Il n'est donc pas nécessaire de spécifier une LUN pour laquelle elle doit être créée.
+* Création d'une entité LVM sur l'hôte et spécification de la LUN que vous souhaitez associer - dans ce cas, vous utilisez le `snapdrive storage create` Commande pour spécifier à la fois l'entité que vous souhaitez configurer (système de fichiers, volume logique ou groupe de disques) et la LUN que vous souhaitez associer à cette entité.
+* Création d'un système de fichiers sur un hôte partagé dans un environnement de cluster hôte, dans ce cas, vous créez un système de fichiers, un volume logique ou un groupe de disques sur l'hôte partagé.
+

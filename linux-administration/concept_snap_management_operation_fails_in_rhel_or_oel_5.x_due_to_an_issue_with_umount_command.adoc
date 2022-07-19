@@ -1,0 +1,14 @@
+---
+permalink: linux-administration/concept_snap_management_operation_fails_in_rhel_or_oel_5.x_due_to_an_issue_with_umount_command.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, fail, rhel, oel, umount, nfs, command 
+summary: 'L"opération de gestion SNAP échoue dans RHEL/OEL 5.x en raison d"un problème avec la commande umount. Pour ce faire, assurez-vous que l"entité NFS est montée à l"aide de -o vers=3 dans l"interface de ligne de commande.' 
+---
+= L'opération de gestion SNAP échoue dans RHEL/OEL 5.x en raison d'un problème avec la commande umount
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'opération de gestion des instantanés échoue dans RHEL/OEL 5.x en raison d'un problème avec le `umount` commande. Pour ce faire, assurez-vous que l'entité NFS est montée à l'aide de `-o vers=3` dans l'interface de ligne de commande.

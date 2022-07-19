@@ -1,0 +1,14 @@
+---
+permalink: linux-administration/concept_what_snapdrive_wizard_is.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, wizards, operation 
+summary: SnapDrive propose différents assistants pour effectuer une opération SnapDrive interactive. 
+---
+= Sont les assistants SnapDrive
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive propose différents assistants pour effectuer une opération SnapDrive interactive.

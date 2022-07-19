@@ -1,0 +1,58 @@
+---
+permalink: aix/task_specifying_login_information.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, specify, login, information 
+summary: 'Vous devez spécifier les informations de connexion de l"utilisateur pour un système de stockage. En fonction de ce que vous avez spécifié lors de la configuration du système de stockage, chaque système de stockage peut utiliser le même nom d"utilisateur ou mot de passe, ou un nom d"utilisateur ou un mot de passe unique. Si tous les systèmes de stockage utilisent les mêmes informations de nom d"utilisateur ou de mot de passe, vous devez effectuer les opérations suivantes une fois. Si les systèmes de stockage utilisent des noms d"utilisateur ou des mots de passe uniques, vous devez répéter les étapes suivantes pour chaque système de stockage.' 
+---
+= Spécification des informations de connexion
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez spécifier les informations de connexion de l'utilisateur pour un système de stockage. En fonction de ce que vous avez spécifié lors de la configuration du système de stockage, chaque système de stockage peut utiliser le même nom d'utilisateur ou mot de passe, ou un nom d'utilisateur ou un mot de passe unique. Si tous les systèmes de stockage utilisent les mêmes informations de nom d'utilisateur ou de mot de passe, vous devez effectuer les opérations suivantes une fois. Si les systèmes de stockage utilisent des noms d'utilisateur ou des mots de passe uniques, vous devez répéter les étapes suivantes pour chaque système de stockage.
+
+Assurez-vous d'être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Saisissez la commande suivante :
++
+`*snapdrive config set _user_name filername_ [_filername..._]*`
+
++
+`_user_name_` correspond au nom d'utilisateur spécifié pour ce système de stockage lors de sa première configuration.
+
++
+`_filername_` est le nom du système de stockage.
+
++
+`_[filername...]_` définit que vous pouvez entrer plusieurs noms de système de stockage sur une ligne de commande s'ils ont tous le même nom d'utilisateur ou mot de passe. Vous devez entrer le nom d'au moins un système de stockage.
+
+. À l'invite, entrez le mot de passe, s'il y en a un.
++
+
+NOTE: Si aucun mot de passe n'a été défini, appuyez sur entrée (valeur nulle) lorsque vous êtes invité à saisir un mot de passe.
+
++
+Cet exemple définit un utilisateur appelé `root` pour un système de stockage appelé grille-pain :
+
++
+[listing]
+----
+# snapdrive config set `root` toaster
+Password for root:
+Retype Password:
+----
++
+Cet exemple définit un utilisateur appelé `root` pour trois systèmes de stockage :
+
++
+[listing]
+----
+# snapdrive config set root toaster oven broiler
+Password for root:
+Retype Password:
+----
+. Si vous possédez un autre système de stockage avec un nom d'utilisateur ou un mot de passe différent, répétez ces étapes.
+

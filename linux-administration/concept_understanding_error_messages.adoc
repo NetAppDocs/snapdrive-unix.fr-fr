@@ -1,0 +1,14 @@
+---
+permalink: linux-administration/concept_understanding_error_messages.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, error, message, location, format 
+summary: 'SnapDrive pour UNIX fournit des informations sur les messages d"erreur, qui apparaissent à différents emplacements et dans différents formats.' 
+---
+= Présentation des messages d'erreur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX fournit des informations sur les messages d'erreur, qui apparaissent à différents emplacements et dans différents formats.

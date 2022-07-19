@@ -1,0 +1,149 @@
+---
+permalink: linux-administration/concept_informationrequired_forusing_the_snapdrive_snaprestore_command.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, command 
+summary: 'Pour restaurer une copie Snapshot, déterminez l"entité de stockage à restaurer, indiquez le nom de la copie Snapshot, etc.' 
+---
+= Informations requises pour l'utilisation de la commande SnapDrive snap restore
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour restaurer une copie Snapshot, déterminez l'entité de stockage à restaurer, indiquez le nom de la copie Snapshot, etc.
+
+Le tableau suivant fournit les informations que vous devez fournir lorsque vous utilisez le `snapdrive snap restore` commande.
+
+|===
+| Exigence/option | Argument 
+
+
+ a| 
+Choisissez le type d'entité de stockage que vous souhaitez restaurer et entrez le nom de cette entité à l'aide de l'argument approprié.
+
+* Si vous spécifiez un volume hôte ou un système de fichiers à restaurer, l'argument que vous donnez est converti au groupe de disques qui le contient. SnapDrive pour UNIX restaure alors l'ensemble du groupe de disques. SnapDrive pour UNIX gèle tous les systèmes de fichiers des volumes hôte de ces groupes de disques et effectue une copie Snapshot de tous les volumes du système de stockage contenant des LUN de ces groupes de disques.
+* Si vous spécifiez une spécification de fichier qui est un point de montage NFS, l'argument se traduit par une arborescence de répertoires. SnapDrive pour UNIX restaure uniquement l'arborescence ou le fichier du répertoire NFS. Dans l'arborescence des répertoires, SnapDrive for UNIX supprime tous les nouveaux fichiers ou répertoires NFS que vous avez créés après la copie Snapshot. Cela permet de s'assurer que l'état de l'arborescence du répertoire restauré sera identique à celui de la copie Snapshot de l'arborescence.
+* Si vous restaurez une LUN, SnapDrive for UNIX restaure la LUN que vous spécifiez.
+* Si vous restaurez un système de fichiers créé directement sur une LUN, SnapDrive pour UNIX restaure la LUN et le système de fichiers.
+* Si la copie Snapshot contient des entités de stockage qui s'étendent sur plusieurs volumes de système de stockage, vous pouvez restaurer l'une des entités de cette copie Snapshot.
+
+
+
+
+ a| 
+LUN (`-lun _file_spec_`)
+ a| 
+_Nom de la LUN. Vous devez inclure le nom du système de stockage, du volume et de la LUN._
+
+
+
+ a| 
+Groupe de disques (`-dg _file_spec_ c`) ou groupe de volumes (`-vg _file_spec_` )
+ a| 
+_nom du disque ou du groupe de volumes_
+
+
+
+ a| 
+Système de fichiers (`-fs _file_spec_` )
+ a| 
+_nom du système de fichiers_
+
+
+
+ a| 
+Fichier (`-file _file_spec_` )
+ a| 
+_Nom du fichier NFS_
+
+
+
+ a| 
+Volume de l'hôte (`-hostvol _file_spec_` ) ou volume logique (`-lvol _file_spec_` )
+ a| 
+_nom de l'hôte ou du volume logique. Vous devez fournir à la fois le volume demandé et le groupe de disques contenant ce volume ; par exemple, - hostvol dg3/acct_volume._
+
+
+
+ a| 
+Spécifiez le nom de la copie Snapshot. Si l'un des `_file_spec_` Arguments que vous fournissez à l'invite de commande en cours de création sur l'hôte local, vous pouvez utiliser une forme courte du nom de la copie Snapshot.
+
+Si aucun des `_file_spec_` Des arguments existent sur l'hôte, vous devez utiliser une forme longue du nom de la copie Snapshot, dans laquelle vous entrez le nom du système de stockage, le volume et le nom de la copie Snapshot. Si vous utilisez un nom long pour la copie Snapshot et que le nom du chemin d'accès ne correspond pas aux informations relatives au système de stockage et/ou au volume de stockage à l'invite de commande, SnapDrive pour UNIX échoue. L'exemple suivant illustre le nom d'une copie Snapshot longue : `big_filer:/vol/account_vol:snap_20031115`
+
+Parfois, la valeur fournie avec le `_file_spec_` l'argument n'existe peut-être pas sur l'hôte. Par exemple, si vous aviez démonté un système de fichiers ou supprimé un groupe de disques en exportant, déportant ou détruisant, ce système de fichiers ou ce groupe de disques pourrait toujours être une valeur pour l' `_file_spec_` argument. Il serait toutefois considéré comme une valeur inexistante. SnapDrive pour UNIX peut restaurer des copies Snapshot pour un tel manque d'existence `_file_spec_`, Mais vous devez utiliser le nom de la copie Snapshot longue.
+
+Lorsque vous restaurez des copies Snapshot sur plusieurs systèmes et volumes de stockage, et qu'elles contiennent un caractère inexistant `_file_spec_` Argument, SnapDrive pour UNIX autorise une incohérence dans la ligne de commande. Elle ne permet pas l'existant `_file_spec_` arguments. Si vous souhaitez restaurer une seule entité de stockage à partir d'une copie Snapshot de plusieurs systèmes de stockage, la copie Snapshot spécifiée n'a pas besoin d'être sur le même système de stockage que le système de stockage contenant l'entité de stockage.
+
+La forme courte du même nom de copie Snapshot omettez le système de stockage et le nom du volume du système de stockage, elle apparaît comme suit : `_snap_20031115_`
+
+
+
+ a| 
+Nom de la copie Snapshot (`-snapname`)
+ a| 
+`_snap_name_`
+
+
+
+ a| 
+Il peut s'agir d'un nom court, par exemple `_mysnap1_`, Ou un nom long incluant le nom du système de stockage, le volume et la copie Snapshot.
+
+Généralement, NetApp recommande d'utiliser le nom court. Si le `_file_spec_` l'argument n'existe pas : il n'existe plus sur l'hôte ; voir l'explication du `_file_spec_` argument. Vous devez ensuite utiliser le nom long de la copie Snapshot.
+
+
+
+ a| 
+`-reserve | -noreserve`
+ a| 
+
+
+
+ a| 
+Facultatif : si vous souhaitez que SnapDrive pour UNIX crée une réservation d'espace lors de la restauration de la copie Snapshot.
+
+
+
+ a| 
+`-force`
+ a| 
+~
+
+
+
+ a| 
+`-noprompt`
+ a| 
+~
+
+
+
+ a| 
+Facultatif : décider si vous souhaitez remplacer une copie Snapshot existante. Sans cette option, cette opération s'interrompt si vous fournissez le nom d'une copie Snapshot existante. Lorsque vous fournissez cette option et que vous spécifiez le nom d'une copie Snapshot existante, elle vous invite à confirmer que vous souhaitez remplacer la copie Snapshot. Pour empêcher SnapDrive pour UNIX d'afficher l'invite, incluez le `-noprompt` également en option. (Vous devez toujours inclure le `-force` si vous souhaitez utiliser l'option -noprompt.)
+
+Vous devez inclure le `-force` Option à l'invite de commande si vous tentez de restaurer un groupe de disques où la configuration a changé depuis la dernière copie Snapshot. Par exemple, si vous avez modifié le mode d'agrégation des données sur les disques, puisque vous avez pris une copie Snapshot, vous devez inclure le système `-force` option. Sans le `-force` option, cette opération échoue. Cette option vous demande de confirmer que vous souhaitez continuer l'opération, sauf si vous incluez le `-noprompt` avec elle.
+
+
+NOTE: Si vous avez ajouté ou supprimé une LUN, l'opération de restauration échoue, même si vous incluez le `-force` option.
+
+
+
+ a| 
+`mntopts`
+ a| 
+~
+
+
+
+ a| 
+*Facultatif:* si vous créez un système de fichiers, vous pouvez spécifier les options suivantes :
+
+* Utiliser `-mntopts` pour spécifier les options que vous souhaitez transmettre à la commande host mount (par exemple, pour spécifier le comportement de journalisation du système hôte). Les options que vous spécifiez sont stockées dans le fichier de table système de fichiers hôte. Les options autorisées dépendent du type de système de fichiers hôte.
+* Le `_-mntopts_` argument est un système de fichiers `-type` option spécifiée à l'aide de `mount` commande `-o` drapeau. Ne pas inclure le `-o` drapeau dans l'argument -mntopts. Par exemple, la séquence -mntopts tmplag passe la chaîne `-o tmplog` à la `mount` et insère le texte tmplag sur une nouvelle ligne de commande.
++
+
+NOTE: Si vous passez une valeur non valide `_-mntopts_` Options de stockage et d'instantanés, SnapDrive pour UNIX ne valide pas ces options de montage non valides.
+
+
+
+|===

@@ -1,0 +1,61 @@
+---
+permalink: linux-administration/concept_default_values_for_the_recovery_logs.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, default, recovery, log, value 
+summary: 'Vous pouvez modifier le nom du fichier journal de récupération et le nombre maximal d"anciens fichiers journaux de récupération enregistrés par SnapDrive pour UNIX.' 
+---
+= Valeurs par défaut des journaux de récupération
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier le nom du fichier journal de récupération et le nombre maximal d'anciens fichiers journaux de récupération enregistrés par SnapDrive pour UNIX.
+
+Le `snapdrive.conf` fichier vous permet de définir les valeurs suivantes pour la journalisation de récupération :
+
+* Nom du fichier contenant le journal de récupération, par exemple `recovery.log`.
+* Le nombre maximal d'anciens fichiers de récupération enregistrés par SnapDrive pour UNIX. La valeur par défaut est 20. SnapDrive pour UNIX conserve ce nombre de journaux de reprise si le problème n'est pas immédiatement identifié. SnapDrive pour UNIX démarre un nouveau fichier journal de reprise à chaque fois qu'il termine une opération. Renomme ensuite le précédent en ajoutant un numéro arbitraire au nom, par exemple `recovery.log.0`, `recovery.log.1`, etc.
+
+
+
+NOTE: La taille du fichier journal de reprise dépend de l'opération effectuée. Chaque journal de reprise contient des informations sur une seule opération. Lorsque cette opération est terminée, SnapDrive pour UNIX lance un nouveau journal de reprise, quelle que soit la taille du fichier précédent. Par conséquent, il n'y a pas de taille maximale pour un fichier journal de récupération.
+
+L'exemple de journal de récupération suivant montre que SnapDrive pour UNIX a restauré deux copies Snapshot avant l'arrêt des opérations. Vous pouvez envoyer ce fichier journal de reprise au support technique pour obtenir de l'aide lors de la restauration des copies Snapshot restantes.
+
+[listing]
+----
+6719: BEGIN 15:52:21 03/09/04 snapdrive snap restore -dg jssdg -
+snapname natasha:/vol/vol1:abort_snap_restore
+6719: BEGIN 15:52:27 03/09/04 create rollback snapshot:
+natasha:/vol/vol1:abort_snap_restore.RESTORE_ROLLBACK_03092004_155
+225
+6719: END 15:52:29 03/09/04 create rollback snapshot:
+natasha:/vol/vol1:abort_snap_restore.RESTORE_ROLLBACK_03092004_155
+225 successful
+6719: BEGIN 15:52:29 03/09/04 deactivate disk group: jssdg
+6719: BEGIN 15:52:29 03/09/04 stop host volume:
+/dev/vx/dsk/jssdg/jvol_1
+6719: END 15:52:30 03/09/04 stop host volume:
+/dev/vx/dsk/jssdg/jvol_1 successful
+6719: BEGIN 15:52:30 03/09/04 unmount file system: /mnt/demo_fs
+6719: END 15:52:30 03/09/04 unmount file system: /mnt/demo_fs
+successful
+6719: BEGIN 15:52:30 03/09/04 stop host volume:
+/dev/vx/dsk/jssdg/jvol_2
+6719: END 15:52:30 03/09/04 stop host volume:
+/dev/vx/dsk/jssdg/jvol_2 successful
+6719: BEGIN 15:52:30 03/09/04 deport disk group: jssdg
+6719: END 15:52:30 03/09/04 deport disk group: jssdg successful
+6719: END 15:52:30 03/09/04 deactivate disk group: jssdg
+successful
+6719: BEGIN 15:52:31 03/09/04 SFSR of LUN: /vol/vol1/lun1 from
+snapshot: abort_snap_restore
+6719: END 15:52:31 03/09/04 SFSR of LUN: /vol/vol1/lun1 from
+snapshot: abort_snap_restore successful
+6719: BEGIN 15:52:47 03/09/04 SFSR of LUN: /vol/vol1/lun2 from
+snapshot: abort_snap_restore
+6719: END 15:52:47 03/09/04 SFSR of LUN: /vol/vol1/lun2 from
+snapshot: abort_snap_restore successful
+----

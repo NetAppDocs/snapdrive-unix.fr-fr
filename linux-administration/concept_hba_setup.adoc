@@ -1,0 +1,22 @@
+---
+permalink: linux-administration/concept_hba_setup.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, hba, setup, install 
+summary: 'L"installation de HBA est le processus d"installation d"une carte HBA appropriée et des pilotes pris en charge sur un hôte Linux.' 
+---
+= Configuration des HBA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'installation de HBA est le processus d'installation d'une carte HBA appropriée et des pilotes pris en charge sur un hôte Linux.
+
+Les cartes HBA prises en charge pour une configuration MPIO Linux sont les suivantes :
+
+* QLOGIC
+* EMULEX
+
+
+Ces cartes HBA sont prises en charge par FC Host Utilities Linux Attach Kit 3.0 et versions ultérieures avec RHEL4 Update 6 et versions ultérieures.

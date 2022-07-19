@@ -1,0 +1,30 @@
+---
+permalink: linux-administration/concept_unable_to_create_a_snapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snapshot, copy, create, command 
+summary: Quelques conditions ont un impact sur la capacité de la commande SnapDrive snap create à créer une copie Snapshot. 
+---
+= Impossible de créer une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il y a peu de conditions qui affectent le `snapdrive snap create` Commande permettant de créer une copie Snapshot.
+
+* Le `snapdrive snap create` la commande doit être capable d'effectuer les tâches suivantes :
++
+** Interroger tous les groupes de disques pour obtenir la liste des LUN.
+** Interrogez toutes les LUN via des commandes SCSI.
+
+
+* Les LUN du groupe de disques doivent être en ligne et mappées sur le groupe de disques avant de créer la copie Snapshot. Lorsque l'une des LUN est hors ligne ou que son mappage a été annulé, l'opération de création échoue.
++
+Avant de tenter de créer une copie Snapshot, vérifiez que toutes les LUN sont en ligne et mappées sur l'hôte.
+
+* Les autorisations d'accès ne permettent pas à l'hôte de créer une copie Snapshot des informations sur ce système de stockage.
++
+De plus, comme il fonctionne avec des entrées LVM, vous devez être connecté à l'hôte avec l'autorisation suffisante pour manipuler les entrées LVM.
+
+

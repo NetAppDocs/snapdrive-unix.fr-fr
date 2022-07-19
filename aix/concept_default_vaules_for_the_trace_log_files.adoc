@@ -1,0 +1,25 @@
+---
+permalink: aix/concept_default_vaules_for_the_trace_log_files.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, default, value, trace, log, file 
+summary: Les fichiers journaux de trace vous permettent de définir différents paramètres et de les modifier. Ces paramètres doivent être définis dans le fichier snapdrive.conf. 
+---
+= Valeurs par défaut des fichiers journaux de trace
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les fichiers journaux de trace vous permettent de définir différents paramètres et de les modifier. Ces paramètres doivent être définis dans le `snapdrive.conf` fichier.
+
+Les valeurs suivantes doivent être définies dans le `snapdrive.conf` fichier :
+
+* Nom du fichier contenant le journal de trace.
+* Taille maximale du fichier journal de trace. La taille par défaut est « 0 » octets. Cette valeur garantit que chaque fichier journal de trace ne contient qu'une seule commande SnapDrive pour UNIX.
++
+Si vous réinitialisez la taille par défaut à une valeur autre que 0, lorsque le fichier atteint la taille spécifiée, SnapDrive for UNIX renomme le fichier journal de trace en ajoutant un nombre arbitraire au nom. Il démarre ensuite un nouveau fichier journal de trace en utilisant le nom spécifié par le `trace-log-file` valeur.
+
+* Nombre maximal d'anciens fichiers de trace enregistrés par SnapDrive pour UNIX. La valeur par défaut est 100.
+* Types de messages écrits par SnapDrive pour UNIX dans le fichier journal de trace. Par défaut, le fichier journal de trace contient des erreurs fatales, des erreurs d'administration, des erreurs de commande, des avertissements et des messages d'information.
+

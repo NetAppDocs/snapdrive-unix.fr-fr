@@ -1,0 +1,40 @@
+---
+permalink: solaris/task_configuring_management_and_data_interfaces_for_a_storage_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, configure, management, data, interface, storage 
+summary: Vous pouvez configurer plusieurs interfaces de données pour une seule interface de gestion dans un environnement NFS, de sorte à séparer le trafic de gestion du trafic de données sur votre système de stockage. 
+---
+= Configuration des interfaces de gestion et de données pour un système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer plusieurs interfaces de données pour une seule interface de gestion dans un environnement NFS, de sorte à séparer le trafic de gestion du trafic de données sur votre système de stockage.
+
+.Étapes
+. Définir la configuration de la nouvelle interface de gestion :
++
+`*snapdrive config set root*`
+
++
+[listing]
+----
+# snapdrive config set root f3050-197-91
+Password for root:
+Retype password:
+----
+. Configurer l'interface de données pour la nouvelle interface de gestion :
++
+`*snapdrive config set*`
+
++
+[listing]
+----
+# snapdrive config set -mgmtpath f3050-197-91 f3050-220-91#
+----
++
+Dans la commande précédente, `f3050-197-191` est l'interface de gestion et `f3050-220-91` est l'interface de données.
+
+

@@ -1,0 +1,32 @@
+---
+permalink: solaris/concept_guidelines_for_storage_create_operation_in_a_host_cluster_environment.html 
+sidebar: sidebar 
+keywords: snap, snapshot, storage, create, host cluster 
+summary: Vous devez suivre certaines instructions lorsque vous créez du stockage dans un environnement de cluster hôte. 
+---
+= Instructions relatives à l'opération de création de stockage dans un environnement de cluster hôte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez suivre certaines instructions lorsque vous créez du stockage dans un environnement de cluster hôte.
+
+* Vous pouvez exécuter le `snapdrive storage create` commande depuis n'importe quel nœud du cluster hôte.
+* Pour que l'opération de création du stockage ne soit couronnée de succès, ne doit pas être vraie :
++
+** Les entités de stockage ne doivent pas être présentes sur un nœud du cluster hôte.
+** Les LUN ne doivent pas être mappées sur un nœud du cluster hôte.
+
+
+* Vous pouvez créer une entité de stockage sur un nœud spécifique en utilisant le `-devicetype` dédié ou le `-devicetype shared` option. Si vous créez une entité de stockage qui est en mode dédié, vous pouvez ignorer le `-devicetype` car la valeur par défaut est `dedicated`.
+* La création d'un système de fichiers au niveau du cluster hôte est prise en charge sur des groupes de disques qui utilisent Veritas Volume Manager avec Veritas File System (VxFS). Cette opération ne prend pas en charge les LUN brutes ; le `-nolvm` cette option ne prend pas non plus en charge.
+* Le `-igroup` l'option n'est pas prise en charge dans l'opération de création de stockage.
+* L'opération de création du stockage échoue si l'une des situations suivantes se produit :
++
+** Si un message d'erreur se produit pendant le processus de création d'une entité de stockage. SnapDrive pour UNIX exécute une opération de création du stockage à partir du nœud maître dans un cluster hôte. Avant de créer les entités de stockage partagées, SnapDrive for UNIX crée des LUN, mappe les LUN sur le nœud maître, puis mappe les LUN sur tous les nœuds non maîtres. SnapDrive pour UNIX en interne crée et gère les igroups pour tous les nœuds.
+** Si un nœud du cluster hôte s'arrête et redémarre avant de démarrer le gestionnaire de volumes en cluster de l'hôte (CVM), le groupe de disques partagé utilisé par les LUN doit être découvert sur le nœud. Par défaut, les LUN sont visibles si l'adresse du port FC n'est pas modifiée ; sinon, vous devez mapper les LUN à l'aide du `snapdrive storage connect` commande.
+
+
+

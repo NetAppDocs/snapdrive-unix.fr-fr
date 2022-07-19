@@ -1,0 +1,21 @@
+---
+permalink: aix/concept_what_snapdrive_for_unix_is.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, management, provisioning 
+summary: SnapDrive for UNIX simplifie les tâches de gestion du stockage. SnapDrive for UNIX utilise la technologie Snapshot pour créer une image des données stockées sur un système de stockage partagé ou non. SnapDrive vous aide également à provisionner le stockage. 
+---
+= Ce que propose SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive for UNIX simplifie les tâches de gestion du stockage. SnapDrive for UNIX utilise la technologie Snapshot pour créer une image des données stockées sur un système de stockage partagé ou non. SnapDrive vous aide également à provisionner le stockage.
+
+Vous pouvez utiliser SnapDrive pour UNIX pour effectuer les tâches suivantes :
+
+* **Sauvegarde et restauration des données:** SnapDrive pour UNIX vous permet d'utiliser la technologie Snapshot pour créer une image (copie Snapshot) des données hôte stockées sur un système de stockage. Cette copie Snapshot vous fournit une copie des données que vous pouvez restaurer par la suite. Les données de la copie Snapshot peuvent résider sur un seul système de stockage ou s'étendre sur plusieurs systèmes de stockage et leurs volumes. Ces systèmes de stockage peuvent se trouver sous forme de paire HA ou de systèmes de fichiers locaux par nœud ou de groupes de disques, ou de LUN dans un environnement de clusters hôtes.
+* *Gérer le stockage :* vous pouvez créer et supprimer des composants de stockage, y compris des groupes de disques, des volumes hôtes, des systèmes de fichiers et des LUN sur un cluster hôte et des environnements non-cluster. SnapDrive pour UNIX vous permet de gérer ce stockage en l'étendant, en le connectant à un hôte et en le déconnectant.
+* **Contrôle d'accès basé sur les rôles :** SnapDrive pour UNIX offre un contrôle d'accès basé sur les rôles (RBAC). Les RBAC permettent à un administrateur SnapDrive de restreindre l'accès à un système de stockage pour différentes opérations SnapDrive. Cet accès pour les opérations de stockage dépend du rôle attribué à l'utilisateur. Le contrôle d'accès basé sur des rôles (RBAC) permet aux administrateurs du stockage de limiter les opérations que les utilisateurs SnapDrive peuvent effectuer en fonction de leurs rôles.
+

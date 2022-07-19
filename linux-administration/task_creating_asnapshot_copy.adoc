@@ -1,0 +1,42 @@
+---
+permalink: linux-administration/task_creating_asnapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snapshot, create, command 
+summary: Pour créer une copie Snapshot, lancer la commande SnapDrive snap create. 
+---
+= Créer une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour créer une copie Snapshot, exécutez la `snapdrive snap create` commande.
+
+Avant d'exécuter cette syntaxe, vous devez comprendre les options, mots-clés et arguments mentionnés dans cette commande.
+
+.Étapes
+. Entrez la syntaxe de commande suivante pour créer une copie Snapshot :
++
+`*snapdrive snap create {-lun | -dg | -fs | -hostvol } _file_spec[file_spec ...]_ [ {-lun |-dg | -fs | -hostvol } file_spec [file_spec...]] -snapname _snap_name_ [ -force [-noprompt]][-unrelated] [-nofilerfence] [-fstype _type_][-vmtype _type_]*`
+
+
+
+Le `file_spec` les arguments représentent un ensemble d'entités de stockage sur un ou plusieurs systèmes de stockage. L'opération de création de snapshot prend une copie Snapshot du volume du système de stockage contenant ces entités et lui attribue le nom spécifié dans le `snap_name` argument.
+
+Dans cet exemple, une copie Snapshot entre plusieurs volumes est créée pour un hôte Linux. La copie Snapshot contient le groupe de disques vgmultipol, qui inclut les volumes hôtes lvol1 et lvol2 :
+
+[listing]
+----
+# snapdrive snap create -vg vgmultivol -snapname snapmultivol
+Successfully created snapshot snapmultivol on 2 filer volumes:
+toaster:/vol/vol1
+toaster:/vol/vol2
+snapshot snapmultivol contains:
+disk group vgmultivol containing host volumes
+lvol1
+lvol2
+----
+*Informations connexes*
+
+xref:concept_creating_snapshotcopies_of_unrelatedentities.adoc[Création de copies Snapshot d'entités non liées]

@@ -1,0 +1,74 @@
+---
+permalink: aix/concept_volume_based_snaprestore_for_space_reservation.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snaprestore, space, reservation, volume 
+summary: 'Pour réserver de l"espace avec la réserve Snap basée sur les volumes, vous devez définir l"option space-reservations-volume-enabled dans le fichier snapdrive.conf.' 
+---
+= SnapRestore basée sur les volumes pour effectuer une réservation d'espace
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour réserver de l'espace avec réserve Snapshot basée sur les volumes, vous devez définir `_space-reservations-volume-enabled_` dans le `snapdrive.conf` fichier.
+
+Le `_space-reservations-volume-enabled_` option permet de définir la règle de garantie d'espace sur le volume et de prendre les trois valeurs suivantes.
+
+* *Instantané* : il s'agit de la valeur par défaut. La garantie d'espace sur le volume ne change pas.
+* *Volume* : la garantie d'espace sur le volume est au niveau du volume.
+* *Aucun*: La garantie d'espace est définie comme aucune.
+
+
+Le tableau ci-après décrit le comportement de la réserve Snapshot basée sur les volumes pour la réservation d'espace.
+
+|===
+| Aucune option de CLI de réserve d'espace utilisée ; `-vbsr execute` est spécifié | espace-réservations-volume-activé= | Résultat 
+
+
+ a| 
+Aucune
+ a| 
+snapshot
+ a| 
+La garantie d'espace sur le volume ne change pas.
+
+
+
+ a| 
+Aucune
+ a| 
+Aucune
+ a| 
+Tentative de définition de la garantie d'espace comme « aucune » pour les volumes.
+
+
+
+ a| 
+`-reserve`
+ a| 
+la valeur de configuration est surutilisée
+ a| 
+Tentative de définition de la garantie d'espace pour les volumes comme du « volume »
+
+
+
+ a| 
+`-noreserve`
+ a| 
+la valeur de configuration est surutilisée
+ a| 
+Tentative de définition de la garantie d'espace pour les volumes comme « none »
+
+
+
+ a| 
+Aucune
+ a| 
+volumétrie
+ a| 
+Tentative de définition de la garantie d'espace pour les volumes comme du « volume »
+
+|===
+
+NOTE: `-vbsr preview` ne vérifie aucune des options de réservation d'espace.

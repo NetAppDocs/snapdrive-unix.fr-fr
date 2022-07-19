@@ -1,0 +1,31 @@
+---
+permalink: linux-administration/concept_types_of_logs.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, log, file, troubleshoot, audit, recovery, trace 
+summary: SnapDrive pour UNIX prend en charge différents types de fichiers journaux, ce qui vous aide à résoudre les problèmes lorsque SnapDrive pour UNIX ne fonctionne pas comme prévu. 
+---
+= Types de journaux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX prend en charge différents types de fichiers journaux, ce qui vous aide à résoudre les problèmes lorsque SnapDrive pour UNIX ne fonctionne pas comme prévu.
+
+* Journal d'audit
++
+SnapDrive for UNIX consigne toutes les commandes et leurs codes de retour dans un journal d'audit. SnapDrive pour UNIX fait une entrée lorsque vous initiez une commande et une autre lorsque la commande est terminée. L'entrée suivante inclut le statut de la commande et l'heure de fin.
+
+* Journal de récupération
++
+Certaines opérations SnapDrive pour UNIX peuvent laisser le système dans un état incohérent ou moins utilisable en cas d'interruption. Cette situation peut se produire si un utilisateur met fin au programme ou si l'hôte tombe en panne au milieu d'une opération. Le journal de reprise contient les étapes d'une opération de restauration Snap. Il décrit les étapes qui sont prises et la progression effectuée pour que le support technique puisse vous aider dans le processus de récupération manuelle.
+
+* Journal de suivi
++
+SnapDrive pour UNIX fournit des informations utiles pour le diagnostic des problèmes. En cas de problème, le support technique NetApp peut demander ce fichier journal.
+
++
+SnapDrive 4.0 pour UNIX a introduit le service démon SnapDrive pour UNIX. Pour que les commandes SnapDrive pour UNIX s'exécutent, le démon doit être en cours d'exécution. Le traçage du démon doit être exécuté sur pour chaque commande individuelle, même lorsque les commandes sont exécutées en parallèle. L'emplacement et le nom du fichier journal sont `/var/log/sd-trace.log`. Ces fichiers de trace n'ont que des entrées de trace spécifiques à la commande. Les journaux de trace pour l'exécution du démon sont enregistrés dans un fichier de trace différent ``/var/log/sd-daemon-trace.log`.
+
+

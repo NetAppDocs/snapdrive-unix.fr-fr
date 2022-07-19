@@ -1,0 +1,22 @@
+---
+permalink: linux-administration/concept_snap_restore_operation_fails_nfsv3_and_nfsv4_versions_enabled_in_host_and_storage_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, fail, nfsv3, nfsv4, host, storage, operation 
+summary: 'L"opération de restauration Snap échoue en cas d"activation des versions nfsv3 et nfsv4 dans l"hôte et le système de stockage.' 
+---
+= L'opération de restauration Snap échoue lorsque des versions nfsv3 et nfsv4 sont activées dans l'hôte et le système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'opération de restauration Snap échoue en cas d'activation des versions nfsv3 et nfsv4 dans l'hôte et le système de stockage.
+
+Si des versions nfsv3 et nfsv4 sont activées dans l'hôte et le système de stockage, et montez le volume sur l'hôte sans `-o vers` option, puis `nobody:nobody` la propriété est définie pour les fichiers et les répertoires.
+
+
+
+== Solution de contournement
+
+Il est recommandé d'utiliser `-o vers` option lors du montage du volume nfs ou vérification des options nfs par défaut sur une valeur appropriée sur l'hôte.

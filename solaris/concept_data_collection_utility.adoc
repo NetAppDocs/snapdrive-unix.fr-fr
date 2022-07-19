@@ -1,0 +1,16 @@
+---
+permalink: solaris/concept_data_collection_utility.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, data, collection, utility 
+summary: 'L"utilitaire de collecte de données SnapDrive est un outil de dépannage qui collecte des informations pour diagnostiquer les problèmes.' 
+---
+= Utilitaire de collecte de données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'utilitaire de collecte de données SnapDrive est un outil de dépannage qui collecte des informations pour diagnostiquer les problèmes.
+
+SnapDrive pour UNIX fournit un utilitaire de collecte de données (snapdrive.dc) qui collecte des informations de diagnostic sur SnapDrive pour UNIX, le vérificateur de configuration SnapDrive et la configuration de votre système.

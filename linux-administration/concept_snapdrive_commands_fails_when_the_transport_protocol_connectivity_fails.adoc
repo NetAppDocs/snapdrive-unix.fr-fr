@@ -1,0 +1,20 @@
+---
+permalink: linux-administration/concept_snapdrive_commands_fails_when_the_transport_protocol_connectivity_fails.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, fail, transport, fc, iscsi, storage 
+summary: 'La commande SnapDrive échoue en cas de panne de la connexion iSCSI ou FC entre l"hôte et le système de stockage, ou en cas de panne de l"iSCSI ou du FC sur le système de stockage.' 
+---
+= La commande SnapDrive échoue lorsque la connectivité du protocole de transport échoue
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La commande SnapDrive échoue en cas de panne de la connexion iSCSI ou FC entre l'hôte et le système de stockage, ou en cas de panne de l'iSCSI ou du FC sur le système de stockage.
+
+
+
+== Solution de contournement
+
+Pour utiliser correctement les commandes SnapDrive pour UNIX, vous devez d'abord restaurer le service iSCSI ou FC.

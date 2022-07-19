@@ -1,0 +1,18 @@
+---
+permalink: solaris/concept_snap_restore_command_fails_to_mount_the_file_system.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, command, fail, mount, file 
+summary: Avec SFRAC 5.0 sous Solaris, les commandes snap restore et snap Connect ne parviennent pas à monter le système de fichiers. 
+---
+= La commande snap restore ne parvient pas à monter le système de fichiers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avec SFRAC 5.0 sur Solaris, le `snap restore` et `snap connect` les commandes n'ont pas échoué lors du montage du système de fichiers.
+
+Avant de prendre une copie Snapshot, l'utilisateur doit exécuter la commande suivante sur le nœud de cluster où l'utilisateur va lancer la `snapdrive snap create` commande :
+
+`/opt/VRTS/bin/fsclustadm setprimary mount_point`

@@ -1,0 +1,82 @@
+---
+permalink: solaris/task_starting_the_volume_or_lun_clone_split_start.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, volume, clone, lun, split, start 
+summary: Vous pouvez démarrer une opération de fractionnement de volume ou de clone de LUN. 
+---
+= Démarrage du fractionnement du clone de volume ou du clone de LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez démarrer une opération de fractionnement de volume ou de clone de LUN.
+
+.Étapes
+. Entrez la commande suivante pour démarrer un clone de volume ou un fractionnement de LUN.
++
+`*# snapdrive clone split start [-lun] _long_lun_name_ [_long_lun_name..._] | [{-dg | -vg | -fs | -hostvol | -lvol} _file_spec_ [_file_spec ..._]] [-force][-noprompt] [-dump | -dumpall]*`
+
++
+Les options suivantes peuvent être utilisées lorsque l'état de stockage s'affiche comme NON DISPONIBLE.
+
++
+** Vous pouvez utiliser le `-force` option permettant de forcer le démarrage de l'opération de fractionnement du clone et de recevoir un message de confirmation indiquant que l'opération a démarré.
+** Vous pouvez utiliser le `-noprompt` avec `-force` option pour démarrer l'opération de démarrage fractionné du clone sans recevoir de message de confirmation.
++
+
+NOTE: Lorsque vous démarrez une autre opération de division du clone rapidement après l'arrêt d'une opération de fractionnement du clone en cours, l'opération peut échouer. Ce problème peut survenir si le délai entre le démarrage et l'arrêt de l'opération de fractionnement du clone n'était pas suffisant pour permettre au système de stockage de synchroniser l'opération d'arrêt.
+
+
+
+
+
+L'exemple suivant montre comment séparer un clone de volume :
+
+[listing]
+----
+# snapdrive clone split start -fs /mnt/my_mnt4_0 /mnt/my_mnt3_0
+Resource    Container  Required Available Storage
+                       Space(MB)Space(MB) Status
+--------------------------------------------------
+/mnt/my_mnt4_0 f3050-220 3295   66033 AVAILABLE
+             -111:aggr0
+/mnt/my_mnt3_0 f3050-220  293   37707 AVAILABLE
+             -112:aggr1
+
+Job ID: B265Dbv8gh
+Clone-Split for "/mnt/my_mnt4_0" is started
+Clone-Split for "/mnt/my_mnt3_0" is started
+----
+L'exemple suivant montre comment diviser un clone à l'aide de l'option -force :
+
+[listing]
+----
+# snapdrive clone split start -fs /mnt/my_mnt5 /mnt/my_mnt6 -force
+Resource    Container Required  Available Storage
+                      Space(MB) Space(MB) Status
+----------------------------------------------------
+/mnt/my_mnt5 f3050-220 1198   20033   AVAILABLE
+             -111:aggr0
+/mnt/my_mnt6 f3050-220  3294  2196  NOT AVAILABLE
+             -112:aggr1
+Not enough space available for Clone-Split.  Do you want to continue (y/n)?y
+Clone-Split for "/mnt/my_mnt5" is started
+Clone-Split for "/mnt/my_mnt6" is started
+----
+L'exemple suivant montre comment démarrer directement un clone à l'aide de `_-noprompt` option signifiant qu'il n'y a pas de message de confirmation :
+
+[listing]
+----
+# snapdrive clone split start -fs /mnt/my_mnt5 /mnt/my_mnt6 -force -noprompt
+Resource    Container  Required  Available Storage
+                       Space(MB) Space(MB) Status
+-----------------------------------------------------
+/mnt/my_mnt5 f3050-220  1198     20033   AVAILABLE
+             -111:aggr0
+/mnt/my_mnt6 f3050-220  3294     2196  NOT AVAILABLE
+             -112:aggr1
+Clone-Split for "/mnt/my_mnt5" is started
+Clone-Split for "/mnt/my_mnt6" is started
+----

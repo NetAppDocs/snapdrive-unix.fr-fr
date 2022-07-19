@@ -1,0 +1,33 @@
+---
+permalink: aix/task_deleting_a_userlogin_for_a_storagesystem.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, delete, user, login, storage 
+summary: Vous pouvez supprimer une connexion utilisateur pour un ou plusieurs systèmes de stockage en exécutant la commande SnapDrive config delete. 
+---
+= Suppression d'une connexion utilisateur pour un système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer une connexion utilisateur pour un ou plusieurs systèmes de stockage en exécutant le `snapdrive config delete` commande.
+
+Assurez-vous d'être connecté en tant qu'utilisateur racine.
+
+.Étapes
+. Saisissez la commande suivante :
++
+`*snapdrive config delete _appliance_name [appliance_name]_*`
+
++
+`_appliance_name_` est le nom du système de stockage pour lequel vous souhaitez supprimer les informations de connexion de l'utilisateur.
+
++
+SnapDrive pour UNIX supprime les informations de connexion au nom d'utilisateur ou au mot de passe des systèmes de stockage que vous avez spécifiés.
+
++
+
+NOTE: Pour permettre à SnapDrive pour UNIX d'accéder au système de stockage, vous devez spécifier un nouveau login utilisateur.
+
+

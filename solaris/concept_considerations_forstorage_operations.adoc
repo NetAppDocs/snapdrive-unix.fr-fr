@@ -1,0 +1,33 @@
+---
+permalink: solaris/concept_considerations_forstorage_operations.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, operation 
+summary: Vous devez tenir compte de quelques considérations relatives aux différentes commandes de stockage. 
+---
+= Considérations relatives aux opérations de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez tenir compte de quelques considérations relatives aux différentes commandes de stockage.
+
+* La prise en charge des groupes de volumes couvrant plusieurs volumes de système de stockage ou plusieurs systèmes de stockage est limitée. Vous ne pouvez pas utiliser `snapdrive storage create` commande permettant de créer des groupes de volumes répartis sur les systèmes de stockage.
++
+Dans ce cas, SnapDrive pour UNIX prend en charge les commandes à clé suivantes :
+
++
+** `snapdrive snap create`
+** `snapdrive snap restore`
+** `snapdrive snap connect`
+** `snapdrive snap disconnect`
+
+
+* Le `snapdrive storage resize` La commande ne fonctionne pas avec les LUN mappées directement à l'hôte ou avec les systèmes de fichiers qu'ils contiennent.
+* SnapDrive pour UNIX ne fournit aucune option permettant de contrôler le formatage des volumes hôtes qu'il crée. SnapDrive pour UNIX crée uniquement des volumes hôtes concaténés. Elle fonctionne correctement sur les volumes hôtes d'autres formats (comme les volumes répartis) créés à l'aide d'une autre application.
+* Vous ne pouvez pas restaurer une partie d'un groupe de disques. SnapDrive pour UNIX sauvegarde et restaure des groupes de disques entiers uniquement.
+
+
+
+NOTE: Les opérations SnapDrive effectuées à partir d'un système d'exploitation non Linux vers un système d'exploitation Linux, en utilisant même le `-mntopts` La commande, pour NFS, échoue dans toutes les versions antérieures à Red Hat Enterprise Linux 6.

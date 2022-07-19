@@ -1,0 +1,36 @@
+---
+permalink: aix/task_adding_igroup.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, igroup, add 
+summary: 'SnapDrive pour UNIX vous permet d"ajouter un groupe initiateur spécifique du système de stockage à l"hôte et d"effectuer des opérations SnapDrive à l"aide du groupe initiateur configuré. Vous devez vous assurer que le groupe initiateur est disponible dans le système de stockage.' 
+---
+= Ajout d'un groupe initiateur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX vous permet d'ajouter un groupe initiateur spécifique du système de stockage à l'hôte et d'effectuer des opérations SnapDrive à l'aide du groupe initiateur configuré.
+
+Pour ajouter un groupe initiateur à l'hôte, procédez comme suit :
+
+* Utilisez le `snapdrive igroup add` commande
+* Vérifiez que le groupe initiateur est disponible sur le système de stockage
+
+
+.Étapes
+. Ajoutez un groupe initiateur en saisissant la commande suivante sur l'hôte :
++
+`*snapdrive igroup add _igroup_name filer_name [filer_name...]_*`
+
++
+L'exemple de résultat suivant montre un groupe initiateur ajouté avec succès pour le grille-pain du système de stockage :
+
++
+[listing]
+----
+snapdrive igroup add ig toaster
+Added igroup configuration for appliance: toaster
+----
+

@@ -1,0 +1,30 @@
+---
+permalink: solaris/concept_mandatory_checks_for_volume_based_snaprestore.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, mandatory, check, volume, snaprestore 
+summary: 'Avant de procéder à l"exécution de SnapRestore basé sur volume, SnapDrive pour UNIX effectue certaines vérifications obligatoires avec le système. Ces contrôles sont nécessaires pour que le SnapRestore basé sur les volumes soit utilisé en toute sécurité. Les vérifications obligatoires ne peuvent pas être remplacées par l"utilisateur.' 
+---
+= Vérifications obligatoires du SnapRestore basé sur les volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de procéder à l'exécution de SnapRestore basé sur volume, SnapDrive pour UNIX effectue certaines vérifications obligatoires avec le système. Ces contrôles sont nécessaires pour que le SnapRestore basé sur les volumes soit utilisé en toute sécurité. Les vérifications obligatoires ne peuvent pas être remplacées par l'utilisateur.
+
+Les vérifications obligatoires que prend SnapDrive pour UNIX avant la mise en œuvre de SnapRestore basées sur des volumes :
+
+* SnapRestore basée sur les volumes fonctionne uniquement avec les snapshots créés à l'aide de SnapDrive pour UNIX.
+* Le volume d'une SnapRestore basée sur volume ne doit pas être le volume racine d'un système de stockage.
+* SnapDrive for UNIX vérifie les clones de volumes. Elle n'autorise pas l'opération de restauration du volume si des clones de volumes sont créés à partir de nouvelles copies Snapshot. Il s'agit d'une limitation imposée par Data ONTAP.
+* Aucune LUN mappée sur le volume de la SnapRestore basée sur volume ne doit être hors des LUN spécifiées (LUN brute ou LUN présentes dans le système de fichiers, le groupe de disques ou le volume hôte) pour la restauration.
+* SnapDrive pour UNIX vérifie si le volume existe dans une relation SnapMirror.
+* SnapDrive pour UNIX vérifie si le volume existe dans une relation SnapVault.
+
+
+Les vérifications SnapMirror et SnapVault peuvent être remplacées si SnapDrive pour UNIX utilise Operations Manager pour RBAC et si l'utilisateur possède la fonctionnalité SD.snapshot.disrupteur tBaseline sur le volume. Pour plus d'informations sur la fonctionnalité RBAC spécifique permettant à l'utilisateur de remplacer ces vérifications, vous pouvez voir contrôle d'accès basé sur des rôles dans SnapDrive for UNIX.
+
+*Informations connexes*
+
+xref:concept_role_based_access_control_in_snapdrive_for_unix.adoc[Contrôle d'accès basé sur des rôles dans SnapDrive pour UNIX]

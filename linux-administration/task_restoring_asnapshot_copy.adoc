@@ -1,0 +1,46 @@
+---
+permalink: linux-administration/task_restoring_asnapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, snapshot, command 
+summary: 'Vous pouvez restaurer une copie Snapshot à l"aide de la commande SnapDrive snap restore. L"opération de restauration peut prendre plusieurs minutes, selon le type et la quantité de données à restaurer.' 
+---
+= Restaurer une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez restaurer une copie Snapshot à l'aide du `snapdrive snap restore` commande. L'opération de restauration peut prendre plusieurs minutes, selon le type et la quantité de données à restaurer.
+
+.Étapes
+. Entrez la commande suivante pour restaurer une copie Snapshot :
++
+`*snapdrive snap restore -snapname _snap_name_ {-lun |-dg |-fs | - hostvol |-file }_file_spec_ [_file_spec..._] [{ -lun | -dg | -fs |-hostvol |-file } _file_spec_ [_file_spec ..._] [-force [-noprompt]] [-mntopts _options_]][{-reserve |-noreserve}]*`
+
+
+
+SnapDrive pour UNIX remplace le contenu des LUN que vous spécifiez dans le `snapdrive snap restore` Ligne de commande avec le contenu des LUN de la copie Snapshot que vous spécifiez. Cette opération peut prendre plusieurs minutes. Une fois l'opération terminée, SnapDrive pour UNIX affiche un message similaire au message suivant : `snap restore <filespec list> succeeded`
+
+Dans l'exemple suivant, le système de fichiers 1 (fs1) réside sur le système de stockage 1 et le système de fichiers 2 (fs2) réside sur le système de stockage 1 ainsi que sur le système de stockage 2, qui est associé au système de stockage. Le système de fichiers 3 (fs3) réside sur le système de stockage 1, le système de stockage partenaire 2 et le système de stockage3, qui ne fait pas partie de la paire haute disponibilité. Un système de fichiers supplémentaire, fs4, réside entièrement sur le système de stockage 4.
+
+La commande suivante crée une copie Snapshot de `fs1`, `fs2`, `fs3`, et, `fs4`:
+
+[listing]
+----
+# snapdrive snap create -fs /mnt/fs1 /mnt/fs2 /mnt/fs3 /mnt/fs4
+-snapname fs_all_snap
+----
+La commande suivante restaure les fs1 et fs2 sur le système de stockage de destination. Les fs1 et fs2 résident sur une paire HA, ce qui vous permet de les restaurer via une commande :
+
+[listing]
+----
+# snapdrive snap restore -fs /mnt/fs1 /mt/fs2 -snapname fs_all_snap
+----
+La commande suivante restaure fs4 :
+
+[listing]
+----
+snapdrive snap restore -fs /mnt/fs4 -snapname fs_all_snap
+----
+SnapDrive pour UNIX ne peut pas restaurer f3 sur le système de stockage de destination, car ce système de fichiers réside sur le système de stockage 1, le système de stockage 2 et le système de stockage 3.

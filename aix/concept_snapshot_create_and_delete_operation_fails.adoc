@@ -1,0 +1,115 @@
+---
+permalink: aix/concept_snapshot_create_and_delete_operation_fails.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, create, delete, operation, fail 
+summary: 'L"opération de création et de suppression de Snapshot ne parvient pas à supprimer les copies Snapshot du système de stockage, car les LUN sont occupées.' 
+---
+= L'opération de création et de suppression de snapshot a échoué
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'opération de création et de suppression de Snapshot ne parvient pas à supprimer les copies Snapshot du système de stockage, car les LUN sont occupées.
+
+Le message d'erreur suivant s'affiche :
+
+[listing]
+----
+0001-124 Admin error: Failed to remove snapshot <snap-name> on
+filer <filer-name>: LUN clone
+----
+Vous pouvez rencontrer cette erreur et ne pas supprimer directement une copie Snapshot si les conditions suivantes sont vraies :
+
+* Un groupe de disques s'étend sur plusieurs systèmes de stockage.
+* Les commandes SnapDrive suivantes sont exécutées en boucle pour plus de 50 itérations (le nombre d'itérations dépend du système d'exploitation hôte) :
++
+** `snapdrive storage create`
+** `snapdrive snap create`
+** `snapdrive storage delete`
+** `snapdrive snap restore`
+** `snapdrive snap connect`
+** `snapdrive storage delete`
+** `snapdrive snap delete`
+
+
+
+
+À ce stade, l'état de la copie Snapshot sur le système de stockage affiche `*LUNs-Busy*`, et ce statut prolonge quelques heures.
+
+
+
+== Solution de contournement
+
+|===
+| *Si...* | *Alors...* 
+
+
+ a| 
+Une copie Snapshot ne se connecte pas à un hôte, il y a des LUN clonées.
+ a| 
+Vous pouvez effectuer l'une des opérations suivantes pour supprimer la copie Snapshot :
+
+* Séparez les LUN clonées du système de stockage à l'aide de `filer split clone` commande.
+* Supprimez les LUN clonées.
+
+
+
+
+ a| 
+Une copie Snapshot ne se connecte pas à un hôte, il y a des LUN clonées.
+ a| 
+Procédez comme suit :
+
+. Déconnectez les LUN clonées de l'hôte à l'aide de `snapdrive snap disconnect` commande.
+. Supprimez les LUN clonées.
+. Supprimez la copie Snapshot.
+
+
+
+
+ a| 
+L'un des éléments suivants est présent :
+
+* Les LUN clonées définies dans une copie Snapshot et présentes également dans d'autres copies Snapshot
+* Sauvegarder les LUN clonées
+
+ a| 
+Procédez comme suit :
+
+. Exécutez la commande suivante dans l'invite de commande du système de stockage : `lun snap usage -s <volumename>< snap-name>`
++
+Le nom des copies Snapshot contenant les copies Snapshot des LUN clonées, comme illustré ci-dessous :
+
++
+[listing]
+----
+tonic*> lun snap usage vol1
+james_lun (filer view)
+mpiotest2:
+LUN:
+/vol/vol1/.snapshot/mpiotest2/d
+hilip_0
+Backed By:
+/vol/vol1/.snapshot/dhilip_lun/
+james
+----
+. Supprimez les copies Snapshot du système de stockage dans le même ordre que ceux répertoriés dans le résultat de la commande lun snap usage, comme illustré ci-dessous.
++
+`snap delete vol1 mpiotest2`
+
++
+
+NOTE: Vérifiez que la copie Snapshot que vous supprimez n'est utilisée par aucun autre hôte. Si vous y accédez, vous ne pouvez pas le supprimer.
+
+
+
+
+
+ a| 
+Il n'y a pas de LUN clonées
+ a| 
+Attendre jusqu'à `LUNs-Busy` L'état de la copie Snapshot sur le système de stockage disparaît.
+
+|===

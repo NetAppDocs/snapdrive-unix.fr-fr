@@ -1,0 +1,23 @@
+---
+permalink: linux-administration/concept_restoring_multiple_storage_entities.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, storage, snapshot, multiple 
+summary: Vous pouvez restaurer une copie Snapshot contenant plusieurs entités de stockage. 
+---
+= Restauration de plusieurs entités de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez restaurer une copie Snapshot contenant plusieurs entités de stockage.
+
+Pour restaurer une copie Snapshot contenant des entités de stockage résidant sur plusieurs systèmes de stockage de destination, les exigences suivantes doivent être respectées :
+
+* Les entités de stockage que vous spécifiez à l'invite de commande doivent résider sur un seul système de stockage ou sur une paire haute disponibilité.
+* Le nom du volume du système de stockage source doit correspondre au nom du volume du système de stockage de destination.
+* Vous devez définir le `snapmirror-dest-multiple-filervolumes-enabled` argument dans le `snapdrive.conf` file à on.
+
+
+Vous pouvez utiliser une commande pour restaurer les entités de stockage qui résident sur un système de stockage unique ou sur une paire haute disponibilité.

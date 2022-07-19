@@ -1,0 +1,18 @@
+---
+permalink: linux-administration/reference_new_in_this_release.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, release, update, bug, fix 
+summary: SnapDrive 5.3.2 pour UNIX inclut uniquement des correctifs de bogues. Cette version ne contient aucune nouvelle fonctionnalité. 
+---
+= Nouveautés de cette version
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive 5.3.2 pour UNIX inclut uniquement des correctifs de bogues. Cette version ne contient aucune nouvelle fonctionnalité.
+
+*Informations connexes*
+
+https://mysupport.netapp.com/NOW/products/interoperability["Interopérabilité NetApp"]

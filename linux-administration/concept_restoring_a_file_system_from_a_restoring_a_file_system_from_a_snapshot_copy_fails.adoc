@@ -1,0 +1,20 @@
+---
+permalink: linux-administration/concept_restoring_a_file_system_from_a_restoring_a_file_system_from_a_snapshot_copy_fails.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restore, file, snapshot, copy, fail, error 
+summary: 'Après la migration des mises à jour Red Hat Enterprise Linux 3 vers les mises à jour Red Hat Enterprise Linux 4, c"est-à-dire de LVM1 vers LVM2, la restauration d"un système de fichiers à partir d"une copie Snapshot échoue.' 
+---
+= La restauration d'un système de fichiers à partir d'une copie Snapshot échoue
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Après la migration des mises à jour Red Hat Enterprise Linux 3 vers les mises à jour Red Hat Enterprise Linux 4, c'est-à-dire de LVM1 vers LVM2, la restauration d'un système de fichiers à partir d'une copie Snapshot échoue.
+
+Lors de la restauration d'un système de fichiers (pris sur LVM1) à partir d'une copie Snapshot utilisant LVM2, l' `snapdrive snap restore -fs` la commande ne monte pas le système de fichiers. Cependant, il restaure avec succès le groupe de disques et le volume hôte qui lui sont associés.
+
+Par exemple, le volume hôte créé par LVM1 possède un fichier de périphérique dans `/dev/Mydg_SDDg/Mydg_Sdhv`; Et le volume hôte créé par LVM2 a un fichier de périphérique dans `/dev/mapper/Mydg_SdDg-Mydg_Sdhv`
+
+Cela se produit car les hôtes Red Hat Enterprise Linux 4 Update 3 utilisent LVM2, qui utilise un mappeur de périphériques pour interagir avec le noyau, alors que les hôtes Red Hat Enterprise Linux 3 Update 5 utilisent LVM1, qui n'utilisent pas de mappeur de périphériques.

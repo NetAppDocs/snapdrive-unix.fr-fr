@@ -1,0 +1,31 @@
+---
+permalink: linux-administration/task_setting_up_hba_driver_parameter.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, hba, driver, parameter, mpio 
+summary: 'Pour configurer le pilote HBA pour Linux MPIO, la séquence exacte des étapes requises dépend du système d"exploitation utilisé. La configuration dépend également de la carte HBA utilisée.' 
+---
+= Configuration du paramètre du pilote HBA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour configurer le pilote HBA pour Linux MPIO, la séquence exacte des étapes requises dépend du système d'exploitation utilisé. La configuration dépend également de la carte HBA utilisée.
+
+Les étapes suivantes sont requises pour configurer le paramètre du pilote HBA pour Linux MPIO :
+
+.Étapes
+. Désinstallez les pilotes intégrés.
+. Installez les pilotes les plus récents à partir du site Web du fournisseur.
+. Définissez les paramètres du pilote à l'aide de l'outil de configuration CLI du fournisseur.
+. Modifiez le `/etc/modprobe.conf` Fichier pour configurer les paramètres par défaut du pilote HBA.
+. Régénérez l'initrd (RAM Disk image) avec les paramètres du pilote HBA.
+. Redémarrez l'hôte pour que les nouveaux paramètres du pilote HBA soient effectifs.
+
+
+*Informations connexes*
+
+http://mysupport.netapp.com["Support NetApp"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2547936["Guide d'installation de Linux Unified Host Utilities 7.1"]

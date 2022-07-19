@@ -1,0 +1,19 @@
+---
+permalink: aix/concept_snapdrived_stop_or_snapdrived_start_command_hangs.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, stop, start, command, hang 
+summary: 'dans certains cas, la commande d"arrêt par vivaneau ou de démarrage par vivaneau peut être suspendue.' 
+---
+= la commande d'arrêt par snapshots ou de démarrage par snapshots est suspendue
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+`snapdrived stop` ou `snapdrived start` la commande peut parfois être suspendue.
+
+Pour résoudre ce problème, exécutez le `snapdrived status` pour vérifier le nombre de commandes en cours d'exécution et à quelle heure elles ont démarré. `snapdrived stop` la commande attend que toutes les commandes en cours d'exécution soient terminées. Si vous pensez qu'une commande se bloque, problème `snapdrived -force stop` ou `snapdrived -force restart` commande.
+
+
+IMPORTANT: Le `-force` option tue toutes les commandes en cours d'exécution et les arrêts du démon. Cela peut avoir des effets secondaires sur l'état du système comme les entrées de périphérique obsolètes et les prochains démarrages du démon.

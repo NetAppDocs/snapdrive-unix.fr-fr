@@ -1,0 +1,16 @@
+---
+permalink: aix/task_recieving_error_does_not_look_snapdrive_generated.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, disconnect, operation, fail, delete, clone, volume 
+summary: 'Dans certains cas, l"opération de déconnexion de SnapDrive ne parvient pas à supprimer le volume cloné et que le message d"erreur ne semble pas affiché sous SnapDrive-généré s"affiche.' 
+---
+= L'opération de déconnexion Snapshot n'a pas réussi à supprimer le volume cloné
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dans certains cas, `snapdrive snap disconnect` l'opération n'a pas réussi à supprimer le volume cloné et le message d'erreur s'affiche `does not look SnapDrive-generated` s'affiche.
+
+La solution du problème consiste à revenir au nom d'origine de la copie Snapshot, et à vérifier que `_bypass-snapdrive-clone-generated-check_` est défini sur activé dans `snapdrive.conf` fichier.

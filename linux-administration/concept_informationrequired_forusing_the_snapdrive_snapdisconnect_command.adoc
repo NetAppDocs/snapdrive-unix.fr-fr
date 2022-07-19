@@ -1,0 +1,98 @@
+---
+permalink: linux-administration/concept_informationrequired_forusing_the_snapdrive_snapdisconnect_command.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, disconnect, lun, disk, file 
+summary: 'Pour déconnecter une copie Snapshot, spécifiez le type d"entité de stockage à utiliser, par exemple, LUN, groupes de disques, systèmes de fichiers, ou volume d"hôte.' 
+---
+= Informations requises pour l'utilisation de la commande SnapDrive snap sect
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour déconnecter une copie Snapshot, spécifiez le type d'entité de stockage à utiliser, par exemple, LUN, groupes de disques, systèmes de fichiers, ou volume d'hôte.
+
+Le tableau suivant fournit les informations que vous devez fournir lorsque vous utilisez le `snapdrive snap disconnect` commande.
+
+|===
+| Exigence/option | Argument 
+
+
+ a| 
+LUN (`-lun _file_spec_` )
+ a| 
+_Nom de la LUN. Incluez le nom du filer, du volume et de la LUN._
+
+
+
+ a| 
+Groupe de disques (`-dg _file_spec_` ) ou groupe de volumes (`-vg _file_spec_` )
+ a| 
+_nom du disque ou du groupe de volumes_
+
+
+
+ a| 
+Système de fichiers (`-fs _file_spec_` )
+ a| 
+`_filesystem_name_`
+
+
+
+ a| 
+Volume de l'hôte (`-hostvol _file_spec_` ) ou volume logique (`-lvol _file_spec_` )
+ a| 
+_nom de l'hôte ou du volume logique_
+
+
+
+ a| 
+Spécifiez le type d'entité de stockage à utiliser pour déconnecter la copie Snapshot et fournir le nom de cette entité avec l'argument approprié.
+
+Il s'agit de la valeur de `_file_spec_` argument.
+
+
+
+ a| 
+`-full`
+ a| 
+~
+
+
+
+ a| 
+Incluez l'option -full sur la ligne de commande si vous souhaitez que SnapDrive pour UNIX déconnecte les objets de la copie Snapshot, même si une entité côté hôte de la ligne de commande possède d'autres entités (par exemple, un groupe de disques qui possède un ou plusieurs volumes hôtes). Si vous n'incluez pas cette option, vous devez spécifier uniquement des entités côté hôte vides.
+
+
+
+ a| 
+`-fstype`
+ a| 
+`_type_`
+
+
+
+ a| 
+`-vmtype`
+ a| 
+`_type_`
+
+
+
+ a| 
+Facultatif : spécifiez le type de système de fichiers et de gestionnaire de volumes à utiliser.
+
+
+
+ a| 
+`-split`
+ a| 
+~
+
+
+
+ a| 
+Permet de séparer les volumes ou les LUN clonés lors des opérations de connexion Snapshot et de déconnexion des snapshots.
+
+|===

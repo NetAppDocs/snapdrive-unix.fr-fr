@@ -1,0 +1,18 @@
+---
+permalink: solaris/concept_some_commands_are_delayed_when_the_storage_cluster_is_in_failover_mode.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, delay, failover, storage, cluster 
+summary: 'Les commandes SnapDrive pour UNIX permettant de créer, connecter, supprimer ou déconnecter une LUN prennent plusieurs minutes sur un hôte Solaris lorsqu"un système de stockage en cluster est hors service.' 
+---
+= Certaines commandes sont différées lorsque le cluster de stockage est en mode basculement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les commandes SnapDrive pour UNIX permettant de créer, connecter, supprimer ou déconnecter une LUN prennent plusieurs minutes sur un hôte Solaris lorsqu'un système de stockage en cluster est hors service.
+
+Ces commandes sont `snapdrive storage create`, `snapdrive storage connect`, `snapdrive storage delete`, `snapdrive storage disconnect`, `snapdrive snap connect`, `snapdrive snap disconnect`, et parfois, `snapdrive snap restore`.
+
+Ce problème affecte `snapdrive snap restore` Uniquement lorsque SnapDrive pour UNIX doit restaurer des LUN supprimées ou déconnectées.

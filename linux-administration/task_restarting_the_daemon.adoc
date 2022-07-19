@@ -1,0 +1,25 @@
+---
+permalink: linux-administration/task_restarting_the_daemon.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, restart, daemon, command, configuration 
+summary: 'Vous devez redémarrer le démon après l"avoir arrêté afin que les modifications que vous apportez au fichier de configuration ou aux autres modules prennent effet. Le démon SnapDrive pour UNIX ne redémarre qu"après avoir terminé toutes les commandes en cours d"exécution et en file d"attente. Une fois la demande de redémarrage reçue, aucune nouvelle commande n"est exécutée.' 
+---
+= Redémarrage du démon
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez redémarrer le démon après l'avoir arrêté afin que les modifications que vous apportez au fichier de configuration ou aux autres modules prennent effet. Le démon SnapDrive pour UNIX ne redémarre qu'après avoir terminé toutes les commandes en cours d'exécution et en file d'attente. Une fois la demande de redémarrage reçue, aucune nouvelle commande n'est exécutée.
+
+* Assurez-vous d'être connecté en tant qu'utilisateur racine.
+* Assurez-vous qu'aucune autre session n'est exécutée sur le même hôte en parallèle. Le `snapdrived restart` La commande bloque le système dans de telles situations.A.
+
+
+.Étapes
+. Entrez la commande suivante pour redémarrer le démon :
++
+`*snapdrived restart*`
+
+

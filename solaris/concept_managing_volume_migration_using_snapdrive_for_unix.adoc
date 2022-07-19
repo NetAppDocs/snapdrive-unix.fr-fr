@@ -1,0 +1,28 @@
+---
+permalink: solaris/concept_managing_volume_migration_using_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, volume, migration 
+summary: Vous pouvez exécuter des opérations SnapDrive pendant la migration de volumes. 
+---
+= Migration de volumes dans SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez exécuter des opérations SnapDrive pendant la migration de volumes.
+
+La migration de volume comprend les trois phases suivantes :
+
+* Configuration
+* Déplacer
+* Mise en service
+
+
+Les opérations SnapDrive pour UNIX fonctionnent parfaitement au cours des phases de configuration et de déplacement.
+
+Lorsque vous exécutez des commandes SnapDrive pendant la phase de mise en service, SnapDrive pour UNIX peut essayer à nouveau l'opération, comme définie dans les variables `_volmove-cutover-retry_` et `_volmove-cutover-retry-sleep_` dans le `snapdrive.conf` fichier.
+
+
+NOTE: Si les opérations SnapDrive pour UNIX échouent lors de la migration du volume, vous devez effectuer les opérations SnapDrive pour UNIX une fois les opérations de migration du volume terminées.

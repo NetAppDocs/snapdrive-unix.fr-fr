@@ -1,0 +1,86 @@
+---
+permalink: solaris/task_displaying_asnapshot_copy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, display, snapshot, copy 
+summary: 'La commande snap show ou list SnapDrive affiche le nom du système de stockage où la copie Snapshot est créée, le nom d"hôte, la date et l"heure, etc.' 
+---
+= Afficher une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La commande `snapdrive snap show` ou `list` Affiche le nom du système de stockage sur lequel la copie Snapshot est créée, le nom d'hôte, la date et l'heure, etc.
+
+.Étapes
+. Entrez la syntaxe de commande suivante pour afficher une copie Snapshot :
++
+`*snapdrive snap show [-snapname] _long_snap_name_ [_snap_name_...] [-verbose]*`
+
+
+
+Cette opération affiche, au minimum, les informations suivantes concernant la copie Snapshot :
+
+* Nom du système de stockage sur lequel la copie Snapshot est créée
+* Nom de l'hôte qui a pris la copie Snapshot
+* Le chemin d'accès aux LUN sur le système de stockage
+* Date et heure de création de la copie Snapshot
+* Nom de la copie Snapshot
+* Noms des groupes de disques inclus dans la copie Snapshot
+
+
+*Exemple*: Voici quelques exemples de `snapdrive snap show` commandes :
+
+[listing]
+----
+# snapdrive snap show -snapname toaster:/vol/vol2:snapA snapX snapY
+
+# snapdrive snap show -verbose toaster:/vol/vol2:snapA /vol/vol3:snapB snapC
+
+# snapdrive snap show toaster:/vol/vol2:snapA
+
+# snapdrive snap list -dg dg1 dg2
+----
+*Exemple* : cet exemple utilise un caractère générique pour afficher des informations sur les copies Snapshot disponibles sur un volume particulier :
+
+[listing]
+----
+# snapdrive snap show toaster:/vol/vol1:*
+snap name host date
+snapped
+------------------------------------------------------------------
+-------------
+toaster:/vol/vol1:sss1 DBserver Mar 12
+16:19 dg1
+toaster:/vol/vol1:testdg DBserver Mar 12
+15:35 dg1
+toaster:/vol/vol1:t1 DBserver Mar 10
+18:06 dg1
+toaster:/vol/vol1:hp_1 HPserver Mar 8
+19:01 vg01
+toaster:/vol/vol1:r3 DBserver Mar 8
+13:39 rdg1
+toaster:/vol/vol1:r1 DBserver Mar 8
+13:20 rdg1
+toaster:/vol/vol1:snap2 DBserver Mar 8
+11:51 rdg1toaster:/vol/vol1:snap_p1 DBserver
+Mar 8 10:18 rdg1
+----
+*Exemple* : les exemples suivants utilisent un caractère générique :
+
+[listing]
+----
+# snapdrive snap show toaster:/vol/volX:*
+# snapdrive snap show -v toaster:/vol/volX:DB1*
+filer1:/vol/volY:DB2*
+# snapdrive snap show toaster:/vol/vol2:mysnap* /vol/vol2:yoursnap*
+hersnap*
+# snapdrive snap show toaster:/vol/volX:*
+----
+*Exemple* : dans cet exemple, l'utilisation d'un caractère générique n'est pas valide car le caractère générique est au milieu du nom au lieu d'être placé à la fin :
+
+[listing]
+----
+# snap show toaster:/vol/vol1:my*snap
+----

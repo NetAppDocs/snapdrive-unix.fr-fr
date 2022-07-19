@@ -1,0 +1,26 @@
+---
+permalink: solaris/concept_supported_fc_iscsi_or_nfs_configurations.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, fc, iscsi, nfs, configuration 
+summary: 'SnapDrive pour UNIX prend en charge les topologies de paires haute disponibilité et de clusters hôtes. Les configurations FC ou iSCSI prennent en charge les mêmes configurations de cluster d"hôtes et de paire haute disponibilité que les utilitaires hôtes FC ou les utilitaires d"hôtes iSCSI.' 
+---
+= Configurations FC, iSCSI ou NFS prises en charge
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX prend en charge les topologies de paires haute disponibilité et de clusters hôtes. Les configurations FC ou iSCSI prennent en charge les mêmes configurations de cluster d'hôtes et de paire haute disponibilité que les utilitaires hôtes FC ou les utilitaires d'hôtes iSCSI.
+
+SnapDrive pour UNIX prend en charge les topologies de paires haute disponibilité et de cluster hôte suivantes :
+
+* Configuration autonome dans laquelle un hôte unique est connecté à un système de stockage unique
+* Toute topologie impliquant un basculement de paire haute disponibilité d'un système de stockage
+* Topologie prenant en charge les clusters hôtes par NetApp, quelle que soit leur topologie
+
+
+Pour plus d'informations sur les configurations recommandées pour votre hôte et les systèmes de stockage que vous utilisez, reportez-vous à la documentation Solaris Host Utilities.
+
+
+NOTE: Si vous avez besoin d'une configuration SnapDrive pour UNIX qui n'est pas mentionnée dans la documentation des utilitaires, contactez le support technique.

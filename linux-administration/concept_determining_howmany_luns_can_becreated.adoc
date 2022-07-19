@@ -1,0 +1,18 @@
+---
+permalink: linux-administration/concept_determining_howmany_luns_can_becreated.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, lun, limit 
+summary: 'SnapDrive pour UNIX vous permet de déterminer le nombre de LUN qui peuvent être créées sur l"hôte sans dépasser la limite.' 
+---
+= Détermination du nombre de LUN pouvant être créées
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX vous permet de déterminer le nombre de LUN qui peuvent être créées sur l'hôte sans dépasser la limite.
+
+Vous pouvez utiliser `snapdrive config check luns` pour déterminer cette valeur.
+
+Sur un hôte Linux, cette commande vérifie les fichiers /dev/sg existants afin de déterminer le nombre de fichiers inutilisés.

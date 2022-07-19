@@ -1,0 +1,23 @@
+---
+permalink: aix/concept_application_consistentsnapshot_copies.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, application, consistent, snapshot, copy 
+summary: 'Pour effectuer une copie Snapshot cohérente avec les applications, vous devez arrêter l"application avant l"opération Snapshot.' 
+---
+= Copies Snapshot cohérentes au niveau des applications
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour effectuer une copie Snapshot cohérente avec les applications, vous devez arrêter l'application avant l'opération Snapshot.
+
+Pour vous assurer que la cohérence d'une copie Snapshot est au niveau des applications, vous devez arrêter ou effectuer les étapes nécessaires à la mise en veille de l'application avant de prendre la copie Snapshot. Notez que les installations de sauvegarde à chaud des bases de données dépendent des méthodes utilisées par le SGBD, et ne nécessitent pas toujours la mise en attente des E/S dans les fichiers de base de données.
+
+Si l'application n'a pas terminé ses transactions et écrit les données sur le système de stockage, la copie Snapshot qui en résulte risque de ne pas être cohérente au niveau des applications.
+
+
+NOTE: Si votre application peut restaurer à partir d'une copie Snapshot cohérente après panne, il n'est pas nécessaire de l'arrêter. Consultez la documentation de votre demande. Pour plus d'informations sur la création de copies Snapshot cohérentes au niveau des applications.
+
+Vous devez créer une nouvelle copie Snapshot dès que vous ajoutez ou supprimez un volume hôte, une LUN ou une arborescence de répertoires NFS, ou que vous redimensionnez les volumes hôtes ou les systèmes de fichiers. Vous disposez ainsi d'une copie cohérente du groupe de disques nouvellement configuré que vous pouvez utiliser si vous devez restaurer le groupe de disques.

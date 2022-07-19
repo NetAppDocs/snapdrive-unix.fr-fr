@@ -1,0 +1,30 @@
+---
+permalink: aix/task_deleting_igroup.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, igroup, delete 
+summary: 'Vous pouvez supprimer tout groupe initiateur configuré pour un système de stockage, mais qui n"est plus nécessaire.' 
+---
+= Suppression d'un groupe initiateur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer tout groupe initiateur configuré pour un système de stockage, mais qui n'est plus nécessaire.
+
+.Étapes
+. Entrez la commande suivante sur l'hôte :
++
+`*snapdrive igroup delete _filer_name_*`
+
++
+[listing]
+----
+snapdrive igroup delete toaster
+Deleted igroup configuration for appliance: toaster
+----
++
+Le groupe initiateur `ig` celui configuré pour le grille-pain du système de stockage a été supprimé.
+
+

@@ -1,0 +1,18 @@
+---
+permalink: aix/concept_files_installed_by_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, files, installed, unix 
+summary: 'SnapDrive pour UNIX installe plusieurs fichiers, tels que des fichiers exécutables, des fichiers de configuration, des fichiers de désinstallation, des fichiers de diagnostic et des pages de manuel, sur l"hôte. Grâce à ces fichiers, vous pouvez détecter des problèmes, stocker les informations de configuration de la version actuelle du produit, etc., dans SnapDrive for UNIX.' 
+---
+= Fichiers installés par SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX installe plusieurs fichiers, tels que des fichiers exécutables, des fichiers de configuration, des fichiers de désinstallation, des fichiers de diagnostic et des pages de manuel, sur l'hôte. Grâce à ces fichiers, vous pouvez détecter des problèmes, stocker les informations de configuration de la version actuelle du produit, etc., dans SnapDrive for UNIX.
+
+*Informations connexes*
+
+xref:concept_types_of_logs.adoc[Types de journaux]

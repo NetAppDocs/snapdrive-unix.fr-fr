@@ -1,0 +1,48 @@
+---
+permalink: solaris/concept_log_file_rotation_settings.html 
+sidebar: sidebar 
+keywords: snap, snpadrive, log, file, rotation, setting 
+summary: Les valeurs que vous spécifiez pour la variable dans le fichier snapdrive.conf affectent la rotation du fichier journal. 
+---
+= Paramètres de rotation des fichiers journaux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les valeurs que vous spécifiez pour la variable dans `snapdrive.conf` le fichier affecte la rotation du fichier journal.
+
+Les valeurs que vous spécifiez dans le `snapdrive.conf` le fichier active les rotations automatiques des fichiers journaux. Vous pouvez modifier ces valeurs, si nécessaire, en modifiant le `snapdrive.conf` variables. Les options suivantes affectent la rotation du fichier journal :
+
+* `audit-log-max-size`
+* `audit-log-save`
+* `trace-max-size`
+* `trace-log-max-save`
+* `recovery-log-save`
+
+
+Avec la rotation automatique des journaux, SnapDrive for UNIX conserve les anciens fichiers journaux jusqu'à ce qu'ils atteignent la limite spécifiée dans le `audit-log-save`, `trace-log-save`, et `recovery-log-save` variable. Le fichier journal le plus ancien est alors supprimé.
+
+SnapDrive pour UNIX effectue le suivi du fichier le plus ancien en lui attribuant le numéro "0" lors de sa création. Chaque fois qu'il crée un nouveau fichier, il incrémente de 1 le nombre attribué à chacun des fichiers journaux existants. Lorsqu'un numéro de fichier journal atteint la valeur d'enregistrement, SnapDrive for UNIX supprime ce fichier.
+
+*Exemple:* cet exemple utilise le `ls` commande permettant d'afficher des informations sur les fichiers journaux du système.
+
+En fonction de ces paramètres, les informations suivantes s'affichent dans les fichiers journaux.
+
+[listing]
+----
+# ls -l /var/log/sd*
+-rw-r--r-- 1 root other 12247 Mar 13 13:09 /var/log/sd-audit.log
+-rw-r--r-- 1 root other 20489 Mar 12 16:57 /var/log/sd-audit.log.0
+-rw-r--r-- 1 root other 20536 Mar 12 03:13 /var/log/sd-audit.log.1
+-rw-r--r-- 1 root other 3250 Mar 12 18:38 /var/log/sd-recovery.log.1
+-rw-r--r-- 1 root other 6250 Mar 12 18:36 /var/log/sd-recovery.log.2
+-rw-r--r-- 1 root other 6238 Mar 12 18:33 /var/log/sd-recovery.log.3
+-rw-r--r-- 1 root other 191704 Mar 13 13:09 /var/log/sd-trace.log
+-rw-r--r-- 1 root other 227929 Mar 12 16:57 /var/log/sd-trace.log.0
+-rw-r--r-- 1 root other 213970 Mar 12 15:14 /var/log/sd-trace.log.1
+-rw-r--r-- 1 root other 261697 Mar 12 14:16 /var/log/sd-trace.log.2
+-rw-r--r-- 1 root other 232904 Mar 12 14:15 /var/log/sd-trace.log.3
+-rw-r--r-- 1 root other 206905 Mar 12 14:14 /var/log/sd-trace.log.4
+----

@@ -1,0 +1,24 @@
+---
+permalink: linux-administration/concept_multiple_subnet_configuration.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, multiple, subnet, configuration, data, traffic, network, ha 
+summary: 'Plusieurs sous-réseaux sont utiles dans un environnement où le trafic de gestion et le trafic de données doivent être séparés. Cette séparation crée un environnement plus sécurisé pour la gestion du trafic réseau. SnapDrive 4.1.1 pour UNIX et les versions ultérieures s"exécutant sur des serveurs dans de tels environnements prennent en charge toutes les opérations SnapDrive disponibles dans des environnements autonomes et dans des environnements de paires haute disponibilité et d"hôtes.' 
+---
+= Configuration à plusieurs sous-réseaux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Plusieurs sous-réseaux sont utiles dans un environnement où le trafic de gestion et le trafic de données doivent être séparés. Cette séparation crée un environnement plus sécurisé pour la gestion du trafic réseau. SnapDrive 4.1.1 pour UNIX et les versions ultérieures s'exécutant sur des serveurs dans de tels environnements prennent en charge toutes les opérations SnapDrive disponibles dans des environnements autonomes et dans des environnements de paires haute disponibilité et d'hôtes.
+
+Les données relatives à la gestion des systèmes de stockage sont transmises par le biais de l'interface de gestion. DataFabric Manager, protection Manager et SnapDrive for UNIX peuvent faire partie de l'interface de gestion. L'interface de données est utilisée pour le trafic de données entre les systèmes de stockage.
+
+Pour configurer plusieurs sous-réseaux dans votre environnement, vous devez utiliser le `mgmtpath` avec le `snapdrive config set` commande.
+
+SnapDrive pour UNIX ne prend pas en charge les opérations dans un environnement SAN où le nom d'hôte du système de stockage est différent du nom public, mais où les deux noms se résolvent à la même adresse IP. Pour contourner cette situation, vous pouvez effectuer l'une des opérations suivantes :
+
+* Attribuez une autre adresse IP au nom du système.
+* Configurez le système de manière à ce qu'il ne réponde pas lorsque vous essayez de vous y connecter.
+

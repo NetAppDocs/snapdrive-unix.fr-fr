@@ -1,0 +1,51 @@
+---
+permalink: linux-administration/task_enabling_and_disabling_log_files.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, enable, disable, log, file, name 
+summary: 'Si vous souhaitez activer un fichier journal, indiquez un nom de fichier comme valeur dans la paire nom-valeur du fichier journal que vous souhaitez activer. Si vous souhaitez désactiver un fichier, n"entrez pas de valeur pour le paramètre de nom de fichier journal.' 
+---
+= Activation et désactivation des fichiers journaux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous souhaitez activer un fichier journal, indiquez un nom de fichier comme valeur dans la paire nom-valeur du fichier journal que vous souhaitez activer. Si vous souhaitez désactiver un fichier, n'entrez pas de valeur pour le paramètre de nom de fichier journal.
+
+Vous devez vous connecter en tant qu'utilisateur racine.
+
+.Étapes
+. Ouvrez le `snapdrive.conf` fichier dans un éditeur de texte.
+. Choisissez l'option appropriée pour activer ou désactiver un fichier journal.
++
+|===
+| Les fonctions que vous recherchez... | Alors... 
+
+
+ a| 
+*Activer un fichier journal*
+ a| 
+ Specify a file name as the value in the name-value pair of the log file you want to enable. SnapDrive for UNIX only writes log files if it has the name of a file to write to. The default names for the log files are as follows:
+** Journal d'audit : `sd-audit.log`
+** Journal de récupération : `sd-recovery.log`
+** Journal de suivi : `sd-trace.log`
+
+
+
+NOTE: Le chemin d'accès à ces fichiers peut varier en fonction de votre système d'exploitation hôte.
+
+
+
+ a| 
+*Désactiver un fichier journal*
+ a| 
+ Do not enter a value for the log file name parameter. If you do not supply a value, there is no file name to which SnapDrive for UNIX can write the log information.
+*Exemple* cet exemple désactive le fichier journal d'audit. `audit-log-file=""`
+
+|===
+. Enregistrez le `snapdrive.conf` fichier après avoir effectué toutes vos modifications.
++
+SnapDrive for UNIX vérifie automatiquement ce fichier à chaque démarrage. Vous devez redémarrer le démon SnapDrive pour UNIX pour que les modifications prennent effet.
+
+

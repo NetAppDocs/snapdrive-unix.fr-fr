@@ -1,0 +1,34 @@
+---
+permalink: linux-installation-7mode/task_performing_post_installation_tasks.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, post, install, configure, task 
+summary: 'Une fois l"installation terminée, vous devez configurer des fonctions et fonctions supplémentaires. Vous devez installer le certificat de serveur et configurer SnapDrive pour UNIX afin d"utiliser une connexion sécurisée avec le système de stockage et le service démon.' 
+---
+= Exécution de tâches post-installation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fois l'installation terminée, vous devez configurer des fonctions et fonctions supplémentaires. Vous devez installer le certificat de serveur et configurer SnapDrive pour UNIX afin d'utiliser une connexion sécurisée avec le système de stockage et le service démon.
+
+.Étapes
+. Installez le certificat de serveur utilisé par SnapDrive pour UNIX dans `sdu-daemoncertificate-path=/opt/NetApp/snapdrive/snapdrive.pem` emplacement si vous utilisez une connexion sécurisée avec le système de stockage et le service démon.
++
+Le chemin du certificat est défini dans `sdu-daemoncertificate-path` variable de configuration dans le fichier s`napdrive.conf'.
+
+. Réglez `_use-https-to-sdu-daemon=on_` dans le `snapdrive.conf` Fichier à utiliser HTTPS pour une connexion sécurisée avec le système de stockage et le service de démon.
++
+
+NOTE: SnapDrive 5.0 pour UNIX et les versions ultérieures prennent en charge HTTPS pour la communication des démons. Par défaut, ce paramètre facultatif est désactivé.
+
+. Redémarrez le service démon SnapDrive :
++
+`*snapdrived start*`
+
++
+
+NOTE: Vous devez redémarrer le démon SnapDrive chaque fois que vous modifiez manuellement le fichier de configuration.
+
+

@@ -1,0 +1,33 @@
+---
+permalink: solaris/concept_splitting_the_volume_or_lun_clone_operations.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, split, volume, clone, lun 
+summary: SnapDrive pour UNIX vous permet de séparer un clone de volume ou un clone de LUN. Une fois le clone divisé, la relation entre le volume parent et le clone est supprimée, et les deux entités sont indépendantes les unes des autres et disposent de leur propre espace de stockage. 
+---
+= Fractionnement d'un clone de volume ou de LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX vous permet de séparer un clone de volume ou un clone de LUN. Une fois le clone divisé, la relation entre le volume parent et le clone est supprimée, et les deux entités sont indépendantes les unes des autres et disposent de leur propre espace de stockage.
+
+Les opérations de fractionnement de clones sont les suivantes :
+
+* Estimez l'espace disque (en Mo) d'un clone de volume ou de LUN.
+* Séparer un clone de volume ou un clone de LUN.
+* Arrêtez le fractionnement du clone de volume ou du clone de LUN.
+* Afficher l'état de la répartition du clone en cours, terminée ou échoué.
+
+
+[NOTE]
+====
+* Lorsqu'un clone de volume est fragmenté, toutes les copies Snapshot du volume cloné sont supprimées.
+* Il est obligatoire d'exécuter la commande clone Split Estimate avant de diviser la spécification de fichier afin de déterminer s'il existe des copies Snapshot prises dans le volume cloné.
+* Pour toutes les commandes de séparation des clones, seul le nom de LUN long doit être spécifié avec `-lun` option. Vous ne pouvez pas spécifier `-lun` option sur la même ligne de commande avec d'autres entités de stockage (options -vg, -dg, -fs, - lvol ou -hostvol).
+* Il est toujours obligatoire d'utiliser le chemin d'accès absolu pour les spécifications de fichier avec les commandes de fractionnement du clone.
+* L'estimation du fractionnement du clone de LUN à l'aide de Snapshot est disponible uniquement pour les copies Snapshot créées à partir de SnapDrive 4.2 pour UNIX et les versions ultérieures.
+
+
+====

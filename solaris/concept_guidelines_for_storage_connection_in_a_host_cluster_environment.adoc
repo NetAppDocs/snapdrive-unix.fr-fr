@@ -1,0 +1,34 @@
+---
+permalink: solaris/concept_guidelines_for_storage_connection_in_a_host_cluster_environment.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, connect, host, cluster 
+summary: 'Vous devez suivre quelques instructions avant d"utiliser la commande SnapDrive Storage Connect dans un environnement de cluster hôte.' 
+---
+= Instructions relatives à la connexion de stockage dans un environnement de cluster hôte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez suivre quelques consignes avant d'utiliser le `snapdrive storage connect` commande dans un environnement de cluster hôte.
+
+* Si un nouveau nœud est ajouté à la configuration du cluster hôte qui utilise un groupe de disques ou un système de fichiers partagé, utilisez le `snapdrive storage connect -devicetype shared` commande. Vous pouvez exécuter l'opération de connexion du stockage SnapDrive depuis n'importe quel nœud du cluster hôte.
+* Pour qu'une opération de connexion au stockage soit réussie, les éléments suivants ne doivent pas se produire :
++
+** Les entités de stockage ne doivent pas être présentes sur un nœud du cluster hôte.
+** Les LUN ne doivent pas être mappées sur un nœud du cluster hôte.
+
+
+* Vous pouvez vous connecter à une entité de stockage sur un nœud spécifique en utilisant le `-devicetype dedicated` ou en omettant le `-devicetype` option dans la syntaxe de ligne de commande, car la valeur par défaut est dédiée.
+* La connexion de stockage au niveau du cluster hôte du système de fichiers est prise en charge sur les groupes de disques qui utilisent Veritas Volume Manager avec Veritas File System (VxFS). Cette opération ne prend pas en charge les LUN brutes, c'est-à-dire le `-nolvm` cette option n'est pas prise en charge.
+* Le `-igroup` cette option n'est pas prise en charge dans le `snapdrive storage connect` commande.
+* L'opération de connexion du stockage échoue si l'un des éléments suivants est vrai :
++
+** Si une erreur se produit pendant le processus de connexion d'une entité de stockage. SnapDrive pour UNIX exécute cette opération à partir du nœud maître dans un cluster hôte. Avant de créer les entités de stockage partagées, il crée des LUN, mappe les LUN sur le nœud maître, puis mappe les LUN sur tous les nœuds non maîtres. SnapDrive pour UNIX en interne crée et gère les igroups pour tous ces nœuds.
+** Si un nœud du cluster hôte s'arrête et redémarre avant de démarrer le gestionnaire de volumes en cluster (CVM), le groupe de disques partagé utilisé par les LUN doit être découvert sur le nœud. Par défaut, les LUN sont visibles, si l'adresse du port FC n'est pas modifiée ; sinon, les LUN doivent être mappées à l'aide du `snapdrive storage connect` commande.
+
+
+* Vous pouvez réaliser une opération de connexion du stockage partagé avec les entités de stockage sur une LUN créée avec des données d'entité de stockage dédiées, puis déconnectée, uniquement si les entités de stockage n'existent pas sur un nœud de cluster hôte.
+* Vous pouvez réaliser une opération de connexion de stockage dédiée avec les entités de stockage d'une LUN avec des métadonnées d'entité de stockage partagé, uniquement si le nœud actuel ne fait pas partie du cluster hôte ou si les entités de stockage n'existent pas sur le cluster hôte.
+

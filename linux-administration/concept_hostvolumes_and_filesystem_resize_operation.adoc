@@ -1,0 +1,31 @@
+---
+permalink: linux-administration/concept_hostvolumes_and_filesystem_resize_operation.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, host, file, resize, operation, storage, command, volume 
+summary: 'La commande SnapDrive Storage resize s"applique uniquement aux groupes de disques et de volumes du système de stockage. Si vous souhaitez augmenter la taille de votre volume hôte ou de votre système de fichiers, vous devez utiliser les commandes LVM.' 
+---
+= Opération de redimensionnement des volumes de l'hôte et du système de fichiers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le `snapdrive storage resize` la commande s'applique uniquement aux groupes de disques et de volumes du système de stockage. Si vous souhaitez augmenter la taille de votre volume hôte ou de votre système de fichiers, vous devez utiliser les commandes LVM.
+
+Le tableau suivant récapitule les commandes LVM que vous pouvez utiliser sur les différentes plates-formes. Pour plus d'informations sur ces commandes, consultez leurs pages de manuels.
+
+|===
+| *Hôte* | *Gestionnaire de volumes* | *Volume hôte* | *Systèmes de fichiers* 
+
+
+ a| 
+Linux
+ a| 
+LVM
+ a| 
+`lvextend`
+ a| 
+`resize2fs`
+
+|===

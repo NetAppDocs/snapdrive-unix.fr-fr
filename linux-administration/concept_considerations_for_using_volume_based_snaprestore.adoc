@@ -1,0 +1,27 @@
+---
+permalink: linux-administration/concept_considerations_for_using_volume_based_snaprestore.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, snaprestore, volume 
+summary: 'Vous pouvez utiliser une SnapRestore \(VBSR\) basée sur les volumes pour ne garder que quelques points à l"esprit. Si vous conservez ces points à l"esprit, vous pouvez utiliser la fonctionnalité VBSR en toute sécurité.' 
+---
+= Considérations relatives à l'utilisation d'une SnapRestore basée sur les volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser la technologie SnapRestore basée sur les volumes (VBSR) pour ne garder que quelques points à l'esprit. Si vous conservez ces points à l'esprit, vous pouvez utiliser la fonctionnalité VBSR en toute sécurité.
+
+Vous devez garder à l'esprit les points suivants :
+
+* La technologie VBSR restaure l'état du volume complet lorsque la copie Snapshot est créée, qui est utilisée pour VBSR. La technologie VBSR inclut les éléments suivants :
++
+** Tous les fichiers et LUN pour l'spécif de fichier hôte spécifié pendant `snap create` fonctionnement.
+** Tous les fichiers et LUN qui font partie de la copie Snapshot cohérente avec l'application pendant `snap create` fonctionnement.
+
+
+* VBSR supprime tous les fichiers et LUN les plus récents créés sur le volume actuel après la copie Snapshot utilisée pour la restauration.
+* La technologie VBSR supprime toutes les copies Snapshot les plus récentes qui sont effectuées après la copie Snapshot utilisée pour la restauration.
+* Il est recommandé d'exécuter `-vbsr preview` commande avant utilisation `-vbsr execute` commande.
+

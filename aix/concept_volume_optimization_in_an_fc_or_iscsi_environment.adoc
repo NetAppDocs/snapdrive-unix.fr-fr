@@ -1,0 +1,20 @@
+---
+permalink: aix/concept_volume_optimization_in_an_fc_or_iscsi_environment.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, volume, optimization, fc, iscsi, environment 
+summary: 'Vous pouvez optimiser l"utilisation de votre volume dans un environnement FC et Internet Small Computer System interface \(iSCSI\) en utilisant des unités logiques spécifiques à l"hôte \(LUN\) sur le même volume.' 
+---
+= Optimisation des volumes dans un environnement FC ou iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez optimiser l'utilisation de votre volume dans un environnement FC et iSCSI (Internet Small Computer System interface) en utilisant des LUN (Logical Unit Numbers) spécifiques à l'hôte sur le même volume.
+
+En outre, vous pouvez optimiser vos volumes en effectuant quelques autres tâches :
+
+* Lorsque plusieurs hôtes partagent le même système de stockage, chaque hôte doit disposer de son propre volume de système de stockage dédié pour contenir tous les LUN connectés à cet hôte.
+* Lorsque plusieurs LUN existent sur un volume de système de stockage, il est recommandé pour le volume dédié sur lequel les LUN résident de ne contenir que les LUN pour un seul hôte. Il ne doit pas contenir d'autres fichiers ou répertoires.
+

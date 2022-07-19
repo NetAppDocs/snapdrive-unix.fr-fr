@@ -1,0 +1,24 @@
+---
+permalink: solaris/concept_role_based_access_control_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, rbac, access, control 
+summary: 'Le contrôle d"accès basé sur des rôles \(RBAC\) est utilisé pour les connexions utilisateur et les autorisations de rôle. Le RBAC permet aux administrateurs de gérer des groupes d"utilisateurs en définissant des rôles. Si vous devez restreindre l"accès à la base de données à des administrateurs spécifiques, vous devez configurer des comptes d"administrateur pour eux. En outre, si vous souhaitez restreindre les informations, ces administrateurs peuvent les afficher et les opérations qu"ils peuvent effectuer, vous devez appliquer des rôles aux comptes d"administrateur que vous créez.' 
+---
+= Contrôle d'accès basé sur des rôles dans SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le contrôle d'accès basé sur des rôles (RBAC) est utilisé pour la connexion des utilisateurs et les autorisations liées aux rôles. Le RBAC permet aux administrateurs de gérer des groupes d'utilisateurs en définissant des rôles. Si vous devez restreindre l'accès à la base de données à des administrateurs spécifiques, vous devez configurer des comptes d'administrateur pour eux. En outre, si vous souhaitez restreindre les informations, ces administrateurs peuvent les afficher et les opérations qu'ils peuvent effectuer, vous devez appliquer des rôles aux comptes d'administrateur que vous créez.
+
+Le RBAC est utilisé dans SnapDrive for UNIX avec l'aide de la console Operations Manager. La console Operations Manager fournit un accès granulaire aux objets de stockage tels que les LUN, les qtrees, les volumes, les agrégats et les unités vFiler.
+
+*Informations connexes*
+
+xref:concept_mandatory_checks_for_volume_based_snaprestore.adoc[Vérifications obligatoires du SnapRestore basé sur les volumes]
+
+xref:concept_restoring_snapshotcopies_ona_destination_storagesystem.adoc[Restauration de copies Snapshot sur un système de stockage de destination]
+
+xref:concept_snap_disconnect_procedure.adoc[Procédure de déconnexion par enclenchement]

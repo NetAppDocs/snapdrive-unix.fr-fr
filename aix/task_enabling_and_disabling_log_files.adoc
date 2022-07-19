@@ -1,0 +1,53 @@
+---
+permalink: aix/task_enabling_and_disabling_log_files.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, enable, disable, log, file 
+summary: 'Si vous souhaitez activer un fichier journal, indiquez un nom de fichier comme valeur dans la paire nom-valeur du fichier journal que vous souhaitez activer. Si vous souhaitez désactiver un fichier, n"entrez pas de valeur pour le paramètre de nom de fichier journal.' 
+---
+= Activation et désactivation des fichiers journaux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous souhaitez activer un fichier journal, indiquez un nom de fichier comme valeur dans la paire nom-valeur du fichier journal que vous souhaitez activer. Si vous souhaitez désactiver un fichier, n'entrez pas de valeur pour le paramètre de nom de fichier journal.
+
+Vous devez vous connecter en tant qu'utilisateur racine.
+
+.Étapes
+. Ouvrez le `snapdrive.conf` fichier dans un éditeur de texte.
+. Choisissez l'option appropriée pour activer ou désactiver un fichier journal.
++
+|===
+| Les fonctions que vous recherchez... | Alors... 
+
+
+ a| 
+*Activer un fichier journal*
+ a| 
+Indiquez un nom de fichier comme valeur dans la paire nom-valeur du fichier journal que vous souhaitez activer. SnapDrive for UNIX écrit uniquement les fichiers journaux s'il a le nom d'un fichier à écrire. Les noms par défaut des fichiers journaux sont les suivants :
+
+** Journal d'audit : `sd-audit.log`
+** Journal de récupération : `sd-recovery.log`
+** Journal de suivi : `sd-trace.log`
+
+
+
+NOTE: Le chemin d'accès à ces fichiers peut varier en fonction de votre système d'exploitation hôte.
+
+
+
+ a| 
+*Désactiver un fichier journal*
+ a| 
+Ne saisissez pas de valeur pour le paramètre de nom de fichier journal. Si vous ne fournissez pas de valeur, il n'y a pas de nom de fichier auquel SnapDrive for UNIX peut écrire les informations de journal.
+
+*Exemple* cet exemple désactive le fichier journal d'audit. `audit-log-file=""`
+
+|===
+. Enregistrez le `snapdrive.conf` fichier après avoir effectué toutes vos modifications.
++
+SnapDrive for UNIX vérifie automatiquement ce fichier à chaque démarrage. Vous devez redémarrer le démon SnapDrive pour UNIX pour que les modifications prennent effet.
+
+

@@ -1,0 +1,26 @@
+---
+permalink: aix/task_deleting_a_data_interface_entry_of_a_management_interface.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, delete, data, interface, management 
+summary: 'Vous pouvez supprimer une entrée d"interface de données associée à une interface de gestion spécifique dans un environnement NFS à l"aide de la commande SnapDrive config delete -mgmtpath.' 
+---
+= Suppression d'une entrée d'interface de données pour une interface de gestion
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer une entrée d'interface de données associée à une interface de gestion spécifique dans un environnement NFS à l'aide de `snapdrive config delete -mgmtpath` commande.
+
+. Sur l'interface de ligne de commandes, entrez la commande suivante :
++
+`*snapdrive config delete -mgmtpath _data_interface_*`
+
++
+[listing]
+----
+#snapdrive config delete –mgmtpath f3050-197-91
+Deleted configuration for appliance: f3050-197-91
+----
+

@@ -1,0 +1,27 @@
+---
+permalink: linux-administration/concept_snapdrive_limitations_for_data_ontap_operating_in_cluster_mode.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, clustered, ontap, limitations, operations 
+summary: Certaines fonctionnalités et opérations SnapDrive ne sont pas prises en charge par clustered Data ONTAP. 
+---
+= Limitations de SnapDrive pour clustered Data ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Certaines fonctionnalités et opérations SnapDrive ne sont pas prises en charge par clustered Data ONTAP.
+
+* Les opérations de provisionnement du stockage et de gestion Snapshot ne sont pas prises en charge sur le volume racine du Vserver.
+* Les opérations relatives aux spécifications des fichiers ou aux LUN qui couvrent Data ONTAP en 7-mode et les systèmes de stockage exécutant clustered Data ONTAP ne sont pas pris en charge.
+* Les liens symboliques qui résident à l'intérieur d'un point de montage ne sont pas pris en charge.
+* Les agrégats contenant des volumes Vserver doivent être affectés à la liste des agrégats du Vserver afin de configurer le Vserver et d'exécuter les opérations SnapDrive.
+* SnapDrive pour UNIX ne prend pas en charge la migration du Vserver, car elle n'est pas prise en charge par clustered Data ONTAP.
+* Enclenchez l'opération de connexion avec le `-readonly` l'option ne monte que le `.snapshot` répertoire sur l'hôte et ne crée pas le volume clone.
++
+Dans clustered Data ONTAP, l'export policy est définie uniquement au niveau du volume et non au niveau du répertoire. Par conséquent, le `.snapshot` le répertoire ne peut pas être exporté vers l'hôte secondaire (l'hôte qui ne dispose pas de l'autorisation d'exportation sur le volume parent).
+
+* SnapDrive pour UNIX ne prend pas en charge les opérations SnapRestore basées sur les volumes (VBSR) à partir d'une copie Snapshot créée avant la copie Snapshot de base, lorsque le volume est dans une opération SnapMirror ou SnapVault.
+* SnapDrive pour UNIX ne prend pas en charge le `snapdelete` Opération de la copie Snapshot créée avant la mise à jour de SnapVault, lorsque le volume se trouve dans une relation SnapVault (XDP)
+

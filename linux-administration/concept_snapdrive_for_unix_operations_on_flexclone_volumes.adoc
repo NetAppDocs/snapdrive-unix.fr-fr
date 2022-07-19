@@ -1,0 +1,14 @@
+---
+permalink: linux-administration/concept_snapdrive_for_unix_operations_on_flexclone_volumes.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, flexclone, volumes, unix, operations 
+summary: 'Vous pouvez effectuer diverses opérations sur les volumes FlexClone à l"aide de SnapDrive pour UNIX.' 
+---
+= SnapDrive pour les opérations UNIX sur des volumes FlexClone
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez effectuer diverses opérations sur les volumes FlexClone à l'aide de SnapDrive pour UNIX.

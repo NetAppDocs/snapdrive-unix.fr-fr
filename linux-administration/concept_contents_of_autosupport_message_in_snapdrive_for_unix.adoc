@@ -1,0 +1,47 @@
+---
+permalink: linux-administration/concept_contents_of_autosupport_message_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, autosupport, message, error 
+summary: Les messages AutoSupport contiennent les informations suivantes. 
+---
+= Contenu des messages AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les messages AutoSupport contiennent les informations suivantes.
+
+* Source de l'événement
+* ID d'événement
+* Version de SnapDrive pour UNIX
+* État du message : messages de niveau du journal, par exemple 1 pour alerte, 2 pour critique, 3 pour erreur, 4 pour avertissement, 5 pour avis, 6 pour plus d'informations, et 7 pour le débogage
+* Nom d'hôte
+* Système d'exploitation hôte
+* Version de version du système d'exploitation hôte
+* Nom du système de stockage
+* Utilisation de protection Manager/contrôle d'accès basé sur des rôles
+* Catégorie d'erreur
+* AutoSupport entrée de message drapeau comme FALSE
+* Type de chemins d'accès multiples de l'hôte : valeur configurée dans `snapdrive.conf` le fichier est enregistré. Si l'assistant n'est pas chargé en raison d'une valeur de configuration incorrecte, aucun type de chemins d'accès multiples hôte n'est enregistré.
+* Virtualisation des hôtes activée : cette capture est uniquement valable pour le système d'exploitation invité VMware.
+* Protocole : valeur configurée pour `default-transport` dans le `snapdrive.conf` fichier.
+* Protection activée : si OnCommand Data Fabric Manager (DFM) est configuré en SnapDrive pour UNIX, la valeur Oui est consignée.
++
+
+NOTE: SnapDrive pour UNIX ne vérifie pas si OnCommand DFM est en cours d'utilisation.
+
+
+
+Les informations supplémentaires suivantes sont disponibles lorsque vous exécutez le `snapdrive storage show -all` commande :
+
+* Type des protocoles (FCP/iSCSI) : protocoles utilisés pour créer les lun, le cas échéant.
+* Nombre de LUN connectées
+* Nombre de groupes de disques ou de volumes
+* Nombre de spécifications de fichier
+* Nombre de volumes hôtes
+
+
+
+NOTE: Lorsque AutoSupport est activé dans SnapDrive pour UNIX, en cas de défaillance d'une opération, les messages d'erreur sont consignés dans le système de stockage EVM (Event Management System). Si le message d'erreur contient des caractères spéciaux tels que (<, >, &, ', ", \R), les valeurs broutées sont affichées dans la vue du journal EMS du système de stockage.

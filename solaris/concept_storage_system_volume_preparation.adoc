@@ -1,0 +1,34 @@
+---
+permalink: solaris/concept_storage_system_volume_preparation.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, system, volume, prepare 
+summary: 'Il est possible d"utiliser l"invite de commande sur le système de stockage ou l"option FilerView pour créer un volume système de stockage destiné à l"utilisation dédiée de SnapDrive pour UNIX.' 
+---
+= Préparation du volume du système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il est possible d'utiliser l'invite de commande sur le système de stockage ou l'option FilerView pour créer un volume système de stockage destiné à l'utilisation dédiée de SnapDrive pour UNIX.
+
+Pour créer un volume pouvant contenir les entités SnapDrive for UNIX Logical Unit Numbers (LUN) ou NFS (Network File System) associées à un hôte unique, vous devez effectuer les tâches suivantes sur le système de stockage :
+
+* Créer un volume de système de stockage.
+* Si vous vous trouvez dans un environnement iSCSI (Fibre Channel ou Internet Small Computer System interface), réinitialisez le `snapdrive snap reserve` Possibilité de zéro % sur le volume du système de stockage qui contient toutes les LUN connectées à l'hôte, pour l'optimisation du volume.
+
+
+Lorsque vous créez un volume sur un système de stockage pour contenir des LUN ou des arborescences des répertoires NFS, les éléments suivants doivent être pris en compte :
+
+* Vous pouvez créer plusieurs LUN ou arborescences de répertoires NFS sur un volume du système de stockage.
+* Aucune donnée utilisateur ne doit être stockées dans le volume racine du système de stockage ou de l'unité vFiler.
+
+
+*Informations connexes*
+
+http://mysupport.netapp.com/portal/documentation["Documentation NetApp"]
+
+http://docs.netapp.com/ontap-9/topic/com.netapp.doc.cdot-famg-nfs/home.html["Référence ONTAP 9 NFS"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1401220["Guide de gestion des protocoles et des accès aux fichiers Data ONTAP 8.2 pour 7-mode"]

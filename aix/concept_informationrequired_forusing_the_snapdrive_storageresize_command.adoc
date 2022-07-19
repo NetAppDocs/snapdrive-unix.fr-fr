@@ -1,0 +1,97 @@
+---
+permalink: aix/concept_informationrequired_forusing_the_snapdrive_storageresize_command.html 
+sidebar: sidebar 
+keywords: snapdrive, snap, information, required, storage, resize, command 
+summary: Avant de pouvoir utiliser la commande SnapDrive Storage resize, vous devez fournir certaines informations. Ces informations vous aident à utiliser correctement la commande. 
+---
+= Informations requises pour l'utilisation de la commande SnapDrive Storage resize
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez fournir certaines informations avant de pouvoir utiliser le `snapdrive storage resize` commande. Ces informations vous aident à utiliser correctement la commande.
+
+|===
+| Conditions requises | Argument 
+
+
+ a| 
+Décidez si vous voulez augmenter la taille d'un groupe de disques ou de volumes et entrez le nom de cette entité avec l'argument approprié.
+
+
+
+ a| 
+Groupe de disques (-dg file_spec) ou groupe de volumes (-vg file_spec)
+ a| 
+_nom du disque ou du groupe de volumes_
+
+
+
+ a| 
+Choisissez comment augmenter la taille du stockage. Rappelez-vous ce qui suit lorsque vous utilisez cette commande :
+
+* Utilisez le `-growby` option pour augmenter la taille de l'entité par les octets spécifiés dans l'argument size.
+* Utilisez le `-growto` option permettant d'augmenter la taille de l'entité de sorte que la nouvelle taille totale soit le nombre d'octets spécifié dans l' `_size_` argument.
+* Utilisez le `-addlun` Option permettant d'augmenter la taille de l'entité en ajoutant une nouvelle LUN générée en interne au groupe de disques sous-jacent. Si vous n'utilisez pas cet argument, SnapDrive pour UNIX augmente la taille de la dernière LUN du groupe de disques afin d'atteindre la taille d'octet spécifiée dans l' `-growby` ou le `-growto` option.
+
+
+
+
+ a| 
+Spécifiez le nombre d'octets par lequel vous souhaitez augmenter le stockage (`-growby _size_`)
+ a| 
+`_number_of_bytes_`
+
+
+
+ a| 
+Indiquez la taille en octets que vous souhaitez que le stockage atteigne (`-growto _size_`)
+ a| 
+`_number_of_bytes_`
+
+
+
+ a| 
+Demandez à SnapDrive pour UNIX d'augmenter la taille en ajoutant une nouvelle LUN au groupe de disques (`-addlun`)
+ a| 
+
+
+
+ a| 
+Demandez à SnapDrive pour UNIX d'augmenter la taille avec ou sans créer de réservation d'espace `-reserve | -noreserve`
+ a| 
+
+
+
+ a| 
+*Facultatif:* il est recommandé d'utiliser le groupe initiateur par défaut pour votre hôte au lieu de fournir un nom de groupe initiateur.
+
+
+
+ a| 
+Nom d'igroup (`-igroup`)
+ a| 
+`_ig_name_`
+
+
+
+ a| 
+`-fstype`
+ a| 
+`_type_`
+
+
+
+ a| 
+`-vmtype`
+ a| 
+`_type_`
+
+
+
+ a| 
+*Facultatif:* Spécifie le type de système de fichiers et de gestionnaire de volumes à utiliser pour les opérations SnapDrive pour UNIX.
+
+|===

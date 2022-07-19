@@ -1,0 +1,22 @@
+---
+permalink: solaris/concept_support_for_datamotion_for_vfiler.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, support, vfiler, netappdatamotion 
+summary: SnapDrive for UNIX prend en charge DataMotion for vFiler. Lorsque vous exécutez DataMotion for vFiler, rares sont les opérations SnapDrive pour UNIX qui peuvent échouer au cours de la phase de mise en service. 
+---
+= Prise en charge de NetApp DataMotion for vFiler
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive for UNIX prend en charge DataMotion for vFiler. Lorsque vous exécutez DataMotion for vFiler, rares sont les opérations SnapDrive pour UNIX qui peuvent échouer au cours de la phase de mise en service.
+
+
+NOTE: Si les opérations SnapDrive for UNIX échouent lors de la phase de mise en service de la migration vFiler, vous devez effectuer les opérations SnapDrive for UNIX une fois les opérations DataMotion for vFiler terminées.
+
+Vous devez définir le `_datamotion-cutover-wait_` variable dans le `snapdrive.conf` Fichier à exécuter SnapDrive pour les opérations UNIX.
+
+
+NOTE: Si vous exécutez un volume `snap restore` Commande lors de la phase de mise en service d'une migration vFiler, l'opération de restauration Snap peut échouer. Une fois la migration terminée et que vFiler est disponible au niveau de la destination, l'exécution d'une opération de restauration Snap basée sur les volumes met les LUN hors ligne. Vous devez remettre manuellement les LUN en ligne.

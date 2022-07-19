@@ -1,0 +1,16 @@
+---
+permalink: solaris/concept_using_port_set_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, port, set 
+summary: 'Port set est un groupe de ports de données SAN ou d"interfaces, et est utilisé pour contrôler le chemin d"accès disponible pour un hôte en regroupant l"ensemble de ports de données ou d"interfaces SAN.' 
+---
+= Utilisation du port défini dans SnapDrive pour UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Port set est un groupe de ports de données SAN ou d'interfaces, et est utilisé pour contrôler le chemin d'accès disponible pour un hôte en regroupant l'ensemble de ports de données ou d'interfaces SAN.
+
+La configuration de l'ensemble des ports est créée par l'administrateur de stockage sur le système de stockage. Il s'agit d'une tâche facultative. Lorsqu'aucun port n'est configuré sur l'hôte, l'hôte peut afficher tous les chemins, en fonction des limites de configuration SCSI de l'hôte. SnapDrive pour UNIX permet à l'administrateur du stockage de spécifier un jeu de ports unique par Vserver. Il existe donc une restriction dans le nombre de chemins que l'hôte peut afficher via le Vserver.

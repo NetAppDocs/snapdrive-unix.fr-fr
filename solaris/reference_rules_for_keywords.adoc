@@ -1,0 +1,21 @@
+---
+permalink: solaris/reference_rules_for_keywords.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, keywords, rules 
+summary: SnapDrive for UNIX utilise des mots-clés pour spécifier la cible du SnapDrive pour les opérations UNIX. 
+---
+= Règles pour les mots-clés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive for UNIX utilise des mots-clés pour spécifier la cible du SnapDrive pour les opérations UNIX.
+
+SnapDrive for UNIX utilise des mots-clés pour spécifier des séquences de chaînes correspondant aux objets hôte et système de stockage avec lesquels vous travaillez. Les règles suivantes s'appliquent aux mots-clés SnapDrive pour UNIX :
+
+* Faites précéder chaque mot clé d'un tiret (-).
+* Ne concaténez pas les mots clés.
+* Saisissez le mot clé et le tiret entiers, pas une abréviation.
+

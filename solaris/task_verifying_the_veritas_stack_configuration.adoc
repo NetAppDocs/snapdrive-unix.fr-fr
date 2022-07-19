@@ -1,0 +1,54 @@
+---
+permalink: solaris/task_verifying_the_veritas_stack_configuration.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, verify, veritas, stack, configuration 
+summary: Pour vérifier la configuration de la pile Veritas, exécutez les commandes SnapDrive Storage Connect et vxdisk list. 
+---
+= Vérification de la configuration de la pile Veritas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour vérifier la configuration de la pile Veritas, vous devez exécuter l' `snapdrive storage connect` et le `vxdisk list` commandes.
+
+Pour vérifier la configuration de la pile Veritas, vous devez d'abord confirmer que vous avez installé les éléments suivants dans cet ordre :
+
+. Bibliothèque NTAPasl
+. Licences Veritas
+. Pile Veritas (base de stockage)
+. Licences de chemins d'accès multiples
+. Logiciel SnapDrive for UNIX
+
+
+Effectuez ensuite les opérations suivantes :
+
+.Étapes
+. Entrez la commande suivante pour vous connecter à un périphérique spécifique au système d'exploitation :
++
+`*snapdrive storage connect -lun _long_lun_name_*`
+
++
+où le nom long_lun_name est le nom de lun.
+
+. Entrez la commande suivante pour obtenir les informations sur le périphérique :
++
+`*vxdisk list*`
+
+
+
+Vous pouvez obtenir l'un des résultats suivants :
+
+* Si la configuration Veritas est correcte sur l'hôte, la sortie attendue pour l'état du périphérique est
++
+`online invalid.`
+
+* Si la configuration Veritas de l'hôte est incorrecte, la sortie attendue pour l'état du périphérique est
++
+`error.`
+
++
+Ce message d'erreur apparaît lorsque vous installez la pile Veritas sans installer la bibliothèque NTAPasl. Pour corriger ce message d'erreur, vous devez installer la bibliothèque NTAPasl et exécuter le `vxinstall` Commande pour mettre les LUN et les groupes de disques en ligne.
+
+

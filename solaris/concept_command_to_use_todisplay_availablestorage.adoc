@@ -1,0 +1,27 @@
+---
+permalink: solaris/concept_command_to_use_todisplay_availablestorage.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, display, nfs, lun, command 
+summary: 'Le SnapDrive Storage show ou la liste de stockage SnapDrive affiche les LUN ou les arborescences de répertoire NFS sous-jacentes à une ou plusieurs entités de stockage. Vous pouvez utiliser la commande SnapDrive Storage show pour apprendre et savoir ce qui se trouve dans une copie Snapshot d"un groupe de disques, d"un volume hôte, d"un système de fichiers ou d"une arborescence de répertoires NFS.' 
+---
+= Commande à utiliser pour afficher le stockage disponible
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le `snapdrive storage show` ou `snapdrive storage list` Affiche les LUN ou les arborescences de répertoires NFS sous-jacentes à une ou plusieurs entités de stockage. Vous pouvez utiliser le `snapdrive storage show` Commande pour apprendre et savoir ce qui se trouve dans une copie Snapshot d'un groupe de disques, d'un volume hôte, d'un système de fichiers ou d'une arborescence de répertoires NFS.
+
+Vous pouvez utiliser ces commandes pour afficher les informations suivantes :
+
+* LUN disponibles pour les systèmes de stockage ou volumes de système de stockage spécifiques
+* LUN associées à des systèmes de fichiers, des volumes hôtes ou des groupes de disques
+* Points de montage NFS et arborescences de répertoires
+* LUN connues pour un hôte spécifique et toutes les entités LVM que les LUN incluent
+* Périphériques connus pour un hôte spécifique
+* Ressources sur les hôtes partagés et dédiés
+
+
+
+NOTE: Vous pouvez utiliser l'un ou l'autre `snapdrive storage show` ou `snapdrive storage list` en ligne de commande.

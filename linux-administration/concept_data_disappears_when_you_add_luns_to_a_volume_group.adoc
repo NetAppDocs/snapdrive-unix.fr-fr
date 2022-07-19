@@ -1,0 +1,27 @@
+---
+permalink: linux-administration/concept_data_disappears_when_you_add_luns_to_a_volume_group.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, data, lun, volume, group, disappear 
+summary: Les données de la LUN disparaissent lorsque vous ajoutez une LUN existante à un groupe de volumes. 
+---
+= Les données disparaissent lorsque vous ajoutez des LUN à un groupe de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les données de la LUN disparaissent lorsque vous ajoutez une LUN existante à un groupe de volumes.
+
+Si vous ajoutez une LUN existante à un groupe de volumes géré par le LVM, puis exécutez une `pvcreate` commande, les données sont écrasées.
+
+
+
+== Solution de contournement
+
+Si vous avez besoin de données se trouvent sur une LUN existante, vous devez migrer ces données vers une LUN que vous créez à l'aide de l'LVM. Procédez comme suit.
+
+. Créer de nouvelles LUN.
+. Placez les LUN sous le contrôle LVM à l'aide du `pvcreate`, le `vgcreate`, et le `lvcreate` commandes.
+. Copiez les données des LUN existantes vers les LUN que vous avez créées et placées sous le contrôle LVM.
+

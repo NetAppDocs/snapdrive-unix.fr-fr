@@ -1,0 +1,26 @@
+---
+permalink: linux-administration/concept_what_volume_based_snaprestore_is.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, volume, snaprestore, vbsr, storage, object, flexcone, vfiler, ontap 
+summary: 'La SnapRestore \(VBSR\) basée sur les volumes restaure le volume avec tous ses objets de stockage. La restauration basée sur les volumes est plus rapide que chaque objet de stockage restauré individuellement. La technologie VBSR fonctionne également avec les volumes FlexClone et les configurations vFiler. La technologie VBSR pour vFiler est disponible pour Data ONTAP 7.3 et versions ultérieures.' 
+---
+= En quoi consiste la SnapRestore basée sur les volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La technologie SnapRestore basée sur les volumes (VBSR) restaure le volume avec tous ses objets de stockage. La restauration basée sur les volumes est plus rapide que chaque objet de stockage restauré individuellement. La technologie VBSR fonctionne également avec les volumes FlexClone et les configurations vFiler. La technologie VBSR pour vFiler est disponible pour Data ONTAP 7.3 et versions ultérieures.
+
+SnapDrive 3.0 pour UNIX et les versions antérieures peuvent restaurer des LUN pour une entité côté hôte telle que le système de fichiers, les groupes de disques et les volumes hôtes, ou les fichiers normaux créés sur NFS à partir d'un snapshot cohérent avec les applications. SnapDrive pour UNIX utilise SFSR Single File Snap Restore implémentée dans Data ONTAP. SFSR fonctionne comme suit :
+
+* Pour les fichiers normaux pendant le traitement SFSR, toute opération qui tente de modifier le fichier est suspendue jusqu'à la fin de SFSR.
+* Pour les LUN, lorsque SFSR instance le LUN est disponible et que les E/S (en lecture et en écriture) sont autorisées. SFSR pour les fichiers normaux et les LUN peuvent prendre un certain temps selon la taille du LUN ou du fichier à restaurer.
+
+
+Par conséquent, pour certains environnements SFSR est une obstruction.
+
+SnapDrive 4.0 pour UNIX et versions ultérieures vous permet d'effectuer des copies Snapshot basées sur des volumes. La technologie VBSR est beaucoup plus rapide et nécessite moins de ressources de processeur et de stockage. Elle restaure toutes les données du système de fichiers actif. Cette fonctionnalité peut être utilisée si un utilisateur souhaite restaurer toutes les LUN ou tous les fichiers normaux sur un volume à partir de la même copie Snapshot.
+
+Vous devez utiliser des copies Snapshot basées sur les volumes avec précaution, car toutes les copies Snapshot prises après la copie Snapshot de volume utilisée pour l'opération de restauration sont supprimées. Tous les nouveaux fichiers et les nouvelles LUN créés sur ce volume doivent être supprimés.

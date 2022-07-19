@@ -1,0 +1,23 @@
+---
+permalink: solaris/concept_what_snapdrive_for_unix_does_when_you_upgrade_your_current_version.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, upgrade, current, version 
+summary: Vous pouvez facilement mettre à niveau SnapDrive pour UNIX vers la dernière version. Dans le cadre du processus de mise à niveau, peu de variables changent dans le fichier snapdrive.conf. Pour vous assurer que SnapDrive pour UNIX fonctionne correctement, vérifiez les différentes valeurs par défaut dans le fichier snapdrive.conf. 
+---
+= Mettre à niveau SnapDrive pour UNIX vers la version actuelle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez facilement mettre à niveau SnapDrive pour UNIX vers la dernière version. Dans le cadre du processus de mise à niveau, peu de variables changent dans `snapdrive.conf` fichier. Pour vous assurer que SnapDrive pour UNIX fonctionne correctement, vérifiez les différentes valeurs par défaut dans `snapdrive.conf` fichier.
+
+Pour mettre à niveau votre version actuelle de SnapDrive pour UNIX, vous n'avez pas besoin de la désinstaller. Au lieu de cela, vous devez installer la dernière version du logiciel en haut de la version actuelle.
+
+Lorsque vous installez une nouvelle version, SnapDrive for UNIX vérifie si une version est déjà installée. Si c'est le cas, il conserve le courant `snapdrive.conf` et renomme la version du fichier sur lequel il est installé `snapdrive.conf.x`. De cette façon, cela évite d'écraser votre `snapdrive.conf` le fichier, de sorte que vous ne perdez aucun paramètre personnalisé dans le fichier.
+
+Par défaut, SnapDrive for UNIX commente les variables de la `snapdrive.conf` fichier. Cela signifie qu'il utilise automatiquement les valeurs par défaut pour toutes les variables, à l'exception de celles que vous personnalisez. Si vous souhaitez modifier ces valeurs, vous devez ajouter les variables à votre courant `snapdrive.conf` et spécifiez les valeurs souhaitées.
+
+
+NOTE: Lorsque vous effectuez une mise à niveau de correctif, la version de SnapDrive dans le `snapdrive.conf` le fichier ne change pas. Cependant, le `snapdrive version` la commande fournit la version appropriée.

@@ -1,0 +1,16 @@
+---
+permalink: linux-administration/concept_troubleshooting.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, troubleshooting, problem, solve 
+summary: 'L"outil de dépannage de SnapDrive pour UNIX vous permet de trouver des informations en plus de résoudre des problèmes.' 
+---
+= Dépannage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'outil de dépannage de SnapDrive pour UNIX vous permet de trouver des informations en plus de résoudre des problèmes.
+
+Au moment de cette version, SnapDrive for UNIX avait connu des problèmes et des limites. Certains problèmes affectent toutes les SnapDrive pour les plateformes hôte UNIX, mais d'autres concernent uniquement une plate-forme hôte spécifique. Pour plus d'informations sur les problèmes connus et les conseils de dépannage, reportez-vous aux notes de mise à jour _SnapDrive for UNIX._

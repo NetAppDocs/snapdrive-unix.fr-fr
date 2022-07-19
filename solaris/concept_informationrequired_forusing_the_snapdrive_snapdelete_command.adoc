@@ -1,0 +1,72 @@
+---
+permalink: solaris/concept_informationrequired_forusing_the_snapdrive_snapdelete_command.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, delete, command 
+summary: 'Pour supprimer une copie Snapshot, spécifiez le nom de la copie Snapshot à supprimer. A l"aide de la commande SnapDrive snap delete, vous pouvez afficher la liste des copies Snapshot qui sont supprimées.' 
+---
+= Informations requises pour l'utilisation de la commande SnapDrive snap delete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour supprimer une copie Snapshot, spécifiez le nom de la copie Snapshot à supprimer. À l'aide du `snapdrive snap delete` Commande vous pouvez afficher la liste des copies Snapshot qui sont supprimées.
+
+Le tableau suivant fournit des informations sur le `snapdrive snap delete` commande.
+
+|===
+| Exigence/option | Argument 
+
+
+ a| 
+Spécifiez le nom de la copie Snapshot. Utilisez le format long du nom de la copie Snapshot, dans lequel vous entrez le nom du système de stockage, le volume et le nom de la copie Snapshot. L'exemple suivant illustre le nom d'une copie Snapshot longue : `big_filer:/vol/account_vol:snap_20031115`
+
+Si vous souhaitez définir d'autres copies Snapshot, vous pouvez utiliser le formulaire de nom s'ils se trouvent sur le même système de stockage et volume que la première copie Snapshot. Sinon, utilisez à nouveau la forme longue du nom.
+
+
+
+ a| 
+Nom de la copie Snapshot (`-snapname`)
+ a| 
+`_long_Snapshot copy_name_`
+
+
+
+ a| 
+Autres copies Snapshot
+ a| 
+`_Snapshot copy_name_`(forme longue ou courte)
+
+
+
+ a| 
+`-verbose`
+ a| 
+~
+
+
+
+ a| 
+Pour afficher la liste des copies Snapshot supprimées, incluez l'option -verdétaillé. Cette option remplit les informations manquantes concernant le système de stockage et le volume, au cas où vous aviez utilisé la forme courte du nom de la copie Snapshot.
+
+
+
+ a| 
+`-force`
+ a| 
+~
+
+
+
+ a| 
+`-noprompt`
+ a| 
+~
+
+
+
+ a| 
+Facultatif : décider si vous souhaitez remplacer une copie Snapshot existante. Sans cette option, cette opération s'interrompt si vous fournissez le nom d'une copie Snapshot existante. Lorsque vous fournissez cette option et que vous spécifiez le nom d'une copie Snapshot existante, elle vous invite à confirmer que vous souhaitez remplacer la copie Snapshot. Pour empêcher SnapDrive pour UNIX d'afficher l'invite, incluez le `-noprompt` également en option. (Vous devez toujours inclure le `-force` si vous souhaitez utiliser le `-noprompt` option.)
+
+|===

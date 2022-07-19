@@ -1,0 +1,16 @@
+---
+permalink: aix/concept_information_about_luns_mapped_to_local_or_remote_hosts.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, lun, mapped, local, remote, hosts 
+summary: 'Les seules informations de mappage disponibles du volume sur SnapDrive pour UNIX pendant les SnapRestore basées sur les volumes sont les informations de groupe initiateur d"une LUN. Si les groupes initiateurs utilisés par vous sont toujours créés par SnapDrive pour UNIX, le nom de domaine complet de l"hôte fait partie du nom du groupe initiateur.' 
+---
+= Informations sur les LUN mappées à des hôtes locaux ou distants
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les seules informations de mappage disponibles du volume sur SnapDrive pour UNIX pendant les SnapRestore basées sur les volumes sont les informations de groupe initiateur d'une LUN. Si les groupes initiateurs utilisés par vous sont toujours créés par SnapDrive pour UNIX, le nom de domaine complet de l'hôte fait partie du nom du groupe initiateur.
+
+Si l'administrateur SnapDrive pour UNIX spécifie `-igroup` Si vous utilisez l'option de l'interface de ligne de commandes ou si vous utilisez des groupes initiateurs créés manuellement, alors le `igroup` le nom n'a pas nécessairement le nom d'hôte. Pour toutes les raisons précédentes, SnapDrive pour UNIX ne peut pas détecter de manière fiable les liaisons locales ou distantes pour une LUN. Par conséquent, SnapDrive pour UNIX affiche les informations sur le groupe initiateur de LUN et sur l'initiateur complets dans le cadre de la SnapRestore basée sur volume.

@@ -1,0 +1,38 @@
+---
+permalink: solaris/task_deleting_a_snapshotcopy.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, delete, snapshot, copy, command 
+summary: Vous pouvez utiliser la commande SnapDrive snap delete pour supprimer une copie Snapshot. 
+---
+= Supprimer une copie Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `snapdrive snap delete` Commande permettant de supprimer une copie Snapshot.
+
+.Étapes
+. Saisissez la commande suivante :
++
+`*snapdrive snap delete [-snapname] _long_snap_name_ [_snap_name..._] [-verbose] [-force [-noprompt]]*`
+
++
+
+NOTE: Si la copie Snapshot que vous spécifiez est en cours d'utilisation, cette opération échoue. SnapDrive pour UNIX indique que cette opération s'est terminée avec succès uniquement si toutes les copies Snapshot sont supprimées.
+
+
+
+SnapDrive pour UNIX supprime le contenu existant des LUN que vous spécifiez dans le `snap delete` Ligne de commande et les remplace par le contenu des LUN de la copie Snapshot que vous spécifiez.
+
+Cet exemple affiche une liste des éléments en cours de suppression :
+
+[listing]
+----
+# snapdrive snap delete -v filer1:/vol/vol1/snap1 snap2 snap3
+snapdrive: deleting
+filer1:/vol/vol1/snap1
+filer1:/vol/vol1/snap2
+filer1:/vol/vol1/snap3
+----

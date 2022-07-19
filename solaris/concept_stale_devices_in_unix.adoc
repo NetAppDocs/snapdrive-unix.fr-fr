@@ -1,0 +1,18 @@
+---
+permalink: solaris/concept_stale_devices_in_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, delete, lun, clone, stale, device 
+summary: 'La suppression DES LUN et des clones peut laisser les périphériques obsolètes en UNIX. La suppression de ces périphériques obsolètes n"est pas effectuée par SnapDrive pour UNIX.' 
+---
+= La suppression des LUN et des clones ne périphérique pas utilisés dans UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La suppression DES LUN et des clones peut laisser les périphériques obsolètes en UNIX. La suppression de ces périphériques obsolètes n'est pas effectuée par SnapDrive pour UNIX.
+
+Lorsque vous créez des périphériques pour les LUN et les clones de LUN à partir de copies Snapshot, soit manuellement, soit avec SnapDrive pour UNIX, les entrées des périphériques sont automatiquement créées dans UNIX. La suppression des périphériques pour les LUN et les clones de LUN à partir de copies Snapshot avec SnapDrive pour UNIX peut conduire à des périphériques obsolètes au niveau UNIX.
+
+La suppression des périphériques obsolètes est une responsabilité de l'utilisateur final et doit être effectuée par un administrateur UNIX.

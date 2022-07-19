@@ -1,0 +1,245 @@
+---
+permalink: solaris/concept_snapdrive_commands_and_capabilities.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, command, rbac 
+summary: 'Pour assurer la réussite de chaque opération, une fonctionnalité spécifique est requise pour le contrôle d"accès basé sur des rôles \(RBAC\). Les capacités affectées à l"exécution des opérations de stockage doivent être correctes.' 
+---
+= Fonctionnalités et commandes SnapDrive
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le contrôle d'accès basé sur des rôles (RBAC) requiert une fonctionnalité spécifique pour réussir chaque opération. Les capacités affectées à l'exécution des opérations de stockage doivent être correctes.
+
+Le tableau suivant répertorie les commandes et les fonctionnalités requises :
+
+|===
+| Commande | Fonctionnalité 
+
+
+ a| 
+`storage show`
+ a| 
+SD.Storage.Lire sur le volume
+
+
+
+ a| 
+`storage list`
+ a| 
+SD.Storage.Lire sur le volume
+
+
+
+ a| 
+`storage create`
+ a| 
+* Pour les LUN dans les volumes : `SD.Storage.Write` Sur le volume
+* Pour les LUN dans les qtrees : `SD.Storage.Write` sur qtree
+
+
+
+
+ a| 
+`storage resize`
+ a| 
+`SD.Storage.Write` Sur la LUN
+
+
+
+ a| 
+`storage delete`
+ a| 
+`SD.Storage.Delete` Sur la LUN
+
+
+
+ a| 
+`snap show`
+ a| 
+`SD.SnapShot.Read` sur le volume
+
+
+
+ a| 
+`snap list`
+ a| 
+`SD.SnapShot.Read` sur le volume
+
+
+
+ a| 
+`snap delete`
+ a| 
+`SD.Storage.Delete` sur le volume
+
+
+
+ a| 
+`snap rename`
+ a| 
+`SD.Storage.Write` sur le volume
+
+
+
+ a| 
+`snap connect`
+ a| 
+* Pour les clones de LUN dans le volume : `SD.SnapShot.Clone` sur le volume
+* Pour les clones LUN dans qtree : `SD.SnapShot.Clone` sur qtree
+* Pour les clones de volumes traditionnels : `SD.SnapShot.Clone` sur le système de stockage
+* Pour un volume FlexClone : `SD.SnapShot.Clone` sur le volume parent
+* Pour les volumes FlexClone sans restriction : `SD.SnapShot.UnrestrictedClone` sur le volume parent
+
+
+
+
+ a| 
+`snap connect-split`
+ a| 
+* Pour les clones de LUN (LUN clonée et répartition dans le volume) : `SD.SnapShot.Clone` sur le volume et `SD.Storage.Write` sur le volume
+* Pour les clones de LUN (LUN clonée et Split dans qtree) : `SD.SnapShot.Clone` sur les qtrees et `SD.Storage.Write` sur qtree
+* Pour les clones de volumes traditionnels qui sont répartis : `SD.SnapShot.Clone` sur le système de stockage et `SD.Storage.Write` sur le système de stockage
+* Pour les clones de volume Flex qui sont répartis : `SD.SnapShot.Clone` sur le volume parent.
+
+
+
+
+ a| 
+`clone split start`
+ a| 
+* Pour les clones LUN où réside la LUN dans le volume ou qtree : `SD.SnapShot.Clone` contenant un volume ou un qtree
+* Pour les clones de volumes : `SD.SnapShot.Clone` sur le volume parent
+
+
+
+
+ a| 
+`snap disconnect`
+ a| 
+* Pour les clones LUN où réside la LUN dans le volume ou qtree : `SD.SnapShot.Clone` contenant un volume ou un qtree
+* Pour les clones de volumes : `SD.SnapShot.Clone` sur le volume parent
+* Pour la suppression de clones de volumes sans restriction : `SD.SnapShot.DestroyUnrestrictedClone` sur le volume
+
+
+
+
+ a| 
+`snap disconnect-split`
+ a| 
+* Pour les clones LUN où réside la LUN dans le volume ou qtree : `SD.SnapShot.Clone` sur le volume ou qtree contenant
+* Pour les clones de volumes : `SD.Storage.Delete` sur le volume parent
+* Pour la suppression de clones de volumes sans restriction : `SD.SnapShot.DestroyUnrestrictedClone` sur le volume
+
+
+
+
+ a| 
+`snap restore`
+ a| 
+* Pour les LUN qui existent dans un volume : `SD.SnapShot.Restore` sur le volume et `SD.Storage.Write` Sur la LUN
+* Pour les LUN qui existent dans un qtree : `SD.SnapShot.Restore` sur les qtrees et `SD.Storage.Write` Sur la LUN
+* Pour les LUN qui ne figurent pas dans les volumes : `SD.SnapShot.Restore` sur le volume et `SD.Storage.Write` sur le volume
+* Pour les LUN qui ne sont pas dans le qtree : `SD.SnapShot.Restore` sur les qtrees et `SD.Storage.Write` sur qtree
+* Pour les volumes : `SD.SnapShot.Restore` sur un système de stockage pour les volumes traditionnels, ou `SD.SnapShot.Restore` cet agrégat permet de traiter des volumes flexibles
+* Pour la restauration Snapshot de fichiers uniques dans les volumes : `SD.SnapShot.Restore` sur le volume
+* Pour la restauration Snapshot d'un seul fichier dans qtree : `SD.SnapShot.Restore` qtree
+* Pour ignorer les copies Snapshot de base : `SD.SnapShot.DisruptBaseline` sur le volume
+
+
+
+
+ a| 
+`host connect`, `host disconnect`
+ a| 
+`SD.Config.Write` Sur la LUN
+
+
+
+ a| 
+`config access`
+ a| 
+`SD.Config.Read` sur le système de stockage
+
+
+
+ a| 
+`config prepare`
+ a| 
+`SD.Config.Write` sur au moins un système de stockage
+
+
+
+ a| 
+`config check`
+ a| 
+`SD.Config.Read` sur au moins un système de stockage
+
+
+
+ a| 
+`config show`
+ a| 
+`SD.Config.Read` sur au moins un système de stockage
+
+
+
+ a| 
+`config set`
+ a| 
+`SD.Config.Write` sur le système de stockage
+
+
+
+ a| 
+`config set -dfm`, `config set -mgmtpath`,
+ a| 
+`SD.Config.Write` sur au moins un système de stockage
+
+
+
+ a| 
+`config delete`
+ a| 
+`SD.Config.Delete` sur le système de stockage
+
+
+
+ a| 
+`config delete dfm_appliance`, `config delete -mgmtpath`
+ a| 
+`SD.Config.Delete` sur au moins un système de stockage
+
+
+
+ a| 
+`config list`
+ a| 
+`SD.Config.Read` sur au moins un système de stockage
+
+
+
+ a| 
+`config migrate set`
+ a| 
+`SD.Config.Write` sur au moins un système de stockage
+
+
+
+ a| 
+`config migrate delete`
+ a| 
+`SD.Config.Delete` sur au moins un système de stockage
+
+
+
+ a| 
+`config migrate list`
+ a| 
+`SD.Config.Read` sur au moins un système de stockage
+
+|===
+
+NOTE: SnapDrive pour UNIX ne vérifie aucune capacité pour l'administrateur (root).

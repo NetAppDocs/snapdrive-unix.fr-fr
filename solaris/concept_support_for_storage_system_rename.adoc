@@ -1,0 +1,16 @@
+---
+permalink: solaris/concept_support_for_storage_system_rename.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, support, storage, rename 
+summary: 'SnapDrive permet de renommer les systèmes de stockage. Si une copie Snapshot est créée et que le système de stockage est renommé après la création de la copie, SnapDrive permet d"exécuter des opérations Snapshot tant que vous avez authentifié à nouveau tous les clients \(hôtes\).' 
+---
+= Prise en charge du renommage du système de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive permet de renommer les systèmes de stockage. Si une copie Snapshot est créée et que le système de stockage est renommé après la création de la copie, SnapDrive vous permet d'exécuter des opérations de copie Snapshot tant que vous avez authentifié à nouveau tous vos clients (hôtes).
+
+Les opérations de snapshot telles que la restauration, la connexion, la déconnexion, l'affichage et la suppression continuent de fonctionner sur le système hôte uniquement après la ré-authentification de vos clients. Vous devez procéder à une nouvelle authentification car le nom d'hôte est utilisé comme partie de la clé de Registre pour conserver le mot de passe.

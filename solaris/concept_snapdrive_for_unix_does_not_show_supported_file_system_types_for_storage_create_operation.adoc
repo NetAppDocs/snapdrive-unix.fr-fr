@@ -1,0 +1,33 @@
+---
+permalink: solaris/concept_snapdrive_for_unix_does_not_show_supported_file_system_types_for_storage_create_operation.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, create, file, supported 
+summary: 'SnapDrive pour UNIX n"affiche pas les types de systèmes de fichiers pris en charge pour l"opération de création du stockage.' 
+---
+= SnapDrive pour UNIX n'affiche pas les types de systèmes de fichiers pris en charge pour l'opération de création du stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX n'affiche pas les types de systèmes de fichiers pris en charge pour l'opération de création du stockage.
+
+L'opération de création de stockage SnapDrive ne parvient pas à créer un système de fichiers UFS sur des LUN brutes (LUN sans composants de gestionnaire de volumes), à l'aide de l' `-fstype` Et le transport iSCSI, si les conditions suivantes sont vraies :
+
+* Système de fichiers UFS présent
+* Les composants VxVM (VxVM, VxFS et DMP) ne sont pas installés
+* Le pilote HBA pour Emulex est chargé
+
+
+Le message d'erreur suivant s'affiche si l'opération échoue.
+
+[listing]
+----
+0001-539 Command error: Snapdrive cannot create a file system of type ufs Supported types for storage create are:
+----
+
+
+== Solution de contournement
+
+Déchargez le pilote Emulex (lpfc) de l'hôte à l'aide de l' `modunload` commande.

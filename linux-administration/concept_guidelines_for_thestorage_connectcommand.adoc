@@ -1,0 +1,21 @@
+---
+permalink: linux-administration/concept_guidelines_for_thestorage_connectcommand.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, storage, connect, command, guidelines, lvm 
+summary: Suivez quelques instructions pour utiliser la commande SnapDrive Storage Connect. 
+---
+= Instructions relatives à la commande Storage Connect
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez suivre quelques directives pour utiliser le `snapdrive storage connect` commande.
+
+Le stockage incluant des entités LVM a des exigences spéciales. Pour utiliser le `snapdrive storage connect` Commande pour connecter des entités LVM, vous devez créer le stockage de sorte que chaque entité de la hiérarchie de stockage ait exactement une instance de l'entité suivante. Par exemple, vous pouvez utiliser le `snapdrive storage connect` commande permettant de connecter une hiérarchie de stockage comportant un groupe de disques (dg1) avec un volume hôte (hostvol1) et un système de fichiers (fs1). Cependant, vous ne pouvez pas utiliser le `snapdrive storage connect` commande permettant de connecter une hiérarchie comportant un groupe de disques (dg1) avec deux volumes hôtes (hostvol1 et hostvol2) et deux systèmes de fichiers (fs1 et fs2).
+
+Sur les hôtes Linux, le `snapdrive storage connect` La commande ne connecte un système de fichiers créé directement sur une LUN que lorsque la LUN sous-jacente est partitionnée.
+
+
+NOTE: Avec SLES10 mise à jour 2, SnapDrive pour UNIX `snapdrive storage connect` et `snapdrive storage create` La commande crée un système de fichiers directement sur une LUN. SnapDrive pour UNIX crée un système de fichiers sur le périphérique brut, puis le monte.

@@ -1,0 +1,14 @@
+---
+permalink: solaris/concept_audit_recovery_and_trace_logging_in_snapdrive_for_unix.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, audit, recovery, trace, log 
+summary: 'SnapDrive pour UNIX vous aide à gérer différents types de fichiers journaux, tels que les fichiers journaux d"audit, de récupération et de trace. Ces fichiers journaux sont utilisés ultérieurement pour le dépannage.' 
+---
+= Consignation des audits, des restaurations et des traces dans SnapDrive for UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapDrive pour UNIX vous aide à gérer différents types de fichiers journaux, tels que les fichiers journaux d'audit, de récupération et de trace. Ces fichiers journaux sont utilisés ultérieurement pour le dépannage.

@@ -1,0 +1,35 @@
+---
+permalink: linux-administration/concept_changing_the_defaults_for_the_audit_logs.html 
+sidebar: sidebar 
+keywords: snap, snapdrive, default, audit, log 
+summary: 'Vous pouvez utiliser le fichier snapdrive.conf pour modifier les paramètres de journalisation des fichiers journaux d"audit, tels que la taille maximale du fichier journal d"audit et le nombre maximal d"anciens fichiers d"audit.' 
+---
+= Modification des valeurs par défaut des journaux d'audit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le fichier snapdrive.conf pour modifier les paramètres de journalisation des fichiers journaux d'audit, tels que la taille maximale du fichier journal d'audit et le nombre maximal d'anciens fichiers d'audit.
+
+Le fichier snapdrive.conf vous permet de définir les valeurs suivantes pour la journalisation des audits :
+
+* Taille maximale du fichier journal d'audit. La taille par défaut est 20K. Une fois la taille du fichier atteinte de la valeur spécifiée dans le fichier snapdrive.conf, SnapDrive for UNIX renomme le fichier journal d'audit actuel en ajoutant un nombre arbitraire au nom. Ensuite, un nouveau fichier d'audit est lancé à l'aide du nom spécifié par la valeur du fichier-journal-audit.
+* Nombre maximal d'anciens fichiers d'audit enregistrés par SnapDrive pour UNIX. La valeur par défaut est 2.
+
+
+*Exemple de fichier journal d'audit :*
+
+[listing]
+----
+2501: Begin uid=0 gid=1 15:35:02 03/12/04 snapdrv snap create -dg
+rdg -snapname snap_rdg1
+2501: Status=0 15:35:07 03/12/04
+2562: Begin uid=0 gid=1 15:35:16 03/12/04 snapdrv snap create -dg
+rdg -snapname snap_rdg1
+2562: FAILED Status=4 15:35:19 03/12/04
+----
+La première paire de lignes dans cet exemple montre une opération qui a réussi, comme indiqué par la ligne « Status=0 ».
+
+La seconde paire de lignes indique une opération qui a échoué. Le code retour de "4" signifie "existe déjà". Si vous examinez les deux lignes de commande, vous pouvez voir que la première copie Snapshot créée appelée snap_rdg1. La deuxième ligne a tenté de faire la même chose, mais le nom existe déjà, donc l'opération a échoué.
