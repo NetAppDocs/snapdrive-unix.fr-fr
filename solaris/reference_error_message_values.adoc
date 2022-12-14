@@ -1093,6 +1093,7 @@ Que faire : effectuez l'une des opérations suivantes :
 *REMARQUE :*
 
 +
+[]
 ====
 *** Si vous n'avez pas `sd-hostname.prbac` puis modifiez le `sdgeneric.prbac` fichier dans le système de stockage.
 *** Si vous avez les deux `sd-hostname.prbac` et `sdgeneric.prbac` fichier, puis modifiez les paramètres uniquement dans `sdhostname.prbac` fichier dans le système de stockage.
