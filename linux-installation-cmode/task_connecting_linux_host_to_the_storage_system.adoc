@@ -30,10 +30,11 @@ Si vous exécutez ONTAP 8.2.3 ou une version ultérieure, ignorez cette étape.
 
 . Création d'un utilisateur sur le SVM de données :
 +
-`*snapdrive config set*`
+`*snapdrive config set vsadmin_name _Vserver_name_*`
 
 +
-`_vsadmin_name Vserver_name_`
+
+NOTE: `_Vserver_name_` Est le nom du SVM et il doit être mappé sur l'adresse IP de la LIF de gestion.
 
 . Vérifier que le SVM est configuré dans SnapDrive pour UNIX :
 +
