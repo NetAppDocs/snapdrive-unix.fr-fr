@@ -3086,7 +3086,6 @@
   <block id="464731ea68043c5dbd4b1a2255e0ddc9" category="summary">La fonctionnalité de provisionnement fin de SnapDrive for UNIX permet à l'utilisateur de disposer d'un espace de stockage supérieur à celui qui est réellement disponible sur le système de stockage.</block>
   <block id="b5e25c86b8fc4729491227e86c44097c" category="paragraph">Dans SnapDrive for UNIX, vous ne pouvez pas définir la valeur de la réserve fractionnaire et il n'existe aucune intégration avec les fonctionnalités Data ONTAP telles que la suppression automatique et la taille automatique. Ces fonctionnalités Data ONTAP peuvent être utilisées en toute sécurité avec SnapDrive for UNIX. Toutefois, SnapDrive for UNIX ne peut pas être conscient en cas d'événement de suppression automatique ou de taille automatique.</block>
   <block id="0fbd8971220ee7d0340edcc5aa07a5c0" category="inline-link">Rapport technique NetApp 3483 : « Thin Provisioning » dans un environnement d'entreprise NetApp SAN ou IP SAN</block>
-  <block id="d067ada9dffcf5d06f760689bd642d06" category="paragraph"><block ref="d067ada9dffcf5d06f760689bd642d06" category="inline-link-rx"></block></block>
   <block id="a23a2f85d7b3f88bb0576690d908a45b" category="summary">Voici un exemple de commande de collecte de données.</block>
   <block id="fa53a051fd3d41d006f288df5586d893" category="doc">Exemples d'utilisation de snapdrive.dc</block>
   <block id="293fb09a203f5093adb402a833921291" category="paragraph">Cet exemple utilise les options de ligne de commande pour spécifier un répertoire et un nom pour le fichier résultant.</block>
@@ -6001,4 +6000,5 @@
   <block id="45f4423b7c470ea0d04be6d812ad5996" category="paragraph">Pour la réussite des opérations SnapDrive for UNIX, il vous faut configurer vos machines virtuelles de stockage (SVM, anciennement appelées vServers).</block>
   <block id="00930ba81ea27b6c62845d08e0500327" category="paragraph"><block ref="7affedb2caa000166a46aed3d9bd1a06" prefix="" category="inline-code"></block></block>
   <block id="1483ad74a09b4a3124c82e285d93ae63" category="admonition"><block ref="992dacfc30bbe144d7e60d29d7bbd430" prefix="" category="inline-code"></block> Est le nom du SVM et il doit être mappé sur l'adresse IP de la LIF de gestion.</block>
+  <block id="2a7e0c5b8e814e03c21799cbb69f2d18" category="paragraph"><block ref="2a7e0c5b8e814e03c21799cbb69f2d18" category="inline-link-rx"></block></block>
 </blocks>

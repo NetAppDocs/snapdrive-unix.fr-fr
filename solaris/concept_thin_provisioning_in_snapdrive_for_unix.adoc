@@ -17,4 +17,4 @@ Dans SnapDrive for UNIX, vous ne pouvez pas définir la valeur de la réserve fr
 
 *Informations connexes*
 
-http://www.netapp.com/us/media/tr-3483.pdf["Rapport technique NetApp 3483 : « Thin Provisioning » dans un environnement d'entreprise NetApp SAN ou IP SAN"]
+https://www.netapp.com/pdf.html?item=/media/19670-tr-3483.pdf["Rapport technique NetApp 3483 : « Thin Provisioning » dans un environnement d'entreprise NetApp SAN ou IP SAN"^]
