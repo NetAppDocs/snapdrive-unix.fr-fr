@@ -20,8 +20,6 @@ Vous devez spécifier les informations de connexion utilisateur pour le Vserver.
 +
 ** `_user_name_` Est le nom d'utilisateur spécifié pour le Vserver lors de la première configuration. L'utilisateur par défaut est vsadmin. `_filername_` Est le nom du Vserver.
 ** `_filer_name_` Permet d'entrer plusieurs vServers sur une seule ligne de commande s'ils disposent tous du même identifiant utilisateur ou mot de passe. Vous devez entrer au moins un nom de Vserver.
-
-
 +
 [listing]
 ----
@@ -29,4 +27,6 @@ Vous devez spécifier les informations de connexion utilisateur pour le Vserver.
 Password for vsadmin:
 Retype password:
 ----
+
+
 
